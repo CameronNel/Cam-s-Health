@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-22T14:08:05.399Z",
+  "updatedAt": "2026-09-22T16:29:00Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -399,6 +399,23 @@
         }
       ],
       "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "",
+      "complete": false
+    },
+    "2026-09-21": {
+      "food": [],
+      "workouts": [
+        {
+          "sessionId": null,
+          "name": "Biceps",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User reported on 22 Sep 2026 that biceps were trained yesterday. Duration, exercises, loads and reps were not supplied."
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
