@@ -1,3 +1,22 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f5f6f3"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Cam’s daily nutrition, training and activity tracker."><title>Cam’s Health · Daily dashboard</title><link rel="icon" href="./favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./theme.css"><script type="module" src="./app.js"></script></head>
-<body><div id="app"><p class="initial">Opening your daily dashboard…</p></div><dialog id="modal"></dialog><div id="toast" role="status" aria-live="polite"></div></body></html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0d1318">
+<meta name="description" content="Cam’s personal health studio. Food, training, body measurements and progress, backed by GitHub.">
+<meta name="referrer" content="no-referrer">
+<title>Cam’s Health · Studio</title>
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./studio.css?v=2">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div id="app"></div>
+<dialog id="sheet"></dialog>
+<aside class="timer-dock" id="timer-dock" aria-label="Rest timer" hidden></aside>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p>This tracker needs JavaScript to read and save your GitHub record.</p></noscript>
+<script type="module" src="./studio.js?v=2"></script>
+</body>
+</html>
