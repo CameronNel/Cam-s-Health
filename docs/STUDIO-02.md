@@ -4,7 +4,7 @@ Source release prepared on 22 September 2026. This document describes the reposi
 
 ## Release and hosting
 
-The entry point is `dist/index.html`, which loads `studio.js` and `studio.css`. `studio.js` uses the original `model.js`, the new `body.js` validator and measurement helpers, and `sync.js` for GitHub persistence. The earlier `app.js`, `styles.css`, `theme.css` and `gestures.js` remain in the repository for reference; the new entry point does not load them.
+The entry point is `dist/index.html`, which loads `studio.js` and `studio.css`. `studio.js` uses the original `model.js`, the new `body.js` validator and measurement helpers, and `sync.js` for GitHub persistence. Earlier source is preserved in Git history. The legacy `app.js` was removed after the first CI run discovered a literal truncated-tool-output message in that old file. The old `styles.css`, `theme.css` and `gestures.js` remain for reference; the new entry point does not load them. Do not restore the corrupted legacy entry point when publishing.
 
 Publish the complete `dist/` directory through the existing project identified by `.openai/hosting.json`. Source changes require publishing. Data-only commits still do not. The original project is `appgprj_6ab28b4443e48191a33350023101edf6`. The build session could write to GitHub but had no publisher for that project, so the hosted rollout was not verified. Do not tell the user that a refresh will load Studio 02 until publishing succeeds.
 
@@ -82,11 +82,11 @@ Forms preserve input when authorization is missing, protect unsaved edits with a
 
 ## Verification performed
 
-Local release verification: 29 new Node tests passed. Existing repository tests are retained. JavaScript syntax checks passed. An isolated Chromium harness ran 15 integrated browser checks, including 42 screen/viewport combinations from 320 to 1440 CSS pixels with no horizontal page overflow and zero JavaScript exceptions during that suite.
+Local release verification: 29 new Node tests passed. Existing repository tests are retained. JavaScript syntax checks passed for the rebuilt runtime. An isolated Chromium harness ran 15 integrated browser checks, including 42 screen/viewport combinations from 320 to 1440 CSS pixels with no horizontal page overflow and zero JavaScript exceptions during that suite.
 
 The browser harness rendered the actual build with a local mirror of reported data and mocked GitHub requests. It exercised measurement saves, immutable read-back, missing-ID rejection, retained drafts, separate-date editing, custom sessions, meal repeat, timer behavior and token non-persistence. These were not real writes to the user's record and not an end-to-end test of the hosted site or physical Android device. Preview screenshots are local build previews, not proof of a hosted rollout.
 
-`tests/studio.test.mjs` is repeatable with `npm test`. `.github/workflows/validate.yml` runs syntax checks, all Node tests and validation of the actual committed health record on main pushes and pull requests. A workflow file alone is not proof that a run passed. This check reports failure; without branch protection it does not block a direct commit or automatically repair data.
+`tests/studio.test.mjs` is repeatable with `npm test`. `.github/workflows/validate.yml` runs syntax checks, all Node tests and validation of the actual committed health record on main pushes and pull requests. Its actions are pinned to the versions resolved by the first runner. The first run exposed the pre-existing corrupted legacy entry point, which was then removed; read the latest run's result rather than assuming a workflow file proves a pass. This check reports failure; without branch protection it does not block a direct commit or automatically repair data.
 
 ## Publish acceptance checklist
 
