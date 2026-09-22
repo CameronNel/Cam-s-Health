@@ -1,0 +1,122 @@
+:root[data-theme="light"] {
+  color-scheme: light;
+  --ink: #142522;
+  --muted: #647873;
+  --line: #e1eae7;
+  --green: #115b52;
+  --lime: #c9f36d;
+  --surface: #ffffff;
+  --app-bg: #f3f8f6;
+  --surface-soft: #edf5f2;
+  --accent: #087c6d;
+  --accent-hover: #06695e;
+  --brand: #10564e;
+  --track: #e6efeb;
+  --shadow: 0 10px 30px rgb(25 55 47 / 5%);
+  color: var(--ink);
+  background: var(--app-bg);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #edf6f2;
+  --muted: #a0b5ae;
+  --line: #2a403d;
+  --green: #14574f;
+  --lime: #d0f477;
+  --surface: #162522;
+  --app-bg: #0c1514;
+  --surface-soft: #1b2c28;
+  --accent: #54d7bd;
+  --accent-hover: #7be6d1;
+  --brand: #145b52;
+  --track: #283b36;
+  --shadow: 0 14px 36px rgb(0 0 0 / 18%);
+  color: var(--ink);
+  background: var(--app-bg);
+}
+
+body { color: var(--ink); background: var(--app-bg); transition: color .18s ease, background .18s ease; }
+.topbar { background: color-mix(in srgb, var(--app-bg) 92%, transparent); }
+.brandmark { background: var(--brand); color: var(--lime); }
+.section-label { color: var(--muted); }
+.hero-progress-label { color: var(--muted); }
+.nutritionhero,.listcard,.card,.notes-summary,.disclosure,.list-link,.detail-hero.light { background: var(--surface); border-color: var(--line); box-shadow: var(--shadow); }
+.activitytile { background: var(--surface-soft); color: var(--ink); }
+.activitytile:hover,.foodrow:hover,.recipe-row:hover,.recordrow:hover,.historyrow:hover { background: var(--surface-soft); }
+.foodrow,.recipe-row,.recordrow,.historyrow,.notes-summary,.session-done button { background: var(--surface); color: var(--ink); }
+.rowicon { background: var(--surface-soft); color: var(--accent); }
+.rowtext>span,.rowvalue small,.macro-name,.macro-target,.activity-label,.activity-sub,.muted,.syncfoot,.chartlegend { color: var(--muted); }
+.progress-track,.macro-track { background: var(--track); }
+.progress-track i { background: var(--accent); }
+.macro-track i,.macro.protein .macro-track i { background: #087c6d; }
+.macro.carbs .macro-track i { background: #8cae48; }
+.macro.fat .macro-track i { background: #cb8b51; }
+.workouttile { background: var(--surface); border-color: var(--line); box-shadow: var(--shadow); }
+.workouttile.featured,.detail-hero { background: var(--brand); border-color: var(--brand); }
+.featured .workout-topline,.featured .workout-focus,.featured .workout-stats,.featured .workout-title svg { color: #ddf6c4; }
+.traininggrid .resttile { background: var(--surface); }
+.pill { background: var(--surface-soft); color: var(--accent); }
+.datebar .iconbutton,.todaybutton { color: var(--accent); }
+.todaybutton { background: var(--surface-soft); }
+.todaybutton.current { color: var(--muted); }
+.quick-add,.add-fab { background: var(--lime); color: #183122; border-color: transparent; }
+.bottomnav { background: color-mix(in srgb, var(--surface) 96%, transparent); border-color: var(--line); }
+.bottomnav button { color: var(--muted); }
+.bottomnav button.active { color: var(--accent); }
+.btn { background: var(--accent); }
+.btn:hover { background: var(--accent-hover); }
+.btn.secondary,.btn.subtle { background: var(--surface-soft); color: var(--accent); border-color: var(--line); }
+.detail-hero .eyebrow,.detail-hero>p,.detail-stats { color: #d5e9df; }
+.detail-stats { border-color: color-mix(in srgb, var(--lime) 22%, transparent); }
+.detail-hero.light { color: var(--ink); }
+.detail-hero.light .eyebrow,.detail-hero.light>p { color: var(--muted); }
+.exercise-number,.exercise-info>span,.exercise-note,.exercise-note p,.exercise-sets small { color: var(--muted); }
+.exercise-sets { color: var(--accent); }
+.empty,.empty p { color: var(--muted); }
+.empty h3 { color: var(--accent); }
+.chartcol strong,.chartcol small,.history-summary span { color: var(--muted); }
+.column { background: var(--surface-soft); }
+.chartcol.selected .column { background: var(--accent); }
+.field { color: var(--muted); }
+.field input,.field textarea,.field select { color: var(--ink); background: var(--surface-soft); border-color: var(--line); }
+.field input::placeholder,.field textarea::placeholder { color: var(--muted); }
+.statusbox { color: var(--accent); background: var(--surface-soft); }
+.help,.notesbox { color: var(--muted); }
+.modalhead,.modalactions,dialog { color: var(--ink); background: var(--surface); }
+.modalhead { border-color: var(--line); }
+.modalhead .iconbutton { color: var(--accent); background: var(--surface-soft); }
+.previewbutton { color: var(--accent); }
+.previewbutton:hover { background: var(--surface-soft); }
+.theme-button:hover { background: var(--surface-soft); color: var(--accent); }
+.sheet-handle { background: var(--line); }
+.choice { color: var(--ink); background: var(--surface-soft); border-color: var(--line); }
+.choice svg,.disclosure>summary svg { color: var(--accent); }
+.preview-sub { color: var(--muted); }
+.listfoot { color: var(--muted); background: var(--surface-soft); border-color: var(--line); }
+.food-detail-macros { border-color: var(--line); }
+.food-detail-macros>div>span,.food-detail-energy>span { color: var(--muted); }
+.food-detail-macros small { color: var(--muted); }
+.notes-summary svg { color: var(--accent); }
+.workouttile:active,.foodrow:active,.recordrow:active,.recipe-row:active,.historyrow:active { filter: brightness(.97); }
+
+:root[data-theme="dark"] .macro-track i,.macro.protein .macro-track i { background: #54d7bd; }
+:root[data-theme="dark"] .macro.carbs .macro-track i { background: #c1e66e; }
+:root[data-theme="dark"] .macro.fat .macro-track i { background: #f0b06f; }
+:root[data-theme="dark"] .notice,:root[data-theme="dark"] .errorbanner { color: #f0c98d; background: #30271b; border-color: #59462c; }
+:root[data-theme="dark"] .training-status { color: #d7bd86; }
+:root[data-theme="dark"] .review-dot { background: #efbd66; }
+
+@media (prefers-reduced-motion: reduce) {
+  body { transition: none; }
+}
+
+@media (min-width: 1080px) {
+  .sidebar { background: #102c29; color: #d0e6dd; }
+  .sidebar .brand { color: #f1f8f4; }
+  .sidebar .brandmark { background: #1d514a; color: #d0f477; }
+  .desktopnav button { color: #a9c6bd; }
+  .desktopnav button.active { color: #19362e; background: #c9f36d; }
+  .desktopnav button:not(.active):hover { background: #1b4039; }
+  .repo-link { color: #a9c6bd; border-color: #31534b; }
+}
