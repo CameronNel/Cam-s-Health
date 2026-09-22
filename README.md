@@ -18,6 +18,12 @@ Tell ChatGPT what you ate, your step total or what you trained. With this reposi
 - Refresh on opening, returning to the tab, every five minutes, or manually.
 - Optional direct editing with a fine-grained GitHub token for this repo, Contents: Read and write. The token stays in memory for the current tab and is never stored or embedded. Chat logging needs no token in the app.
 
+## Mobile experience
+
+The app is designed for phones first. Home combines daily nutrition, activity tiles and compact food/workout summaries. Tap a meal for its nutrition and source notes. Tap a workout for the full prescription, or hold for 450 ms to preview; moving your finger cancels the hold so scrolling stays natural. An eye button provides the same preview without a gesture.
+
+Detail pages support Back navigation, preview/form sheets support dismissal, and dates have a Today reset. Log again prefills a repeated meal for review before saving. Background refresh leaves active forms alone. The seven-day chart lives in History rather than crowding Home.
+
 ## Persistence and limits
 
 GitHub JSON plus commit history are persistent storage. Local storage only caches the last read for connection failures, with a stale-data warning. Saves re-read the current file, preserve unrelated records, and use the GitHub blob SHA to detect concurrent updates. No AI runs inside the static app; conversational interpretation happens in ChatGPT. Nothing automatically tracks a phone/watch, and unknown activity stays unlogged. Nutrition estimates are not laboratory measurements.
