@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-22T17:17:10Z",
+  "updatedAt": "2026-09-22T19:08:16Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -408,6 +408,30 @@
           "estimated": false,
           "source": "User report, 22 Sep 2026; referred to as the same protein used yesterday.",
           "note": "Exact product, scoop size and nutrition label could not be recovered from the current tracker, Notion food log or prior conversation context. Nutrition intentionally left unknown until the label/product is supplied."
+        },
+        {
+          "id": "2026-09-22-biltong-1",
+          "name": "Beef biltong",
+          "quantity": "~100 g",
+          "kcal": 271,
+          "protein": 40,
+          "carbs": 9.3,
+          "fat": 8.1,
+          "estimated": true,
+          "source": "Albert Heijn Cruga Biltong Original nutrition reference, per 100 g.",
+          "note": "User reported about 100 g. Exact product/weight unknown; estimate uses a locally available Netherlands biltong reference."
+        },
+        {
+          "id": "2026-09-22-noodles-1",
+          "name": "Noodles",
+          "quantity": "portion reported as 75 kcal",
+          "kcal": 75,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": false,
+          "source": "User report, 22 Sep 2026.",
+          "note": "Calories supplied by user. Product, portion weight and macro breakdown not supplied, so macros are left unknown."
         }
       ],
       "workouts": [
