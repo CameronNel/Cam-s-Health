@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-22T17:11:11Z",
+  "updatedAt": "2026-09-22T17:17:10Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -396,6 +396,18 @@
           "source": "Existing food log, 22 Sep 2026; IKEA Netherlands Bistro portion estimate.",
           "note": "Half of the previously estimated 8-ball cup. Review needed: imported macros imply about 167 kcal, while the source records 140 kcal. Original values are retained as estimates.",
           "reviewRequired": true
+        },
+        {
+          "id": "2026-09-22-protein-powder-1",
+          "name": "Protein powder",
+          "quantity": "1 scoop",
+          "kcal": null,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": false,
+          "source": "User report, 22 Sep 2026; referred to as the same protein used yesterday.",
+          "note": "Exact product, scoop size and nutrition label could not be recovered from the current tracker, Notion food log or prior conversation context. Nutrition intentionally left unknown until the label/product is supplied."
         }
       ],
       "workouts": [
