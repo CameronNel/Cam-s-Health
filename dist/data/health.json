@@ -1,0 +1,466 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-22T14:08:05.399Z",
+  "profile": {
+    "name": "Cam",
+    "timezone": "Europe/Amsterdam",
+    "targets": {
+      "kcal": 1900,
+      "protein": 170,
+      "carbs": null,
+      "fat": null,
+      "steps": 10000
+    },
+    "trainingStatus": "awaiting clearance",
+    "trainingNote": "Exercise clearance has not been confirmed. The stored program is a prescription, not a completed workout or confirmation that training can begin.",
+    "equipment": [
+      "Single cable station",
+      "Rack",
+      "Benches",
+      "Dumbbells up to 20 kg"
+    ],
+    "equipmentNote": "Normal barbell bench pressing is unavailable with the current setup.",
+    "source": "Current fitness tracker targets, verified 22 September 2026."
+  },
+  "training": {
+    "rotation": [
+      "push-a",
+      "pull-a",
+      "legs-a",
+      "push-b",
+      "pull-b",
+      "legs-b",
+      "rest"
+    ],
+    "sessions": [
+      {
+        "id": "push-a",
+        "name": "Push A",
+        "focus": "Chest, delts and triceps",
+        "exercises": [
+          {
+            "name": "Dips",
+            "sets": 3,
+            "reps": "6–12",
+            "rest": 120,
+            "note": "2 reps in reserve. Requires a genuinely safe setup and exercise clearance. Substitute weighted/deficit push-up."
+          },
+          {
+            "name": "Incline DB Press",
+            "sets": 3,
+            "reps": "8–15",
+            "rest": 120,
+            "note": "2 reps in reserve. DBs capped at 20 kg. Substitute cable press."
+          },
+          {
+            "name": "Cable Fly",
+            "sets": 2,
+            "reps": "12–20",
+            "rest": 75,
+            "note": "1 reps in reserve. Substitute DB fly only with a safe setup."
+          },
+          {
+            "name": "Cable Lateral Raise",
+            "sets": 3,
+            "reps": "12–20",
+            "rest": 60,
+            "note": "1 reps in reserve. Substitute DB lateral raise."
+          },
+          {
+            "name": "Cable Triceps Pressdown",
+            "sets": 3,
+            "reps": "10–15",
+            "rest": 75,
+            "note": "1 reps in reserve. Substitute DB overhead extension."
+          },
+          {
+            "name": "Neck Circuit",
+            "sets": 2,
+            "reps": "15–25",
+            "rest": 60,
+            "note": "3 reps in reserve. Very gradual loading; light manual/cable/band resistance. No neck bridges. Flexion, extension and lateral flexion."
+          }
+        ]
+      },
+      {
+        "id": "pull-a",
+        "name": "Pull A",
+        "focus": "Back, biceps and forearms",
+        "exercises": [
+          {
+            "name": "Pull-ups",
+            "sets": 3,
+            "reps": "5–10",
+            "rest": 120,
+            "note": "2 reps in reserve. Substitute lat pulldown."
+          },
+          {
+            "name": "V-bar Pulldown",
+            "sets": 3,
+            "reps": "8–12",
+            "rest": 105,
+            "note": "2 reps in reserve. Preferred back movement. Substitute neutral-grip pulldown."
+          },
+          {
+            "name": "One-arm Cable Row",
+            "sets": 3,
+            "reps": "8–15",
+            "rest": 90,
+            "note": "2 reps in reserve. Substitute DB row."
+          },
+          {
+            "name": "Cable Rear-Delt Fly",
+            "sets": 2,
+            "reps": "15–25",
+            "rest": 60,
+            "note": "1 reps in reserve. Substitute bent-over DB rear-delt raise."
+          },
+          {
+            "name": "Hammer Curl",
+            "sets": 3,
+            "reps": "10–15",
+            "rest": 75,
+            "note": "1 reps in reserve. Also trains forearms. Substitute cable hammer curl."
+          },
+          {
+            "name": "Wrist Flexion + Extension",
+            "sets": 2,
+            "reps": "15–25",
+            "rest": 60,
+            "note": "1 reps in reserve. Direct forearm priority. Substitute reverse curl."
+          }
+        ]
+      },
+      {
+        "id": "legs-a",
+        "name": "Legs A",
+        "focus": "Quads, hamstrings, calves and abs",
+        "exercises": [
+          {
+            "name": "Bulgarian Split Squat",
+            "sets": 3,
+            "reps": "8–15",
+            "rest": 120,
+            "note": "2 reps in reserve. Unilateral loading suits the 20 kg DB cap. Substitute reverse lunge."
+          },
+          {
+            "name": "Single-leg DB RDL",
+            "sets": 3,
+            "reps": "8–15",
+            "rest": 120,
+            "note": "2 reps in reserve. Substitute B-stance DB RDL."
+          },
+          {
+            "name": "Step-up",
+            "sets": 3,
+            "reps": "10–15",
+            "rest": 90,
+            "note": "2 reps in reserve. Use a stable platform. Substitute reverse lunge."
+          },
+          {
+            "name": "Cable Hamstring Curl",
+            "sets": 3,
+            "reps": "12–20",
+            "rest": 75,
+            "note": "1 reps in reserve. Requires ankle attachment. Substitute sliding leg curl."
+          },
+          {
+            "name": "Single-leg Calf Raise",
+            "sets": 3,
+            "reps": "12–25",
+            "rest": 60,
+            "note": "1 reps in reserve. DB and step, or bodyweight."
+          },
+          {
+            "name": "Cable Crunch",
+            "sets": 3,
+            "reps": "10–20",
+            "rest": 75,
+            "note": "1 reps in reserve. Substitute weighted crunch."
+          }
+        ]
+      },
+      {
+        "id": "push-b",
+        "name": "Push B",
+        "focus": "Chest, shoulders and triceps",
+        "exercises": [
+          {
+            "name": "Weighted/Deficit Push-up",
+            "sets": 3,
+            "reps": "8–20",
+            "rest": 120,
+            "note": "2 reps in reserve. Primary loading workaround when 20 kg DBs become too light. Substitute dips with a safe setup."
+          },
+          {
+            "name": "Flat DB Press",
+            "sets": 3,
+            "reps": "10–20",
+            "rest": 105,
+            "note": "2 reps in reserve. DBs capped at 20 kg. Substitute single-arm cable press."
+          },
+          {
+            "name": "Single-arm Cable Shoulder Press",
+            "sets": 3,
+            "reps": "8–15",
+            "rest": 90,
+            "note": "2 reps in reserve. Substitute DB shoulder press."
+          },
+          {
+            "name": "Cable Lateral Raise",
+            "sets": 3,
+            "reps": "15–25",
+            "rest": 60,
+            "note": "1 reps in reserve. Substitute DB lateral raise."
+          },
+          {
+            "name": "Overhead Cable Triceps Extension",
+            "sets": 3,
+            "reps": "10–15",
+            "rest": 75,
+            "note": "1 reps in reserve. Substitute pressdown."
+          },
+          {
+            "name": "Neck Circuit",
+            "sets": 2,
+            "reps": "15–25",
+            "rest": 60,
+            "note": "3 reps in reserve. Very gradual loading; light manual/cable/band resistance. No neck bridges. Flexion, extension and lateral flexion."
+          }
+        ]
+      },
+      {
+        "id": "pull-b",
+        "name": "Pull B",
+        "focus": "Back, biceps and grip",
+        "exercises": [
+          {
+            "name": "Chin-ups",
+            "sets": 3,
+            "reps": "6–12",
+            "rest": 120,
+            "note": "2 reps in reserve. Substitute supinated pulldown."
+          },
+          {
+            "name": "Lat Pulldown",
+            "sets": 3,
+            "reps": "10–15",
+            "rest": 105,
+            "note": "2 reps in reserve. Substitute V-bar pulldown."
+          },
+          {
+            "name": "One-arm Cable Row",
+            "sets": 3,
+            "reps": "10–15",
+            "rest": 90,
+            "note": "2 reps in reserve. Substitute DB row."
+          },
+          {
+            "name": "Straight-arm Pulldown",
+            "sets": 2,
+            "reps": "12–20",
+            "rest": 75,
+            "note": "1 reps in reserve. Substitute cable pullover."
+          },
+          {
+            "name": "Cable Curl",
+            "sets": 3,
+            "reps": "10–15",
+            "rest": 75,
+            "note": "1 reps in reserve. Substitute DB curl."
+          },
+          {
+            "name": "Farmer Hold / Dead Hang",
+            "sets": 3,
+            "reps": "45–90 sec",
+            "rest": 75,
+            "note": "1 reps in reserve. Increase hold time toward 90 seconds, then make the variation harder. Substitute wrist work."
+          }
+        ]
+      },
+      {
+        "id": "legs-b",
+        "name": "Legs B",
+        "focus": "Quads, hamstrings, glutes and abs",
+        "exercises": [
+          {
+            "name": "Reverse DB Lunge",
+            "sets": 3,
+            "reps": "10–15",
+            "rest": 120,
+            "note": "2 reps in reserve. Substitute split squat."
+          },
+          {
+            "name": "DB RDL",
+            "sets": 3,
+            "reps": "12–20",
+            "rest": 120,
+            "note": "2 reps in reserve. Use tempo or pauses when load is limiting. Substitute single-leg DB RDL."
+          },
+          {
+            "name": "Single-leg Hip Thrust",
+            "sets": 3,
+            "reps": "10–20",
+            "rest": 90,
+            "note": "1 reps in reserve. Bench and DB. Substitute cable pull-through."
+          },
+          {
+            "name": "Cable Leg Extension",
+            "sets": 3,
+            "reps": "15–25",
+            "rest": 75,
+            "note": "1 reps in reserve. Requires ankle attachment. Substitute step-up."
+          },
+          {
+            "name": "Single-leg Calf Raise",
+            "sets": 3,
+            "reps": "15–30",
+            "rest": 60,
+            "note": "1 reps in reserve. DB and step, or bodyweight."
+          },
+          {
+            "name": "Hanging Leg Raise",
+            "sets": 3,
+            "reps": "8–15",
+            "rest": 75,
+            "note": "1 reps in reserve. Substitute reverse crunch."
+          }
+        ]
+      },
+      {
+        "id": "rest",
+        "name": "Rest",
+        "focus": "Recovery",
+        "exercises": []
+      }
+    ],
+    "notes": [
+      "Imported from the current prescribed program on 22 September 2026; no completed workout sessions were found.",
+      "The first actual workout establishes the live rotation position. Do not mark prescribed sets or exercises as completed automatically.",
+      "Exercise rest values are seconds. Reps are prescribed ranges, not recorded performance.",
+      "Double progression: add reps within range; when all work sets reach the upper end at the target reps in reserve, increase difficulty or load.",
+      "With the 20 kg DB cap, progression options in the existing program include range of motion, pauses, slower lowering, unilateral work and harder variations.",
+      "Exercise clearance has not been confirmed."
+    ]
+  },
+  "days": {
+    "2026-09-22": {
+      "food": [
+        {
+          "id": "2026-09-22-taco-bowl-1",
+          "name": "Lean beef taco bowl",
+          "quantity": "200 g",
+          "kcal": 313,
+          "protein": 32.3,
+          "carbs": 5.1,
+          "fat": 17.7,
+          "fibre": 1.2,
+          "estimated": true,
+          "source": "Existing food log, 22 Sep 2026; generic Dutch lean beef, Picnic tomatoes and representative taco seasoning.",
+          "note": "Conservative estimate. Rendered fat was drained, but no calorie or fat reduction was credited because the drained amount is unknown.",
+          "recipeId": "lean-beef-taco-bowl-2026-09-22"
+        },
+        {
+          "id": "2026-09-22-ikea-double-hotdog-1",
+          "name": "IKEA double hotdog",
+          "quantity": "1 bun + 2 sausages",
+          "kcal": 320,
+          "protein": 13.6,
+          "carbs": 31.2,
+          "fat": 14.7,
+          "estimated": true,
+          "source": "Existing food log, 22 Sep 2026; official IKEA double-hotdog nutrition reference from another European market.",
+          "note": "Imported estimate. The Netherlands serving may differ from the reference serving."
+        },
+        {
+          "id": "2026-09-22-machine-lattes-1",
+          "name": "Machine latte — low milk setting",
+          "quantity": "2 lattes",
+          "kcal": 60,
+          "protein": 1.2,
+          "carbs": 6.4,
+          "fat": 3.4,
+          "estimated": true,
+          "source": "Existing food log, 22 Sep 2026; office coffee-machine estimate.",
+          "note": "Powdered-milk setting 1 of 3. Estimated at 30 kcal each until the machine or product nutrition is known."
+        },
+        {
+          "id": "2026-09-22-ikea-mini-meatballs-1",
+          "name": "IKEA Bistro mini meatballs",
+          "quantity": "4 of 8 meatballs",
+          "kcal": 140,
+          "protein": 11.2,
+          "carbs": 7.2,
+          "fat": 10.4,
+          "estimated": true,
+          "source": "Existing food log, 22 Sep 2026; IKEA Netherlands Bistro portion estimate.",
+          "note": "Half of the previously estimated 8-ball cup. Review needed: imported macros imply about 167 kcal, while the source records 140 kcal. Original values are retained as estimates.",
+          "reviewRequired": true
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "",
+      "complete": false
+    }
+  },
+  "recipes": [
+    {
+      "id": "lean-beef-taco-bowl-2026-09-22",
+      "name": "Lean beef taco bowl — 22 Sep 2026",
+      "yieldG": 1290,
+      "ingredients": [
+        {
+          "name": "Lean beef mince",
+          "quantity": "1 kg",
+          "note": "Rendered fat drained as thoroughly as practical; brand and fat percentage not supplied."
+        },
+        {
+          "name": "Picnic tomato product",
+          "quantity": "1 can",
+          "note": "Assumed 400 g diced tomatoes for this estimate."
+        },
+        {
+          "name": "Taco seasoning",
+          "quantity": "1 sachet",
+          "note": "Assumed 35 g representative seasoning."
+        }
+      ],
+      "total": {
+        "kcal": 2015.8,
+        "protein": 208.1,
+        "carbs": 32.7,
+        "fat": 114.3,
+        "fibre": 7.9
+      },
+      "per100g": {
+        "kcal": 156.26,
+        "protein": 16.13,
+        "carbs": 2.53,
+        "fat": 8.86,
+        "fibre": 0.61
+      },
+      "estimated": true,
+      "source": "Existing recipe record, verified 22 September 2026.",
+      "note": "Conservative generic Dutch lean-beef estimate. No reduction credited for drained rendered fat. Update from product labels if supplied."
+    }
+  ],
+  "provenance": {
+    "verifiedAt": "2026-09-22T14:08:05.400Z",
+    "method": "Read current connected Notion pages and complete program/workout views. Imported actual records and existing prescribed targets; no hypothetical examples were logged.",
+    "sources": {
+      "targets": "https://app.notion.com/p/3e351baf97c6819b9c33d0c61209db2b",
+      "day": "https://app.notion.com/p/3e351baf97c68186bf3bd1eeb73c5393",
+      "program": "https://app.notion.com/p/bf0585dcb17148389558f5e3bf39b492",
+      "recipe": "https://app.notion.com/p/3e351baf97c681b2bc65ec993977da25",
+      "foods": [
+        "https://app.notion.com/p/3e351baf97c681d4a3ffec75c52eeb29",
+        "https://app.notion.com/p/3e351baf97c6819dae44fc74fd0c3cae",
+        "https://app.notion.com/p/3e351baf97c681dc9163d239d367ace1",
+        "https://app.notion.com/p/3e351baf97c681aca85ff8c36e68a094"
+      ]
+    }
+  }
+}

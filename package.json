@@ -1,0 +1,6 @@
+{
+  "name": "cams-health",
+  "private": true,
+  "type": "module",
+  "scripts": {"dev": "node scripts/serve.mjs", "test": "node --test tests/*.test.mjs", "validate": "node scripts/validate.mjs"}
+}
