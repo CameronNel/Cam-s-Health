@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-22T16:29:00Z",
+  "updatedAt": "2026-09-22T17:11:11Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -398,7 +398,41 @@
           "reviewRequired": true
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "sessionId": null,
+          "name": "Back + Shoulders",
+          "status": "partial",
+          "durationMin": null,
+          "notes": "User reported 4 sets lateral raises, 3 sets shoulder press, 3 sets single-arm pulldowns, and 3 sets single-arm cable rows. Reps, loads and duration not supplied.",
+          "actualExercises": [
+            {
+              "name": "Lateral Raise",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Shoulder Press",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm Pulldown",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm Cable Row",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
