@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-22T20:42:21Z",
+  "updatedAt": "2026-09-23T16:53:32Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -112,7 +112,7 @@
             "name": "Cable Rear-Delt Fly",
             "sets": 2,
             "reps": "15–25",
-            "rest": 60,
+            "rest": 75,
             "note": "1 reps in reserve. Substitute bent-over DB rear-delt raise."
           },
           {
@@ -492,6 +492,89 @@
       "waterMl": null,
       "weightKg": null,
       "notes": "",
+      "complete": false
+    },
+    "2026-09-23": {
+      "food": [
+        {
+          "id": "2026-09-23-tortilla-1",
+          "name": "Tortilla",
+          "quantity": "1 tortilla (approximately 62 g)",
+          "kcal": 191,
+          "protein": 6.1,
+          "carbs": 32,
+          "fat": 4,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 23 Sep 2026.",
+          "note": "Label values per tortilla. Pre-logged with the planned beef taco wrap reported by the user."
+        },
+        {
+          "id": "2026-09-23-taco-bowl-1",
+          "name": "Lean beef taco bowl",
+          "quantity": "approximately 350 g",
+          "kcal": 547,
+          "protein": 56.5,
+          "carbs": 8.9,
+          "fat": 31,
+          "estimated": true,
+          "source": "Saved recipe lean-beef-taco-bowl-2026-09-22; portion reported by user on 23 Sep 2026.",
+          "note": "Pre-logged planned portion from the 1,290 g batch. Conservative estimate; no deduction for drained fat because the drained amount is unknown.",
+          "recipeId": "lean-beef-taco-bowl-2026-09-22"
+        },
+        {
+          "id": "2026-09-23-creamy-cup-a-soup-1",
+          "name": "Creamy Cup-a-Soup (flavour unconfirmed)",
+          "quantity": "1 cup",
+          "kcal": 70,
+          "protein": 1,
+          "carbs": 12,
+          "fat": 2,
+          "estimated": true,
+          "source": "User-supplied 70 kcal; existing provisional macro estimate from the 23 Sep 2026 food report.",
+          "note": "User clarified that this was a cream variety. Exact flavour and nutrition label were not supplied; protein, carbs and fat are provisional, not label-verified."
+        },
+        {
+          "id": "2026-09-23-naartjie-1",
+          "name": "Naartjie (mandarin)",
+          "quantity": "1 fruit (estimated 60 g edible portion)",
+          "kcal": 28,
+          "protein": 0.4,
+          "carbs": 5.9,
+          "fat": 0.1,
+          "estimated": true,
+          "source": "User-reported fruit count; existing 23 Sep 2026 food estimate.",
+          "note": "Portion weight was not supplied. Retains the previously stated 60 g edible-portion estimate."
+        },
+        {
+          "id": "2026-09-23-banana-1",
+          "name": "Banana",
+          "quantity": "1 fruit (estimated 120 g edible portion)",
+          "kcal": 111,
+          "protein": 1.3,
+          "carbs": 24,
+          "fat": 0.4,
+          "estimated": true,
+          "source": "User-reported fruit count; existing 23 Sep 2026 food estimate.",
+          "note": "Portion weight was not supplied. Retains the previously stated medium banana / 120 g edible-portion estimate."
+        },
+        {
+          "id": "2026-09-23-machine-lattes-1",
+          "name": "Machine latte - low milk setting",
+          "quantity": "5 lattes",
+          "kcal": 150,
+          "protein": 3,
+          "carbs": 16,
+          "fat": 8.5,
+          "estimated": true,
+          "source": "Saved office coffee-machine estimate, reused from the 22 Sep 2026 log.",
+          "note": "Powdered-milk setting 1 of 3. Five lattes total for this report, estimated at 30 kcal each; machine/product nutrition remains unconfirmed."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Food reported on 23 September 2026, including the pre-logged planned tortilla and approximately 350 g beef taco mixture. Creamy soup flavour unconfirmed. Nutrition includes the previously stated recipe, fruit, soup-macro and latte estimates. This is a partial day, not confirmation that no other food was eaten.",
       "complete": false
     }
   },
