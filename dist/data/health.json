@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-23T16:53:32Z",
+  "updatedAt": "2026-09-24T06:36:00Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -511,14 +511,14 @@
         {
           "id": "2026-09-23-taco-bowl-1",
           "name": "Lean beef taco bowl",
-          "quantity": "approximately 350 g",
-          "kcal": 547,
-          "protein": 56.5,
-          "carbs": 8.9,
-          "fat": 31,
+          "quantity": "approximately 550 g",
+          "kcal": 859,
+          "protein": 88.7,
+          "carbs": 13.9,
+          "fat": 48.7,
           "estimated": true,
-          "source": "Saved recipe lean-beef-taco-bowl-2026-09-22; portion reported by user on 23 Sep 2026.",
-          "note": "Pre-logged planned portion from the 1,290 g batch. Conservative estimate; no deduction for drained fat because the drained amount is unknown.",
+          "source": "Saved recipe lean-beef-taco-bowl-2026-09-22; total portion reported by user on 23-24 Sep 2026.",
+          "note": "Updated from approximately 350 g to approximately 550 g total after user reported an additional 200 g. Conservative estimate; no deduction for drained fat because the drained amount is unknown.",
           "recipeId": "lean-beef-taco-bowl-2026-09-22"
         },
         {
