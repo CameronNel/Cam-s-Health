@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-25T16:23:35.272Z",
+  "updatedAt": "2026-09-25T16:32:58.662Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -721,7 +721,30 @@
           "note": "Estimated from approximately 120 kcal, 22.5 g protein and 2.6 g fat per 100 g raw. No skin or added cooking fat included."
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-09-25-push-a-1",
+          "sessionId": "push-a",
+          "name": "Push A",
+          "status": "partial",
+          "durationMin": null,
+          "notes": "In-progress session. Completed: 4 sets incline DB press and 3 sets shoulder press. User reported 4 sets triceps pushdowns and 4 sets lateral raises are next; those planned sets are not yet recorded as completed.",
+          "actualExercises": [
+            {
+              "name": "Incline DB Press",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Shoulder Press",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": 65.5,
