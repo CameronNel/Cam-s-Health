@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-25T14:52:46.859Z",
+  "updatedAt": "2026-09-25T15:15:53.168Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
     "targets": {
       "kcal": 1900,
-      "protein": 170,
-      "carbs": null,
-      "fat": null,
+      "protein": 150,
+      "carbs": 210,
+      "fat": 50,
       "steps": 10000
     },
     "trainingStatus": "awaiting clearance",
@@ -20,7 +20,7 @@
       "Dumbbells up to 20 kg"
     ],
     "equipmentNote": "Normal barbell bench pressing is unavailable with the current setup.",
-    "source": "Current fitness tracker targets, verified 22 September 2026."
+    "source": "Cut targets updated 25 Sep 2026 from current 65.5 kg body weight, 12.5% Galaxy Watch BIA trend baseline, and evidence for higher protein intake during energy restriction. Calorie target held at 1,900 pending weight-trend-derived maintenance."
   },
   "training": {
     "rotation": [
