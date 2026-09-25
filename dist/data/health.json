@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-25T14:38:45.019Z",
+  "updatedAt": "2026-09-25T14:52:46.859Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -714,7 +714,13 @@
       "waterMl": null,
       "weightKg": 65.5,
       "notes": "",
-      "complete": false
+      "complete": false,
+      "body": {
+        "bodyFatPct": 12.5,
+        "method": "BIA watch",
+        "notes": "Samsung Galaxy Watch BIA reading. User believes the absolute reading may be about 3 percentage points low, but chose to use it consistently for trend tracking.",
+        "recordedAt": "2026-09-25T14:52:46.854Z"
+      }
     }
   },
   "recipes": [
