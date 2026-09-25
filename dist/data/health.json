@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-24T06:36:00Z",
+  "updatedAt": "2026-09-25T13:57:52.386Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -575,6 +575,133 @@
       "waterMl": null,
       "weightKg": null,
       "notes": "Food reported on 23 September 2026, including the pre-logged planned tortilla and approximately 350 g beef taco mixture. Creamy soup flavour unconfirmed. Nutrition includes the previously stated recipe, fruit, soup-macro and latte estimates. This is a partial day, not confirmation that no other food was eaten.",
+      "complete": false
+    },
+    "2026-09-24": {
+      "food": [
+        {
+          "id": "2026-09-24-sourdough-bread-1",
+          "name": "Sourdough bread",
+          "quantity": "portion reported as 260 kcal",
+          "kcal": 260,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": false,
+          "source": "User report, 24 Sep 2026.",
+          "note": "Calories supplied by user. Portion weight and macro breakdown were not supplied, so macros are left unknown."
+        },
+        {
+          "id": "2026-09-24-fuze-tea-green-1",
+          "name": "Fuze Tea Green Ice Tea",
+          "quantity": "250 ml can",
+          "kcal": 45,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": true,
+          "source": "User report, 24 Sep 2026; existing provisional estimate.",
+          "note": "250 ml can. Calories remain an estimate because the exact variant nutrition label was not supplied."
+        },
+        {
+          "id": "2026-09-24-carrot-cup-a-soup-1",
+          "name": "Carrot Cup-a-Soup",
+          "quantity": "1 sachet",
+          "kcal": 70,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": true,
+          "source": "User report, 24 Sep 2026.",
+          "note": "User reported approximately 70 kcal per sachet. Macro breakdown was not supplied."
+        },
+        {
+          "id": "2026-09-24-machine-lattes-1",
+          "name": "Machine latte — low milk setting",
+          "quantity": "4 lattes",
+          "kcal": 120,
+          "protein": 2.4,
+          "carbs": 12.8,
+          "fat": 6.8,
+          "estimated": true,
+          "source": "Saved office coffee-machine estimate, reused from the 22 Sep 2026 log.",
+          "note": "Powdered-milk setting 1 of 3. Estimated at 30 kcal each until machine/product nutrition is known."
+        },
+        {
+          "id": "2026-09-24-salmon-1",
+          "name": "Salmon fillet with skin",
+          "quantity": "250 g (half of 500 g pack)",
+          "kcal": 522.5,
+          "protein": 50.5,
+          "carbs": 0,
+          "fat": 35.5,
+          "estimated": false,
+          "source": "User-provided product label, 24 Sep 2026.",
+          "note": "Label per 100 g: 209 kcal, 20.2 g protein, 14.2 g fat, 0 g carbs. User ate half of the 500 g pack."
+        },
+        {
+          "id": "2026-09-24-kwark-banana-1",
+          "name": "Campina Milde magere kwark met banaan",
+          "quantity": "500 g tub",
+          "kcal": 300,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "estimated": false,
+          "source": "User-provided product label, 24 Sep 2026.",
+          "note": "Full 500 g tub. Label per 100 g: 60 kcal, 9.3 g protein, 7.0 g carbs, 0.1 g fat."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-09-24-abs-1",
+          "sessionId": null,
+          "name": "Abs",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User reported an abs-only session: 4 sets hanging leg raises and 4 sets cable crunches. Duration and loads were not supplied.",
+          "actualExercises": [
+            {
+              "name": "Hanging Leg Raise",
+              "sets": 4,
+              "reps": "10–12",
+              "load": null
+            },
+            {
+              "name": "Cable Crunch",
+              "sets": 4,
+              "reps": "14–20",
+              "load": null
+            }
+          ]
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Food and abs session logged from the 24 Sep 2026 chat. Several foods have incomplete macros; calories are still recorded where supplied or estimated.",
+      "complete": false
+    },
+    "2026-09-25": {
+      "food": [
+        {
+          "id": "2026-09-25-grandos-hot-chocolate-1",
+          "name": "Grandos Speciale hot chocolate",
+          "quantity": "1 sachet (27.5 g) prepared with 150 ml water",
+          "kcal": 106.5,
+          "protein": 3,
+          "carbs": 18,
+          "fat": 2.25,
+          "estimated": false,
+          "source": "User-provided Grandos Speciale nutrition label images, 25 Sep 2026.",
+          "note": "Prepared-drink label per 100 ml: 71 kcal, 2.0 g protein, 12 g carbs, 1.5 g fat. One sachet is prepared with 150 ml water."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "",
       "complete": false
     }
   },
