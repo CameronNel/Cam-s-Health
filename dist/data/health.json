@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-25T13:57:52.386Z",
+  "updatedAt": "2026-09-25T13:59:16.445Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -695,6 +695,18 @@
           "estimated": false,
           "source": "User-provided Grandos Speciale nutrition label images, 25 Sep 2026.",
           "note": "Prepared-drink label per 100 ml: 71 kcal, 2.0 g protein, 12 g carbs, 1.5 g fat. One sachet is prepared with 150 ml water."
+        },
+        {
+          "id": "2026-09-25-optimel-yoghurt-drink-1",
+          "name": "Optimel yoghurt drink",
+          "quantity": "1 full 1000 ml carton",
+          "kcal": 460,
+          "protein": 60,
+          "carbs": 43,
+          "fat": 0,
+          "estimated": false,
+          "source": "User-provided Optimel nutrition label image, 25 Sep 2026.",
+          "note": "Whole 1000 ml carton. Label per 100 ml: 46 kcal, 6.0 g protein, 4.3 g carbs, 0 g fat; sugars 3.9 g, salt 0.12 g."
         }
       ],
       "workouts": [],
