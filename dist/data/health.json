@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-25T15:15:53.168Z",
+  "updatedAt": "2026-09-25T16:23:35.272Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -707,6 +707,18 @@
           "estimated": false,
           "source": "User-provided Optimel nutrition label image, 25 Sep 2026.",
           "note": "Whole 1000 ml carton. Label per 100 ml: 46 kcal, 6.0 g protein, 4.3 g carbs, 0 g fat; sugars 3.9 g, salt 0.12 g."
+        },
+        {
+          "id": "2026-09-25-raw-chicken-breast-400g-1",
+          "name": "Chicken breast, raw, skinless/boneless",
+          "quantity": "400 g raw",
+          "kcal": 480,
+          "protein": 90,
+          "carbs": 0,
+          "fat": 10.5,
+          "estimated": true,
+          "source": "USDA FoodData Central generic raw boneless skinless chicken breast reference.",
+          "note": "Estimated from approximately 120 kcal, 22.5 g protein and 2.6 g fat per 100 g raw. No skin or added cooking fat included."
         }
       ],
       "workouts": [],
