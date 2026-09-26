@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-25T16:32:58.662Z",
+  "updatedAt": "2026-09-26T07:21:39Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -756,6 +756,40 @@
         "notes": "Samsung Galaxy Watch BIA reading. User believes the absolute reading may be about 3 percentage points low, but chose to use it consistently for trend tracking.",
         "recordedAt": "2026-09-25T14:52:46.854Z"
       }
+    },
+    "2026-09-26": {
+      "food": [
+        {
+          "id": "2026-09-26-cooked-chicken-breast-125g-1",
+          "name": "Chicken breast, cooked, skinless/boneless",
+          "quantity": "125 g cooked",
+          "kcal": 206,
+          "protein": 38.8,
+          "carbs": 0,
+          "fat": 4.5,
+          "estimated": true,
+          "source": "Generic cooked skinless chicken breast nutrition reference.",
+          "note": "User reported 125 g cooked chicken breast. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked; no added cooking fat included."
+        },
+        {
+          "id": "2026-09-26-fat-free-milk-100ml-1",
+          "name": "Fat-free milk",
+          "quantity": "100 ml",
+          "kcal": 34,
+          "protein": 3.4,
+          "carbs": 5,
+          "fat": 0.1,
+          "estimated": true,
+          "source": "Generic fat-free/nonfat milk nutrition reference.",
+          "note": "User reported 100 ml. Exact brand label not supplied."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "",
+      "complete": false
     }
   },
   "recipes": [
