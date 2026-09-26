@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-26T07:21:39Z",
+  "updatedAt": "2026-09-26T09:38:00Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -782,6 +782,18 @@
           "estimated": true,
           "source": "Generic fat-free/nonfat milk nutrition reference.",
           "note": "User reported 100 ml. Exact brand label not supplied."
+        },
+        {
+          "id": "2026-09-26-beef-rundvlees-half-478g-1",
+          "name": "Beef (rundvlees)",
+          "quantity": "239 g (half of 478 g pack)",
+          "kcal": 396.7,
+          "protein": 48,
+          "carbs": 0,
+          "fat": 22.7,
+          "estimated": false,
+          "source": "User-provided product nutrition label image, 26 Sep 2026.",
+          "note": "Pack weight 478 g; user ate half = 239 g. Label per 100 g: 166 kcal, 20.1 g protein, 0 g carbs, 9.5 g fat."
         }
       ],
       "workouts": [],
