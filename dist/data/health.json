@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-26T16:54:14Z",
+  "updatedAt": "2026-09-26T19:13:36Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -824,14 +824,26 @@
         {
           "id": "2026-09-26-takumi-r6-black-garlic-kara-ebi-miso-1",
           "name": "Takumi R6 Black Garlic Kara-Ebi Miso Ramen",
-          "quantity": "1 bowl; most solids eaten, most broth left",
-          "kcal": 850,
-          "protein": 55,
-          "carbs": 85,
-          "fat": 32,
+          "quantity": "1 bowl; all/most solids eaten, broth not consumed except what clung to the food",
+          "kcal": 750,
+          "protein": 52,
+          "carbs": 78,
+          "fat": 26,
           "estimated": true,
           "source": "Takumi Tonkotsu Rotterdam menu image provided by user, 26 Sep 2026; nutrition estimated from pictured ingredients and typical restaurant ramen portions.",
-          "note": "Estimated for R6 with fried chicken, shrimp, egg, noodles, miso and black-garlic components. Assumes most solids were eaten and most broth was left, consistent with the user's stated plan. Restaurant did not provide nutrition values in the menu image."
+          "note": "Revised after user clarified no broth was consumed apart from residue clinging to noodles/toppings. Estimate is for the solid components of R6 plus a small amount of adhering miso/black-garlic broth."
+        },
+        {
+          "id": "2026-09-26-takumi-okonomi-gyoza-3-5",
+          "name": "Takumi Okonomi Gyoza",
+          "quantity": "3.5 of 6 fried gyoza with mayo and otafuku sauce",
+          "kcal": 310,
+          "protein": 10,
+          "carbs": 28,
+          "fat": 17.5,
+          "estimated": true,
+          "source": "Takumi menu image provided by user, 26 Sep 2026; portion count reported by user; nutrition estimated from typical fried pork/vegetable gyoza with mayonnaise and otafuku-style sauce.",
+          "note": "Menu shows 6 pieces per serving. User ate 3.5 pieces, so this estimate uses 58.3% of an estimated full 6-piece serving."
         }
       ],
       "workouts": [],
