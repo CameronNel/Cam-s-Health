@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-27T15:38:32Z",
+  "updatedAt": "2026-09-27T17:36:39Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -927,6 +927,18 @@
           "estimated": false,
           "source": "User-provided bottle nutrition label image, 27 Sep 2026.",
           "note": "Label per 240 ml bottle: 139 kcal, 20 g protein, 10 g carbs, 1.9 g fat; sugars 9.9 g; salt 0.24 g."
+        },
+        {
+          "id": "2026-09-27-cooked-chicken-breast-194g-2",
+          "name": "Chicken breast, cooked, skinless/boneless",
+          "quantity": "194 g cooked",
+          "kcal": 320.1,
+          "protein": 60.1,
+          "carbs": 0,
+          "fat": 7,
+          "estimated": true,
+          "source": "Generic cooked skinless chicken breast nutrition reference, consistent with the saved 26–27 Sep 2026 estimate.",
+          "note": "Additional 194 g cooked chicken breast reported eaten on 27 Sep 2026. No oil or sauce. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked."
         }
       ],
       "workouts": [],
