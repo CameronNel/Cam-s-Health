@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-27T17:50:39Z",
+  "updatedAt": "2026-09-27T20:19:23Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -944,8 +944,57 @@
       "workouts": [],
       "steps": null,
       "waterMl": null,
-      "weightKg": null,
+      "weightKg": 65.65,
       "notes": "Food logged from chat on 27 Sep 2026. GitHub is the canonical tracker; Notion is legacy/non-authoritative. Milk, banana and chicken use estimates; rice waffle, protein bar and protein drink use saved/product-label nutrition.",
+      "complete": false
+    },
+    "2026-09-28": {
+      "food": [
+        {
+          "id": "2026-09-28-taco-bowl-500g-1",
+          "name": "Lean beef taco bowl",
+          "quantity": "500 g",
+          "kcal": 781.3,
+          "protein": 80.6,
+          "carbs": 12.6,
+          "fat": 44.3,
+          "fibre": 3,
+          "estimated": true,
+          "source": "Saved recipe lean-beef-taco-bowl-2026-09-22.",
+          "note": "Logged from user report for Monday 28 Sep 2026. Uses the existing conservative recipe estimate; drained rendered fat is not additionally deducted.",
+          "recipeId": "lean-beef-taco-bowl-2026-09-22"
+        },
+        {
+          "id": "2026-09-28-sourdough-bread-500kcal-1",
+          "name": "Sourdough bread",
+          "quantity": "portion reported as 500 kcal",
+          "kcal": 500,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": false,
+          "source": "User report, 27 Sep 2026 for Monday 28 Sep 2026.",
+          "note": "Calories supplied by user. Portion weight and macro breakdown were not supplied, so macros are left unknown."
+        },
+        {
+          "id": "2026-09-28-tompouce-1",
+          "name": "Tompoes / tompouce",
+          "quantity": "1 piece (~100 g reference serving)",
+          "kcal": 315,
+          "protein": 3.8,
+          "carbs": 36.5,
+          "fat": 16.9,
+          "fibre": 0.9,
+          "estimated": true,
+          "source": "Voedingscentrum generic tompoes reference, accessed 27 Sep 2026.",
+          "note": "User reported one slice/piece. Logged as the Dutch generic 100 g serving until exact brand/weight is known."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Monday food log entered in advance from the 27 Sep 2026 chat. Sourdough macros remain unknown; tompouce uses a generic Dutch reference.",
       "complete": false
     }
   },
