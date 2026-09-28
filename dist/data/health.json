@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28T18:17:18Z",
+  "updatedAt": "2026-09-28T18:22:14Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1035,7 +1035,7 @@
           "name": "Push A",
           "status": "partial",
           "durationMin": null,
-          "notes": "In-progress report: 4 sets incline DB press for chest, 3 sets taken to total muscular failure; 3 pec-focused dip sets taken to total muscular failure; 4 sets DB lateral raises. Reps and loads not reported yet.",
+          "notes": "In-progress report: 4 sets incline DB press for chest, 3 sets taken to total muscular failure; 3 pec-focused dip sets taken to total muscular failure; 4 sets DB lateral raises, all taken to total muscular failure, with roughly the final 1–4 reps assisted by body swing to continue the eccentric/negative phase. Reps and loads not reported yet.",
           "actualExercises": [
             {
               "name": "Incline DB Press",
