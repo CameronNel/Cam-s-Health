@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28T16:50:45Z",
+  "updatedAt": "2026-09-28T18:17:18Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1028,7 +1028,36 @@
           "note": "User weighed 15 g. Label serving is 15 ml = 43 kcal, 3.9 g fat, 1.8 g carbs; protein derived from 1.0 g per 100 ml (~0.15 g per 15 ml). Logged 15 g as approximately one 15 ml labeled serving because density was not provided."
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-09-28-push-a-1",
+          "sessionId": "push-a",
+          "name": "Push A",
+          "status": "partial",
+          "durationMin": null,
+          "notes": "In-progress report: 4 sets incline DB press for chest, 3 sets taken to total muscular failure; 3 pec-focused dip sets taken to total muscular failure; 4 sets DB lateral raises. Reps and loads not reported yet.",
+          "actualExercises": [
+            {
+              "name": "Incline DB Press",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Dips",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "DB Lateral Raise",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
