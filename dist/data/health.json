@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-27T20:19:23Z",
+  "updatedAt": "2026-09-28T07:14:34Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -436,56 +436,30 @@
       ],
       "workouts": [
         {
+          "id": "2026-09-22-shoulders-triceps-1",
           "sessionId": null,
-          "name": "Back + Shoulders",
-          "status": "partial",
+          "name": "Shoulders + Triceps",
+          "status": "completed",
           "durationMin": null,
-          "notes": "User reported 4 sets lateral raises, 3 sets shoulder press, 3 sets single-arm pulldowns, and 3 sets single-arm cable rows. Reps, loads and duration not supplied.",
-          "actualExercises": [
-            {
-              "name": "Lateral Raise",
-              "sets": 4,
-              "reps": null,
-              "load": null
-            },
-            {
-              "name": "Shoulder Press",
-              "sets": 3,
-              "reps": null,
-              "load": null
-            },
-            {
-              "name": "Single-arm Pulldown",
-              "sets": 3,
-              "reps": null,
-              "load": null
-            },
-            {
-              "name": "Single-arm Cable Row",
-              "sets": 3,
-              "reps": null,
-              "load": null
-            }
-          ],
-          "id": "2026-09-22-back-shoulders-1"
+          "notes": "User recap on 28 Sep 2026: Tuesday session was shoulders and triceps. This recap supersedes the earlier partial session label."
         }
       ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
       "notes": "",
-      "complete": false
+      "complete": true
     },
     "2026-09-21": {
       "food": [],
       "workouts": [
         {
+          "id": "2026-09-21-biceps-shoulders-1",
           "sessionId": null,
-          "name": "Biceps",
+          "name": "Biceps + some shoulders",
           "status": "completed",
           "durationMin": null,
-          "notes": "User reported on 22 Sep 2026 that biceps were trained yesterday. Duration, exercises, loads and reps were not supplied.",
-          "id": "2026-09-21-biceps-1"
+          "notes": "User recap on 28 Sep 2026: Monday session was biceps with some shoulder work. Exact exercises/reps/loads not recalled."
         }
       ],
       "steps": null,
@@ -570,12 +544,21 @@
           "note": "Powdered-milk setting 1 of 3. Five lattes total for this report, estimated at 30 kcal each; machine/product nutrition remains unconfirmed."
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-09-23-workout-unknown-1",
+          "sessionId": null,
+          "name": "Workout — details not remembered",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User confirms training on Wednesday 23 Sep 2026 but cannot remember the muscle groups/exercises."
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
       "notes": "Food reported on 23 September 2026, including the pre-logged planned tortilla and approximately 350 g beef taco mixture. Creamy soup flavour unconfirmed. Nutrition includes the previously stated recipe, fruit, soup-macro and latte estimates. This is a partial day, not confirmation that no other food was eaten.",
-      "complete": false
+      "complete": true
     },
     "2026-09-24": {
       "food": [
@@ -654,33 +637,19 @@
       ],
       "workouts": [
         {
-          "id": "2026-09-24-abs-1",
+          "id": "2026-09-24-legs-1",
           "sessionId": null,
-          "name": "Abs",
+          "name": "Legs",
           "status": "completed",
           "durationMin": null,
-          "notes": "User reported an abs-only session: 4 sets hanging leg raises and 4 sets cable crunches. Duration and loads were not supplied.",
-          "actualExercises": [
-            {
-              "name": "Hanging Leg Raise",
-              "sets": 4,
-              "reps": "10–12",
-              "load": null
-            },
-            {
-              "name": "Cable Crunch",
-              "sets": 4,
-              "reps": "14–20",
-              "load": null
-            }
-          ]
+          "notes": "User recap on 28 Sep 2026: Thursday session was legs. This recap supersedes the earlier abs-only label."
         }
       ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
       "notes": "Food and abs session logged from the 24 Sep 2026 chat. Several foods have incomplete macros; calories are still recorded where supplied or estimated.",
-      "complete": false
+      "complete": true
     },
     "2026-09-25": {
       "food": [
@@ -736,33 +705,19 @@
       ],
       "workouts": [
         {
-          "id": "2026-09-25-push-a-1",
-          "sessionId": "push-a",
-          "name": "Push A",
-          "status": "partial",
+          "id": "2026-09-25-abs-1",
+          "sessionId": null,
+          "name": "Abs",
+          "status": "completed",
           "durationMin": null,
-          "notes": "In-progress session. Completed: 4 sets incline DB press and 3 sets shoulder press. User reported 4 sets triceps pushdowns and 4 sets lateral raises are next; those planned sets are not yet recorded as completed.",
-          "actualExercises": [
-            {
-              "name": "Incline DB Press",
-              "sets": 4,
-              "reps": null,
-              "load": null
-            },
-            {
-              "name": "Shoulder Press",
-              "sets": 3,
-              "reps": null,
-              "load": null
-            }
-          ]
+          "notes": "User recap on 28 Sep 2026: Friday session was abs. This recap supersedes the earlier partial Push A entry."
         }
       ],
       "steps": null,
       "waterMl": null,
       "weightKg": 65.5,
       "notes": "",
-      "complete": false,
+      "complete": true,
       "body": {
         "bodyFatPct": 12.5,
         "method": "BIA watch",
@@ -851,7 +806,7 @@
       "waterMl": null,
       "weightKg": null,
       "notes": "",
-      "complete": false
+      "complete": true
     },
     "2026-09-27": {
       "food": [
@@ -941,12 +896,21 @@
           "note": "Additional 195 g cooked chicken breast reported eaten on 27 Sep 2026. No oil or sauce. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked."
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-09-27-biceps-forearms-1",
+          "sessionId": null,
+          "name": "Biceps + Forearms",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User recap on 28 Sep 2026: Sunday session was biceps and forearms."
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": 65.65,
       "notes": "Food logged from chat on 27 Sep 2026. GitHub is the canonical tracker; Notion is legacy/non-authoritative. Milk, banana and chicken use estimates; rice waffle, protein bar and protein drink use saved/product-label nutrition.",
-      "complete": false
+      "complete": true
     },
     "2026-09-28": {
       "food": [
