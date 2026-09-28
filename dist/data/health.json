@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28T07:14:34Z",
+  "updatedAt": "2026-09-28T12:03:00Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -952,13 +952,49 @@
           "estimated": true,
           "source": "Voedingscentrum generic tompoes reference, accessed 27 Sep 2026.",
           "note": "User reported one slice/piece. Logged as the Dutch generic 100 g serving until exact brand/weight is known."
+        },
+        {
+          "id": "2026-09-28-machine-lattes-1",
+          "name": "Machine latte — low powdered milk setting",
+          "quantity": "2 lattes",
+          "kcal": 60,
+          "protein": 1.2,
+          "carbs": 6.4,
+          "fat": 3.4,
+          "estimated": true,
+          "source": "Saved office coffee-machine estimate reused from prior logs.",
+          "note": "Powdered-milk setting 1 of 3. Estimated at 30 kcal each until machine/product nutrition is known."
+        },
+        {
+          "id": "2026-09-28-fuze-tea-mango-chamomile-1",
+          "name": "Fuze Tea Low Cal Mango Chamomile",
+          "quantity": "1 can (250 ml)",
+          "kcal": 40,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": false,
+          "source": "User report, 28 Sep 2026.",
+          "note": "User supplied 40 kcal for the 250 ml can. Macro breakdown was not supplied."
+        },
+        {
+          "id": "2026-09-28-cup-a-soup-tomaten-creme-1",
+          "name": "Cup-a-Soup Tomaten Crème",
+          "quantity": "1 cup / sachet",
+          "kcal": 70,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": true,
+          "source": "Saved Cup-a-Soup cream-variety tracking estimate from prior log.",
+          "note": "Exact package nutrition was not supplied. Reused the existing 70 kcal per cup/sachet estimate."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Monday food log entered in advance from the 27 Sep 2026 chat. Sourdough macros remain unknown; tompouce uses a generic Dutch reference.",
+      "notes": "Partial Monday food log. Earlier taco bowl, sourdough and tompouce entries were entered in advance from the 27 Sep 2026 chat. New 28 Sep intake added: 2 low-milk machine lattes, 250 ml Fuze Tea Low Cal Mango Chamomile, and 1 Cup-a-Soup Tomaten Crème. Some macro breakdowns remain unknown.",
       "complete": false
     }
   },
