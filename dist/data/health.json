@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28T16:35:02Z",
+  "updatedAt": "2026-09-28T16:50:45Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1014,13 +1014,25 @@
           "estimated": true,
           "source": "Albert Heijn AH Basmatirijst product nutrition, accessed 28 Sep 2026.",
           "note": "User reported 75 g uncooked basmati rice. Reference per 100 g dry: 355 kcal, 8.8 g protein, 78 g carbs, 0.5 g fat, 1.6 g fibre. Exact user brand not supplied."
+        },
+        {
+          "id": "2026-09-28-calve-yogonaise-15g-1",
+          "name": "Calvé Yogonaise",
+          "quantity": "15 g",
+          "kcal": 43,
+          "protein": 0.15,
+          "carbs": 1.8,
+          "fat": 3.9,
+          "estimated": true,
+          "source": "User-provided Calvé Yogonaise nutrition label image, 28 Sep 2026.",
+          "note": "User weighed 15 g. Label serving is 15 ml = 43 kcal, 3.9 g fat, 1.8 g carbs; protein derived from 1.0 g per 100 ml (~0.15 g per 15 ml). Logged 15 g as approximately one 15 ml labeled serving because density was not provided."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Monday 28 Sep food log: 2 low-milk machine lattes, 250 ml Fuze Tea Low Cal Mango Chamomile, 1 Cup-a-Soup Tomaten Crème, 255 g cooked chicken breast, and 75 g uncooked basmati rice. Some macro breakdowns remain unknown.",
+      "notes": "Partial Monday 28 Sep food log: 2 low-milk machine lattes, 250 ml Fuze Tea Low Cal Mango Chamomile, 1 Cup-a-Soup Tomaten Crème, 255 g cooked chicken breast, 75 g uncooked basmati rice, and 15 g Calvé Yogonaise. Some macro breakdowns remain unknown.",
       "complete": false
     }
   },
