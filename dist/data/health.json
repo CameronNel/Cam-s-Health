@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28T12:11:35Z",
+  "updatedAt": "2026-09-28T16:35:02Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -989,13 +989,38 @@
           "estimated": true,
           "source": "Saved Cup-a-Soup cream-variety tracking estimate from prior log.",
           "note": "Exact package nutrition was not supplied. Reused the existing 70 kcal per cup/sachet estimate."
+        },
+        {
+          "id": "2026-09-28-cooked-chicken-breast-255g-1",
+          "name": "Chicken breast, cooked, skinless/boneless",
+          "quantity": "255 g cooked",
+          "kcal": 420.75,
+          "protein": 79.05,
+          "carbs": 0,
+          "fat": 9.18,
+          "estimated": true,
+          "source": "Generic cooked skinless chicken breast nutrition reference, consistent with saved 26–27 Sep 2026 estimates.",
+          "note": "User reported 255 g cooked chicken breast on 28 Sep 2026. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked; no added cooking fat included."
+        },
+        {
+          "id": "2026-09-28-basmatirice-dry-75g-1",
+          "name": "Basmati rice, dry",
+          "quantity": "75 g uncooked",
+          "kcal": 266.25,
+          "protein": 6.6,
+          "carbs": 58.5,
+          "fat": 0.375,
+          "fibre": 1.2,
+          "estimated": true,
+          "source": "Albert Heijn AH Basmatirijst product nutrition, accessed 28 Sep 2026.",
+          "note": "User reported 75 g uncooked basmati rice. Reference per 100 g dry: 355 kcal, 8.8 g protein, 78 g carbs, 0.5 g fat, 1.6 g fibre. Exact user brand not supplied."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Monday 28 Sep food log: 2 low-milk machine lattes, 250 ml Fuze Tea Low Cal Mango Chamomile, and 1 Cup-a-Soup Tomaten Crème. Some macro breakdowns remain unknown.",
+      "notes": "Partial Monday 28 Sep food log: 2 low-milk machine lattes, 250 ml Fuze Tea Low Cal Mango Chamomile, 1 Cup-a-Soup Tomaten Crème, 255 g cooked chicken breast, and 75 g uncooked basmati rice. Some macro breakdowns remain unknown.",
       "complete": false
     }
   },
