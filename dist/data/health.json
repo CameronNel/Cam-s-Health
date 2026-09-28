@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28T12:10:26Z",
+  "updatedAt": "2026-09-28T12:11:35Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -447,7 +447,7 @@
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "",
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Tuesday 22 Sep 2026 is complete.",
       "complete": true
     },
     "2026-09-21": {
@@ -505,8 +505,8 @@
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Food entries corrected on 28 Sep 2026: taco bowl, sourdough bread and tompouce belong to Monday 21 Sep 2026. Workout recap retained.",
-      "complete": false
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Monday 21 Sep 2026 is complete.",
+      "complete": true
     },
     "2026-09-23": {
       "food": [
@@ -597,7 +597,7 @@
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Food reported on 23 September 2026, including the pre-logged planned tortilla and approximately 350 g beef taco mixture. Creamy soup flavour unconfirmed. Nutrition includes the previously stated recipe, fruit, soup-macro and latte estimates. This is a partial day, not confirmation that no other food was eaten.",
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Wednesday 23 Sep 2026 is complete.",
       "complete": true
     },
     "2026-09-24": {
@@ -688,7 +688,7 @@
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Food and abs session logged from the 24 Sep 2026 chat. Several foods have incomplete macros; calories are still recorded where supplied or estimated.",
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Thursday 24 Sep 2026 is complete; some food macros remain unknown but calories are final.",
       "complete": true
     },
     "2026-09-25": {
@@ -756,7 +756,7 @@
       "steps": null,
       "waterMl": null,
       "weightKg": 65.5,
-      "notes": "",
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Friday 25 Sep 2026 is complete.",
       "complete": true,
       "body": {
         "bodyFatPct": 12.5,
@@ -845,7 +845,7 @@
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "",
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Saturday 26 Sep 2026 is complete.",
       "complete": true
     },
     "2026-09-27": {
@@ -949,7 +949,7 @@
       "steps": null,
       "waterMl": null,
       "weightKg": 65.65,
-      "notes": "Food logged from chat on 27 Sep 2026. GitHub is the canonical tracker; Notion is legacy/non-authoritative. Milk, banana and chicken use estimates; rice waffle, protein bar and protein drink use saved/product-label nutrition.",
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Sunday 27 Sep 2026 is complete.",
       "complete": true
     },
     "2026-09-28": {
