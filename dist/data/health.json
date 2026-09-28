@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28T12:08:26Z",
+  "updatedAt": "2026-09-28T12:10:26Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -376,13 +376,13 @@
           "id": "2026-09-22-machine-lattes-1",
           "name": "Machine latte — low milk setting",
           "quantity": "2 lattes",
-          "kcal": 60,
-          "protein": 1.2,
-          "carbs": 6.4,
-          "fat": 3.4,
+          "kcal": 70,
+          "protein": 1.4,
+          "carbs": 7.5,
+          "fat": 4,
           "estimated": true,
-          "source": "Existing food log, 22 Sep 2026; office coffee-machine estimate.",
-          "note": "Powdered-milk setting 1 of 3. Estimated at 30 kcal each until the machine or product nutrition is known."
+          "source": "Standardized office coffee-machine estimate updated 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal per latte from 28 Sep 2026; machine/product nutrition remains unconfirmed."
         },
         {
           "id": "2026-09-22-ikea-mini-meatballs-1",
@@ -575,13 +575,13 @@
           "id": "2026-09-23-machine-lattes-1",
           "name": "Machine latte - low milk setting",
           "quantity": "5 lattes",
-          "kcal": 150,
-          "protein": 3,
-          "carbs": 16,
-          "fat": 8.5,
+          "kcal": 175,
+          "protein": 3.5,
+          "carbs": 18.7,
+          "fat": 9.9,
           "estimated": true,
-          "source": "Saved office coffee-machine estimate, reused from the 22 Sep 2026 log.",
-          "note": "Powdered-milk setting 1 of 3. Five lattes total for this report, estimated at 30 kcal each; machine/product nutrition remains unconfirmed."
+          "source": "Standardized office coffee-machine estimate updated 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal per latte from 28 Sep 2026; machine/product nutrition remains unconfirmed."
         }
       ],
       "workouts": [
@@ -642,13 +642,13 @@
           "id": "2026-09-24-machine-lattes-1",
           "name": "Machine latte — low milk setting",
           "quantity": "4 lattes",
-          "kcal": 120,
-          "protein": 2.4,
-          "carbs": 12.8,
-          "fat": 6.8,
+          "kcal": 140,
+          "protein": 2.8,
+          "carbs": 14.9,
+          "fat": 7.9,
           "estimated": true,
-          "source": "Saved office coffee-machine estimate, reused from the 22 Sep 2026 log.",
-          "note": "Powdered-milk setting 1 of 3. Estimated at 30 kcal each until machine/product nutrition is known."
+          "source": "Standardized office coffee-machine estimate updated 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal per latte from 28 Sep 2026; machine/product nutrition remains unconfirmed."
         },
         {
           "id": "2026-09-24-salmon-1",
@@ -958,13 +958,13 @@
           "id": "2026-09-28-machine-lattes-1",
           "name": "Machine latte — low powdered milk setting",
           "quantity": "2 lattes",
-          "kcal": 60,
-          "protein": 1.2,
-          "carbs": 6.4,
-          "fat": 3.4,
+          "kcal": 70,
+          "protein": 1.4,
+          "carbs": 7.5,
+          "fat": 4,
           "estimated": true,
-          "source": "Saved office coffee-machine estimate reused from prior logs.",
-          "note": "Powdered-milk setting 1 of 3. Estimated at 30 kcal each until machine/product nutrition is known."
+          "source": "Standardized office coffee-machine estimate updated 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal per latte from 28 Sep 2026; machine/product nutrition remains unconfirmed."
         },
         {
           "id": "2026-09-28-fuze-tea-mango-chamomile-1",
