@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28T12:03:00Z",
+  "updatedAt": "2026-09-28T12:08:26Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -451,7 +451,47 @@
       "complete": true
     },
     "2026-09-21": {
-      "food": [],
+      "food": [
+        {
+          "id": "2026-09-21-taco-bowl-500g-1",
+          "name": "Lean beef taco bowl",
+          "quantity": "500 g",
+          "kcal": 781.3,
+          "protein": 80.6,
+          "carbs": 12.6,
+          "fat": 44.3,
+          "fibre": 3,
+          "estimated": true,
+          "source": "User report previously entered for Monday intake; date corrected on 28 Sep 2026. Saved recipe lean-beef-taco-bowl-2026-09-22.",
+          "note": "Corrected on 28 Sep 2026 to Monday 21 Sep 2026. Uses the existing conservative recipe estimate; drained rendered fat is not additionally deducted.",
+          "recipeId": "lean-beef-taco-bowl-2026-09-22"
+        },
+        {
+          "id": "2026-09-21-sourdough-bread-500kcal-1",
+          "name": "Sourdough bread",
+          "quantity": "portion reported as 500 kcal",
+          "kcal": 500,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": false,
+          "source": "User report; date corrected on 28 Sep 2026 to Monday 21 Sep 2026.",
+          "note": "Calories supplied by user. Portion weight and macro breakdown were not supplied, so macros are left unknown. Date corrected on 28 Sep 2026 to Monday 21 Sep 2026."
+        },
+        {
+          "id": "2026-09-21-tompouce-1",
+          "name": "Tompoes / tompouce",
+          "quantity": "1 piece (~100 g reference serving)",
+          "kcal": 315,
+          "protein": 3.8,
+          "carbs": 36.5,
+          "fat": 16.9,
+          "fibre": 0.9,
+          "estimated": true,
+          "source": "Voedingscentrum generic tompoes reference, accessed 27 Sep 2026.",
+          "note": "User reported one slice/piece. Logged as the Dutch generic 100 g serving until exact brand/weight is known. Date corrected on 28 Sep 2026 to Monday 21 Sep 2026."
+        }
+      ],
       "workouts": [
         {
           "id": "2026-09-21-biceps-shoulders-1",
@@ -465,7 +505,7 @@
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "",
+      "notes": "Food entries corrected on 28 Sep 2026: taco bowl, sourdough bread and tompouce belong to Monday 21 Sep 2026. Workout recap retained.",
       "complete": false
     },
     "2026-09-23": {
@@ -915,45 +955,6 @@
     "2026-09-28": {
       "food": [
         {
-          "id": "2026-09-28-taco-bowl-500g-1",
-          "name": "Lean beef taco bowl",
-          "quantity": "500 g",
-          "kcal": 781.3,
-          "protein": 80.6,
-          "carbs": 12.6,
-          "fat": 44.3,
-          "fibre": 3,
-          "estimated": true,
-          "source": "Saved recipe lean-beef-taco-bowl-2026-09-22.",
-          "note": "Logged from user report for Monday 28 Sep 2026. Uses the existing conservative recipe estimate; drained rendered fat is not additionally deducted.",
-          "recipeId": "lean-beef-taco-bowl-2026-09-22"
-        },
-        {
-          "id": "2026-09-28-sourdough-bread-500kcal-1",
-          "name": "Sourdough bread",
-          "quantity": "portion reported as 500 kcal",
-          "kcal": 500,
-          "protein": null,
-          "carbs": null,
-          "fat": null,
-          "estimated": false,
-          "source": "User report, 27 Sep 2026 for Monday 28 Sep 2026.",
-          "note": "Calories supplied by user. Portion weight and macro breakdown were not supplied, so macros are left unknown."
-        },
-        {
-          "id": "2026-09-28-tompouce-1",
-          "name": "Tompoes / tompouce",
-          "quantity": "1 piece (~100 g reference serving)",
-          "kcal": 315,
-          "protein": 3.8,
-          "carbs": 36.5,
-          "fat": 16.9,
-          "fibre": 0.9,
-          "estimated": true,
-          "source": "Voedingscentrum generic tompoes reference, accessed 27 Sep 2026.",
-          "note": "User reported one slice/piece. Logged as the Dutch generic 100 g serving until exact brand/weight is known."
-        },
-        {
           "id": "2026-09-28-machine-lattes-1",
           "name": "Machine latte — low powdered milk setting",
           "quantity": "2 lattes",
@@ -994,7 +995,7 @@
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Monday food log. Earlier taco bowl, sourdough and tompouce entries were entered in advance from the 27 Sep 2026 chat. New 28 Sep intake added: 2 low-milk machine lattes, 250 ml Fuze Tea Low Cal Mango Chamomile, and 1 Cup-a-Soup Tomaten Crème. Some macro breakdowns remain unknown.",
+      "notes": "Partial Monday 28 Sep food log: 2 low-milk machine lattes, 250 ml Fuze Tea Low Cal Mango Chamomile, and 1 Cup-a-Soup Tomaten Crème. Some macro breakdowns remain unknown.",
       "complete": false
     }
   },
