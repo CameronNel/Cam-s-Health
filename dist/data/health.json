@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-29T17:55:25Z",
+  "updatedAt": "2026-09-29T18:12:00Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1121,7 +1121,42 @@
           "note": "No added cooking fat. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked."
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-09-29-biceps-abs-1",
+          "sessionId": null,
+          "name": "Biceps + Abs",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Custom session reported by user on 29 Sep 2026. All 16 working sets were taken to muscular failure. Reps, loads and duration were not reported.",
+          "actualExercises": [
+            {
+              "name": "Hammer Curl",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm Preacher Curl",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm Behind-the-Body Cable Curl",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Cable Crunch",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
