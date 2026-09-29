@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-29T18:12:00Z",
+  "updatedAt": "2026-09-29T18:20:19Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1033,9 +1033,9 @@
           "id": "2026-09-28-push-a-1",
           "sessionId": "push-a",
           "name": "Push A",
-          "status": "partial",
+          "status": "completed",
           "durationMin": null,
-          "notes": "In-progress report: 4 sets incline DB press for chest, 3 sets taken to total muscular failure; 3 pec-focused dip sets taken to total muscular failure; 4 sets DB lateral raises, all taken to total muscular failure, with roughly the final 1–4 reps assisted by body swing to continue the eccentric/negative phase; 4 sets single-arm behind-the-head triceps extensions, all taken to total muscular failure. Reps and loads not reported yet.",
+          "notes": "In-progress report: 4 sets incline DB press for chest, 3 sets taken to total muscular failure; 3 pec-focused dip sets taken to total muscular failure; 4 sets DB lateral raises, all taken to total muscular failure, with roughly the final 1–4 reps assisted by body swing to continue the eccentric/negative phase; 4 sets single-arm behind-the-head triceps extensions, all taken to total muscular failure. Reps and loads not reported yet. User confirmed on 29 Sep 2026 that the session was finished and the day was done.",
           "actualExercises": [
             {
               "name": "Incline DB Press",
