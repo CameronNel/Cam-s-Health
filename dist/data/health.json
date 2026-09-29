@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-29T17:39:00Z",
+  "updatedAt": "2026-09-29T17:55:25Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1095,13 +1095,37 @@
           "estimated": true,
           "source": "Standardized office coffee-machine estimate updated 28 Sep 2026.",
           "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal per latte; machine/product nutrition remains unconfirmed."
+        },
+        {
+          "id": "2026-09-29-cooked-basmati-rice-200g-1",
+          "name": "Basmati rice, cooked",
+          "quantity": "200 g cooked",
+          "kcal": 260,
+          "protein": 5.4,
+          "carbs": 56.4,
+          "fat": 0.6,
+          "estimated": true,
+          "source": "Generic cooked basmati rice estimate used on 29 Sep 2026.",
+          "note": "Estimated at approximately 130 kcal, 2.7 g protein, 28.2 g carbs and 0.3 g fat per 100 g cooked."
+        },
+        {
+          "id": "2026-09-29-cooked-chicken-breast-273g-1",
+          "name": "Chicken breast, cooked, skinless/boneless",
+          "quantity": "273 g cooked",
+          "kcal": 450.45,
+          "protein": 84.63,
+          "carbs": 0,
+          "fat": 9.828,
+          "estimated": true,
+          "source": "Generic cooked skinless chicken breast nutrition estimate consistent with prior saved entries.",
+          "note": "No added cooking fat. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Tuesday 29 Sep food log. Logged only foods reported as already consumed. Planned 100 g cooked basmati rice and chicken dinner were discussed but not logged as eaten yet.",
+      "notes": "Partial Tuesday 29 Sep food log: full Optimel protein yoghurt drink, 4 low-milk machine lattes, 200 g cooked basmati rice, and 273 g cooked chicken breast with no added cooking fat.",
       "complete": false
     }
   },
