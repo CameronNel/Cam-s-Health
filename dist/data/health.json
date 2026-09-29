@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-28T18:42:50Z",
+  "updatedAt": "2026-09-29T17:39:00Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1068,6 +1068,40 @@
       "waterMl": null,
       "weightKg": null,
       "notes": "Partial Monday 28 Sep food log: 2 low-milk machine lattes, 250 ml Fuze Tea Low Cal Mango Chamomile, 1 Cup-a-Soup Tomaten Crème, 255 g cooked chicken breast, 75 g uncooked basmati rice, and 15 g Calvé Yogonaise. Some macro breakdowns remain unknown.",
+      "complete": false
+    },
+    "2026-09-29": {
+      "food": [
+        {
+          "id": "2026-09-29-optimel-yoghurt-drink-1",
+          "name": "Optimel Protein yoghurt drink — blueberry & vanilla",
+          "quantity": "1 full 1000 ml carton",
+          "kcal": 460,
+          "protein": 60,
+          "carbs": 43,
+          "fat": 0,
+          "estimated": false,
+          "source": "User-provided Optimel nutrition label image, 29 Sep 2026.",
+          "note": "Whole 1000 ml carton. Label per 100 ml: 46 kcal, 6.0 g protein, 4.3 g carbs, 0 g fat; sugars 3.9 g, salt 0.12 g."
+        },
+        {
+          "id": "2026-09-29-machine-lattes-1",
+          "name": "Machine latte — low powdered milk setting",
+          "quantity": "4 lattes",
+          "kcal": 140,
+          "protein": 2.8,
+          "carbs": 15,
+          "fat": 8,
+          "estimated": true,
+          "source": "Standardized office coffee-machine estimate updated 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal per latte; machine/product nutrition remains unconfirmed."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Tuesday 29 Sep food log. Logged only foods reported as already consumed. Planned 100 g cooked basmati rice and chicken dinner were discussed but not logged as eaten yet.",
       "complete": false
     }
   },
