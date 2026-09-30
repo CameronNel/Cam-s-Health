@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-30T05:33:00Z",
+  "updatedAt": "2026-09-30T17:20:00Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1189,13 +1189,87 @@
           "estimated": false,
           "source": "User-provided nutrition label image, 30 Sep 2026.",
           "note": "Label per 100 ml: 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. User reported 330 ml."
+        },
+        {
+          "id": "2026-09-30-starbucks-chilled-latte-110ml-1",
+          "name": "Starbucks chilled latte coffee drink",
+          "quantity": "110 ml",
+          "kcal": 68.2,
+          "protein": 2.2,
+          "carbs": 9.79,
+          "fat": 1.54,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 30 Sep 2026.",
+          "note": "User reported 110 ml. Label per 100 ml: 62 kcal, 2.0 g protein, 8.9 g carbs, 1.4 g fat; sugars 8.4 g, salt 0.09 g."
+        },
+        {
+          "id": "2026-09-30-pork-steak-lean-200g-1",
+          "name": "Pork steak, cooked, visible fat removed",
+          "quantity": "200 g",
+          "kcal": 360,
+          "protein": 53.52,
+          "carbs": 0,
+          "fat": 14.58,
+          "estimated": true,
+          "source": "USDA pork loin, center loin chop, separable lean only, cooked/broiled reference.",
+          "note": "Interpreted user typo 'no fta' as no visible fat. Used cooked lean-only pork reference: 180 kcal, 26.76 g protein, 7.29 g fat per 100 g. No added cooking fat included."
+        },
+        {
+          "id": "2026-09-30-baked-potato-half-medium-1",
+          "name": "Baked potato, half",
+          "quantity": "1/2 medium baked potato (~86.5 g edible)",
+          "kcal": 80.445,
+          "protein": 2.1625,
+          "carbs": 18.29475,
+          "fat": 0.11245,
+          "fibre": 1.903,
+          "estimated": true,
+          "source": "USDA baked potato, flesh and skin, without salt reference.",
+          "note": "User reported half a baked potato without a weight. Assumed half of a medium ~173 g baked potato = ~86.5 g. Reference per 100 g: 93 kcal, 2.5 g protein, 21.15 g carbs, 0.13 g fat, 2.2 g fibre."
+        },
+        {
+          "id": "2026-09-30-barbecue-sauce-60g-1",
+          "name": "Barbecue sauce",
+          "quantity": "60 g",
+          "kcal": 57,
+          "protein": 0.6,
+          "carbs": 13.2,
+          "fat": 0,
+          "fibre": 0.6,
+          "estimated": true,
+          "source": "Voedingscentrum generic barbecuesaus reference.",
+          "note": "User reported 60 g. Generic reference per 20 g: 19 kcal, 0.2 g protein, 4.4 g carbs, 0 g fat, 0.2 g fibre."
+        },
+        {
+          "id": "2026-09-30-machine-lattes-5-1",
+          "name": "Machine latte — low powdered milk setting",
+          "quantity": "5 lattes",
+          "kcal": 175,
+          "protein": 3.5,
+          "carbs": 18.75,
+          "fat": 10,
+          "estimated": true,
+          "source": "Standardized office coffee-machine estimate saved in tracker from 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal, 0.7 g protein, 3.75 g carbs and 2 g fat per latte; machine/product nutrition remains unconfirmed."
+        },
+        {
+          "id": "2026-09-30-fuze-tea-green-2x250ml-1",
+          "name": "Fuze Tea Green Tea",
+          "quantity": "2 × 250 ml cans (500 ml total)",
+          "kcal": 95,
+          "protein": 0,
+          "carbs": 22,
+          "fat": 0,
+          "estimated": true,
+          "source": "Coca-Cola Netherlands Fuze Tea Green Tea nutrition; volume inferred from user's previously logged 250 ml Fuze Tea cans.",
+          "note": "User reported 2 Green Tea Fuze Teas without size. Reused prior 250 ml can size. Current Coca-Cola NL listing per 100 ml: 19 kcal, 4.4 g carbs, 0 g protein, 0 g fat."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Wednesday 30 Sep food log: 164 g cooked chicken breast and 330 ml high-protein chocolate milk drink from a user-provided nutrition label.",
+      "notes": "Partial Wednesday 30 Sep food log: 164 g cooked chicken breast and 330 ml high-protein chocolate milk drink from a user-provided nutrition label. Added: 110 ml Starbucks chilled latte drink, 200 g lean pork steak, half baked potato, 60 g barbecue sauce, 5 low-milk machine lattes, and 2 Fuze Tea Green Tea (assumed 250 ml each).",
       "complete": false
     }
   },
