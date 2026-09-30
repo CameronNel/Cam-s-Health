@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-30T21:01:35Z",
+  "updatedAt": "2026-09-30T21:10:37Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1278,11 +1278,40 @@
           "note": "Additional 220 ml reported on 30 Sep 2026. Reused the same label: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre."
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-09-30-legs-abbreviated-1",
+          "sessionId": null,
+          "name": "Legs — abbreviated",
+          "status": "partial",
+          "durationMin": null,
+          "notes": "User stopped the session early because heart rate stayed around 150–160 bpm. Reps, loads and exact duration not reported.",
+          "actualExercises": [
+            {
+              "name": "Bulgarian Split Squat",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "RDL",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-leg Calf Raise",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Wednesday 30 Sep food log: 164 g cooked chicken breast and 330 ml high-protein chocolate milk drink from a user-provided nutrition label. Added: 110 ml Starbucks chilled latte drink, 200 g lean pork steak, half baked potato, 60 g barbecue sauce, 5 low-milk machine lattes, and 2 Fuze Tea Green Tea (assumed 250 ml each). Added another 220 ml high-protein chocolate milk drink.",
+      "notes": "Partial Wednesday 30 Sep food log: 164 g cooked chicken breast and 330 ml high-protein chocolate milk drink from a user-provided nutrition label. Added: 110 ml Starbucks chilled latte drink, 200 g lean pork steak, half baked potato, 60 g barbecue sauce, 5 low-milk machine lattes, and 2 Fuze Tea Green Tea (assumed 250 ml each). Added another 220 ml high-protein chocolate milk drink. Workout: abbreviated leg session, stopped early because heart rate stayed around 150–160 bpm.",
       "complete": false
     }
   },
