@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-30T17:20:00Z",
+  "updatedAt": "2026-09-30T21:01:35Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1263,13 +1263,26 @@
           "estimated": true,
           "source": "Coca-Cola Netherlands Fuze Tea Green Tea nutrition; volume inferred from user's previously logged 250 ml Fuze Tea cans.",
           "note": "User reported 2 Green Tea Fuze Teas without size. Reused prior 250 ml can size. Current Coca-Cola NL listing per 100 ml: 19 kcal, 4.4 g carbs, 0 g protein, 0 g fat."
+        },
+        {
+          "id": "2026-09-30-high-protein-chocolate-drink-220ml-2",
+          "name": "High-protein chocolate milk drink",
+          "quantity": "220 ml",
+          "kcal": 118.8,
+          "protein": 16.5,
+          "carbs": 10.56,
+          "fat": 0.66,
+          "fibre": 1.98,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 30 Sep 2026.",
+          "note": "Additional 220 ml reported on 30 Sep 2026. Reused the same label: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Wednesday 30 Sep food log: 164 g cooked chicken breast and 330 ml high-protein chocolate milk drink from a user-provided nutrition label. Added: 110 ml Starbucks chilled latte drink, 200 g lean pork steak, half baked potato, 60 g barbecue sauce, 5 low-milk machine lattes, and 2 Fuze Tea Green Tea (assumed 250 ml each).",
+      "notes": "Partial Wednesday 30 Sep food log: 164 g cooked chicken breast and 330 ml high-protein chocolate milk drink from a user-provided nutrition label. Added: 110 ml Starbucks chilled latte drink, 200 g lean pork steak, half baked potato, 60 g barbecue sauce, 5 low-milk machine lattes, and 2 Fuze Tea Green Tea (assumed 250 ml each). Added another 220 ml high-protein chocolate milk drink.",
       "complete": false
     }
   },
