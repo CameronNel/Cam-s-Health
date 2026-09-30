@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-29T18:20:19Z",
+  "updatedAt": "2026-09-30T05:33:00Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1161,6 +1161,41 @@
       "waterMl": null,
       "weightKg": null,
       "notes": "Partial Tuesday 29 Sep food log: full Optimel protein yoghurt drink, 4 low-milk machine lattes, 200 g cooked basmati rice, and 273 g cooked chicken breast with no added cooking fat.",
+      "complete": false
+    },
+    "2026-09-30": {
+      "food": [
+        {
+          "id": "2026-09-30-cooked-chicken-breast-164g-1",
+          "name": "Chicken breast, cooked, skinless/boneless",
+          "quantity": "164 g cooked",
+          "kcal": 270.6,
+          "protein": 50.84,
+          "carbs": 0,
+          "fat": 5.904,
+          "estimated": true,
+          "source": "Generic cooked skinless chicken breast nutrition estimate consistent with prior saved entries.",
+          "note": "User reported 164 g cooked chicken breast on 30 Sep 2026. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked; no added cooking fat included."
+        },
+        {
+          "id": "2026-09-30-high-protein-chocolate-drink-330ml-1",
+          "name": "High-protein chocolate milk drink",
+          "quantity": "330 ml",
+          "kcal": 178.2,
+          "protein": 24.75,
+          "carbs": 15.84,
+          "fat": 0.99,
+          "fibre": 2.97,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 30 Sep 2026.",
+          "note": "Label per 100 ml: 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. User reported 330 ml."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Wednesday 30 Sep food log: 164 g cooked chicken breast and 330 ml high-protein chocolate milk drink from a user-provided nutrition label.",
       "complete": false
     }
   },
