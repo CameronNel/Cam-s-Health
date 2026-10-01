@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-01T07:18:00Z",
+  "updatedAt": "2026-10-01T17:35:35Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1340,13 +1340,38 @@
           "estimated": false,
           "source": "Previously saved user-provided Optimel nutrition label image, 29 Sep 2026.",
           "note": "Reused the saved full-carton label values for the user's usual protein yoghurt: per 100 ml 46 kcal, 6.0 g protein, 4.3 g carbs, 0 g fat."
+        },
+        {
+          "id": "2026-10-01-ah-coffee-milk-drink-250ml-1",
+          "name": "AH coffee milk drink — Arabica coffee & cream",
+          "quantity": "250 ml",
+          "kcal": 200,
+          "protein": 6.25,
+          "carbs": 21.25,
+          "fat": 10,
+          "estimated": false,
+          "source": "User-provided Albert Heijn nutrition label image, 1 Oct 2026.",
+          "note": "Full 250 ml cup. Label per 100 ml: 80 kcal, 4.0 g fat, 8.5 g carbs, 2.5 g protein; sugars 8.5 g, salt 0.18 g."
+        },
+        {
+          "id": "2026-10-01-ah-krokante-kipschnitzel-2-1",
+          "name": "AH voorgegaarde krokante kipschnitzel",
+          "quantity": "2 schnitzels (200 g total)",
+          "kcal": 374,
+          "protein": 30,
+          "carbs": 36,
+          "fat": 12,
+          "fibre": 1.2,
+          "estimated": false,
+          "source": "User-provided Albert Heijn nutrition label image, 1 Oct 2026.",
+          "note": "Full 200 g pack / 2 schnitzels. Label per 100 g: 187 kcal, 6.0 g fat, 18 g carbs, 15 g protein, 0.6 g fibre, 1.28 g salt."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Thursday 1 Oct food log: 250 g saved lean beef taco mince/tomato batch (rendered fat drained) and 1 full Optimel Protein yoghurt drink carton.",
+      "notes": "Partial Thursday 1 Oct food log: 250 g saved lean beef taco mince/tomato batch (rendered fat drained), 1 full Optimel Protein yoghurt drink carton, 250 ml AH coffee milk drink, and 2 AH crispy chicken schnitzels (200 g total).",
       "complete": false
     }
   },
