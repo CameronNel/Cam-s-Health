@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-01T17:35:35Z",
+  "updatedAt": "2026-10-01T19:17:05Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1365,13 +1365,38 @@
           "estimated": false,
           "source": "User-provided Albert Heijn nutrition label image, 1 Oct 2026.",
           "note": "Full 200 g pack / 2 schnitzels. Label per 100 g: 187 kcal, 6.0 g fat, 18 g carbs, 15 g protein, 0.6 g fibre, 1.28 g salt."
+        },
+        {
+          "id": "2026-10-01-high-protein-chocolate-drink-330ml-1",
+          "name": "High-protein chocolate milk drink",
+          "quantity": "330 ml",
+          "kcal": 178.2,
+          "protein": 24.75,
+          "carbs": 15.84,
+          "fat": 0.99,
+          "fibre": 2.97,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 30 Sep 2026.",
+          "note": "Albert Heijn high-protein chocolate milk drink. Reused the saved label from 30 Sep 2026: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. User reported 330 ml on 1 Oct 2026."
+        },
+        {
+          "id": "2026-10-01-halfvolle-milk-120ml-1",
+          "name": "Medium-fat milk (halfvolle melk)",
+          "quantity": "120 ml",
+          "kcal": 53.76,
+          "protein": 4.08,
+          "carbs": 5.68,
+          "fat": 1.68,
+          "estimated": true,
+          "source": "Voedingscentrum generic halfvolle melk reference, accessed 27 Sep 2026.",
+          "note": "User reported 120 ml halfvolle melk. Scaled consistently from the previously saved generic halfvolle-melk reference used on 27 Sep 2026."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Thursday 1 Oct food log: 250 g saved lean beef taco mince/tomato batch (rendered fat drained), 1 full Optimel Protein yoghurt drink carton, 250 ml AH coffee milk drink, and 2 AH crispy chicken schnitzels (200 g total).",
+      "notes": "Partial Thursday 1 Oct food log: 250 g saved lean beef taco mince/tomato batch (rendered fat drained), 1 full Optimel Protein yoghurt drink carton, 250 ml AH coffee milk drink, 2 AH crispy chicken schnitzels (200 g total), 330 ml AH high-protein chocolate milk drink, and 120 ml halfvolle melk.",
       "complete": false
     }
   },
