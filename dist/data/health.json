@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-30T21:10:37Z",
+  "updatedAt": "2026-10-01T07:18:00Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1312,6 +1312,41 @@
       "waterMl": null,
       "weightKg": null,
       "notes": "Partial Wednesday 30 Sep food log: 164 g cooked chicken breast and 330 ml high-protein chocolate milk drink from a user-provided nutrition label. Added: 110 ml Starbucks chilled latte drink, 200 g lean pork steak, half baked potato, 60 g barbecue sauce, 5 low-milk machine lattes, and 2 Fuze Tea Green Tea (assumed 250 ml each). Added another 220 ml high-protein chocolate milk drink. Workout: abbreviated leg session, stopped early because heart rate stayed around 150–160 bpm.",
+      "complete": false
+    },
+    "2026-10-01": {
+      "food": [
+        {
+          "id": "2026-10-01-lean-beef-taco-bowl-250g-1",
+          "name": "Lean beef taco bowl — mince + tomato mix",
+          "quantity": "250 g",
+          "kcal": 390.65,
+          "protein": 40.325,
+          "carbs": 6.325,
+          "fat": 22.15,
+          "fibre": 1.525,
+          "estimated": true,
+          "source": "Saved recipe lean-beef-taco-bowl-2026-09-22.",
+          "note": "250 g of the saved mince + tomato + taco-seasoning batch. Beef rendered fat was drained as thoroughly as practical. Uses the saved recipe estimate per 100 g: 156.26 kcal, 16.13 g protein, 2.53 g carbs, 8.86 g fat, 0.61 g fibre; the saved recipe intentionally does not credit an extra calorie/fat reduction for drainage."
+        },
+        {
+          "id": "2026-10-01-optimel-protein-yoghurt-drink-1l-1",
+          "name": "Optimel Protein yoghurt drink — blueberry & vanilla",
+          "quantity": "1 full 1000 ml carton",
+          "kcal": 460,
+          "protein": 60,
+          "carbs": 43,
+          "fat": 0,
+          "estimated": false,
+          "source": "Previously saved user-provided Optimel nutrition label image, 29 Sep 2026.",
+          "note": "Reused the saved full-carton label values for the user's usual protein yoghurt: per 100 ml 46 kcal, 6.0 g protein, 4.3 g carbs, 0 g fat."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Thursday 1 Oct food log: 250 g saved lean beef taco mince/tomato batch (rendered fat drained) and 1 full Optimel Protein yoghurt drink carton.",
       "complete": false
     }
   },
