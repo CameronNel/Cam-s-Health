@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-02T13:53:18Z",
+  "updatedAt": "2026-10-02T19:55:40Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1466,11 +1466,46 @@
           "note": "Imported from the user's 2 Oct Notion food log after explicit confirmation. Entire 1 kg tub. Label per 100 g: 55 kcal, 0.1 g fat, 2.7 g carbs, 10 g protein."
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-10-02-back-biceps-custom-1",
+          "sessionId": null,
+          "name": "Back + Biceps",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Custom session reported by user on 2 Oct 2026. Exact reps, loads and duration not reported.",
+          "actualExercises": [
+            {
+              "name": "Lat Pulldown",
+              "sets": 6,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "V-bar Pulldown",
+              "sets": 6,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Curls",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Hammer Curl",
+              "sets": 2,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Friday 2 Oct food log: 85 g modified frikandelbroodje portion (~70 g frikandel filling + ~15 g puff pastry), 1 full 330 ml high-protein chocolate milk drink, 1 protein bar (55 g), 134 g lean beef taco bowl, and 1 full 1 kg tub magere kwark naturel.",
+      "notes": "Partial Friday 2 Oct food log: 85 g modified frikandelbroodje portion (~70 g frikandel filling + ~15 g puff pastry), 1 full 330 ml high-protein chocolate milk drink, 1 protein bar (55 g), 134 g lean beef taco bowl, and 1 full 1 kg tub magere kwark naturel. Workout: Back + Biceps — 6 sets lat pulldown, 6 sets V-bar pulldown, 4 sets curls, 2 sets hammer curls.",
       "complete": false
     }
   },
