@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-02T12:56:23Z",
+  "updatedAt": "2026-10-02T13:53:18Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1439,13 +1439,38 @@
           "estimated": false,
           "source": "User-provided nutrition label image, 2 Oct 2026.",
           "note": "Full 55 g bar. Label per bar: 224 kcal, 16.5 g protein, 20.4 g carbs, 8.3 g fat, 1.4 g fibre; sugars 18.1 g."
+        },
+        {
+          "id": "2026-10-02-lean-beef-taco-bowl-134g-1",
+          "name": "Lean beef taco bowl",
+          "quantity": "134 g",
+          "kcal": 210,
+          "protein": 21.6,
+          "carbs": 3.4,
+          "fat": 11.9,
+          "estimated": true,
+          "source": "Legacy Notion Food Log entry for 2 Oct 2026; values scaled from saved lean-beef-taco-bowl-2026-09-22 recipe.",
+          "note": "Imported from the user's 2 Oct Notion food log after explicit confirmation. Notion recorded 134 g, 210 kcal, 21.6 g protein, 3.4 g carbs and 11.9 g fat; fat was drained. Values are consistent with the saved batch estimate.",
+          "recipeId": "lean-beef-taco-bowl-2026-09-22"
+        },
+        {
+          "id": "2026-10-02-magere-kwark-1kg-1",
+          "name": "Magere kwark naturel",
+          "quantity": "1 full 1000 g tub",
+          "kcal": 550,
+          "protein": 100,
+          "carbs": 27,
+          "fat": 1,
+          "estimated": false,
+          "source": "Legacy Notion Food Log entry for 2 Oct 2026, based on user-provided nutrition label photo.",
+          "note": "Imported from the user's 2 Oct Notion food log after explicit confirmation. Entire 1 kg tub. Label per 100 g: 55 kcal, 0.1 g fat, 2.7 g carbs, 10 g protein."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Friday 2 Oct food log: 85 g modified frikandelbroodje portion (~70 g frikandel filling + ~15 g puff pastry), 1 full 330 ml high-protein chocolate milk drink, and 1 protein bar (55 g).",
+      "notes": "Partial Friday 2 Oct food log: 85 g modified frikandelbroodje portion (~70 g frikandel filling + ~15 g puff pastry), 1 full 330 ml high-protein chocolate milk drink, 1 protein bar (55 g), 134 g lean beef taco bowl, and 1 full 1 kg tub magere kwark naturel.",
       "complete": false
     }
   },
