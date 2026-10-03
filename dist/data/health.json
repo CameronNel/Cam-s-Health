@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-02T19:55:40Z",
+  "updatedAt": "2026-10-03T12:59:00Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1506,6 +1506,53 @@
       "waterMl": null,
       "weightKg": null,
       "notes": "Partial Friday 2 Oct food log: 85 g modified frikandelbroodje portion (~70 g frikandel filling + ~15 g puff pastry), 1 full 330 ml high-protein chocolate milk drink, 1 protein bar (55 g), 134 g lean beef taco bowl, and 1 full 1 kg tub magere kwark naturel. Workout: Back + Biceps — 6 sets lat pulldown, 6 sets V-bar pulldown, 4 sets curls, 2 sets hammer curls.",
+      "complete": false
+    },
+    "2026-10-03": {
+      "food": [
+        {
+          "id": "2026-10-03-chicken-pack-half-337-5g-1",
+          "name": "Chicken product — half pack",
+          "quantity": "337.5 g (half of 675 g pack)",
+          "kcal": 455.625,
+          "protein": 57.375,
+          "carbs": 6.075,
+          "fat": 14.85,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 3 Oct 2026.",
+          "note": "Pack net weight 675 g. Label per 100 g: 135 kcal, 17 g protein, 1.8 g carbs, 4.4 g fat. Logged half the pack = 337.5 g."
+        },
+        {
+          "id": "2026-10-03-scrambled-eggs-2-5-1",
+          "name": "Scrambled eggs — no added oil",
+          "quantity": "2.5 eggs",
+          "kcal": 180,
+          "protein": 15.75,
+          "carbs": 0.9,
+          "fat": 12,
+          "estimated": true,
+          "source": "Generic large whole-egg estimate.",
+          "note": "User reported 2.5 scrambled eggs with no oil added. Estimated using ~72 kcal, 6.3 g protein, 0.36 g carbs and 4.8 g fat per large egg."
+        },
+        {
+          "id": "2026-10-03-ah-krokante-kipschnitzel-2-1",
+          "name": "AH voorgegaarde krokante kipschnitzel",
+          "quantity": "2 schnitzels (200 g total)",
+          "kcal": 374,
+          "protein": 30,
+          "carbs": 36,
+          "fat": 12,
+          "fibre": 1.2,
+          "estimated": false,
+          "source": "User-provided Albert Heijn nutrition label image, 1 Oct 2026; reused on 3 Oct 2026.",
+          "note": "Same schnitzels logged earlier in the week. Full 200 g pack / 2 schnitzels. Label per 100 g: 187 kcal, 6.0 g fat, 18 g carbs, 15 g protein, 0.6 g fibre."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Saturday 3 Oct food log: half of a 675 g chicken pack (337.5 g), 2.5 scrambled eggs with no added oil, and 2 AH crispy chicken schnitzels (200 g total).",
       "complete": false
     }
   },
