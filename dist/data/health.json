@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T13:25:12Z",
+  "updatedAt": "2026-10-03T19:22:34Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1511,16 +1511,16 @@
     "2026-10-03": {
       "food": [
         {
-          "id": "2026-10-03-fish-half-pack-337-5g-1",
-          "name": "Fish — half pack",
-          "quantity": "337.5 g (half of 675 g pack)",
-          "kcal": 455.625,
-          "protein": 57.375,
-          "carbs": 6.075,
-          "fat": 14.85,
+          "id": "2026-10-03-fish-3-5-pieces-472-5g-1",
+          "name": "Fish",
+          "quantity": "3.5 of 5 pieces (~472.5 g; 70% of 675 g pack)",
+          "kcal": 637.875,
+          "protein": 80.325,
+          "carbs": 8.505,
+          "fat": 20.79,
           "estimated": false,
           "source": "User-provided fish nutrition label image, 3 Oct 2026.",
-          "note": "Correction: user clarified the photographed product is fish, not chicken. Pack net weight 675 g. Label per 100 g: 135 kcal, 17 g protein, 1.8 g carbs, 4.4 g fat. Logged half the pack = 337.5 g."
+          "note": "Pack contained 5 pieces and weighed 675 g total. User initially ate 2.5 pieces, then reported 1 additional piece, for 3.5/5 pieces total. Assuming equal-weight pieces: ~135 g each, ~472.5 g eaten. Label per 100 g: 135 kcal, 17 g protein, 1.8 g carbs, 4.4 g fat."
         },
         {
           "id": "2026-10-03-scrambled-eggs-2-5-1",
@@ -1564,7 +1564,7 @@
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Saturday 3 Oct food log: half of a 675 g fish pack (337.5 g), 2.5 scrambled eggs with no added oil, and 2 AH crispy chicken schnitzels (200 g total), plus 1 Douwe Egberts ICE Caramel Latte (230 ml).",
+      "notes": "Partial Saturday 3 Oct food log: 3.5 of 5 pieces from a 675 g fish pack (~472.5 g total), 2.5 scrambled eggs with no added oil, and 2 AH crispy chicken schnitzels (200 g total), plus 1 Douwe Egberts ICE Caramel Latte (230 ml).",
       "complete": false
     }
   },
