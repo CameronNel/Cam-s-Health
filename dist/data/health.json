@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T12:59:00Z",
+  "updatedAt": "2026-10-03T13:04:09Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1511,16 +1511,16 @@
     "2026-10-03": {
       "food": [
         {
-          "id": "2026-10-03-chicken-pack-half-337-5g-1",
-          "name": "Chicken product — half pack",
+          "id": "2026-10-03-fish-half-pack-337-5g-1",
+          "name": "Fish — half pack",
           "quantity": "337.5 g (half of 675 g pack)",
           "kcal": 455.625,
           "protein": 57.375,
           "carbs": 6.075,
           "fat": 14.85,
           "estimated": false,
-          "source": "User-provided nutrition label image, 3 Oct 2026.",
-          "note": "Pack net weight 675 g. Label per 100 g: 135 kcal, 17 g protein, 1.8 g carbs, 4.4 g fat. Logged half the pack = 337.5 g."
+          "source": "User-provided fish nutrition label image, 3 Oct 2026.",
+          "note": "Correction: user clarified the photographed product is fish, not chicken. Pack net weight 675 g. Label per 100 g: 135 kcal, 17 g protein, 1.8 g carbs, 4.4 g fat. Logged half the pack = 337.5 g."
         },
         {
           "id": "2026-10-03-scrambled-eggs-2-5-1",
@@ -1552,7 +1552,7 @@
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Saturday 3 Oct food log: half of a 675 g chicken pack (337.5 g), 2.5 scrambled eggs with no added oil, and 2 AH crispy chicken schnitzels (200 g total).",
+      "notes": "Partial Saturday 3 Oct food log: half of a 675 g fish pack (337.5 g), 2.5 scrambled eggs with no added oil, and 2 AH crispy chicken schnitzels (200 g total).",
       "complete": false
     }
   },
