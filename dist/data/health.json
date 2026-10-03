@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-03T13:04:09Z",
+  "updatedAt": "2026-10-03T13:25:12Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1546,13 +1546,25 @@
           "estimated": false,
           "source": "User-provided Albert Heijn nutrition label image, 1 Oct 2026; reused on 3 Oct 2026.",
           "note": "Same schnitzels logged earlier in the week. Full 200 g pack / 2 schnitzels. Label per 100 g: 187 kcal, 6.0 g fat, 18 g carbs, 15 g protein, 0.6 g fibre."
+        },
+        {
+          "id": "2026-10-03-douwe-egberts-ice-caramel-latte-230ml-1",
+          "name": "Douwe Egberts ICE Caramel Latte",
+          "quantity": "1 cup (230 ml)",
+          "kcal": 135.7,
+          "protein": 7.36,
+          "carbs": 19.32,
+          "fat": 2.99,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 3 Oct 2026.",
+          "note": "Label per 100 ml: 59 kcal, 3.2 g protein, 8.4 g carbs, 1.3 g fat. Full cup is 230 ml."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Saturday 3 Oct food log: half of a 675 g fish pack (337.5 g), 2.5 scrambled eggs with no added oil, and 2 AH crispy chicken schnitzels (200 g total).",
+      "notes": "Partial Saturday 3 Oct food log: half of a 675 g fish pack (337.5 g), 2.5 scrambled eggs with no added oil, and 2 AH crispy chicken schnitzels (200 g total), plus 1 Douwe Egberts ICE Caramel Latte (230 ml).",
       "complete": false
     }
   },
