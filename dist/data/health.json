@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-09-22T14:08:05.399Z",
+  "updatedAt": "2026-10-04T18:15:46Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
     "targets": {
       "kcal": 1900,
-      "protein": 170,
-      "carbs": null,
-      "fat": null,
+      "protein": 150,
+      "carbs": 210,
+      "fat": 50,
       "steps": 10000
     },
     "trainingStatus": "awaiting clearance",
@@ -20,7 +20,7 @@
       "Dumbbells up to 20 kg"
     ],
     "equipmentNote": "Normal barbell bench pressing is unavailable with the current setup.",
-    "source": "Current fitness tracker targets, verified 22 September 2026."
+    "source": "Cut targets updated 25 Sep 2026 from current 65.5 kg body weight, 12.5% Galaxy Watch BIA trend baseline, and evidence for higher protein intake during energy restriction. Calorie target held at 1,900 pending weight-trend-derived maintenance."
   },
   "training": {
     "rotation": [
@@ -376,13 +376,13 @@
           "id": "2026-09-22-machine-lattes-1",
           "name": "Machine latte — low milk setting",
           "quantity": "2 lattes",
-          "kcal": 60,
-          "protein": 1.2,
-          "carbs": 6.4,
-          "fat": 3.4,
+          "kcal": 70,
+          "protein": 1.4,
+          "carbs": 7.5,
+          "fat": 4,
           "estimated": true,
-          "source": "Existing food log, 22 Sep 2026; office coffee-machine estimate.",
-          "note": "Powdered-milk setting 1 of 3. Estimated at 30 kcal each until the machine or product nutrition is known."
+          "source": "Standardized office coffee-machine estimate updated 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal per latte from 28 Sep 2026; machine/product nutrition remains unconfirmed."
         },
         {
           "id": "2026-09-22-ikea-mini-meatballs-1",
@@ -396,13 +396,1277 @@
           "source": "Existing food log, 22 Sep 2026; IKEA Netherlands Bistro portion estimate.",
           "note": "Half of the previously estimated 8-ball cup. Review needed: imported macros imply about 167 kcal, while the source records 140 kcal. Original values are retained as estimates.",
           "reviewRequired": true
+        },
+        {
+          "id": "2026-09-22-protein-powder-1",
+          "name": "Protein powder",
+          "quantity": "1 scoop (30 g)",
+          "kcal": 118,
+          "protein": 23,
+          "carbs": 2.5,
+          "fat": 2,
+          "estimated": false,
+          "source": "User-provided product nutrition label image, 22 Sep 2026.",
+          "note": "Label per 30 g scoop: 118 kcal, 23 g protein, 2.5 g carbs, 2.0 g fat; sugars 1.7 g, saturated fat 1.3 g, salt 0.03 g."
+        },
+        {
+          "id": "2026-09-22-biltong-1",
+          "name": "Traditional South African beef biltong",
+          "quantity": "~100 g",
+          "kcal": 274,
+          "protein": 54.1,
+          "carbs": 1.3,
+          "fat": 5.5,
+          "estimated": true,
+          "source": "Joubert & Monty Original Sliced Beef Biltong, South Africa, nutrition per 100 g.",
+          "note": "User clarified this was traditional South African biltong, not the earlier Dutch supermarket reference. Exact brand and weight unknown; estimate uses a South African-made traditional biltong reference."
+        },
+        {
+          "id": "2026-09-22-noodles-1",
+          "name": "Noodles",
+          "quantity": "portion reported as 75 kcal",
+          "kcal": 75,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": false,
+          "source": "User report, 22 Sep 2026.",
+          "note": "Calories supplied by user. Product, portion weight and macro breakdown not supplied, so macros are left unknown."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-09-22-shoulders-triceps-1",
+          "sessionId": null,
+          "name": "Shoulders + Triceps",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User recap on 28 Sep 2026: Tuesday session was shoulders and triceps. This recap supersedes the earlier partial session label."
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Tuesday 22 Sep 2026 is complete.",
+      "complete": true
+    },
+    "2026-09-21": {
+      "food": [
+        {
+          "id": "2026-09-21-taco-bowl-500g-1",
+          "name": "Lean beef taco bowl",
+          "quantity": "500 g",
+          "kcal": 781.3,
+          "protein": 80.6,
+          "carbs": 12.6,
+          "fat": 44.3,
+          "fibre": 3,
+          "estimated": true,
+          "source": "User report previously entered for Monday intake; date corrected on 28 Sep 2026. Saved recipe lean-beef-taco-bowl-2026-09-22.",
+          "note": "Corrected on 28 Sep 2026 to Monday 21 Sep 2026. Uses the existing conservative recipe estimate; drained rendered fat is not additionally deducted.",
+          "recipeId": "lean-beef-taco-bowl-2026-09-22"
+        },
+        {
+          "id": "2026-09-21-sourdough-bread-500kcal-1",
+          "name": "Sourdough bread",
+          "quantity": "portion reported as 500 kcal",
+          "kcal": 500,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": false,
+          "source": "User report; date corrected on 28 Sep 2026 to Monday 21 Sep 2026.",
+          "note": "Calories supplied by user. Portion weight and macro breakdown were not supplied, so macros are left unknown. Date corrected on 28 Sep 2026 to Monday 21 Sep 2026."
+        },
+        {
+          "id": "2026-09-21-tompouce-1",
+          "name": "Tompoes / tompouce",
+          "quantity": "1 piece (~100 g reference serving)",
+          "kcal": 315,
+          "protein": 3.8,
+          "carbs": 36.5,
+          "fat": 16.9,
+          "fibre": 0.9,
+          "estimated": true,
+          "source": "Voedingscentrum generic tompoes reference, accessed 27 Sep 2026.",
+          "note": "User reported one slice/piece. Logged as the Dutch generic 100 g serving until exact brand/weight is known. Date corrected on 28 Sep 2026 to Monday 21 Sep 2026."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-09-21-biceps-shoulders-1",
+          "sessionId": null,
+          "name": "Biceps + some shoulders",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User recap on 28 Sep 2026: Monday session was biceps with some shoulder work. Exact exercises/reps/loads not recalled."
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Monday 21 Sep 2026 is complete.",
+      "complete": true
+    },
+    "2026-09-23": {
+      "food": [
+        {
+          "id": "2026-09-23-tortilla-1",
+          "name": "Tortilla",
+          "quantity": "1 tortilla (approximately 62 g)",
+          "kcal": 191,
+          "protein": 6.1,
+          "carbs": 32,
+          "fat": 4,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 23 Sep 2026.",
+          "note": "Label values per tortilla. Pre-logged with the planned beef taco wrap reported by the user."
+        },
+        {
+          "id": "2026-09-23-taco-bowl-1",
+          "name": "Lean beef taco bowl",
+          "quantity": "approximately 550 g",
+          "kcal": 859,
+          "protein": 88.7,
+          "carbs": 13.9,
+          "fat": 48.7,
+          "estimated": true,
+          "source": "Saved recipe lean-beef-taco-bowl-2026-09-22; total portion reported by user on 23-24 Sep 2026.",
+          "note": "Updated from approximately 350 g to approximately 550 g total after user reported an additional 200 g. Conservative estimate; no deduction for drained fat because the drained amount is unknown.",
+          "recipeId": "lean-beef-taco-bowl-2026-09-22"
+        },
+        {
+          "id": "2026-09-23-creamy-cup-a-soup-1",
+          "name": "Creamy Cup-a-Soup (flavour unconfirmed)",
+          "quantity": "1 cup",
+          "kcal": 70,
+          "protein": 1,
+          "carbs": 12,
+          "fat": 2,
+          "estimated": true,
+          "source": "User-supplied 70 kcal; existing provisional macro estimate from the 23 Sep 2026 food report.",
+          "note": "User clarified that this was a cream variety. Exact flavour and nutrition label were not supplied; protein, carbs and fat are provisional, not label-verified."
+        },
+        {
+          "id": "2026-09-23-naartjie-1",
+          "name": "Naartjie (mandarin)",
+          "quantity": "1 fruit (estimated 60 g edible portion)",
+          "kcal": 28,
+          "protein": 0.4,
+          "carbs": 5.9,
+          "fat": 0.1,
+          "estimated": true,
+          "source": "User-reported fruit count; existing 23 Sep 2026 food estimate.",
+          "note": "Portion weight was not supplied. Retains the previously stated 60 g edible-portion estimate."
+        },
+        {
+          "id": "2026-09-23-banana-1",
+          "name": "Banana",
+          "quantity": "1 fruit (estimated 120 g edible portion)",
+          "kcal": 111,
+          "protein": 1.3,
+          "carbs": 24,
+          "fat": 0.4,
+          "estimated": true,
+          "source": "User-reported fruit count; existing 23 Sep 2026 food estimate.",
+          "note": "Portion weight was not supplied. Retains the previously stated medium banana / 120 g edible-portion estimate."
+        },
+        {
+          "id": "2026-09-23-machine-lattes-1",
+          "name": "Machine latte - low milk setting",
+          "quantity": "5 lattes",
+          "kcal": 175,
+          "protein": 3.5,
+          "carbs": 18.7,
+          "fat": 9.9,
+          "estimated": true,
+          "source": "Standardized office coffee-machine estimate updated 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal per latte from 28 Sep 2026; machine/product nutrition remains unconfirmed."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-09-23-workout-unknown-1",
+          "sessionId": null,
+          "name": "Workout — details not remembered",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User confirms training on Wednesday 23 Sep 2026 but cannot remember the muscle groups/exercises."
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Wednesday 23 Sep 2026 is complete.",
+      "complete": true
+    },
+    "2026-09-24": {
+      "food": [
+        {
+          "id": "2026-09-24-sourdough-bread-1",
+          "name": "Sourdough bread",
+          "quantity": "portion reported as 260 kcal",
+          "kcal": 260,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": false,
+          "source": "User report, 24 Sep 2026.",
+          "note": "Calories supplied by user. Portion weight and macro breakdown were not supplied, so macros are left unknown."
+        },
+        {
+          "id": "2026-09-24-fuze-tea-green-1",
+          "name": "Fuze Tea Green Ice Tea",
+          "quantity": "250 ml can",
+          "kcal": 45,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": true,
+          "source": "User report, 24 Sep 2026; existing provisional estimate.",
+          "note": "250 ml can. Calories remain an estimate because the exact variant nutrition label was not supplied."
+        },
+        {
+          "id": "2026-09-24-carrot-cup-a-soup-1",
+          "name": "Carrot Cup-a-Soup",
+          "quantity": "1 sachet",
+          "kcal": 70,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": true,
+          "source": "User report, 24 Sep 2026.",
+          "note": "User reported approximately 70 kcal per sachet. Macro breakdown was not supplied."
+        },
+        {
+          "id": "2026-09-24-machine-lattes-1",
+          "name": "Machine latte — low milk setting",
+          "quantity": "4 lattes",
+          "kcal": 140,
+          "protein": 2.8,
+          "carbs": 14.9,
+          "fat": 7.9,
+          "estimated": true,
+          "source": "Standardized office coffee-machine estimate updated 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal per latte from 28 Sep 2026; machine/product nutrition remains unconfirmed."
+        },
+        {
+          "id": "2026-09-24-salmon-1",
+          "name": "Salmon fillet with skin",
+          "quantity": "250 g (half of 500 g pack)",
+          "kcal": 522.5,
+          "protein": 50.5,
+          "carbs": 0,
+          "fat": 35.5,
+          "estimated": false,
+          "source": "User-provided product label, 24 Sep 2026.",
+          "note": "Label per 100 g: 209 kcal, 20.2 g protein, 14.2 g fat, 0 g carbs. User ate half of the 500 g pack."
+        },
+        {
+          "id": "2026-09-24-kwark-banana-1",
+          "name": "Campina Milde magere kwark met banaan",
+          "quantity": "500 g tub",
+          "kcal": 300,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "estimated": false,
+          "source": "User-provided product label, 24 Sep 2026.",
+          "note": "Full 500 g tub. Label per 100 g: 60 kcal, 9.3 g protein, 7.0 g carbs, 0.1 g fat."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-09-24-legs-1",
+          "sessionId": null,
+          "name": "Legs",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User recap on 28 Sep 2026: Thursday session was legs. This recap supersedes the earlier abs-only label."
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Thursday 24 Sep 2026 is complete; some food macros remain unknown but calories are final.",
+      "complete": true
+    },
+    "2026-09-25": {
+      "food": [
+        {
+          "id": "2026-09-25-grandos-hot-chocolate-1",
+          "name": "Grandos Speciale hot chocolate",
+          "quantity": "1 sachet (27.5 g) prepared with 150 ml water",
+          "kcal": 106.5,
+          "protein": 3,
+          "carbs": 18,
+          "fat": 2.25,
+          "estimated": false,
+          "source": "User-provided Grandos Speciale nutrition label images, 25 Sep 2026.",
+          "note": "Prepared-drink label per 100 ml: 71 kcal, 2.0 g protein, 12 g carbs, 1.5 g fat. One sachet is prepared with 150 ml water."
+        },
+        {
+          "id": "2026-09-25-optimel-yoghurt-drink-1",
+          "name": "Optimel yoghurt drink",
+          "quantity": "1 full 1000 ml carton",
+          "kcal": 460,
+          "protein": 60,
+          "carbs": 43,
+          "fat": 0,
+          "estimated": false,
+          "source": "User-provided Optimel nutrition label image, 25 Sep 2026.",
+          "note": "Whole 1000 ml carton. Label per 100 ml: 46 kcal, 6.0 g protein, 4.3 g carbs, 0 g fat; sugars 3.9 g, salt 0.12 g."
+        },
+        {
+          "id": "2026-09-25-raw-chicken-breast-400g-1",
+          "name": "Chicken breast, raw, skinless/boneless",
+          "quantity": "400 g raw",
+          "kcal": 480,
+          "protein": 90,
+          "carbs": 0,
+          "fat": 10.5,
+          "estimated": true,
+          "source": "USDA FoodData Central generic raw boneless skinless chicken breast reference.",
+          "note": "Estimated from approximately 120 kcal, 22.5 g protein and 2.6 g fat per 100 g raw. No skin or added cooking fat included."
+        },
+        {
+          "id": "2026-09-25-rice-waffle-sea-salt-1",
+          "name": "Rice waffle with sea salt",
+          "quantity": "1 rice waffle (~10 g; half of a 20 g / 2-waffle serving)",
+          "kcal": 38,
+          "protein": 0.9,
+          "carbs": 7.7,
+          "fat": 0.3,
+          "fibre": 0.4,
+          "estimated": false,
+          "source": "User-provided product nutrition label image, 26 Sep 2026.",
+          "note": "Label states 20 g = 2 rice waffles: 76 kcal, 1.8 g protein, 15.4 g carbs, 0.6 g fat, 0.8 g fibre. Logged one waffle as half the labeled serving."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-09-25-abs-1",
+          "sessionId": null,
+          "name": "Abs",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User recap on 28 Sep 2026: Friday session was abs. This recap supersedes the earlier partial Push A entry."
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": 65.5,
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Friday 25 Sep 2026 is complete.",
+      "complete": true,
+      "body": {
+        "bodyFatPct": 12.5,
+        "method": "BIA watch",
+        "notes": "Samsung Galaxy Watch BIA reading. User believes the absolute reading may be about 3 percentage points low, but chose to use it consistently for trend tracking.",
+        "recordedAt": "2026-09-25T14:52:46.854Z"
+      }
+    },
+    "2026-09-26": {
+      "food": [
+        {
+          "id": "2026-09-26-cooked-chicken-breast-125g-1",
+          "name": "Chicken breast, cooked, skinless/boneless",
+          "quantity": "125 g cooked",
+          "kcal": 206,
+          "protein": 38.8,
+          "carbs": 0,
+          "fat": 4.5,
+          "estimated": true,
+          "source": "Generic cooked skinless chicken breast nutrition reference.",
+          "note": "User reported 125 g cooked chicken breast. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked; no added cooking fat included."
+        },
+        {
+          "id": "2026-09-26-fat-free-milk-100ml-1",
+          "name": "Fat-free milk",
+          "quantity": "100 ml",
+          "kcal": 34,
+          "protein": 3.4,
+          "carbs": 5,
+          "fat": 0.1,
+          "estimated": true,
+          "source": "Generic fat-free/nonfat milk nutrition reference.",
+          "note": "User reported 100 ml. Exact brand label not supplied."
+        },
+        {
+          "id": "2026-09-26-beef-rundvlees-half-478g-1",
+          "name": "Beef (rundvlees)",
+          "quantity": "239 g (half of 478 g pack)",
+          "kcal": 396.7,
+          "protein": 48,
+          "carbs": 0,
+          "fat": 22.7,
+          "estimated": false,
+          "source": "User-provided product nutrition label image, 26 Sep 2026.",
+          "note": "Pack weight 478 g; user ate half = 239 g. Label per 100 g: 166 kcal, 20.1 g protein, 0 g carbs, 9.5 g fat."
+        },
+        {
+          "id": "2026-09-26-rice-waffle-sea-salt-1",
+          "name": "Rice waffle with sea salt",
+          "quantity": "1 rice waffle (~10 g; half of a 20 g / 2-waffle serving)",
+          "kcal": 38,
+          "protein": 0.9,
+          "carbs": 7.7,
+          "fat": 0.3,
+          "fibre": 0.4,
+          "estimated": false,
+          "source": "User-provided product nutrition label image, 26 Sep 2026.",
+          "note": "Label states 20 g = 2 rice waffles: 76 kcal, 1.8 g protein, 15.4 g carbs, 0.6 g fat, 0.8 g fibre. Logged one waffle as half the labeled serving."
+        },
+        {
+          "id": "2026-09-26-takumi-r6-black-garlic-kara-ebi-miso-1",
+          "name": "Takumi R6 Black Garlic Kara-Ebi Miso Ramen",
+          "quantity": "1 bowl; all/most solids eaten, broth not consumed except what clung to the food",
+          "kcal": 750,
+          "protein": 52,
+          "carbs": 78,
+          "fat": 26,
+          "estimated": true,
+          "source": "Takumi Tonkotsu Rotterdam menu image provided by user, 26 Sep 2026; nutrition estimated from pictured ingredients and typical restaurant ramen portions.",
+          "note": "Revised after user clarified no broth was consumed apart from residue clinging to noodles/toppings. Estimate is for the solid components of R6 plus a small amount of adhering miso/black-garlic broth."
+        },
+        {
+          "id": "2026-09-26-takumi-okonomi-gyoza-3-5",
+          "name": "Takumi Okonomi Gyoza",
+          "quantity": "3.5 of 6 fried gyoza with mayo and otafuku sauce",
+          "kcal": 310,
+          "protein": 10,
+          "carbs": 28,
+          "fat": 17.5,
+          "estimated": true,
+          "source": "Takumi menu image provided by user, 26 Sep 2026; portion count reported by user; nutrition estimated from typical fried pork/vegetable gyoza with mayonnaise and otafuku-style sauce.",
+          "note": "Menu shows 6 pieces per serving. User ate 3.5 pieces, so this estimate uses 58.3% of an estimated full 6-piece serving."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "",
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Saturday 26 Sep 2026 is complete.",
+      "complete": true
+    },
+    "2026-09-27": {
+      "food": [
+        {
+          "id": "2026-09-27-halfvolle-milk-150ml-1",
+          "name": "Medium-fat milk (halfvolle melk)",
+          "quantity": "150 ml",
+          "kcal": 67.2,
+          "protein": 5.1,
+          "carbs": 7.1,
+          "fat": 2.1,
+          "estimated": true,
+          "source": "Voedingscentrum generic halfvolle melk reference, accessed 27 Sep 2026.",
+          "note": "User reported 150 ml medium-fat milk. Interpreted as Dutch halfvolle melk; estimated from the Voedingscentrum 250 g reference, using approximately 150 g = 150 ml."
+        },
+        {
+          "id": "2026-09-27-banana-1",
+          "name": "Banana",
+          "quantity": "1 fruit (estimated 120 g edible portion)",
+          "kcal": 111,
+          "protein": 1.3,
+          "carbs": 24,
+          "fat": 0.4,
+          "estimated": true,
+          "source": "Reused saved 23 Sep 2026 banana estimate.",
+          "note": "User reported one banana. Portion weight was not supplied, so the existing medium-banana estimate is reused."
+        },
+        {
+          "id": "2026-09-27-cooked-chicken-breast-150g-1",
+          "name": "Chicken breast, cooked, skinless/boneless",
+          "quantity": "150 g cooked",
+          "kcal": 247.5,
+          "protein": 46.5,
+          "carbs": 0,
+          "fat": 5.4,
+          "estimated": true,
+          "source": "Generic cooked skinless chicken breast nutrition reference, consistent with the saved 26 Sep 2026 estimate.",
+          "note": "User reported 150 g cooked chicken breast. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked; no added cooking fat included."
+        },
+        {
+          "id": "2026-09-27-rice-waffle-sea-salt-1",
+          "name": "Rice waffle with sea salt",
+          "quantity": "1 rice waffle (~10 g; half of a 20 g / 2-waffle serving)",
+          "kcal": 38,
+          "protein": 0.9,
+          "carbs": 7.7,
+          "fat": 0.3,
+          "fibre": 0.4,
+          "estimated": false,
+          "source": "User-provided product nutrition label image previously saved on 26 Sep 2026.",
+          "note": "Matched to the earlier-week rice waffle: label states 20 g = 2 waffles: 76 kcal, 1.8 g protein, 15.4 g carbs, 0.6 g fat, 0.8 g fibre."
+        },
+        {
+          "id": "2026-09-27-accelerate-choco-hazelnut-bar-1",
+          "name": "Accelerate Protein Filled Bar — Milk Choco Hazelnut",
+          "quantity": "1 bar (50 g)",
+          "kcal": 192,
+          "protein": 16,
+          "carbs": 15,
+          "fat": 9,
+          "estimated": false,
+          "source": "Action NL official Accelerate chocolate-hazelnut protein bar product page, accessed 27 Sep 2026; front-of-pack photo supplied by user.",
+          "note": "Official listing: 192 kcal per 50 g bar, with 16 g protein. Per 100 g macros listed as 30 g carbs and 18 g fat, giving 15 g carbs and 9 g fat per bar."
+        },
+        {
+          "id": "2026-09-27-protein-drink-chocolate-240ml-1",
+          "name": "Protein drink — chocolate",
+          "quantity": "1 bottle (240 ml)",
+          "kcal": 139,
+          "protein": 20,
+          "carbs": 10,
+          "fat": 1.9,
+          "estimated": false,
+          "source": "User-provided bottle nutrition label image, 27 Sep 2026.",
+          "note": "Label per 240 ml bottle: 139 kcal, 20 g protein, 10 g carbs, 1.9 g fat; sugars 9.9 g; salt 0.24 g."
+        },
+        {
+          "id": "2026-09-27-cooked-chicken-breast-195g-2",
+          "name": "Chicken breast, cooked, skinless/boneless",
+          "quantity": "195 g cooked",
+          "kcal": 321.75,
+          "protein": 60.45,
+          "carbs": 0,
+          "fat": 7.02,
+          "estimated": true,
+          "source": "Generic cooked skinless chicken breast nutrition reference, consistent with the saved 26–27 Sep 2026 estimate.",
+          "note": "Additional 195 g cooked chicken breast reported eaten on 27 Sep 2026. No oil or sauce. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-09-27-biceps-forearms-1",
+          "sessionId": null,
+          "name": "Biceps + Forearms",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User recap on 28 Sep 2026: Sunday session was biceps and forearms."
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": 65.65,
+      "notes": "Finalized by user on 28 Sep 2026. Food log for Sunday 27 Sep 2026 is complete.",
+      "complete": true
+    },
+    "2026-09-28": {
+      "food": [
+        {
+          "id": "2026-09-28-machine-lattes-1",
+          "name": "Machine latte — low powdered milk setting",
+          "quantity": "2 lattes",
+          "kcal": 70,
+          "protein": 1.4,
+          "carbs": 7.5,
+          "fat": 4,
+          "estimated": true,
+          "source": "Standardized office coffee-machine estimate updated 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal per latte from 28 Sep 2026; machine/product nutrition remains unconfirmed."
+        },
+        {
+          "id": "2026-09-28-fuze-tea-mango-chamomile-1",
+          "name": "Fuze Tea Low Cal Mango Chamomile",
+          "quantity": "1 can (250 ml)",
+          "kcal": 40,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": false,
+          "source": "User report, 28 Sep 2026.",
+          "note": "User supplied 40 kcal for the 250 ml can. Macro breakdown was not supplied."
+        },
+        {
+          "id": "2026-09-28-cup-a-soup-tomaten-creme-1",
+          "name": "Cup-a-Soup Tomaten Crème",
+          "quantity": "1 cup / sachet",
+          "kcal": 70,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": true,
+          "source": "Saved Cup-a-Soup cream-variety tracking estimate from prior log.",
+          "note": "Exact package nutrition was not supplied. Reused the existing 70 kcal per cup/sachet estimate."
+        },
+        {
+          "id": "2026-09-28-cooked-chicken-breast-255g-1",
+          "name": "Chicken breast, cooked, skinless/boneless",
+          "quantity": "255 g cooked",
+          "kcal": 420.75,
+          "protein": 79.05,
+          "carbs": 0,
+          "fat": 9.18,
+          "estimated": true,
+          "source": "Generic cooked skinless chicken breast nutrition reference, consistent with saved 26–27 Sep 2026 estimates.",
+          "note": "User reported 255 g cooked chicken breast on 28 Sep 2026. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked; no added cooking fat included."
+        },
+        {
+          "id": "2026-09-28-basmatirice-dry-75g-1",
+          "name": "Basmati rice, dry",
+          "quantity": "75 g uncooked",
+          "kcal": 266.25,
+          "protein": 6.6,
+          "carbs": 58.5,
+          "fat": 0.375,
+          "fibre": 1.2,
+          "estimated": true,
+          "source": "Albert Heijn AH Basmatirijst product nutrition, accessed 28 Sep 2026.",
+          "note": "User reported 75 g uncooked basmati rice. Reference per 100 g dry: 355 kcal, 8.8 g protein, 78 g carbs, 0.5 g fat, 1.6 g fibre. Exact user brand not supplied."
+        },
+        {
+          "id": "2026-09-28-calve-yogonaise-15g-1",
+          "name": "Calvé Yogonaise",
+          "quantity": "15 g",
+          "kcal": 43,
+          "protein": 0.15,
+          "carbs": 1.8,
+          "fat": 3.9,
+          "estimated": true,
+          "source": "User-provided Calvé Yogonaise nutrition label image, 28 Sep 2026.",
+          "note": "User weighed 15 g. Label serving is 15 ml = 43 kcal, 3.9 g fat, 1.8 g carbs; protein derived from 1.0 g per 100 ml (~0.15 g per 15 ml). Logged 15 g as approximately one 15 ml labeled serving because density was not provided."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-09-28-push-a-1",
+          "sessionId": "push-a",
+          "name": "Push A",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "In-progress report: 4 sets incline DB press for chest, 3 sets taken to total muscular failure; 3 pec-focused dip sets taken to total muscular failure; 4 sets DB lateral raises, all taken to total muscular failure, with roughly the final 1–4 reps assisted by body swing to continue the eccentric/negative phase; 4 sets single-arm behind-the-head triceps extensions, all taken to total muscular failure. Reps and loads not reported yet. User confirmed on 29 Sep 2026 that the session was finished and the day was done.",
+          "actualExercises": [
+            {
+              "name": "Incline DB Press",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Dips",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "DB Lateral Raise",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm Behind-the-Head Triceps Extension",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Monday 28 Sep food log: 2 low-milk machine lattes, 250 ml Fuze Tea Low Cal Mango Chamomile, 1 Cup-a-Soup Tomaten Crème, 255 g cooked chicken breast, 75 g uncooked basmati rice, and 15 g Calvé Yogonaise. Some macro breakdowns remain unknown.",
+      "complete": false
+    },
+    "2026-09-29": {
+      "food": [
+        {
+          "id": "2026-09-29-optimel-yoghurt-drink-1",
+          "name": "Optimel Protein yoghurt drink — blueberry & vanilla",
+          "quantity": "1 full 1000 ml carton",
+          "kcal": 460,
+          "protein": 60,
+          "carbs": 43,
+          "fat": 0,
+          "estimated": false,
+          "source": "User-provided Optimel nutrition label image, 29 Sep 2026.",
+          "note": "Whole 1000 ml carton. Label per 100 ml: 46 kcal, 6.0 g protein, 4.3 g carbs, 0 g fat; sugars 3.9 g, salt 0.12 g."
+        },
+        {
+          "id": "2026-09-29-machine-lattes-1",
+          "name": "Machine latte — low powdered milk setting",
+          "quantity": "4 lattes",
+          "kcal": 140,
+          "protein": 2.8,
+          "carbs": 15,
+          "fat": 8,
+          "estimated": true,
+          "source": "Standardized office coffee-machine estimate updated 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal per latte; machine/product nutrition remains unconfirmed."
+        },
+        {
+          "id": "2026-09-29-cooked-basmati-rice-200g-1",
+          "name": "Basmati rice, cooked",
+          "quantity": "200 g cooked",
+          "kcal": 260,
+          "protein": 5.4,
+          "carbs": 56.4,
+          "fat": 0.6,
+          "estimated": true,
+          "source": "Generic cooked basmati rice estimate used on 29 Sep 2026.",
+          "note": "Estimated at approximately 130 kcal, 2.7 g protein, 28.2 g carbs and 0.3 g fat per 100 g cooked."
+        },
+        {
+          "id": "2026-09-29-cooked-chicken-breast-273g-1",
+          "name": "Chicken breast, cooked, skinless/boneless",
+          "quantity": "273 g cooked",
+          "kcal": 450.45,
+          "protein": 84.63,
+          "carbs": 0,
+          "fat": 9.828,
+          "estimated": true,
+          "source": "Generic cooked skinless chicken breast nutrition estimate consistent with prior saved entries.",
+          "note": "No added cooking fat. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-09-29-biceps-abs-1",
+          "sessionId": null,
+          "name": "Biceps + Abs",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Custom session reported by user on 29 Sep 2026. All 16 working sets were taken to muscular failure. Reps, loads and duration were not reported.",
+          "actualExercises": [
+            {
+              "name": "Hammer Curl",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm Preacher Curl",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm Behind-the-Body Cable Curl",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Cable Crunch",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Tuesday 29 Sep food log: full Optimel protein yoghurt drink, 4 low-milk machine lattes, 200 g cooked basmati rice, and 273 g cooked chicken breast with no added cooking fat.",
+      "complete": false
+    },
+    "2026-09-30": {
+      "food": [
+        {
+          "id": "2026-09-30-cooked-chicken-breast-164g-1",
+          "name": "Chicken breast, cooked, skinless/boneless",
+          "quantity": "164 g cooked",
+          "kcal": 270.6,
+          "protein": 50.84,
+          "carbs": 0,
+          "fat": 5.904,
+          "estimated": true,
+          "source": "Generic cooked skinless chicken breast nutrition estimate consistent with prior saved entries.",
+          "note": "User reported 164 g cooked chicken breast on 30 Sep 2026. Estimated at approximately 165 kcal, 31 g protein and 3.6 g fat per 100 g cooked; no added cooking fat included."
+        },
+        {
+          "id": "2026-09-30-high-protein-chocolate-drink-330ml-1",
+          "name": "High-protein chocolate milk drink",
+          "quantity": "330 ml",
+          "kcal": 178.2,
+          "protein": 24.75,
+          "carbs": 15.84,
+          "fat": 0.99,
+          "fibre": 2.97,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 30 Sep 2026.",
+          "note": "Label per 100 ml: 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. User reported 330 ml."
+        },
+        {
+          "id": "2026-09-30-starbucks-chilled-latte-110ml-1",
+          "name": "Starbucks chilled latte coffee drink",
+          "quantity": "110 ml",
+          "kcal": 68.2,
+          "protein": 2.2,
+          "carbs": 9.79,
+          "fat": 1.54,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 30 Sep 2026.",
+          "note": "User reported 110 ml. Label per 100 ml: 62 kcal, 2.0 g protein, 8.9 g carbs, 1.4 g fat; sugars 8.4 g, salt 0.09 g."
+        },
+        {
+          "id": "2026-09-30-pork-steak-lean-200g-1",
+          "name": "Pork steak, cooked, visible fat removed",
+          "quantity": "200 g",
+          "kcal": 360,
+          "protein": 53.52,
+          "carbs": 0,
+          "fat": 14.58,
+          "estimated": true,
+          "source": "USDA pork loin, center loin chop, separable lean only, cooked/broiled reference.",
+          "note": "Interpreted user typo 'no fta' as no visible fat. Used cooked lean-only pork reference: 180 kcal, 26.76 g protein, 7.29 g fat per 100 g. No added cooking fat included."
+        },
+        {
+          "id": "2026-09-30-baked-potato-half-medium-1",
+          "name": "Baked potato, half",
+          "quantity": "1/2 medium baked potato (~86.5 g edible)",
+          "kcal": 80.445,
+          "protein": 2.1625,
+          "carbs": 18.29475,
+          "fat": 0.11245,
+          "fibre": 1.903,
+          "estimated": true,
+          "source": "USDA baked potato, flesh and skin, without salt reference.",
+          "note": "User reported half a baked potato without a weight. Assumed half of a medium ~173 g baked potato = ~86.5 g. Reference per 100 g: 93 kcal, 2.5 g protein, 21.15 g carbs, 0.13 g fat, 2.2 g fibre."
+        },
+        {
+          "id": "2026-09-30-barbecue-sauce-60g-1",
+          "name": "Barbecue sauce",
+          "quantity": "60 g",
+          "kcal": 57,
+          "protein": 0.6,
+          "carbs": 13.2,
+          "fat": 0,
+          "fibre": 0.6,
+          "estimated": true,
+          "source": "Voedingscentrum generic barbecuesaus reference.",
+          "note": "User reported 60 g. Generic reference per 20 g: 19 kcal, 0.2 g protein, 4.4 g carbs, 0 g fat, 0.2 g fibre."
+        },
+        {
+          "id": "2026-09-30-machine-lattes-5-1",
+          "name": "Machine latte — low powdered milk setting",
+          "quantity": "5 lattes",
+          "kcal": 175,
+          "protein": 3.5,
+          "carbs": 18.75,
+          "fat": 10,
+          "estimated": true,
+          "source": "Standardized office coffee-machine estimate saved in tracker from 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal, 0.7 g protein, 3.75 g carbs and 2 g fat per latte; machine/product nutrition remains unconfirmed."
+        },
+        {
+          "id": "2026-09-30-fuze-tea-green-2x250ml-1",
+          "name": "Fuze Tea Green Tea",
+          "quantity": "2 × 250 ml cans (500 ml total)",
+          "kcal": 95,
+          "protein": 0,
+          "carbs": 22,
+          "fat": 0,
+          "estimated": true,
+          "source": "Coca-Cola Netherlands Fuze Tea Green Tea nutrition; volume inferred from user's previously logged 250 ml Fuze Tea cans.",
+          "note": "User reported 2 Green Tea Fuze Teas without size. Reused prior 250 ml can size. Current Coca-Cola NL listing per 100 ml: 19 kcal, 4.4 g carbs, 0 g protein, 0 g fat."
+        },
+        {
+          "id": "2026-09-30-high-protein-chocolate-drink-220ml-2",
+          "name": "High-protein chocolate milk drink",
+          "quantity": "220 ml",
+          "kcal": 118.8,
+          "protein": 16.5,
+          "carbs": 10.56,
+          "fat": 0.66,
+          "fibre": 1.98,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 30 Sep 2026.",
+          "note": "Additional 220 ml reported on 30 Sep 2026. Reused the same label: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-09-30-legs-abbreviated-1",
+          "sessionId": null,
+          "name": "Legs — abbreviated",
+          "status": "partial",
+          "durationMin": null,
+          "notes": "User stopped the session early because heart rate stayed around 150–160 bpm. Reps, loads and exact duration not reported.",
+          "actualExercises": [
+            {
+              "name": "Bulgarian Split Squat",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "RDL",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-leg Calf Raise",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Wednesday 30 Sep food log: 164 g cooked chicken breast and 330 ml high-protein chocolate milk drink from a user-provided nutrition label. Added: 110 ml Starbucks chilled latte drink, 200 g lean pork steak, half baked potato, 60 g barbecue sauce, 5 low-milk machine lattes, and 2 Fuze Tea Green Tea (assumed 250 ml each). Added another 220 ml high-protein chocolate milk drink. Workout: abbreviated leg session, stopped early because heart rate stayed around 150–160 bpm.",
+      "complete": false
+    },
+    "2026-10-01": {
+      "food": [
+        {
+          "id": "2026-10-01-lean-beef-taco-bowl-250g-1",
+          "name": "Lean beef taco bowl — mince + tomato mix",
+          "quantity": "250 g",
+          "kcal": 390.65,
+          "protein": 40.325,
+          "carbs": 6.325,
+          "fat": 22.15,
+          "fibre": 1.525,
+          "estimated": true,
+          "source": "Saved recipe lean-beef-taco-bowl-2026-09-22.",
+          "note": "250 g of the saved mince + tomato + taco-seasoning batch. Beef rendered fat was drained as thoroughly as practical. Uses the saved recipe estimate per 100 g: 156.26 kcal, 16.13 g protein, 2.53 g carbs, 8.86 g fat, 0.61 g fibre; the saved recipe intentionally does not credit an extra calorie/fat reduction for drainage."
+        },
+        {
+          "id": "2026-10-01-optimel-protein-yoghurt-drink-1l-1",
+          "name": "Optimel Protein yoghurt drink — blueberry & vanilla",
+          "quantity": "1 full 1000 ml carton",
+          "kcal": 460,
+          "protein": 60,
+          "carbs": 43,
+          "fat": 0,
+          "estimated": false,
+          "source": "Previously saved user-provided Optimel nutrition label image, 29 Sep 2026.",
+          "note": "Reused the saved full-carton label values for the user's usual protein yoghurt: per 100 ml 46 kcal, 6.0 g protein, 4.3 g carbs, 0 g fat."
+        },
+        {
+          "id": "2026-10-01-ah-coffee-milk-drink-250ml-1",
+          "name": "AH coffee milk drink — Arabica coffee & cream",
+          "quantity": "250 ml",
+          "kcal": 200,
+          "protein": 6.25,
+          "carbs": 21.25,
+          "fat": 10,
+          "estimated": false,
+          "source": "User-provided Albert Heijn nutrition label image, 1 Oct 2026.",
+          "note": "Full 250 ml cup. Label per 100 ml: 80 kcal, 4.0 g fat, 8.5 g carbs, 2.5 g protein; sugars 8.5 g, salt 0.18 g."
+        },
+        {
+          "id": "2026-10-01-ah-krokante-kipschnitzel-2-1",
+          "name": "AH voorgegaarde krokante kipschnitzel",
+          "quantity": "2 schnitzels (200 g total)",
+          "kcal": 374,
+          "protein": 30,
+          "carbs": 36,
+          "fat": 12,
+          "fibre": 1.2,
+          "estimated": false,
+          "source": "User-provided Albert Heijn nutrition label image, 1 Oct 2026.",
+          "note": "Full 200 g pack / 2 schnitzels. Label per 100 g: 187 kcal, 6.0 g fat, 18 g carbs, 15 g protein, 0.6 g fibre, 1.28 g salt."
+        },
+        {
+          "id": "2026-10-01-high-protein-chocolate-drink-330ml-1",
+          "name": "High-protein chocolate milk drink",
+          "quantity": "330 ml",
+          "kcal": 178.2,
+          "protein": 24.75,
+          "carbs": 15.84,
+          "fat": 0.99,
+          "fibre": 2.97,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 30 Sep 2026.",
+          "note": "Albert Heijn high-protein chocolate milk drink. Reused the saved label from 30 Sep 2026: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. User reported 330 ml on 1 Oct 2026."
+        },
+        {
+          "id": "2026-10-01-halfvolle-milk-120ml-1",
+          "name": "Medium-fat milk (halfvolle melk)",
+          "quantity": "120 ml",
+          "kcal": 53.76,
+          "protein": 4.08,
+          "carbs": 5.68,
+          "fat": 1.68,
+          "estimated": true,
+          "source": "Voedingscentrum generic halfvolle melk reference, accessed 27 Sep 2026.",
+          "note": "User reported 120 ml halfvolle melk. Scaled consistently from the previously saved generic halfvolle-melk reference used on 27 Sep 2026."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Thursday 1 Oct food log: 250 g saved lean beef taco mince/tomato batch (rendered fat drained), 1 full Optimel Protein yoghurt drink carton, 250 ml AH coffee milk drink, 2 AH crispy chicken schnitzels (200 g total), 330 ml AH high-protein chocolate milk drink, and 120 ml halfvolle melk.",
+      "complete": false
+    },
+    "2026-10-02": {
+      "food": [
+        {
+          "id": "2026-10-02-frikandelbroodje-70g-filling-15g-pastry-1",
+          "name": "Frikandelbroodje — mostly filling",
+          "quantity": "85 g eaten: ~70 g frikandel filling + ~15 g puff pastry",
+          "kcal": 250.97,
+          "protein": 10.79,
+          "carbs": 11.67,
+          "fat": 17.47,
+          "fibre": 1.53,
+          "estimated": true,
+          "source": "Voedingscentrum generic frikandel, gefrituurd + bladerdeeg references, accessed 2 Oct 2026.",
+          "note": "User removed nearly all pastry and estimated the eaten portion as 70 g sausage filling + 15 g dough/pastry. Estimate uses Voedingscentrum frikandel, gefrituurd (181 kcal, 9.9 g protein, 4.8 g carbs, 13.2 g fat, 1.3 g fibre per 72 g) plus bladerdeeg (225 kcal, 3.5 g protein, 21 g carbs, 13.9 g fat, 0.8 g fibre per 45 g)."
+        },
+        {
+          "id": "2026-10-02-high-protein-chocolate-drink-330ml-1",
+          "name": "High-protein chocolate milk drink",
+          "quantity": "1 full 330 ml bottle",
+          "kcal": 221.1,
+          "protein": 34.98,
+          "carbs": 17.49,
+          "fat": 0.99,
+          "fibre": 1.32,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 2 Oct 2026.",
+          "note": "Whole 330 ml bottle. Label per 100 ml: 67 kcal, 10.6 g protein, 5.3 g carbs, 0.3 g fat, 0.4 g fibre. Front/back label also states 35 g protein per 330 ml bottle."
+        },
+        {
+          "id": "2026-10-02-protein-bar-55g-1",
+          "name": "Protein bar",
+          "quantity": "1 bar (55 g)",
+          "kcal": 224,
+          "protein": 16.5,
+          "carbs": 20.4,
+          "fat": 8.3,
+          "fibre": 1.4,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 2 Oct 2026.",
+          "note": "Full 55 g bar. Label per bar: 224 kcal, 16.5 g protein, 20.4 g carbs, 8.3 g fat, 1.4 g fibre; sugars 18.1 g."
+        },
+        {
+          "id": "2026-10-02-lean-beef-taco-bowl-134g-1",
+          "name": "Lean beef taco bowl",
+          "quantity": "134 g",
+          "kcal": 210,
+          "protein": 21.6,
+          "carbs": 3.4,
+          "fat": 11.9,
+          "estimated": true,
+          "source": "Legacy Notion Food Log entry for 2 Oct 2026; values scaled from saved lean-beef-taco-bowl-2026-09-22 recipe.",
+          "note": "Imported from the user's 2 Oct Notion food log after explicit confirmation. Notion recorded 134 g, 210 kcal, 21.6 g protein, 3.4 g carbs and 11.9 g fat; fat was drained. Values are consistent with the saved batch estimate.",
+          "recipeId": "lean-beef-taco-bowl-2026-09-22"
+        },
+        {
+          "id": "2026-10-02-magere-kwark-1kg-1",
+          "name": "Magere kwark naturel",
+          "quantity": "1 full 1000 g tub",
+          "kcal": 550,
+          "protein": 100,
+          "carbs": 27,
+          "fat": 1,
+          "estimated": false,
+          "source": "Legacy Notion Food Log entry for 2 Oct 2026, based on user-provided nutrition label photo.",
+          "note": "Imported from the user's 2 Oct Notion food log after explicit confirmation. Entire 1 kg tub. Label per 100 g: 55 kcal, 0.1 g fat, 2.7 g carbs, 10 g protein."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-10-02-back-biceps-custom-1",
+          "sessionId": null,
+          "name": "Back + Biceps",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Custom session reported by user on 2 Oct 2026. Exact reps, loads and duration not reported.",
+          "actualExercises": [
+            {
+              "name": "Lat Pulldown",
+              "sets": 6,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "V-bar Pulldown",
+              "sets": 6,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Curls",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Hammer Curl",
+              "sets": 2,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Friday 2 Oct food log: 85 g modified frikandelbroodje portion (~70 g frikandel filling + ~15 g puff pastry), 1 full 330 ml high-protein chocolate milk drink, 1 protein bar (55 g), 134 g lean beef taco bowl, and 1 full 1 kg tub magere kwark naturel. Workout: Back + Biceps — 6 sets lat pulldown, 6 sets V-bar pulldown, 4 sets curls, 2 sets hammer curls.",
+      "complete": false
+    },
+    "2026-10-03": {
+      "food": [
+        {
+          "id": "2026-10-03-fish-3-5-pieces-472-5g-1",
+          "name": "Fish",
+          "quantity": "3.5 of 5 pieces (~472.5 g; 70% of 675 g pack)",
+          "kcal": 637.875,
+          "protein": 80.325,
+          "carbs": 8.505,
+          "fat": 20.79,
+          "estimated": false,
+          "source": "User-provided fish nutrition label image, 3 Oct 2026.",
+          "note": "Pack contained 5 pieces and weighed 675 g total. User initially ate 2.5 pieces, then reported 1 additional piece, for 3.5/5 pieces total. Assuming equal-weight pieces: ~135 g each, ~472.5 g eaten. Label per 100 g: 135 kcal, 17 g protein, 1.8 g carbs, 4.4 g fat."
+        },
+        {
+          "id": "2026-10-03-scrambled-eggs-2-5-1",
+          "name": "Scrambled eggs — no added oil",
+          "quantity": "2.5 eggs",
+          "kcal": 180,
+          "protein": 15.75,
+          "carbs": 0.9,
+          "fat": 12,
+          "estimated": true,
+          "source": "Generic large whole-egg estimate.",
+          "note": "User reported 2.5 scrambled eggs with no oil added. Estimated using ~72 kcal, 6.3 g protein, 0.36 g carbs and 4.8 g fat per large egg."
+        },
+        {
+          "id": "2026-10-03-ah-krokante-kipschnitzel-2-1",
+          "name": "AH voorgegaarde krokante kipschnitzel",
+          "quantity": "2 schnitzels (200 g total)",
+          "kcal": 374,
+          "protein": 30,
+          "carbs": 36,
+          "fat": 12,
+          "fibre": 1.2,
+          "estimated": false,
+          "source": "User-provided Albert Heijn nutrition label image, 1 Oct 2026; reused on 3 Oct 2026.",
+          "note": "Same schnitzels logged earlier in the week. Full 200 g pack / 2 schnitzels. Label per 100 g: 187 kcal, 6.0 g fat, 18 g carbs, 15 g protein, 0.6 g fibre."
+        },
+        {
+          "id": "2026-10-03-douwe-egberts-ice-caramel-latte-230ml-1",
+          "name": "Douwe Egberts ICE Caramel Latte",
+          "quantity": "1 cup (230 ml)",
+          "kcal": 135.7,
+          "protein": 7.36,
+          "carbs": 19.32,
+          "fat": 2.99,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 3 Oct 2026.",
+          "note": "Label per 100 ml: 59 kcal, 3.2 g protein, 8.4 g carbs, 1.3 g fat. Full cup is 230 ml."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Saturday 3 Oct food log: 3.5 of 5 pieces from a 675 g fish pack (~472.5 g total), 2.5 scrambled eggs with no added oil, and 2 AH crispy chicken schnitzels (200 g total), plus 1 Douwe Egberts ICE Caramel Latte (230 ml).",
+      "complete": false
+    },
+    "2026-10-04": {
+      "food": [
+        {
+          "id": "2026-10-04-banana-kwark-500g-1",
+          "name": "Milde magere kwark met banaan",
+          "quantity": "1 full 500 g tub",
+          "kcal": 345,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "fibre": null,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 4 Oct 2026.",
+          "note": "Label per 100 g: 69 kcal, 9.3 g protein, 7.0 g carbs, 0.1 g fat. Full 500 g tub."
+        },
+        {
+          "id": "2026-10-04-seasoned-chicken-250g-1",
+          "name": "Seasoned chicken breast batch",
+          "quantity": "250 g",
+          "kcal": 320.2,
+          "protein": 54.9,
+          "carbs": 6.66,
+          "fat": 6.43,
+          "fibre": 0.33,
+          "estimated": true,
+          "source": "Saved 4 Oct chicken batch recipe; cooked yield not yet supplied.",
+          "note": "Provisional portion calculation until final cooked batch weight is provided.",
+          "recipeId": "seasoned-chicken-breast-2026-10-04"
+        },
+        {
+          "id": "2026-10-04-sesame-oil-15g-1",
+          "name": "Sesame oil",
+          "quantity": "15 g",
+          "kcal": 132.6,
+          "protein": 0,
+          "carbs": 0,
+          "fat": 15,
+          "fibre": 0,
+          "estimated": true,
+          "source": "Generic sesame oil reference.",
+          "note": "15 g; estimated at 884 kcal per 100 g."
+        },
+        {
+          "id": "2026-10-04-goudstroop-mixed-stroopwafel-1",
+          "name": "Goudstroop Markthal stroopwafel mix",
+          "quantity": "50% white-chocolate fresh stroopwafel + 40% original fresh stroopwafel",
+          "kcal": 320,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "fibre": null,
+          "estimated": true,
+          "source": "Goudstroop Markthal identification + generic stroopwafel nutrition reference.",
+          "note": "Goudstroop does not publish exact weight/nutrition. 320 kcal midpoint estimate allows extra calories for white-chocolate topping."
+        },
+        {
+          "id": "2026-10-04-taco-bell-crispy-chicken-burrito-1",
+          "name": "Taco Bell NL Crispy Chicken Burrito",
+          "quantity": "1 medium-large burrito",
+          "kcal": 500,
+          "protein": 24,
+          "carbs": 55,
+          "fat": 22,
+          "fibre": 3,
+          "estimated": true,
+          "source": "Taco Bell Rotterdam menu identification + comparable crispy chicken burrito nutrition.",
+          "note": "Description matched crispy chicken, greens/lettuce, cheese and no beans. Exact NL nutrition/portion unavailable; estimate retained."
+        },
+        {
+          "id": "2026-10-04-taco-bell-chicken-bites-2-1",
+          "name": "Taco Bell Chicken Bites",
+          "quantity": "2 pieces",
+          "kcal": 104,
+          "protein": 4,
+          "carbs": null,
+          "fat": null,
+          "fibre": null,
+          "estimated": true,
+          "source": "Exact item identified from user screenshot; Taco Bell UK nutrition reference used for calories.",
+          "note": "52 kcal per bite reference; 2 eaten. Other macros left unknown rather than guessed."
+        },
+        {
+          "id": "2026-10-04-taco-bell-nacho-cheese-15g-1",
+          "name": "Taco Bell Nacho Cheese Sauce",
+          "quantity": "~15 g",
+          "kcal": 42,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "fibre": null,
+          "estimated": true,
+          "source": "Taco Bell nutrition reference scaled to approximately half a side portion.",
+          "note": "User estimated about 15 g dip. Logged as 42 kcal."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Partial Sunday 4 Oct food log. Includes banana kwark, 250 g provisional seasoned-chicken batch portion + 15 g sesame oil, Goudstroop fresh stroopwafel portions, Taco Bell crispy chicken burrito, 2 Chicken Bites and ~15 g Nacho Cheese Sauce.",
       "complete": false
     }
   },
@@ -445,6 +1709,34 @@
       "estimated": true,
       "source": "Existing recipe record, verified 22 September 2026.",
       "note": "Conservative generic Dutch lean-beef estimate. No reduction credited for drained rendered fat. Update from product labels if supplied."
+    },
+    {
+      "id": "seasoned-chicken-breast-2026-10-04",
+      "name": "Seasoned chicken breast batch — 4 Oct 2026",
+      "yieldG": null,
+      "ingredients": [
+        {
+          "name": "Raw skinless chicken breast",
+          "quantity": "1320 g",
+          "note": "Generic raw chicken-breast nutrition estimate used until exact product label is available."
+        },
+        {
+          "name": "Seasoning/coating mix",
+          "quantity": "50 g",
+          "note": "User-provided label: 341 kcal, 1.3 g fat, 73 g carbs, 3.6 g fibre, 7.5 g protein per 100 g."
+        }
+      ],
+      "total": {
+        "kcal": 1754.5,
+        "protein": 300.75,
+        "carbs": 36.5,
+        "fat": 35.234,
+        "fibre": 1.8
+      },
+      "per100g": null,
+      "estimated": true,
+      "source": "User report and seasoning label, 4 Oct 2026; generic raw chicken breast estimate.",
+      "note": "Final cooked yield still needed. Once supplied, calculate cooked per-100g nutrition and correct provisional portions."
     }
   ],
   "provenance": {

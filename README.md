@@ -1,43 +1,64 @@
-# Cam’s Health
+# Cam’s Life
 
-A static fitness tracker. GitHub is the source of truth. No application backend, database, or AI key is required.
-
-The canonical record is `dist/data/health.json`. Read `AGENTS.md` before logging through chat. This repository is public; records committed here are public too.
+A personal workspace for health, inbox, deliveries, to-dos, and a sourced daily fact.
 
 **Open the app:** https://cams-health.cameronnel111.chatgpt.site
 
-## Use it
+Your existing health record remains at `dist/data/health.json` on `CameronNel/Cam-s-Health/main`. This overhaul does not alter that file or its history. Read `AGENTS.md` before logging through chat.
 
-Tell ChatGPT what you ate, your step total or what you trained. With this repository's GitHub connection, it reads the latest record, commits your update, and replies with daily totals. In a new conversation, share this repo and ask it to read `AGENTS.md`. The app retrieves the updated JSON directly from GitHub; no redeployment is required for food/activity changes.
+## The app
 
-- Daily calories, macros, step goal, water and body weight.
-- Food records with quantities, estimates, correction and deletion.
-- Portion logging from saved recipes.
-- Existing Push/Pull/Legs A/B rotation, rest, exercise prescriptions, completed sessions and durations.
-- Date navigation, history, daily brief, print/PDF and JSON export.
-- Refresh on opening, returning to the tab, every five minutes, or manually.
-- Optional direct editing with a fine-grained GitHub token for this repo, Contents: Read and write. The token stays in memory for the current tab and is never stored or embedded. Chat logging needs no token in the app.
+- **Today:** health totals, open tasks, expected packages and the daily fact.
+- **Health:** existing food/recipes, calories/macros, water/steps, workouts/rotation, body measurements and exports. Optional check-ins add mood, energy, sleep, feelings and device-reported skeletal muscle. Trends use actual dates and known readings. Weight extrapolation requires five dates spanning at least a week; missing values stay unknown.
+- **Inbox:** Gmail OAuth, a bounded mailbox scan, attention/noise classification, an action brief, delivery extraction, and reviewed archive/mark-read/Trash operations. Every mailbox change requires selecting exact messages and clicking confirm. There is no permanent-delete API.
+- **Life:** durable private to-dos, deliveries and pickup/Cipio/PIN codes, pickup completion, and 20 source-linked facts with favorites.
+- **Ask:** free, deterministic parsing of explicit check-ins, followed by review and a verified GitHub save. Deeper questions, meal interpretation and photo analysis use a copy-and-open ChatGPT handoff with the user's existing subscription. Photos stay in the current tab and are not uploaded or stored by this app.
 
-## Mobile experience
+Main tabs have responsive desktop/mobile navigation, light/dark appearance, keyboard focus, reduced-motion support, and retained legacy health routes.
 
-The app is designed for phones first. Home combines daily nutrition, activity tiles and compact food/workout summaries. Tap a meal for its nutrition and source notes. Tap a workout for the full prescription, or hold for 450 ms to preview; moving your finger cancels the hold so scrolling stays natural. An eye button provides the same preview without a gesture.
+## No paid AI requirement
 
-Detail pages support Back navigation, preview/form sheets support dismissal, and dates have a Today reset. Log again prefills a repeated meal for review before saving. Background refresh leaves active forms alone. The seven-day chart lives in History rather than crowding Home.
+A ChatGPT subscription does not include OpenAI API credits or an API that can be embedded in this app. The release makes no OpenAI API calls and requires no OpenAI key. Local parsing is explicitly labelled; it does not pretend to be ChatGPT. The ChatGPT handoff requires a copy/paste step and an existing GitHub connection to update the health record. Refresh the app after ChatGPT saves.
 
-## Persistence and limits
+An enabled **Cam’s Life · hourly inbox brief** ChatGPT task scans the connected Gmail mailbox hourly in Europe/Amsterdam and notifies on meaningful new actions/delivery changes. Its briefs arrive in ChatGPT, not automatically in the app's D1 inbox state. Creating the task does not prove that its first run has completed. Existing paused fitness tasks remain paused.
 
-GitHub JSON plus commit history are persistent storage. Local storage only caches the last read for connection failures, with a stale-data warning. Saves re-read the current file, preserve unrelated records, and use the GitHub blob SHA to detect concurrent updates. No AI runs inside the static app; conversational interpretation happens in ChatGPT. Nothing automatically tracks a phone/watch, and unknown activity stays unlogged. Nutrition estimates are not laboratory measurements.
+## Storage and privacy
 
-The hosted app is owner-private; the GitHub repository and its committed records are public. Changing the app audience does not change repository visibility. If you make the repository private, browser reading needs an authorized GitHub token and historical public exposure is not undone.
+Health uses the original GitHub store: fetch latest data, apply a minimal conflict-checked mutation, validate it, write with the blob SHA, and verify the immutable commit before reporting success. Browser GitHub tokens stay in memory and are sent only to GitHub. Local storage is a fallback cache with explicit stale/error states.
 
-The first import contains the four actual September 22 food records and current Notion targets/program. No workout completion, steps or measurements were invented. The mini-meatball nutrition inconsistency is flagged for review. GitHub becomes the active tracker; Notion is not automatically kept in sync.
+**The existing health repository is public.** Food, workouts and health check-ins committed there are public. The hosted app's owner-only access does not change repository visibility. Keep sensitive personal narrative and progress photos out of GitHub.
 
-## Development / alternate hosting
+Tasks, delivery codes, favorites, mailbox metadata and encrypted Google refresh tokens use private, visitor-scoped D1 storage. APIs require Sites' trusted authenticated identity and exact same-origin checks for writes. State writes use version checks to prevent overwriting concurrent edits. No mailbox data is committed to the public repo. Google refresh tokens use AES-GCM with owner-bound authenticated data; reconnect/disconnect invalidates pending cleanup approvals.
+
+## Gmail setup
+
+Direct in-app Gmail scans require a Google OAuth web application. The ChatGPT Gmail connection is separate and cannot be copied into the app.
+
+1. In [Google Cloud Console](https://console.cloud.google.com/), enable Gmail API, configure the OAuth consent screen, add your own Google account as a test user when appropriate, and create a Web application OAuth client.
+2. Add this exact authorized redirect URI: `https://cams-health.cameronnel111.chatgpt.site/api/inbox/callback`.
+3. Configure `GOOGLE_CLIENT_ID` and secret `GOOGLE_CLIENT_SECRET` as Sites runtime values. `LIFE_ENCRYPTION_KEY` is a separate 32-byte base64url server secret; never commit it. A local `.env.example` lists names only.
+4. Redeploy the saved app version so runtime changes take effect, then use **Inbox → Connect Gmail**. The requested scope is `gmail.modify`, supporting reads and reviewed recoverable actions. Google may require verification for broader distribution. This app remains owner-private.
+
+Gmail sign-in has clear unavailable/error states until those values exist. No user mailbox is read or modified during build/tests. Direct server-hourly sync remains disabled: the exported scheduled entry needs an actual configured and verified scheduler, not just a browser timer or environment flag. The subscription-based task above runs independently.
+
+## Development
+
+Requires Node >=22.13; Node 24 is recommended for the SQLite-backed backend tests.
 
 ```sh
-npm run dev -- --port 5173
+npm ci
 npm test
 npm run validate
+npm run dev:life -- --port 5173
+npm run build
 ```
 
-There are no package dependencies or build step. Serve the `dist/` directory on any static host. It can also be published with GitHub Pages using an Actions workflow that uploads `dist/`, after enabling Pages in repository settings. No server, API key or database needs to be deployed. UI source changes require publishing the static files; data updates do not.
+`dev:life` serves loopback only and uses `.sites-runtime/life-dev.sqlite`. Its mock identity is local-only and never part of the Worker build. The original `npm run dev` remains a static-health preview.
+
+`npm run build` emits the Cloudflare-compatible Worker and assets under `.sites-runtime/build`. Source schema lives in `db/schema.ts`; generate append-only production migrations with `npm run db:generate`. Sites owns the real D1 resource. Include `.openai/hosting.json`, `dist/server`, `dist/client`, and `drizzle` in the deployment archive. Never include local runtime state or secrets.
+
+Verification: 118 meaningful regression checks cover retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed single-use mailbox actions, and preservation of completed tasks/deliveries. Desktop and 390px touch-browser checks exercise navigation, durable task/package save and completion, check-in review, and the ChatGPT handoff. Production Gmail consent/reads/writes remain unverified until Google setup is completed.
+
+## Repository name
+
+The product and package are named Cam’s Life. The GitHub repository remains `CameronNel/Cam-s-Health`: admin permission was confirmed, but this session's GitHub tool set has no repository-rename operation and the direct GitHub CLI API is unavailable. No repository or URL is assumed to have been renamed. If renamed later, update `REPO` in `dist/model.js`, documentation, token guidance and automation prompts together; preserve the original health data and GitHub redirects.

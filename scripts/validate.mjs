@@ -1,5 +1,6 @@
 import {readFile} from 'node:fs/promises';
-import {validate,totals} from '../dist/model.js';
-const data=validate(JSON.parse(await readFile(new URL('../dist/data/health.json',import.meta.url),'utf8')));
-for(const [date,day]of Object.entries(data.days))console.log(date,JSON.stringify(totals(day)));
-console.log('Health data validated.');
+import {validateLifeHealth} from '../dist/health-intelligence.js';
+import {totals} from '../dist/model.js';
+const data=validateLifeHealth(JSON.parse(await readFile(process.argv[2]||'dist/data/health.json','utf8')));
+console.log('VALID: schema, unique entry IDs, body measurements, and workout status.');
+for(const [date,day] of Object.entries(data.days))console.log(date, JSON.stringify(totals(day)));
