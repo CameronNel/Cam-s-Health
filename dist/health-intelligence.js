@@ -132,6 +132,7 @@ export function healthInsights(data, date) {
 
 const ACTION_KEYS = {
   add_food:['type','id','name','quantity','kcal','protein','carbs','fat','estimated','source','note'],
+  update_food:['type','id','name','quantity','kcal','protein','carbs','fat','estimated','source','note'],
   set_metrics:['type','steps','waterMl','weightKg'],
   set_body:['type','bodyFatPct','skeletalMuscleKg','method','measurementsCm','notes'],
   set_wellbeing:['type','mood','energy','sleepHours','feelings'],
@@ -144,6 +145,14 @@ function validateAction(action, data) {
   if (Object.keys(action).length < 2) throw Error(`${action.type} does not contain a value to record.`);
   if (own(action, 'id')) text(action.id, 'Entry id', 200, true);
   switch (action.type) {
+    case 'update_food':
+      text(action.id, 'Entry id', 200, true);
+      if (own(action, 'name')) text(action.name, 'Food name', 300, true);
+      for (const key of ['quantity','source','note']) if (own(action, key)) text(action[key], `Food ${key}`, key === 'note' ? 2000 : 500);
+      for (const key of NUTRIENTS) if (own(action, key)) bounded(action[key], `Food ${key}`, 0, key === 'kcal' ? 30000 : 3000);
+      if (own(action, 'estimated') && typeof action.estimated !== 'boolean') throw Error('estimated must be true or false.');
+      if (action.estimated === true && (!action.source?.trim() || !action.note?.trim())) throw Error('Estimated food needs a source and a note describing its assumptions.');
+      break;
     case 'add_food':
       text(action.name, 'Food name', 300, true);
       for (const key of ['quantity','source','note']) if (own(action, key)) text(action[key], `Food ${key}`, key === 'note' ? 2000 : 500);
@@ -220,6 +229,8 @@ export function prepareHealthProposal(data, date, actions, {idFactory = defaultI
         kcal:action.kcal ?? null, protein:action.protein ?? null, carbs:action.carbs ?? null, fat:action.fat ?? null,
         estimated:action.estimated ?? false, source:action.source ?? '', note:action.note ?? ''
       } : {id, sessionId:action.sessionId ?? null, name:action.name.trim(), status:action.status, durationMin:action.durationMin ?? null, notes:action.notes ?? ''};
+      if (kind === 'food' && NUTRIENTS.every(key => entry[key] != null)
+        && Math.abs(entry.kcal - (4 * entry.protein + 4 * entry.carbs + 9 * entry.fat)) > Math.max(25, entry.kcal * .1)) entry.reviewRequired = true;
       const existing = [...day.food, ...day.workouts].find(value => value.id === id);
       if (existing) {
         if (day[kind].some(value => value.id === id) && JSON.stringify(existing) === JSON.stringify(entry)) return;
@@ -227,6 +238,14 @@ export function prepareHealthProposal(data, date, actions, {idFactory = defaultI
       }
       day[kind].push(entry);
       addChange(['days', date, kind], null, entry, `${kind === 'food' ? 'Add food' : 'Add workout'}: ${entry.name}`, {kind:'append', id});
+    } else if (action.type === 'update_food') {
+      // A correction edits the existing entry in place; it never appends a second meal.
+      const entry = day.food.find(value => value.id === action.id);
+      if (!entry) throw Error(`There is no food entry ${action.id} on ${date} to update.`);
+      const before = clone(entry);
+      for (const key of ['name','quantity','kcal','protein','carbs','fat','estimated','source','note']) if (own(action, key)) entry[key] = key === 'name' ? action.name.trim() : action[key];
+      if (NUTRIENTS.every(key => entry[key] != null) && Math.abs(entry.kcal - (4 * entry.protein + 4 * entry.carbs + 9 * entry.fat)) > Math.max(25, entry.kcal * .1)) entry.reviewRequired = true;
+      if (JSON.stringify(before) !== JSON.stringify(entry)) changes.push({path:['days', date, 'food', entry.id], before, after:clone(entry), label:`Update food: ${entry.name}`, kind:'edit', id:entry.id});
     } else if (action.type === 'set_metrics') {
       for (const key of ['steps','waterMl','weightKg']) if (own(action, key)) set(day, key, action[key], ['days', date]);
     } else if (action.type === 'set_body') {
@@ -250,7 +269,12 @@ export function prepareHealthProposal(data, date, actions, {idFactory = defaultI
     validateLifeHealth(current);
     // Check every precondition before mutating so conflicts do not cause a partial write.
     for (const change of effectiveChanges) {
-      if (change.kind === 'append') {
+      if (change.kind === 'edit') {
+        const currentEntry = dayFor(current, date).food.find(entry => entry.id === change.id);
+        if (!currentEntry) throw Error('This food entry no longer exists. Nothing was overwritten.');
+        // A previously successful apply is a no-op; any other difference is a conflict.
+        if (JSON.stringify(currentEntry) !== JSON.stringify(change.after)) assertUnchanged(currentEntry, change.before);
+      } else if (change.kind === 'append') {
         const currentDay = dayFor(current, date);
         const duplicate = [...currentDay.food, ...currentDay.workouts].find(entry => entry.id === change.id);
         if (duplicate) assertUnchanged(duplicate, change.after);
@@ -264,7 +288,10 @@ export function prepareHealthProposal(data, date, actions, {idFactory = defaultI
     const result = clone(current);
     for (const change of effectiveChanges) {
       const currentDay = ensureDay(result, date);
-      if (change.kind === 'append') {
+      if (change.kind === 'edit') {
+        const index = currentDay.food.findIndex(entry => entry.id === change.id);
+        currentDay.food[index] = clone(change.after);
+      } else if (change.kind === 'append') {
         const kind = change.path.at(-1);
         if (!currentDay[kind].some(entry => entry.id === change.id)) currentDay[kind].push(clone(change.after));
       } else {
