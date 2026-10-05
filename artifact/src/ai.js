@@ -34,7 +34,7 @@ const brief = (data, date) => {
 export function buildContext(data, date) {
   const day = dayFor(data, date);
   const recent = [];
-  for (let i = 1; i <= 6; i++) recent.push(brief(data, shiftDate(date, -i)));
+  for (let i = 1; i <= 13; i++) { const d = shiftDate(date, -i); if (data.days[d]) recent.push({...brief(data, d), bodyFatPct: data.days[d].body?.bodyFatPct ?? null, bodyMethod: data.days[d].body?.method ?? null, skeletalMuscleKg: data.days[d].body?.skeletalMuscleKg ?? null, mood: data.days[d].wellbeing?.mood ?? null, energy: data.days[d].wellbeing?.energy ?? null, sleepHours: data.days[d].wellbeing?.sleepHours ?? null, workouts: data.days[d].workouts.map(w => w.name + ' (' + w.status + ')')}); }
   return {
     selectedDate: date,
     profile: {targets: data.profile.targets, trainingStatus: data.profile.trainingStatus, trainingNote: data.profile.trainingNote, heightCm: data.profile.heightCm ?? null},
