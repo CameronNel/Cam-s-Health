@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-05T18:55:53.340Z",
+  "updatedAt": "2026-10-05T19:51:35.083Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -11,8 +11,8 @@
       "fat": 50,
       "steps": 10000
     },
-    "trainingStatus": "awaiting clearance",
-    "trainingNote": "Exercise clearance has not been confirmed. The stored program is a prescription, not a completed workout or confirmation that training can begin.",
+    "trainingStatus": "ready",
+    "trainingNote": "Training status explicitly updated by the user in app settings.",
     "equipment": [
       "Single cable station",
       "Rack",
@@ -20,7 +20,8 @@
       "Dumbbells up to 20 kg"
     ],
     "equipmentNote": "Normal barbell bench pressing is unavailable with the current setup.",
-    "source": "Cut targets updated 25 Sep 2026 from current 65.5 kg body weight, 12.5% Galaxy Watch BIA trend baseline, and evidence for higher protein intake during energy restriction. Calorie target held at 1,900 pending weight-trend-derived maintenance."
+    "source": "Cut targets updated 25 Sep 2026 from current 65.5 kg body weight, 12.5% Galaxy Watch BIA trend baseline, and evidence for higher protein intake during energy restriction. Calorie target held at 1,900 pending weight-trend-derived maintenance.",
+    "heightCm": null
   },
   "training": {
     "rotation": [

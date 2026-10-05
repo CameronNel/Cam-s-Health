@@ -15,6 +15,12 @@ export const mailboxAccounts = sqliteTable('mailbox_accounts', {
   updatedAt: text('updated_at').notNull(),
 });
 
+export const mailboxOauthClients = sqliteTable('mailbox_oauth_clients', {
+  ownerId: text('owner_id').primaryKey().notNull(),
+  encryptedClient: text('encrypted_client').notNull(),
+  updatedAt: text('updated_at').notNull(),
+});
+
 export const oauthStates = sqliteTable('oauth_states', {
   stateHash: text('state_hash').primaryKey().notNull(),
   ownerId: text('owner_id').notNull(),

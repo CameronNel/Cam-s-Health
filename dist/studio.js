@@ -132,7 +132,7 @@ const TOKEN_URL='https://github.com/settings/personal-access-tokens/new?name=Cam
 let returnFocus=null,dirty=false,closingFromHistory=false;
 function openSheet(title,content,setup=()=>{}) {
   if(!sheet.open){returnFocus=document.activeElement;history.pushState({...history.state,sheet:true},'');}
-  dirty=false;sheet.innerHTML=`<div class="sheet-grip"></div><header class="sheet-head"><h2 id="sheet-title">${title}</h2>${iconButton('Close dialog','close-sheet','close')}</header><div class="sheet-content">${content}</div><div class="discard-confirm" hidden><b>Discard unsaved changes?</b><p>These edits have not been saved to GitHub.</p><div class="form-actions">${button('Keep editing','keep-editing','','btn secondary')}${button('Discard','discard','','btn danger')}</div></div>`;
+  dirty=false;sheet.innerHTML=`<div class="sheet-grip"></div><header class="sheet-head"><h2 id="sheet-title">${title}</h2>${iconButton('Close dialog','close-sheet','close')}</header><div class="sheet-content">${content}</div><div class="discard-confirm" hidden><b>Discard unsaved changes?</b><p>These changes have not been saved.</p><div class="form-actions">${button('Keep editing','keep-editing','','btn secondary')}${button('Discard','discard','','btn danger')}</div></div>`;
   sheet.setAttribute('aria-labelledby','sheet-title');document.body.classList.add('sheet-open');
   if(!sheet.open)sheet.showModal();sheet.scrollTop=0;setup();
 }
