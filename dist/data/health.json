@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-05T19:51:35.083Z",
+  "updatedAt": "2026-10-05T20:31:20.909Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1688,22 +1688,60 @@
         },
         {
           "id": "food-bddb5435-675b-4b22-9a88-f8a5d328cb5d",
-          "name": "80g of chicken breast left extremely long in the oven",
-          "quantity": "",
-          "kcal": null,
-          "protein": null,
-          "carbs": null,
-          "fat": null,
+          "name": "Very dry oven-baked chicken breast",
+          "quantity": "80 g cooked weight",
+          "kcal": 175,
+          "protein": 30.4,
+          "carbs": 3.7,
+          "fat": 3.6,
+          "estimated": true,
+          "source": "Estimated from saved seasoned-chicken batch plus extra cooking-water loss.",
+          "note": "User reported 80 g after being left in the oven about 3× too long and extremely dry. Final cooked batch yield is unknown, so this is a conservative estimate rather than the provisional recipe-per-gram calculation.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-05-banana-kwark-500g-1",
+          "name": "Milde magere kwark met banaan",
+          "quantity": "1 full 500 g tub",
+          "kcal": 345,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "fibre": null,
           "estimated": false,
-          "source": "Explicit check-in",
-          "note": ""
+          "source": "Saved user-provided nutrition label from 4 Oct 2026.",
+          "note": "Same 500 g banana kwark product previously logged; label gives 46.5 g protein per tub."
+        },
+        {
+          "id": "2026-10-05-machine-lattes-5-1",
+          "name": "Machine latte — low powdered milk setting",
+          "quantity": "5 lattes",
+          "kcal": 175,
+          "protein": 3.5,
+          "carbs": 18.75,
+          "fat": 10,
+          "estimated": true,
+          "source": "Standardized office coffee-machine estimate saved in tracker from 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal, 0.7 g protein, 3.75 g carbs and 2 g fat per latte; machine/product nutrition remains unconfirmed."
+        },
+        {
+          "id": "2026-10-05-medium-banana-1",
+          "name": "Banana",
+          "quantity": "1 medium banana",
+          "kcal": 105,
+          "protein": 1.3,
+          "carbs": 27,
+          "fat": 0.3,
+          "estimated": true,
+          "source": "Generic medium-banana estimate aligned with user's ~100–105 kcal estimate.",
+          "note": "Logged at 105 kcal as requested; macros estimated generically."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": ""
+      "notes": "Partial Sunday 5 Oct food log: 80 g extremely dry oven-baked chicken breast, 1 full 500 g banana kwark, 5 machine lattes on powdered-milk setting 1/3, and 1 medium banana."
     }
   },
   "recipes": [
