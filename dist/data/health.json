@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-05T20:36:05.000Z",
+  "updatedAt": "2026-10-05T20:38:44.000Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1747,13 +1747,25 @@
           "estimated": true,
           "source": "User-provided scale photo and report, 5 Oct 2026; generic cooked chicken breast/mayonnaise estimates and saved sesame-oil reference.",
           "note": "Scale photo reads 109 g for the chicken+mayo mixture. Exact mayo weight is unknown; estimated as ~90 g cooked chicken breast + ~19 g mayonnaise, plus ~3 g sesame oil reported separately. Update if mayo quantity/label becomes known."
+        },
+        {
+          "id": "2026-10-05-albert-heijn-milk-330ml-1",
+          "name": "Albert Heijn milk drink",
+          "quantity": "330 ml",
+          "kcal": 178.2,
+          "protein": 15.18,
+          "carbs": 15.18,
+          "fat": 1.65,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 5 Oct 2026.",
+          "note": "Label per 100 ml: 54 kcal, 4.6 g protein, 4.6 g carbs, 0.5 g fat. User drank 330 ml."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Sunday 5 Oct food log: 80 g extremely dry oven-baked chicken breast, 1 full 500 g banana kwark, 5 machine lattes on powdered-milk setting 1/3, and 1 medium banana. Also logged 109 g chicken breast + mayo mixture from scale photo, plus ~3 g sesame oil; mayo/chicken split estimated."
+      "notes": "Partial Sunday 5 Oct food log: 80 g extremely dry oven-baked chicken breast, 1 full 500 g banana kwark, 5 machine lattes on powdered-milk setting 1/3, and 1 medium banana. Also logged 109 g chicken breast + mayo mixture from scale photo, plus ~3 g sesame oil; mayo/chicken split estimated. Added 330 ml Albert Heijn milk drink from user-provided label."
     }
   },
   "recipes": [
