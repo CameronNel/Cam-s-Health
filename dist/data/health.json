@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-04T18:15:46Z",
+  "updatedAt": "2026-10-05T12:29:13.411Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1668,6 +1668,29 @@
       "weightKg": null,
       "notes": "Partial Sunday 4 Oct food log. Includes banana kwark, 250 g provisional seasoned-chicken batch portion + 15 g sesame oil, Goudstroop fresh stroopwafel portions, Taco Bell crispy chicken burrito, 2 Chicken Bites and ~15 g Nacho Cheese Sauce.",
       "complete": false
+    },
+    "2026-10-05": {
+      "food": [
+        {
+          "id": "89baed6f-f5cb-4418-aa62-5d2d9ca89d2b",
+          "name": "Test",
+          "quantity": "Test",
+          "estimated": true,
+          "note": "",
+          "source": "Manually entered in Cam’s Health",
+          "loggedAt": "2026-10-05T12:29:12.974Z",
+          "kcal": 0,
+          "protein": 0,
+          "carbs": 0,
+          "fat": 0,
+          "reviewRequired": false
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": ""
     }
   },
   "recipes": [
