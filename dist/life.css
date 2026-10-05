@@ -480,3 +480,11 @@ body.sheet-open #toast { z-index:200; }
   #main { padding:0; }
   .app-shell { max-width:none; }
 }
+.meal-review{margin-top:20px;border-top:1px solid var(--line,#344638);padding-top:20px}
+.meal-review .section-head{margin-bottom:6px}.meal-item{padding:18px 0;border-bottom:1px solid var(--line,#344638)}
+.meal-item>header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.meal-item h3{margin:0;text-transform:none;font-size:20px}
+.meal-item>header .btn{padding:6px 10px;min-height:44px;font-size:13px}.meal-item select{max-width:100%;text-overflow:ellipsis}.meal-search .btn{margin-bottom:12px}
+.meal-nutrients{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:14px 0}.meal-nutrients b{display:block;font-size:21px;color:var(--text,#eee9d6);font-variant-numeric:tabular-nums}.meal-nutrients small{font-size:12px}.meal-nutrients span{display:block;font-size:12px;color:var(--muted,#a6b39f);margin-top:4px}
+.meal-footer{padding-top:10px}.meal-footer>.btn{margin:4px 8px 4px 0}.meal-basis{margin-bottom:6px}.meal-preview a{text-decoration:underline;text-underline-offset:3px}.meal-fields{margin:0;padding:0;border:0;min-width:0}
+.food-autofill{padding:0 0 16px}.food-autofill .btn{margin:4px 6px 4px 0}.food-autofill select{max-width:100%;text-overflow:ellipsis}
+.assistant-main:has(.meal-review) .chat-stream{max-height:none;overflow:visible}.meal-review{scroll-margin-top:90px}

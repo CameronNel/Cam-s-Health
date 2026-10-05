@@ -3,6 +3,7 @@ import {BODY_FIELDS,METHODS,ensureDay,assertUnchanged,validDate,bodyValue,bodySe
 import {GitHubStore} from './sync.js';
 import {createLifeUI} from './life-ui.js';
 import {createPWA} from './pwa.js';
+import {parseFoodReport,searchFoods,portionNutrition,foodAction} from './food-lookup.js';
 
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -75,7 +76,7 @@ document.addEventListener('focusin',updateKeyboard);
 document.addEventListener('focusout',()=>requestAnimationFrame(updateKeyboard));
 function toast(text){const el=$('#toast');el.textContent=text;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),5000);}
 const navigation=[['dashboard','Today','home'],['nutrition','Health','body'],['inbox','Inbox','mail'],['life','Life','package'],['ask','Ask','chat']];
-const lifeUI=createLifeUI({store,state,render,openSheet,closeSheet,toast,wireForm,saveFooter,navigate,dateControls,nutritionHero,activity,trainingNotice});
+const lifeUI=createLifeUI({store,state,render,openSheet,closeSheet,toast,wireForm,saveFooter,navigate,dateControls,nutritionHero,activity,trainingNotice,foodForm});
 function nav(){return navigation.map(([key,title,ico])=>`<button data-view="${key}" class="nav-item ${(state.view===key||(key==='nutrition'&&['training','body','insights','history'].includes(state.view)))?'active':''}" ${state.view===key?'aria-current="page"':''}>${icon(ico)}<span>${title}</span></button>`).join('');}
 function render(){
   if(!store.data){root.innerHTML=`<main class="boot"><div class="wordmark">cam<span>.</span></div><p>${!navigator.onLine?'Offline. Connect once to load your health history.':store.error?esc(store.error):'Getting your latest records'}</p>${store.error?button('Try again','refresh','refresh'):'<div class="loader"></div>'}</main>`;return;}
@@ -174,15 +175,44 @@ function bodyForm(date=state.date){
   }));
 }
 function foodDetails(foodId){const f=dayFor(store.data,state.date).food.find(f=>f.id===foodId);if(!f)return;openSheet('Food details',`<div class="food-detail-top"><span class="item-icon large">${icon(foodIcon(f))}</span><h3>${esc(f.name)}</h3><p>${esc(f.quantity)}</p><strong>${fmt(f.kcal)}<small> kcal</small></strong>${tag(f.estimated?'Estimated nutrition':'Recorded nutrition')}</div><div class="detail-macros">${[['protein','Protein'],['carbs','Carbs'],['fat','Fat']].map(([k,l])=>`<div><span>${l}</span><b>${fmt(f[k])} <small>g</small></b></div>`).join('')}</div>${f.reviewRequired?'<div class="notice warning"><p>The recorded calories and macros need review. Original estimates are retained.</p></div>':''}${f.note?`<h4>Notes</h4><p class="help preserve">${esc(f.note)}</p>`:''}${f.source?`<details class="disclosure"><summary>Nutrition source ${icon('plus')}</summary><p class="help">${esc(f.source)}</p></details>`:''}<div class="form-actions">${button('Edit','food-edit','edit','btn',`data-id="${esc(f.id)}"`)}${button('Log again','food-repeat','plus','btn secondary',`data-id="${esc(f.id)}"`)}</div>`);}
-function foodForm(existing=null,template=null){
-  const date=state.date,original=existing?structuredClone(existing):null,f=existing||template||{},entryId=existing?.id||id();
-  openSheet(existing?'Edit food':'Log food',`<form><div class="form-date">${icon('calendar')} ${dateLabel(date,{weekday:'short',day:'numeric',month:'long'})}${template?tag('REPEAT PORTION'):''}</div><label class="field">Food or drink<input name="name" required maxlength="160" value="${esc(f.name)}" placeholder="What did you have?"></label><label class="field">Portion<input name="quantity" required maxlength="160" value="${esc(f.quantity)}" placeholder="e.g. 200 g cooked, or 1 scoop (30 g)"></label><div class="form-grid">${[['kcal','Calories (kcal)'],['protein','Protein (g)'],['carbs','Carbs (g)'],['fat','Fat (g)']].map(([k,l])=>numberField(k,l,f[k],{placeholder:'Unknown'})).join('')}</div><label class="checkbox-label"><input type="checkbox" name="estimated" ${f.estimated!==false?'checked':''}>Nutrition is an estimate</label><label class="field">Notes / label details<textarea name="note" maxlength="5000" rows="3">${esc(f.note)}</textarea></label><p class="help">Repeating a food copies its saved portion and nutrition. Review both when changing the serving size.</p>${existing?button('Delete this entry','food-delete','close','textbtn danger-text',`data-id="${esc(existing.id)}"`):''}${saveFooter()}</form>`,()=>wireForm(async fd=>{
-    const entry={...f,id:entryId,name:fd.get('name').trim(),quantity:fd.get('quantity').trim(),estimated:fd.has('estimated'),note:fd.get('note').trim(),source:f.source||'Manually entered in Cam’s Health',loggedAt:original?.loggedAt||new Date().toISOString()};delete entry.date;
+function foodForm(existing=null,template=null,onSaved=()=>{}){
+  const date=state.date,original=existing?structuredClone(existing):null,f=existing||template||{},entryId=existing?.id||id();let autofillSource='';
+  openSheet(existing?'Edit food':'Log food',`<form id="food-form"><div class="form-date">${icon('calendar')} ${dateLabel(date,{weekday:'short',day:'numeric',month:'long'})}${template?tag('REPEAT PORTION'):''}</div><label class="field">Food or drink<input name="name" required maxlength="160" value="${esc(f.name)}" placeholder="What did you have?"></label><label class="field">Portion<input name="quantity" required maxlength="160" value="${esc(f.quantity)}" placeholder="e.g. 200 g cooked, or 1 scoop (30 g)"></label><div class="food-autofill"><button type="button" class="btn secondary" id="food-find">Find nutrition</button><div id="food-matches"></div><p class="help" id="food-lookup-status" role="status">Enter a food and portion to fill calories and macros here.</p></div><div class="form-grid">${[['kcal','Calories (kcal)'],['protein','Protein (g)'],['carbs','Carbs (g)'],['fat','Fat (g)']].map(([k,l])=>numberField(k,l,f[k],{placeholder:'Unknown'})).join('')}</div><label class="checkbox-label"><input type="checkbox" name="estimated" ${f.estimated!==false?'checked':''}>Nutrition is an estimate</label><label class="field">Notes / label details<textarea name="note" maxlength="5000" rows="3">${esc(f.note)}</textarea></label><p class="help">Repeating a food copies its saved portion and nutrition. Review both when changing the serving size.</p>${existing?button('Delete this entry','food-delete','close','textbtn danger-text',`data-id="${esc(existing.id)}"`):''}${saveFooter()}</form>`,()=>{wireForm(async fd=>{
+    const entry={...f,id:entryId,name:fd.get('name').trim(),quantity:fd.get('quantity').trim(),estimated:fd.has('estimated'),note:fd.get('note').trim(),source:autofillSource||f.source||'Manually entered in Cam’s Life',loggedAt:original?.loggedAt||new Date().toISOString()};delete entry.date;
     for(const k of ['kcal','protein','carbs','fat'])entry[k]=fd.get(k)===''?null:Number(fd.get(k));
     if(!entry.name||!entry.quantity)throw Error('Enter a food name and portion.');
     entry.reviewRequired=entry.kcal!=null&&[entry.protein,entry.carbs,entry.fat].every(v=>v!=null)&&Math.abs(entry.kcal-(4*entry.protein+4*entry.carbs+9*entry.fat))>Math.max(25,entry.kcal*.1);
     await store.save(data=>upsert(ensureDay(data,date).food,entry,original),`${original?'Correct':'Log'} food for ${date}`);
-  }));
+    onSaved();
+  });
+  setupFoodAutofill(source=>autofillSource=source);
+  });
+}
+function setupFoodAutofill(setSource){
+ const form=$('#food-form',sheet),status=$('#food-lookup-status',form),matches=$('#food-matches',form);let item=null;
+ const apply=()=>{
+  if(!item)return;const preview=portionNutrition(item,store.data);if(preview.error){status.textContent=preview.error+' The match shows nutrition per 100 g; enter your portion first.';return;}
+  const action=foodAction(item,store.data);for(const key of ['kcal','protein','carbs','fat'])$(`[name=${key}]`,form).value=action[key]??'';
+  $('[name=quantity]',form).value=action.quantity;$('[name=estimated]',form).checked=true;
+  $('[name=note]',form).value=action.note;setSource(action.source);dirty=true;status.textContent='Filled from '+preview.food.name+'. '+action.source+'. Check the portion before saving.';
+ };
+ $('#food-find',form).addEventListener('click',()=>{
+  const name=$('[name=name]',form).value.trim(),quantity=$('[name=quantity]',form).value.trim();
+  if(!name){status.textContent='Enter a food name first.';return;}
+  const parsed=parseFoodReport('I ate '+quantity+' '+name,store.data);item=parsed.length===1?parsed[0]:null;
+  const choices=item?.choices||searchFoods(name,store.data);
+  matches.innerHTML=choices.length?`<label class="field">Nutrition match<select id="food-match"><option value="">Choose a match</option>${choices.map(f=>`<option value="${esc(f.id)}" ${f.id===item?.foodId?'selected':''}>${esc(f.name)}</option>`).join('')}</select></label>`:'';
+  if(!item?.foodId){status.textContent=choices.length?'Choose the food that fits your meal.':'No nutrition match found. Enter the label values, or use Ask to describe several foods.';}
+  else apply();
+  $('#food-match',form)?.addEventListener('change',e=>{if(!item)return;item.foodId=e.target.value;apply();});
+ });
+ $('[name=quantity]',form).addEventListener('change',()=>{
+  if(!item?.foodId)return;const quantity=$('[name=quantity]',form).value,name=$('[name=name]',form).value;
+  const next=parseFoodReport('I ate '+quantity+' '+name,store.data)[0];if(!next){status.textContent='Enter a measured portion and find nutrition again.';return;}
+  item.amount=next.amount;item.unit=next.unit;if(/\b(raw|cooked|dry|boiled|fried)\b/i.test(quantity)&&next.foodId)item.foodId=next.foodId;
+  const match=$('#food-match',form);if(match)match.value=item.foodId;apply();
+ });
+ for(const key of ['kcal','protein','carbs','fat'])$(`[name=${key}]`,form).addEventListener('input',()=>{if(item){item=null;setSource('Nutrition edited manually in Cam’s Life');status.textContent='Your edited nutrition values will be saved. Find nutrition again to recalculate from a reference food.';}});
 }
 function upsert(entries,entry,baseline){const index=entries.findIndex(e=>e.id===entry.id);if(index>=0&&JSON.stringify(entries[index])===JSON.stringify(entry))return;if(baseline){if(index<0)throw Error('This entry was removed elsewhere.');assertUnchanged(entries[index],baseline);entries[index]=entry;}else if(index<0)entries.push(entry);else throw Error('An entry with this ID already exists. Refresh and review it before retrying.');}
 function recipeForm(recipeId){const recipe=store.data.recipes.find(r=>r.id===recipeId),date=state.date,entryId=id();if(!recipe)return;const per=recipe.per100g||recipe.per100Grams;if(!per)return toast('This recipe is missing its portion nutrition.');openSheet('Recipe portion',`<form><span class="eyebrow">SAVED RECIPE</span><h3>${esc(recipe.name)}</h3><p class="help">${fmt(recipe.yieldG)} g cooked batch. Nutrition scales from the saved per-100 g estimate.</p><label class="field">Your portion (grams)<input name="grams" id="recipe-grams" type="number" inputmode="decimal" required min="1" max="10000" step="any" placeholder="e.g. 200"></label><div id="recipe-preview" class="recipe-preview">Enter your portion to preview its nutrition.</div><p class="help preserve">${esc(recipe.note||recipe.notes)}</p>${saveFooter('Log portion')}</form>`,()=>{
