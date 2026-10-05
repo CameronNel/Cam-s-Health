@@ -14,7 +14,7 @@ for(const name of (await readdir('drizzle')).filter(n=>n.endsWith('.sql')).sort(
 }
 function statement(sql){let values=[];const s={bind(...args){values=args;return s;},async first(){return sqlite.prepare(sql).get(...values)||null;},async all(){return {results:sqlite.prepare(sql).all(...values)};},async run(){const result=sqlite.prepare(sql).run(...values);return {success:true,meta:{changes:Number(result.changes)}};}};return s;}
 const db={prepare:statement,async batch(statements){sqlite.exec('BEGIN');try{const results=[];for(const s of statements)results.push(await s.run());sqlite.exec('COMMIT');return results;}catch(e){sqlite.exec('ROLLBACK');throw e;}}};
-const types={'.html':'text/html','.css':'text/css','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml'};
+const types={'.html':'text/html','.css':'text/css','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml','.webmanifest':'application/manifest+json','.png':'image/png'};
 http.createServer(async(req,res)=>{try{
  const url='http://127.0.0.1:'+port+req.url;
  if(new URL(url).pathname.startsWith('/api/')){

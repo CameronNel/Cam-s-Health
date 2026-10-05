@@ -16,9 +16,17 @@ Your existing health record remains at `dist/data/health.json` on `CameronNel/Ca
 
 The interface is phone-only and permanently dark: solid dark sage surfaces, cream text and restrained yellow accents, five thumb-reachable tabs with simple active underlines, readable charts, and Android-friendly bottom sheets. A larger screen keeps the same single-column phone layout. OS appearance and old light-theme preferences cannot switch the app to light. Settings, history, exports and sync diagnostics remain accessible from the header. Keyboard focus and reduced-motion support are retained.
 
+## Install on your phone
+
+In Settings, choose **Add to home screen**, or use Chrome’s **Install app** menu (Safari: Share → Add to Home Screen). The manifest, 192/512px icons, maskable Android icon, Apple touch icon and standalone window use the existing dark Cam’s Life branding. Browser support and private-site sign-in determine the final installation experience; a shortcut may be offered instead.
+
+The service worker caches only explicitly allowed public code assets and a generic reconnect screen. It never caches the authenticated app HTML, health JSON, private APIs, inbox records, pickup codes, OAuth pages, cross-origin requests or Authorization requests. Records, saves, Gmail and ChatGPT need internet access. The existing validated public-health localStorage fallback is unchanged. App updates are applied only when requested, with a warning about unfinished entries and the in-memory GitHub connection.
+
 ## No paid AI requirement
 
-A ChatGPT subscription does not include OpenAI API credits or an API that can be embedded in this app. The release makes no OpenAI API calls and requires no OpenAI key. Local parsing is explicitly labelled; it does not pretend to be ChatGPT. The ChatGPT handoff requires a copy/paste step and an existing GitHub connection to update the health record. Refresh the app after ChatGPT saves.
+The release makes no OpenAI API calls and requires no OpenAI key. Local parsing is explicitly labelled; it does not pretend to be ChatGPT. The ChatGPT handoff requires a copy/paste step and an existing GitHub connection to update the health record. You can save your own dedicated conversation/project URL in the handoff; only that device-local preference is persisted. Nothing is automatically submitted. Refresh the app after ChatGPT verifies its save.
+
+OpenAI’s [ChatGPT plan usage documentation](https://developers.openai.com/siwc/token-sharing-open-source) describes an opt-in OAuth path for eligible requests using a ChatGPT plan. Remotely hosted apps require separate access through OpenAI’s interest/preview program. This deployed app does not claim that approval, reuse ChatGPT session credentials, or quietly fall back to billed API access. Its existing Sites sign-in only authenticates visitors; it is not inference authorization.
 
 An enabled **Cam’s Life · hourly inbox brief** ChatGPT task scans the connected Gmail mailbox hourly in Europe/Amsterdam and notifies on meaningful new actions/delivery changes. Its briefs arrive in ChatGPT, not automatically in the app's D1 inbox state. Creating the task does not prove that its first run has completed. Existing paused fitness tasks remain paused.
 
@@ -55,9 +63,9 @@ npm run build
 
 `dev:life` serves loopback only and uses `.sites-runtime/life-dev.sqlite`. Its mock identity is local-only and never part of the Worker build. The original `npm run dev` remains a static-health preview.
 
-`npm run build` emits the Cloudflare-compatible Worker and assets under `.sites-runtime/build`. Source schema lives in `db/schema.ts`; generate append-only production migrations with `npm run db:generate`. Sites owns the real D1 resource. Include `.openai/hosting.json`, `dist/server`, `dist/client`, and `drizzle` in the deployment archive. Never include local runtime state or secrets.
+`npm run build` emits the Cloudflare-compatible Worker and assets under `.sites-runtime/build` and mirrors them to ignored `dist/server` and `dist/client` for the Sites packager. Repeated builds exclude generated trees from source assets. Source schema lives in `db/schema.ts`; generate append-only production migrations with `npm run db:generate`. Sites owns the real D1 resource. Include `.openai/hosting.json`, `dist/server`, `dist/client`, and `drizzle` in the deployment archive. Never include local runtime state or secrets.
 
-Verification: 118 meaningful regression checks cover retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed single-use mailbox actions, and preservation of completed tasks/deliveries. Touch-browser checks at 424, 390 and 360 CSS pixels verify the dark lock, navigation, Settings/History access, chart routes, check-in review and measurement sheets. Production Gmail consent/reads/writes remain unverified until Google setup is completed.
+Verification: 125 meaningful regression checks cover retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed single-use mailbox actions, preservation of completed tasks/deliveries, PWA icons/cache privacy and ChatGPT-link validation. Earlier touch-browser checks at 424, 390 and 360 CSS pixels verified the dark lock, navigation, Settings/History access, chart routes, check-in review and measurement sheets. This PWA upgrade was checked with executable service-worker/installation mocks, syntax checks, and repeated builds; physical-phone installation and production Gmail consent remain unverified.
 
 ## Repository name
 
