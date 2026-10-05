@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-05T12:29:13.411Z",
+  "updatedAt": "2026-10-05T18:55:53.340Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1684,6 +1684,18 @@
           "carbs": 0,
           "fat": 0,
           "reviewRequired": false
+        },
+        {
+          "id": "food-bddb5435-675b-4b22-9a88-f8a5d328cb5d",
+          "name": "80g of chicken breast left extremely long in the oven",
+          "quantity": "",
+          "kcal": null,
+          "protein": null,
+          "carbs": null,
+          "fat": null,
+          "estimated": false,
+          "source": "Explicit check-in",
+          "note": ""
         }
       ],
       "workouts": [],

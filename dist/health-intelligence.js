@@ -220,6 +220,8 @@ export function prepareHealthProposal(data, date, actions, {idFactory = defaultI
         kcal:action.kcal ?? null, protein:action.protein ?? null, carbs:action.carbs ?? null, fat:action.fat ?? null,
         estimated:action.estimated ?? false, source:action.source ?? '', note:action.note ?? ''
       } : {id, sessionId:action.sessionId ?? null, name:action.name.trim(), status:action.status, durationMin:action.durationMin ?? null, notes:action.notes ?? ''};
+      if (kind === 'food' && NUTRIENTS.every(key => entry[key] != null)
+        && Math.abs(entry.kcal - (4 * entry.protein + 4 * entry.carbs + 9 * entry.fat)) > Math.max(25, entry.kcal * .1)) entry.reviewRequired = true;
       const existing = [...day.food, ...day.workouts].find(value => value.id === id);
       if (existing) {
         if (day[kind].some(value => value.id === id) && JSON.stringify(existing) === JSON.stringify(entry)) return;
