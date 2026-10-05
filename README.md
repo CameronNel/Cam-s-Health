@@ -14,7 +14,7 @@ Your existing health record remains at `dist/data/health.json` on `CameronNel/Ca
 - **Life:** durable private to-dos, deliveries and pickup/Cipio/PIN codes, pickup completion, and 20 source-linked facts with favorites.
 - **Ask:** free, deterministic parsing of explicit check-ins, followed by review and a verified GitHub save. Deeper questions, meal interpretation and photo analysis use a copy-and-open ChatGPT handoff with the user's existing subscription. Photos stay in the current tab and are not uploaded or stored by this app.
 
-The interface is phone-only and permanently dark: graphite surfaces, soft violet accents, five thumb-reachable tabs, readable charts, and Android-friendly bottom sheets. A larger screen keeps the same single-column phone layout. OS appearance and old light-theme preferences cannot switch the app to light. Settings, history, exports and sync diagnostics remain accessible from the header. Keyboard focus and reduced-motion support are retained.
+The interface is phone-only and permanently dark: solid dark sage surfaces, cream text and restrained yellow accents, five thumb-reachable tabs with simple active underlines, readable charts, and Android-friendly bottom sheets. A larger screen keeps the same single-column phone layout. OS appearance and old light-theme preferences cannot switch the app to light. Settings, history, exports and sync diagnostics remain accessible from the header. Keyboard focus and reduced-motion support are retained.
 
 ## No paid AI requirement
 

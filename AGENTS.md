@@ -54,7 +54,7 @@ Read `docs/STUDIO-02.md` and `dist/body.js` before adding body fields. Keep the 
 
 ## Working on the app
 
-The user requires **always dark mode and mobile only**, using an Oppo Find X9 Pro. Preserve the graphite/violet design and single-column phone layout at every viewport. Do not reintroduce a light/system appearance option or desktop sidebar. Verify readable charts, 44px touch targets, small-phone forms and Android keyboard spacing when changing the UI.
+The user requires **always dark mode and mobile only**, using an Oppo Find X9 Pro. Preserve the dark sage green, cream and restrained yellow palette, flat surfaces, simple typography and single-column phone layout at every viewport. Do not reintroduce a light/system appearance option or desktop sidebar. Verify readable charts, 44px touch targets, small-phone forms and Android keyboard spacing when changing the UI.
 
 The browser HTML/CSS/ES modules live in `dist/`. The private life/Gmail backend is `server/worker.mjs`; `npm ci` and `npm run build` prepare a Worker deployment. The existing health file stays on GitHub. `node scripts/serve.mjs --port 5173` is for ordinary local use; use the Sites supervised preview in its managed environment. Run `npm test` and `npm run validate` after behavior/schema changes and validate the actual candidate health JSON before data commits. Browser tokens must remain in memory only and must never be committed, cached, logged or sent to any origin except GitHub's API. The data cache is a fallback, never a successful save. Preserve error/stale states and conflict handling.
 
