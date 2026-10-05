@@ -16,6 +16,14 @@ Your existing health record remains at `dist/data/health.json` on `CameronNel/Ca
 
 The interface is phone-only and permanently dark: solid dark sage surfaces, cream text and restrained yellow accents, five thumb-reachable tabs with simple active underlines, readable charts, and Android-friendly bottom sheets. A larger screen keeps the same single-column phone layout. OS appearance and old light-theme preferences cannot switch the app to light. Settings, history, exports and sync diagnostics remain accessible from the header. Keyboard focus and reduced-motion support are retained.
 
+## Install on your phone
+
+Open the app in **Chrome on Android**, let it finish its first online load, then choose **Install app** from Chrome’s menu (some versions show **Add to Home screen → Install**). Settings also offers an install button when Chrome makes the native prompt available. Cam’s Life opens in a standalone portrait window with sage splash/theme colors and adaptive Android icons. Sites sign-in still applies; installation does not change who can access the app or authorize GitHub editing.
+
+The service worker stores only digest-verified public app HTML, code, styles and icons. After a successful online health read, the existing validated health cache can be reviewed offline with a clear saved-copy warning. Private life/mailbox records, photos, tokens, API responses and health JSON are never added to the service-worker cache. Private records are unavailable on an offline fresh launch, rather than shown as zero tasks or packages. Saves and mailbox actions require a connection and are never queued or replayed.
+
+New versions wait for **Review update → Reload app**. The app does not automatically reload drafts, photos or pending saves. The review explains what a reload clears; saved records remain intact. `npm run build` regenerates `dist/sw.js` from the public asset digests and worker template, then packages that exact release. Keep the Worker’s successful-app-shell header and root routing in place so online access/login failures cannot be replaced by an offline page.
+
 ## No paid AI requirement
 
 A ChatGPT subscription does not include OpenAI API credits or an API that can be embedded in this app. The release makes no OpenAI API calls and requires no OpenAI key. Local parsing is explicitly labelled; it does not pretend to be ChatGPT. The ChatGPT handoff requires a copy/paste step and an existing GitHub connection to update the health record. Refresh the app after ChatGPT saves.
@@ -57,7 +65,7 @@ npm run build
 
 `npm run build` emits the Cloudflare-compatible Worker and assets under `.sites-runtime/build`. Source schema lives in `db/schema.ts`; generate append-only production migrations with `npm run db:generate`. Sites owns the real D1 resource. Include `.openai/hosting.json`, `dist/server`, `dist/client`, and `drizzle` in the deployment archive. Never include local runtime state or secrets.
 
-Verification: 118 meaningful regression checks cover retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed single-use mailbox actions, and preservation of completed tasks/deliveries. Touch-browser checks at 424, 390 and 360 CSS pixels verify the dark lock, navigation, Settings/History access, chart routes, check-in review and measurement sheets. Production Gmail consent/reads/writes remain unverified until Google setup is completed.
+Verification: 125 regression checks cover retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed single-use mailbox actions, preservation of completed tasks/deliveries, and service-worker cache/access/update boundaries. Touch-browser checks at 424, 390 and 360 CSS pixels verify the dark lock, navigation, Settings/History access, chart routes, check-in review and measurement sheets. A persistent Chrome profile reports zero installability errors and verifies offline launch, saved health versus unavailable private data, unsent form retention without write requests, and reviewed update activation. Physical Oppo installation and production Gmail consent/reads/writes remain unverified.
 
 ## Repository name
 
