@@ -14,7 +14,7 @@ for(const name of (await readdir('drizzle')).filter(n=>n.endsWith('.sql')).sort(
 }
 function statement(sql){let values=[];const s={bind(...args){values=args;return s;},async first(){return sqlite.prepare(sql).get(...values)||null;},async all(){return {results:sqlite.prepare(sql).all(...values)};},async run(){const result=sqlite.prepare(sql).run(...values);return {success:true,meta:{changes:Number(result.changes)}};}};return s;}
 const db={prepare:statement,async batch(statements){sqlite.exec('BEGIN');try{const results=[];for(const s of statements)results.push(await s.run());sqlite.exec('COMMIT');return results;}catch(e){sqlite.exec('ROLLBACK');throw e;}}};
-const types={'.html':'text/html','.css':'text/css','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml'};
+const types={'.html':'text/html','.css':'text/css','.js':'text/javascript','.json':'application/json','.svg':'image/svg+xml','.webmanifest':'application/manifest+json','.png':'image/png'};
 http.createServer(async(req,res)=>{try{
  const url='http://127.0.0.1:'+port+req.url;
  if(new URL(url).pathname.startsWith('/api/')){
@@ -25,5 +25,5 @@ http.createServer(async(req,res)=>{try{
  }
  const path=resolve(root,'.'+decodeURIComponent(new URL(url).pathname));
  if(path!==root&&!path.startsWith(root+sep)){res.writeHead(403);res.end();return;}
- const file=path===root?root+'/index.html':path;res.setHeader('Content-Type',types[extname(file)]||'application/octet-stream');res.setHeader('Cache-Control','no-store');res.end(await readFile(file));
+ const file=path===root?root+'/index.html':path;res.setHeader('Content-Type',types[extname(file)]||'application/octet-stream');res.setHeader('Cache-Control','no-store');if(file===root+'/index.html')res.setHeader('X-Cams-Life-Shell','1');if(extname(file)==='.js')res.setHeader('Service-Worker-Allowed','/');res.end(await readFile(file));
 }catch{res.writeHead(404);res.end('Not found');}}).listen(port,'127.0.0.1',()=>console.log('Local Cam’s Life preview: http://127.0.0.1:'+port));

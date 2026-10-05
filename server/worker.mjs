@@ -355,7 +355,14 @@ export function createWorker({fetcher = globalThis.fetch, crypto = globalThis.cr
   return {
     async fetch(request, env = {}, ctx = {}) {
       const url = new URL(request.url);
-      if (!url.pathname.startsWith('/api/')) return env.ASSETS?.fetch ? env.ASSETS.fetch(request) : new Response('Not found', {status: 404});
+      if (!url.pathname.startsWith('/api/')) {
+        const response = env.ASSETS?.fetch ? await env.ASSETS.fetch(request) : new Response('Not found', {status:404});
+        if (!response.ok || response.redirected) return response;
+        const headers = new Headers(response.headers);
+        if (request.method === 'GET' && ['/', '/index.html'].includes(url.pathname) && (!response.url || new URL(response.url).origin === url.origin) && headers.get('Content-Type')?.startsWith('text/html')) headers.set('X-Cams-Life-Shell', '1');
+        if (url.pathname === '/sw.js') {headers.set('Cache-Control','no-cache');headers.set('Service-Worker-Allowed','/');headers.set('Content-Type','text/javascript');}
+        return new Response(response.body,{status:response.status,headers});
+      }
       try {
         const owner = requireIdentity(request, env); requireOrigin(request);
         if (url.pathname === '/api/status' && request.method === 'GET') {
