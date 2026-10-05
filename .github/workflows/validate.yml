@@ -19,12 +19,16 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
-          node-version: '22'
+          node-version: '24'
           package-manager-cache: false
       - name: Check JavaScript syntax
         run: |
-          for file in dist/*.js; do node --check "$file"; done
+          for file in dist/*.js server/*.mjs scripts/*.mjs; do node --check "$file"; done
+      - name: Install build dependencies
+        run: npm ci --no-audit --no-fund
       - name: Run regression tests
         run: npm test
       - name: Validate the committed health record
         run: npm run validate
+      - name: Build the private life service
+        run: npm run build

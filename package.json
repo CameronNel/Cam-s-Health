@@ -1,6 +1,20 @@
 {
-  "name": "cams-health",
+  "name": "cams-life",
   "private": true,
   "type": "module",
-  "scripts": {"dev": "node scripts/serve.mjs", "test": "node --test tests/*.test.mjs", "validate": "node scripts/validate.mjs"}
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "test": "node --test --test-isolation=none tests/*.test.mjs",
+    "validate": "node scripts/validate.mjs",
+    "build": "node scripts/build.mjs",
+    "db:generate": "drizzle-kit generate",
+    "dev:life": "node scripts/dev-life.mjs"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.11",
+    "esbuild": "^0.28.2"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.3"
+  }
 }
