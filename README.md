@@ -14,7 +14,7 @@ Your existing health record remains at `dist/data/health.json` on `CameronNel/Ca
 - **Life:** durable private to-dos, deliveries and pickup/Cipio/PIN codes, pickup completion, and 20 source-linked facts with favorites.
 - **Ask:** free, deterministic parsing of explicit check-ins, followed by review and a verified GitHub save. Deeper questions, meal interpretation and photo analysis use a copy-and-open ChatGPT handoff with the user's existing subscription. Photos stay in the current tab and are not uploaded or stored by this app.
 
-Main tabs have responsive desktop/mobile navigation, light/dark appearance, keyboard focus, reduced-motion support, and retained legacy health routes.
+The interface is phone-only and permanently dark: graphite surfaces, soft violet accents, five thumb-reachable tabs, readable charts, and Android-friendly bottom sheets. A larger screen keeps the same single-column phone layout. OS appearance and old light-theme preferences cannot switch the app to light. Settings, history, exports and sync diagnostics remain accessible from the header. Keyboard focus and reduced-motion support are retained.
 
 ## No paid AI requirement
 
@@ -57,7 +57,7 @@ npm run build
 
 `npm run build` emits the Cloudflare-compatible Worker and assets under `.sites-runtime/build`. Source schema lives in `db/schema.ts`; generate append-only production migrations with `npm run db:generate`. Sites owns the real D1 resource. Include `.openai/hosting.json`, `dist/server`, `dist/client`, and `drizzle` in the deployment archive. Never include local runtime state or secrets.
 
-Verification: 118 meaningful regression checks cover retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed single-use mailbox actions, and preservation of completed tasks/deliveries. Desktop and 390px touch-browser checks exercise navigation, durable task/package save and completion, check-in review, and the ChatGPT handoff. Production Gmail consent/reads/writes remain unverified until Google setup is completed.
+Verification: 118 meaningful regression checks cover retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed single-use mailbox actions, and preservation of completed tasks/deliveries. Touch-browser checks at 424, 390 and 360 CSS pixels verify the dark lock, navigation, Settings/History access, chart routes, check-in review and measurement sheets. Production Gmail consent/reads/writes remain unverified until Google setup is completed.
 
 ## Repository name
 
