@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-05T20:31:20.909Z",
+  "updatedAt": "2026-10-05T20:36:05.000Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1735,13 +1735,25 @@
           "estimated": true,
           "source": "Generic medium-banana estimate aligned with user's ~100–105 kcal estimate.",
           "note": "Logged at 105 kcal as requested; macros estimated generically."
+        },
+        {
+          "id": "2026-10-05-chicken-mayo-sesame-109g-1",
+          "name": "Chicken breast with mayonnaise + sesame oil",
+          "quantity": "109 g chicken+mayo on scale + ~3 g sesame oil",
+          "kcal": 305,
+          "protein": 28.1,
+          "carbs": 1.5,
+          "fat": 20.2,
+          "estimated": true,
+          "source": "User-provided scale photo and report, 5 Oct 2026; generic cooked chicken breast/mayonnaise estimates and saved sesame-oil reference.",
+          "note": "Scale photo reads 109 g for the chicken+mayo mixture. Exact mayo weight is unknown; estimated as ~90 g cooked chicken breast + ~19 g mayonnaise, plus ~3 g sesame oil reported separately. Update if mayo quantity/label becomes known."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Partial Sunday 5 Oct food log: 80 g extremely dry oven-baked chicken breast, 1 full 500 g banana kwark, 5 machine lattes on powdered-milk setting 1/3, and 1 medium banana."
+      "notes": "Partial Sunday 5 Oct food log: 80 g extremely dry oven-baked chicken breast, 1 full 500 g banana kwark, 5 machine lattes on powdered-milk setting 1/3, and 1 medium banana. Also logged 109 g chicken breast + mayo mixture from scale photo, plus ~3 g sesame oil; mayo/chicken split estimated."
     }
   },
   "recipes": [
