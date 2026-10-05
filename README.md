@@ -44,10 +44,13 @@ Tasks, delivery codes, favorites, mailbox metadata and encrypted Google refresh 
 
 Direct in-app Gmail scans require a Google OAuth web application. The ChatGPT Gmail connection is separate and cannot be copied into the app.
 
-1. In [Google Cloud Console](https://console.cloud.google.com/), enable Gmail API, configure the OAuth consent screen, add your own Google account as a test user when appropriate, and create a Web application OAuth client.
-2. Add this exact authorized redirect URI: `https://cams-health.cameronnel111.chatgpt.site/api/inbox/callback`.
-3. Configure `GOOGLE_CLIENT_ID` and secret `GOOGLE_CLIENT_SECRET` as Sites runtime values. `LIFE_ENCRYPTION_KEY` is a separate 32-byte base64url server secret; never commit it. A local `.env.example` lists names only.
-4. Redeploy the saved app version so runtime changes take effect, then use **Inbox → Connect Gmail**. The requested scope is `gmail.modify`, supporting reads and reviewed recoverable actions. Google may require verification for broader distribution. This app remains owner-private.
+1. In [Google Cloud Console](https://console.cloud.google.com/projectcreate), create a project and enable Gmail API. No billing account is needed for Gmail API usage.
+2. In Google Auth Platform, set the app branding/contact email. Use External / Testing, add your own Gmail address as a test user, and add the `gmail.modify` scope under Data Access.
+3. Create a **Web application** OAuth client, including this exact authorized redirect URI: `https://cams-health.cameronnel111.chatgpt.site/api/inbox/callback`. Download its client JSON.
+4. In **Settings → Set up Gmail**, import that JSON and save. The server verifies the client format and redirect, then encrypts the client settings with the existing `LIFE_ENCRYPTION_KEY` in owner-scoped private D1 storage. Nothing goes to GitHub or persistent browser storage.
+5. Tap **Connect Gmail**, complete Google's consent, then scan. Importing the client is setup, not mailbox authorization. Test-mode refresh tokens expire after seven days, so Google may require reconnecting.
+
+Deployment prerequisite: `LIFE_ENCRYPTION_KEY` remains a separate 32-byte base64url server secret. Existing server-managed `GOOGLE_CLIENT_ID` / secret `GOOGLE_CLIENT_SECRET` are still supported and take precedence; Settings cannot replace them. An already connected Settings client must be disconnected before replacement; existing tasks and deliveries remain intact. Google may require verification for broader distribution. This app remains owner-private.
 
 Gmail sign-in has clear unavailable/error states until those values exist. No user mailbox is read or modified during build/tests. Direct server-hourly sync remains disabled: the exported scheduled entry needs an actual configured and verified scheduler, not just a browser timer or environment flag. The subscription-based task above runs independently.
 
@@ -67,7 +70,7 @@ npm run build
 
 `npm run build` emits the Cloudflare-compatible Worker and assets under `.sites-runtime/build` and mirrors them to ignored `dist/server` and `dist/client` for the Sites packager. Repeated builds exclude generated trees from source assets. Source schema lives in `db/schema.ts`; generate append-only production migrations with `npm run db:generate`. Sites owns the real D1 resource. Include `.openai/hosting.json`, `dist/server`, `dist/client`, and `drizzle` in the deployment archive. Never include local runtime state or secrets.
 
-Verification: 139 regression checks cover retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed single-use mailbox actions, preservation of completed tasks/deliveries, service-worker cache/access/update boundaries, and sourced in-app meal lookup. Touch-browser checks at 424, 390 and 360 CSS pixels verify the dark lock, navigation, Settings/History access, chart routes, check-in review and measurement sheets. A persistent Chrome profile reports zero installability errors and verifies offline launch, saved health versus unavailable private data, unsent form retention without write requests, and reviewed update activation. Physical Oppo installation and production Gmail consent/reads/writes remain unverified.
+Verification: 144 regression checks cover retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed single-use mailbox actions, preservation of completed tasks/deliveries, service-worker cache/access/update boundaries, and sourced in-app meal lookup. Touch-browser checks at 424, 390 and 360 CSS pixels verify the dark lock, navigation, Settings/History access, chart routes, check-in review and measurement sheets. A persistent Chrome profile reports zero installability errors and verifies offline launch, saved health versus unavailable private data, unsent form retention without write requests, and reviewed update activation. Physical Oppo installation and production Gmail consent/reads/writes remain unverified.
 
 ## Repository name
 
