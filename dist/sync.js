@@ -1,15 +1,15 @@
 import {REPO,DATA_PATH} from './model.js';
-import {validateHealth} from './body.js';
+import {validateLifeHealth} from './health-intelligence.js';
 export const API=`https://api.github.com/repos/${REPO}/contents/${DATA_PATH}`;
 export const RAW=`https://raw.githubusercontent.com/${REPO}/main/${DATA_PATH}`;
 const CACHE='cams-health-cache';
 const decode=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g,'')),c=>c.charCodeAt(0)));
 const encode=s=>{let out='';for(const byte of new TextEncoder().encode(s))out+=String.fromCharCode(byte);return btoa(out);};
-function checked(data){try{return validateHealth(data);}catch(e){e.kind='schema';throw e;}}
+function checked(data){try{return validateLifeHealth(data);}catch(e){e.kind='schema';throw e;}}
 export class GitHubStore {
   #token='';
   constructor({fetcher=globalThis.fetch,storage=globalThis.localStorage,onchange=()=>{}}={}) {
-    this.fetcher=fetcher;this.storage=storage;this.onchange=onchange;this.data=null;this.busy=false;this.reading=false;
+    this.fetcher=fetcher.bind(globalThis);this.storage=storage;this.onchange=onchange;this.data=null;this.busy=false;this.reading=false;
     this.status='Connecting';this.error='';this.checkedAt=null;this.sha=null;this.account=null;this.lastCommit=null;
   }
   get connected(){return !!this.#token;}

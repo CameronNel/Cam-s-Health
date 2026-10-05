@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "Cam’s Life",
+  "short_name": "Cam’s Life",
+  "description": "Your health, inbox, deliveries and daily life.",
+  "lang": "en",
+  "start_url": "./?installed=1#dashboard",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#111a15",
+  "theme_color": "#111a15",
+  "icons": [
+    {"src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "./icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
