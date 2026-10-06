@@ -271,7 +271,7 @@ function mailBanner() {
 function vInbox() {
   const m = S.mail, banner = mailBanner();
   if (m.state !== 'ready') return banner;
-  const tl = m.tools, canMod = !!(tl.removeLabel || tl.trash);
+  const tl = m.tools, canMod = !!(tl.addLabel || tl.removeLabel || tl.trash);
   const dg = m.digest;
   const group = (k, label) => { const rows = (dg?.messages || []).filter(x => x.category === k); return rows.length ? `<section class="card col"><div class="row between"><h2>${label}</h2><span class="pill">${rows.length}</span></div><div class="list">${rows.map(x => `<div class="item"><div class="grow"><div class="t">${x.unread ? '● ' : ''}${esc(x.subject || '(no subject)')}</div><div class="faint small">${esc(x.from)} ${x.date ? '· ' + esc(short(String(x.date).slice(0, 10))) : ''}</div><div class="entry-note">${esc(x.summary || '')}</div></div></div>`).join('')}</div></section>` : ''; };
   return `<section class="card col"><div class="row between"><h2>Inbox brief</h2><span class="pill ok">connected</span></div>
@@ -291,7 +291,7 @@ async function mailCheck() {
   S.mail.state = 'checking'; schedule();
   const r = await discover(mcp);
   S.mail.state = r.state; S.mail.tools = r.tools; S.mail.note = r.state === 'ready' ? '' : String(r.state);
-  if (r.state === 'ready' && !(r.tools.search && r.tools.read)) { S.mail.state = 'error'; S.mail.note = `Gmail is connected but is missing the search or read tool. Tools found: ${(r.all || []).join(', ')}`; }
+  if (r.state === 'ready' && !r.tools.search) { S.mail.state = 'error'; S.mail.note = `Gmail is connected but exposes no inbox search tool. Tools found: ${(r.all || []).join(', ')}`; }
   schedule();
 }
 
