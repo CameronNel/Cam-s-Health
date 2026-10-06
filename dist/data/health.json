@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-06T08:36:46.000Z",
+  "updatedAt": "2026-10-06T08:39:03.952Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1800,6 +1800,21 @@
           "estimated": false,
           "source": "Saved user-provided nutrition label from 4 Oct 2026.",
           "note": "Same 500 g banana kwark product previously logged; label gives 46.5 g protein per tub."
+        },
+        {
+          "id": "08e8344f-17ae-4c09-b95f-c6b658eb0191",
+          "name": "Milde magere kwark met banaan",
+          "quantity": "1 full 500 g tub",
+          "kcal": 345,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "fibre": null,
+          "estimated": false,
+          "source": "Saved user-provided nutrition label from 4 Oct 2026.",
+          "note": "Same 500 g banana kwark product previously logged; label gives 46.5 g protein per tub.",
+          "loggedAt": "2026-10-06T08:39:03.395Z",
+          "reviewRequired": false
         }
       ],
       "workouts": [],
