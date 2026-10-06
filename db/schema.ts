@@ -1,5 +1,7 @@
 import {sqliteTable, text, integer, index, primaryKey} from 'drizzle-orm/sqlite-core';
 
+// Retired AI tables stay declared so future migrations cannot drop history.
+// Migration 0003 removes only the encrypted connection material.
 export const aiConnections = sqliteTable('ai_connections', {
   ownerId: text('owner_id').primaryKey().notNull(),
   encryptedApiKey: text('encrypted_api_key').notNull(),

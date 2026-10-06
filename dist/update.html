@@ -16,18 +16,18 @@
 <header>Cam’s Life</header>
 <span class="eyebrow">App update</span>
 <h1>Bring your app up to date.</h1>
-<p>The latest app has <b>Connect AI</b> in Settings. An installed app can keep showing an earlier version until you apply its update.</p>
+<p>An installed app can keep showing an earlier version until you apply its update. Check here to load the latest Cam’s Life.</p>
 <button id="check" type="button">Check for updates</button>
 <p id="status" class="status" role="status" aria-live="polite">Check first, then choose when to reload.</p>
 <section id="review" hidden>
 <h2>Ready to open Settings?</h2>
-<p>Finish any saves in your other Cam’s Life tabs first. Copy any unsent check-ins or proposals you want to keep. Reloading clears those drafts and your temporary GitHub editing connection.</p>
-<p>Your saved health history, connections and preferences stay intact.</p>
+<p>Finish any saves in your other Cam’s Life tabs first. Keep any unfinished entries you want before reloading a tab. Reloading clears its unsaved forms and temporary GitHub editing connection.</p>
+<p>Your saved health history, Gmail connections and preferences stay intact.</p>
 <button id="apply" type="button">Update &amp; open Settings</button>
 <a class="button secondary" href="/#settings">Keep working</a>
 </section>
 <a id="open" class="button secondary" href="/#settings" hidden>Open Settings</a>
-<small>This page updates app files. It never clears your data or adds an AI key.</small>
+<small>This page updates app files and preserves your saved records.</small>
 <noscript><p>Enable JavaScript to check the installed app, or <a href="/#settings">open Settings</a>.</p></noscript>
 </main>
 <script type="module">
@@ -45,13 +45,13 @@ check.addEventListener('click',async()=>{
   check.disabled=true;review.hidden=true;open.hidden=true;status.textContent='Checking the latest app files…';
   try{
     if(!navigator.onLine)throw Error('Reconnect to the internet and try again.');
-    if(!('serviceWorker' in navigator)&&window.isSecureContext){status.textContent='Open the current website in Settings to connect AI.';open.hidden=false;return;}
+    if(!('serviceWorker' in navigator)&&window.isSecureContext){status.textContent='Open the current website to use Cam’s Life.';open.hidden=false;return;}
     if(!window.isSecureContext||!('serviceWorker' in navigator))throw Error('Open this page in Chrome using the secure app link.');
     registration=await navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'});
     await registration.update();
     await waitForInstall(registration.installing);
     if(registration.waiting){status.textContent='The latest app is ready. Review the reload below.';review.hidden=false;}
-    else{status.textContent='Your app files are up to date. Open Settings, then choose Connect AI.';open.hidden=false;}
+    else{status.textContent='Your app files are up to date. Open Settings to return to Cam’s Life.';open.hidden=false;}
   }catch(error){status.textContent=error.message+' Your saved records are intact.';}
   finally{check.disabled=false;}
 });

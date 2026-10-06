@@ -12,9 +12,8 @@ Your existing health record remains at `dist/data/health.json` on `CameronNel/Ca
 - **Health:** existing food/recipes, calories/macros, water/steps, workouts/rotation, body measurements and exports. Optional check-ins add mood, energy, sleep, feelings and device-reported skeletal muscle. Trends use actual dates and known readings. Weight extrapolation requires five dates spanning at least a week; missing values stay unknown.
 - **Inbox:** Gmail OAuth, a bounded mailbox scan, attention/noise classification, an action brief, delivery extraction, and reviewed archive/mark-read/Trash operations. Every mailbox change requires selecting exact messages and clicking confirm. There is no permanent-delete API.
 - **Life:** durable private to-dos, deliveries and pickup/Cipio/PIN codes, pickup completion, and 20 source-linked facts with favorites.
-- **Ask:** real in-app inference through Groq’s `openai/gpt-oss-120b`, with structured, validated proposals for food, daily steps/water/weight, body readings, wellbeing and completed workouts. Food estimates include calories/macros, source and assumptions. Follow-ups replace the unsaved review instead of appending duplicates. Review and save uses the existing verified GitHub diary. The ordinary food form offers **Estimate with AI**. GPT-OSS is text-only; this release does not upload or analyze photos.
 
-The interface is phone-only and permanently dark: solid dark sage surfaces, cream text and restrained yellow accents, five thumb-reachable tabs with simple active underlines, readable charts, and Android-friendly bottom sheets. A larger screen keeps the same single-column phone layout. OS appearance and old light-theme preferences cannot switch the app to light. Settings, history, exports and sync diagnostics remain accessible from the header. Keyboard focus and reduced-motion support are retained.
+The interface is phone-only and permanently dark: solid dark sage surfaces, cream text and restrained yellow accents, four thumb-reachable tabs with simple active underlines, readable charts, and Android-friendly bottom sheets. A larger screen keeps the same single-column phone layout. OS appearance and old light-theme preferences cannot switch the app to light. Settings, history, exports and sync diagnostics remain accessible from the header. Keyboard focus and reduced-motion support are retained.
 
 ## Install on your phone
 
@@ -22,21 +21,15 @@ Open the app in **Chrome on Android**, let it finish its first online load, then
 
 The service worker stores only digest-verified public app HTML, code, styles and icons. After a successful online health read, the existing validated health cache can be reviewed offline with a clear saved-copy warning. Private life/mailbox records, photos, tokens, API responses and health JSON are never added to the service-worker cache. Private records are unavailable on an offline fresh launch, rather than shown as zero tasks or packages. Saves and mailbox actions require a connection and are never queued or replayed.
 
-New versions wait for **Review update → Reload app**. The app does not automatically reload drafts, photos or pending saves. The review explains what a reload clears; saved records remain intact. `npm run build` regenerates `dist/sw.js` from the public asset digests and worker template, then packages that exact release. Keep the Worker’s successful-app-shell header and root routing in place so online access/login failures cannot be replaced by an offline page.
+New versions wait for **Review update → Reload app**. The app does not automatically reload unfinished forms or pending saves. Settings has a manual update check; `/update.html` offers recovery for older installed copies. The review explains what a reload clears; saved records remain intact. `npm run build` regenerates `dist/sw.js` from the public asset digests and worker template, then packages that exact release. Keep the Worker’s successful-app-shell header and root routing in place so online access/login failures cannot be replaced by an offline page.
 
-## Connect the AI
+## Health logging
 
-1. Create a free account at [Groq Console](https://console.groq.com/keys). Keep it on the **Free** plan; this app does not create billing accounts or upgrade plans.
-2. Open **Settings → Connect AI**, enter the Groq key there, and tap **Connect & test**. Do not paste the key in chat or commit it. A small live model check must succeed before the server saves the encrypted connection.
-3. In **Ask**, describe what you ate or your watch readings. Review the proposed records and save to the diary. The food form can also ask the same model to fill an estimate. GitHub editing authorization remains separate.
+Enter food name, portion, calories and macros in the food form. Label values and saved recipes can supply nutrition; unknown values stay unknown. Repeat a previous food or choose a saved recipe to reuse its recorded portion and values, then review before saving. Weight, body readings, water, steps, workouts and wellbeing have their own forms.
 
-The key is encrypted in owner-scoped private D1 using the existing server encryption secret, never browser storage or the public repository. Settings supports a live connection test and disconnect. The fixed provider/model has no fallback to OpenAI’s paid API. A key belonging to a paid Groq account follows that account’s billing terms; the app cannot determine or enforce its plan.
+In-app AI, the Ask tab, model-based food estimates and the ChatGPT handoff have been removed at the owner’s request. Deprecated AI endpoints return a disabled response even for an older installed app, with no provider requests. The release removes only the app’s encrypted AI connection credential, preserving all saved meals, provenance, Gmail, life records and past request counts. The external Groq key is not revoked.
 
-The app caps provider attempts at 50 per owner per UTC day, including tests and failed calls. Groq’s own free request/token limits may stop calls sooner. Input context and output are bounded; there are no automatic retries, background model calls or queued offline requests. A limit or connection failure keeps the draft available for retry. Structured responses are independently checked for valid fields, ranges and actions before review; the model cannot modify profile, delete records, or access Gmail.
-
-Only bounded health context, recent chat and the unsaved review are sent to Groq when you submit. Nutrition from the model is explicitly marked as an estimate; missing portions prompt a question. Saved-recipe and user-label values identify their supplied source. Unknowns stay unknown, and unsupported photos are never sent. The optional ChatGPT handoff remains separate from this connection.
-
-The **Cam’s Life · hourly inbox brief** ChatGPT task is currently paused. Its schedule is separate from in-app Gmail synchronization and from Groq inference.
+External chat logging through the connected GitHub repository remains available independently. The **Cam’s Life · hourly inbox brief** ChatGPT task is currently paused; its schedule is separate from in-app Gmail synchronization.
 
 ## Storage and privacy
 
@@ -76,7 +69,7 @@ npm run build
 
 `npm run build` emits the Cloudflare-compatible Worker and assets under `.sites-runtime/build` and mirrors them to ignored `dist/server` and `dist/client` for the Sites packager. Repeated builds exclude generated trees from source assets. Source schema lives in `db/schema.ts`; generate append-only production migrations with `npm run db:generate`. Sites owns the real D1 resource. Include `.openai/hosting.json`, `dist/server`, `dist/client`, and `drizzle` in the deployment archive. Never include local runtime state or secrets.
 
-Verification: 144 regression checks cover retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed single-use mailbox actions, preservation of completed tasks/deliveries, service-worker cache/access/update boundaries, and sourced in-app meal lookup. Touch-browser checks at 424, 390 and 360 CSS pixels verify the dark lock, navigation, Settings/History access, chart routes, check-in review and measurement sheets. A persistent Chrome profile reports zero installability errors and verifies offline launch, saved health versus unavailable private data, unsent form retention without write requests, and reviewed update activation. Physical Oppo installation and production Gmail consent/reads/writes remain unverified.
+Verification covers retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed mailbox actions, preservation of completed tasks/deliveries, and service-worker access/update boundaries. Removal checks ensure cached AI requests make no provider calls and only AI credentials are removed by the migration. Browser checks cover the four phone tabs, manual forms, retained food provenance and an installed-app upgrade with saved history/preferences preserved. Production Gmail consent/reads/writes and physical Oppo installation remain unverified.
 
 ## Repository name
 
