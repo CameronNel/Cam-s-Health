@@ -2,6 +2,7 @@ import {REPO,round,today,totals,shiftDate,dayFor,nextSession,brief} from './mode
 import {BODY_FIELDS,METHODS,ensureDay,assertUnchanged,validDate,bodyValue,bodySeries,bodySummary,bodyDays,displayUnit,fromMetric,toMetric,sameDayComposition} from './body.js';
 import {GitHubStore} from './sync.js';
 import {createLifeUI} from './life-ui.js';
+import {createPWA} from './pwa.js';
 
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -54,6 +55,9 @@ const unit=k=>displayUnit(k,state.units);
 const sessionSets=s=>s?.exercises?.reduce((a,e)=>a+(Number(e.sets)||0),0)||0;
 const actualSets=w=>w.actualExercises?.reduce((a,e)=>a+(Number(e.sets)||0),0)||null;
 const store=new GitHubStore({onchange:()=>{if(!sheet.open)render();}});
+const pwa=createPWA({onchange:()=>{if(!sheet.open&&!document.activeElement?.matches('input,textarea,select'))render();}});
+function pwaBanner(){return pwa.state.offline?'<div class="notice pwa-notice" role="status"><div><b>Offline</b><p>Saved health history is available after a live read. Reconnect to save, load private records or scan Gmail.</p></div></div>':pwa.state.updateAvailable?`<div class="notice pwa-notice" role="status"><div><b>App update available</b><p>Reload when you have finished logging.</p></div>${button('Review update','pwa-update','','textbtn')}</div>`:'';}
+function pwaSettings(){const s=pwa.state;return `<section class="life-card pwa-card"><h2>App installation</h2><p>${s.standalone?'Running as an installed app.':s.installed?'Added to your device. Open Cam’s Life from your home screen.':'On your Oppo, open this page in Chrome, then install Cam’s Life from the browser menu.'}</p><div class="pwa-actions">${s.canInstall&&!s.standalone&&!s.installed?button('Install Cam’s Life','pwa-install'):''}${s.updateAvailable?button('Review update','pwa-update','','btn secondary'):''}</div><p class="help">${s.error?esc(s.error):s.ready?'App files are ready for offline use. Saved health history is labelled when it is not live.':s.supported?'Preparing app files for offline use.':'Offline installation needs a supported browser and HTTPS.'}</p><p class="help">Private records and Gmail need a connection. Updates never reload an unfinished check-in automatically.</p></section>`;}
 
 function applyTheme(){document.documentElement.dataset.theme='dark';document.querySelector('meta[name="theme-color"]').content='#111a15';}
 applyTheme();
@@ -71,14 +75,14 @@ document.addEventListener('focusin',updateKeyboard);
 document.addEventListener('focusout',()=>requestAnimationFrame(updateKeyboard));
 function toast(text){const el=$('#toast');el.textContent=text;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),5000);}
 const navigation=[['dashboard','Today','home'],['nutrition','Health','body'],['inbox','Inbox','mail'],['life','Life','package'],['ask','Ask','chat']];
-const lifeUI=createLifeUI({store,state,render,openSheet,closeSheet,toast,wireForm,saveFooter,navigate,dateControls,nutritionHero,activity,trainingNotice});
+const lifeUI=createLifeUI({store,state,render,openSheet,closeSheet,toast,wireForm,saveFooter,navigate,dateControls,nutritionHero,activity,trainingNotice,foodForm});
 function nav(){return navigation.map(([key,title,ico])=>`<button data-view="${key}" class="nav-item ${(state.view===key||(key==='nutrition'&&['training','body','insights','history'].includes(state.view)))?'active':''}" ${state.view===key?'aria-current="page"':''}>${icon(ico)}<span>${title}</span></button>`).join('');}
 function render(){
-  if(!store.data){root.innerHTML=`<main class="boot"><div class="wordmark">cam<span>.</span></div><p>${store.error?esc(store.error):'Getting your latest records'}</p>${store.error?button('Try again','refresh','refresh'):'<div class="loader"></div>'}</main>`;return;}
+  if(!store.data){root.innerHTML=`<main class="boot"><div class="wordmark">cam<span>.</span></div><p>${!navigator.onLine?'Offline. Connect once to load your health history.':store.error?esc(store.error):'Getting your latest records'}</p>${store.error?button('Try again','refresh','refresh'):'<div class="loader"></div>'}</main>`;return;}
   const d=dayFor(store.data,state.date),t=totals(d),titles={dashboard:'Today',nutrition:'Food diary',training:'Training',body:'Body',settings:'Settings',history:'History',workout:'Workout',inbox:'Inbox',life:'Life',ask:'Ask',insights:'Trends & insights'};
   const title=state.detail?'Workout':titles[state.view]||'Today';
   const brand=`<a class="mobile-brand" href="#dashboard" data-home aria-label="Cam’s Life home"><span>Cam’s Life<small>${esc(title)}</small></span></a>`;
-  root.innerHTML=`<div class="app-shell"><div class="app-content"><header class="topbar"><div class="top-title">${state.detail?iconButton('Back to training','training','left'):brand}<strong class="detail-title">${state.detail?title:''}</strong></div><div class="top-actions">${iconButton('Settings','settings','more')}${iconButton('Refresh records','refresh','refresh',store.reading||store.busy?'disabled':'')}${iconButton('Add a log','quick','plus')}</div></header><main id="main" tabindex="-1">${store.error?`<div class="notice warning" role="status">${icon('info')}<div><b>Sync needs attention</b><p>${esc(store.error)}</p></div>${button('Details','sync-info','','textbtn')}</div>`:''}${['nutrition','training','body','insights','history'].includes(state.view)?lifeUI.healthTabs():''}${state.detail?workoutDetails():lifeUI.view(state.view)??(state.view==='nutrition'?nutrition(d,t)+lifeUI.wellbeingCard():state.view==='training'?training(d):state.view==='body'?bodyView()+lifeUI.wellbeingCard():state.view==='history'?historyView():lifeUI.setupBlock()+settingsView())}<footer class="sync-footer"><button class="textbtn" data-act="sync-info"><i class="status-dot ${store.error?'amber':''}"></i>${esc(store.status)}</button><span>${store.checkedAt?'Checked '+new Date(store.checkedAt).toLocaleTimeString('en-GB',{timeZone:store.data.profile.timezone,hour:'2-digit',minute:'2-digit'}):'No live read verified'}</span></footer></main></div><nav class="bottom-nav" aria-label="Main navigation">${nav()}</nav></div>`;
+  root.innerHTML=`<div class="app-shell"><div class="app-content"><header class="topbar"><div class="top-title">${state.detail?iconButton('Back to training','training','left'):brand}<strong class="detail-title">${state.detail?title:''}</strong></div><div class="top-actions">${iconButton('Settings','settings','more')}${iconButton('Refresh records','refresh','refresh',store.reading||store.busy?'disabled':'')}${iconButton('Add a log','quick','plus')}</div></header><main id="main" tabindex="-1">${pwaBanner()}${store.error?`<div class="notice warning" role="status">${icon('info')}<div><b>Sync needs attention</b><p>${esc(store.error)}</p></div>${button('Details','sync-info','','textbtn')}</div>`:''}${['nutrition','training','body','insights','history'].includes(state.view)?lifeUI.healthTabs():''}${state.detail?workoutDetails():lifeUI.view(state.view)??(state.view==='nutrition'?nutrition(d,t)+lifeUI.wellbeingCard():state.view==='training'?training(d):state.view==='body'?bodyView()+lifeUI.wellbeingCard():state.view==='history'?historyView():pwaSettings()+lifeUI.setupBlock()+settingsView())}<footer class="sync-footer"><button class="textbtn" data-act="sync-info"><i class="status-dot ${store.error?'amber':''}"></i>${esc(store.status)}</button><span>${store.checkedAt?'Checked '+new Date(store.checkedAt).toLocaleTimeString('en-GB',{timeZone:store.data.profile.timezone,hour:'2-digit',minute:'2-digit'}):'No live read verified'}</span></footer></main></div><nav class="bottom-nav" aria-label="Main navigation">${nav()}</nav></div>`;
   attachHolds();updateTimer();
 }
 function dateControls(week=false){
@@ -127,7 +131,7 @@ const TOKEN_URL='https://github.com/settings/personal-access-tokens/new?name=Cam
 let returnFocus=null,dirty=false,closingFromHistory=false;
 function openSheet(title,content,setup=()=>{}) {
   if(!sheet.open){returnFocus=document.activeElement;history.pushState({...history.state,sheet:true},'');}
-  dirty=false;sheet.innerHTML=`<div class="sheet-grip"></div><header class="sheet-head"><h2 id="sheet-title">${title}</h2>${iconButton('Close dialog','close-sheet','close')}</header><div class="sheet-content">${content}</div><div class="discard-confirm" hidden><b>Discard unsaved changes?</b><p>These edits have not been saved to GitHub.</p><div class="form-actions">${button('Keep editing','keep-editing','','btn secondary')}${button('Discard','discard','','btn danger')}</div></div>`;
+  dirty=false;sheet.innerHTML=`<div class="sheet-grip"></div><header class="sheet-head"><h2 id="sheet-title">${title}</h2>${iconButton('Close dialog','close-sheet','close')}</header><div class="sheet-content">${content}</div><div class="discard-confirm" hidden><b>Discard unsaved changes?</b><p>These changes have not been saved.</p><div class="form-actions">${button('Keep editing','keep-editing','','btn secondary')}${button('Discard','discard','','btn danger')}</div></div>`;
   sheet.setAttribute('aria-labelledby','sheet-title');document.body.classList.add('sheet-open');
   if(!sheet.open)sheet.showModal();sheet.scrollTop=0;setup();
 }
@@ -146,6 +150,7 @@ function saveFooter(label='Save to GitHub'){return `${authFields()}<p class="for
 function wireForm(handler) {
   $('form',sheet).addEventListener('submit',async event=>{
     event.preventDefault();const form=event.target,fd=new FormData(form),controls=$$('input,select,textarea,button',form),error=$('#form-error',form);error.textContent='';
+    if(!navigator.onLine){error.textContent='Offline. Reconnect to save. Your entries are still in this form.';return;}
     if(!store.connected&&!fd.get('githubToken')?.trim()){const details=$('.inline-connect',form);if(details)details.open=true;error.textContent='Connect your GitHub token below to save. Your entries are still in this form.';$('[name=githubToken]',form)?.focus();return;}
     controls.forEach(c=>c.disabled=true);form.setAttribute('aria-busy','true');
     try {
@@ -169,15 +174,46 @@ function bodyForm(date=state.date){
   }));
 }
 function foodDetails(foodId){const f=dayFor(store.data,state.date).food.find(f=>f.id===foodId);if(!f)return;openSheet('Food details',`<div class="food-detail-top"><span class="item-icon large">${icon(foodIcon(f))}</span><h3>${esc(f.name)}</h3><p>${esc(f.quantity)}</p><strong>${fmt(f.kcal)}<small> kcal</small></strong>${tag(f.estimated?'Estimated nutrition':'Recorded nutrition')}</div><div class="detail-macros">${[['protein','Protein'],['carbs','Carbs'],['fat','Fat']].map(([k,l])=>`<div><span>${l}</span><b>${fmt(f[k])} <small>g</small></b></div>`).join('')}</div>${f.reviewRequired?'<div class="notice warning"><p>The recorded calories and macros need review. Original estimates are retained.</p></div>':''}${f.note?`<h4>Notes</h4><p class="help preserve">${esc(f.note)}</p>`:''}${f.source?`<details class="disclosure"><summary>Nutrition source ${icon('plus')}</summary><p class="help">${esc(f.source)}</p></details>`:''}<div class="form-actions">${button('Edit','food-edit','edit','btn',`data-id="${esc(f.id)}"`)}${button('Log again','food-repeat','plus','btn secondary',`data-id="${esc(f.id)}"`)}</div>`);}
-function foodForm(existing=null,template=null){
-  const date=state.date,original=existing?structuredClone(existing):null,f=existing||template||{},entryId=existing?.id||id();
-  openSheet(existing?'Edit food':'Log food',`<form><div class="form-date">${icon('calendar')} ${dateLabel(date,{weekday:'short',day:'numeric',month:'long'})}${template?tag('REPEAT PORTION'):''}</div><label class="field">Food or drink<input name="name" required maxlength="160" value="${esc(f.name)}" placeholder="What did you have?"></label><label class="field">Portion<input name="quantity" required maxlength="160" value="${esc(f.quantity)}" placeholder="e.g. 200 g cooked, or 1 scoop (30 g)"></label><div class="form-grid">${[['kcal','Calories (kcal)'],['protein','Protein (g)'],['carbs','Carbs (g)'],['fat','Fat (g)']].map(([k,l])=>numberField(k,l,f[k],{placeholder:'Unknown'})).join('')}</div><label class="checkbox-label"><input type="checkbox" name="estimated" ${f.estimated!==false?'checked':''}>Nutrition is an estimate</label><label class="field">Notes / label details<textarea name="note" maxlength="5000" rows="3">${esc(f.note)}</textarea></label><p class="help">Repeating a food copies its saved portion and nutrition. Review both when changing the serving size.</p>${existing?button('Delete this entry','food-delete','close','textbtn danger-text',`data-id="${esc(existing.id)}"`):''}${saveFooter()}</form>`,()=>wireForm(async fd=>{
-    const entry={...f,id:entryId,name:fd.get('name').trim(),quantity:fd.get('quantity').trim(),estimated:fd.has('estimated'),note:fd.get('note').trim(),source:f.source||'Manually entered in Cam’s Health',loggedAt:original?.loggedAt||new Date().toISOString()};delete entry.date;
+function foodForm(existing=null,template=null,onSaved=()=>{}){
+  const date=state.date,original=existing?structuredClone(existing):null,f=existing||template||{},entryId=existing?.id||id();let autofillSource='';
+  openSheet(existing?'Edit food':'Log food',`<form id="food-form"><div class="form-date">${icon('calendar')} ${dateLabel(date,{weekday:'short',day:'numeric',month:'long'})}${template?tag('REPEAT PORTION'):''}</div><label class="field">Food or drink<input name="name" required maxlength="160" value="${esc(f.name)}" placeholder="What did you have?"></label><label class="field">Portion<input name="quantity" required maxlength="160" value="${esc(f.quantity)}" placeholder="e.g. 200 g cooked, or 1 scoop (30 g)"></label><div class="food-autofill"><button type="button" class="btn secondary" id="food-find">Estimate with AI</button><p class="help" id="food-lookup-status" role="status">Describe your food and portion. AI fills an estimate for you to review.</p></div><div class="form-grid">${[['kcal','Calories (kcal)'],['protein','Protein (g)'],['carbs','Carbs (g)'],['fat','Fat (g)']].map(([k,l])=>numberField(k,l,f[k],{placeholder:'Unknown'})).join('')}</div><label class="checkbox-label"><input type="checkbox" name="estimated" ${f.estimated!==false?'checked':''}>Nutrition is an estimate</label><label class="field">Notes / label details<textarea name="note" maxlength="5000" rows="3">${esc(f.note)}</textarea></label><p class="help">Repeating a food copies its saved portion and nutrition. Review both when changing the serving size.</p>${existing?button('Delete this entry','food-delete','close','textbtn danger-text',`data-id="${esc(existing.id)}"`):''}${saveFooter()}</form>`,()=>{wireForm(async fd=>{
+    const entry={...f,id:entryId,name:fd.get('name').trim(),quantity:fd.get('quantity').trim(),estimated:fd.has('estimated'),note:fd.get('note').trim(),source:autofillSource||f.source||'Manually entered in Cam’s Life',loggedAt:original?.loggedAt||new Date().toISOString()};delete entry.date;
     for(const k of ['kcal','protein','carbs','fat'])entry[k]=fd.get(k)===''?null:Number(fd.get(k));
     if(!entry.name||!entry.quantity)throw Error('Enter a food name and portion.');
     entry.reviewRequired=entry.kcal!=null&&[entry.protein,entry.carbs,entry.fat].every(v=>v!=null)&&Math.abs(entry.kcal-(4*entry.protein+4*entry.carbs+9*entry.fat))>Math.max(25,entry.kcal*.1);
     await store.save(data=>upsert(ensureDay(data,date).food,entry,original),`${original?'Correct':'Log'} food for ${date}`);
-  }));
+    onSaved();
+  });
+  setupFoodAutofill(source=>autofillSource=source,date);
+  });
+}
+function setupFoodAutofill(setSource,date){
+ const form=$('#food-form',sheet),status=$('#food-lookup-status',form),trigger=$('#food-find',form);let generated=null;
+ trigger.addEventListener('click',async()=>{
+  const name=$('[name=name]',form).value.trim(),quantity=$('[name=quantity]',form).value.trim(),note=$('[name=note]',form).value.trim();
+  if(!name){status.textContent='Describe the food first.';return;}
+  trigger.disabled=true;trigger.textContent='Estimating…';status.textContent='Asking GPT-OSS 120B…';
+  try{
+   const action=await lifeUI.estimateFood(name,quantity,note,date);
+   if(!form.isConnected)return;
+   if($('[name=name]',form).value.trim()!==name||$('[name=quantity]',form).value.trim()!==quantity||$('[name=note]',form).value.trim()!==note){status.textContent='Your description changed while AI was working. Estimate again with the new details.';return;}
+   for(const key of ['kcal','protein','carbs','fat'])$(`[name=${key}]`,form).value=action[key]??'';
+   if(action.quantity)$('[name=quantity]',form).value=action.quantity;
+   $('[name=estimated]',form).checked=action.estimated;
+   $('[name=note]',form).value=action.note||note;setSource(action.source);generated=action;dirty=true;
+   status.textContent='AI estimate filled. '+(action.note||'Review the portion and values before saving.');
+  }catch(error){if(form.isConnected)status.textContent=error.message;}
+  finally{if(form.isConnected){trigger.disabled=false;trigger.textContent='Estimate with AI';}}
+ });
+ for(const key of ['name','quantity'])$(`[name=${key}]`,form).addEventListener('input',()=>{
+  if(!generated)return;
+  for(const nutrient of ['kcal','protein','carbs','fat'])$(`[name=${nutrient}]`,form).value='';
+  if($('[name=note]',form).value===generated.note)$('[name=note]',form).value='';
+  generated=null;setSource('');status.textContent='Description changed. Estimate again or enter the label values.';
+ });
+ for(const key of ['kcal','protein','carbs','fat'])$(`[name=${key}]`,form).addEventListener('input',()=>{
+  if(!generated)return;generated=null;setSource('AI estimate edited manually in Cam’s Life');status.textContent='Your edited values will be saved. Review the portion and assumptions.';
+ });
 }
 function upsert(entries,entry,baseline){const index=entries.findIndex(e=>e.id===entry.id);if(index>=0&&JSON.stringify(entries[index])===JSON.stringify(entry))return;if(baseline){if(index<0)throw Error('This entry was removed elsewhere.');assertUnchanged(entries[index],baseline);entries[index]=entry;}else if(index<0)entries.push(entry);else throw Error('An entry with this ID already exists. Refresh and review it before retrying.');}
 function recipeForm(recipeId){const recipe=store.data.recipes.find(r=>r.id===recipeId),date=state.date,entryId=id();if(!recipe)return;const per=recipe.per100g||recipe.per100Grams;if(!per)return toast('This recipe is missing its portion nutrition.');openSheet('Recipe portion',`<form><span class="eyebrow">SAVED RECIPE</span><h3>${esc(recipe.name)}</h3><p class="help">${fmt(recipe.yieldG)} g cooked batch. Nutrition scales from the saved per-100 g estimate.</p><label class="field">Your portion (grams)<input name="grams" id="recipe-grams" type="number" inputmode="decimal" required min="1" max="10000" step="any" placeholder="e.g. 200"></label><div id="recipe-preview" class="recipe-preview">Enter your portion to preview its nutrition.</div><p class="help preserve">${esc(recipe.note||recipe.notes)}</p>${saveFooter('Log portion')}</form>`,()=>{
@@ -222,6 +258,9 @@ let heldTimers=[];
 function attachHolds(){heldTimers.forEach(clearTimeout);heldTimers=[];$$('[data-workout]',root).forEach(el=>{let timer,start;const clear=()=>clearTimeout(timer);el.addEventListener('pointerdown',e=>{if(e.button!==0)return;start=[e.clientX,e.clientY];timer=setTimeout(()=>{if(!el.isConnected)return;el.dataset.held='1';previewWorkout(el.dataset.workout);},450);heldTimers.push(timer);});el.addEventListener('pointermove',e=>{if(start&&Math.hypot(e.clientX-start[0],e.clientY-start[1])>10)clear();});['pointerup','pointercancel','pointerleave'].forEach(type=>el.addEventListener(type,clear));el.addEventListener('contextmenu',e=>e.preventDefault());});}
 function previewWorkout(sid){const s=store.data.training.sessions.find(s=>s.id===sid);if(s)openSheet('Workout preview',`<span class="eyebrow">PRESCRIBED, NOT COMPLETED</span><h3 class="sheet-hero-title">${esc(s.name)}</h3><p class="help">${esc(s.focus)}</p>${exerciseList(s)}${button('Open full workout','open-workout','arrow','btn full',`data-id="${esc(s.id)}"`)}`);}
 async function action(act,b){
+ if(act==='pwa-install')return pwa.install();
+ if(act==='pwa-update'){if(store.busy||lifeUI.life.busy||lifeUI.life.syncing||dirty){toast('Finish your current save or check-in before updating.');return;}openSheet('Update Cam’s Life',`<p class="help">Reload to apply the update. Saved records stay intact. Unsent check-in text, photos and reviewed proposals in this tab will be cleared; copy anything you need first. Browser editing will need reconnecting after reload.</p><div class="form-actions">${button('Keep working','close-sheet','','btn secondary')}${button('Reload app','pwa-update-confirm')}</div>`);return;}
+ if(act==='pwa-update-confirm'){if(store.busy||lifeUI.life.busy||lifeUI.life.syncing)throw Error('Wait for the current request to finish before updating.');return pwa.activateUpdate();}
  if(act==='close-sheet')return closeSheet();if(act==='discard'){dirty=false;return closeSheet(true);}if(act==='keep-editing'){$('.discard-confirm',sheet).hidden=true;return;}
  if(act==='quick')return quickLog();if(act==='body-log')return bodyForm();if(act==='food-log')return foodForm();if(act==='workout-log')return workoutForm(null,state.date,b?.dataset.session||state.detail);
  if(['steps','water','notes'].includes(act))return metricForm(act);
