@@ -14,10 +14,13 @@ const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 const GROQ_MODEL = 'openai/gpt-oss-120b';
 const AI_DAILY_LIMIT = 50;
 const MAX_AI_BODY_BYTES = 1100 * 1024;
+const GROQ_ERROR_CODES = new Set(['invalid_api_key', 'invalid_request_error', 'model_not_found', 'model_decommissioned', 'model_permission_blocked_org', 'model_permission_blocked_project', 'unsupported_parameter', 'unsupported_value', 'rate_limit_exceeded', 'context_length_exceeded', 'json_validate_failed', 'server_error']);
+const GROQ_ERROR_PARAMS = new Set(['model', 'messages', 'response_format', 'response_format.json_schema', 'response_format.json_schema.schema', 'response_format.json_schema.strict', 'max_completion_tokens', 'reasoning_effort', 'include_reasoning', 'stream']);
+const GROQ_NETWORK_CATEGORIES = new Map([['TypeError', 'type_error'], ['NetworkError', 'network_error'], ['SecurityError', 'security_error']]);
 
 class HttpError extends Error {
-  constructor(status, message, code = 'request_failed') {
-    super(message); this.status = status; this.code = code;
+  constructor(status, message, code = 'request_failed', providerDiagnostics = null) {
+    super(message); this.status = status; this.code = code; this.providerDiagnostics = providerDiagnostics;
   }
 }
 
@@ -197,21 +200,68 @@ async function reserveAIRequest(env, owner, now) {
   return row.request_count;
 }
 
+async function groqErrorDiagnostics(response) {
+  const diagnostics = {providerStatus: response.status};
+  // Provider messages may contain reflected keys or health text. Read at most
+  // 8 KiB to inspect only finite, known code/parameter values; never retain,
+  // display or log the message, body, request, owner or arbitrary properties.
+  const reader = response.body?.getReader();
+  if (!reader) return diagnostics;
+  try {
+    let size = 0; const chunks = [];
+    for (;;) {
+      const {value, done} = await reader.read(); if (done) break;
+      size += value.byteLength;
+      if (size > 8192) {await reader.cancel(); return diagnostics;}
+      chunks.push(value);
+    }
+    const bytes = new Uint8Array(size); let offset = 0;
+    for (const chunk of chunks) {bytes.set(chunk, offset); offset += chunk.byteLength;}
+    const error = JSON.parse(new TextDecoder().decode(bytes))?.error;
+    if (GROQ_ERROR_CODES.has(error?.code)) diagnostics.providerCode = error.code;
+    if (GROQ_ERROR_PARAMS.has(error?.param)) diagnostics.providerParam = error.param;
+  } catch { /* Invalid, interrupted or non-JSON error bodies add no diagnostics. */ }
+  finally {reader.releaseLock();}
+  return diagnostics;
+}
+
+function groqResponseError(diagnostics) {
+  const status = diagnostics.providerStatus, code = diagnostics.providerCode;
+  if (status === 429) return new HttpError(429, 'Groq’s free rate or token limit has been reached. Wait a little and try again; the app will not switch to a paid model.', 'ai_rate_limit', diagnostics);
+  if (status === 401) return new HttpError(401, 'Groq rejected this API key. Check the key from console.groq.com/keys, then enter it again in Settings.', 'ai_key_invalid', diagnostics);
+  if (status === 403) {
+    if (code === 'model_permission_blocked_org') return new HttpError(403, 'Groq blocked GPT-OSS 120B for your organization. In Groq Settings → Organization → Limits, allow openai/gpt-oss-120b, then reconnect here. Keep the Free plan.', 'ai_model_permission_org', diagnostics);
+    if (code === 'model_permission_blocked_project') return new HttpError(403, 'Groq blocked GPT-OSS 120B for your project. In Groq Settings → Projects → Limits, allow openai/gpt-oss-120b, then reconnect here. Keep the Free plan.', 'ai_model_permission_project', diagnostics);
+    return new HttpError(403, 'Groq denied access to GPT-OSS 120B. Check your Groq account and project permissions, then reconnect in Settings.', 'ai_access_denied', diagnostics);
+  }
+  if (status === 404 || code === 'model_not_found' || code === 'model_decommissioned') return new HttpError(502, `Groq could not find or enable GPT-OSS 120B (HTTP ${status}). Check that this model is available to your Groq project. Your saved data and previous connection are unchanged.`, 'ai_model_unavailable', diagnostics);
+  if ([400, 422].includes(status)) return new HttpError(502, `Groq rejected the AI request (HTTP ${status}). The app request needs checking. Your saved data and previous connection are unchanged.`, 'ai_request_rejected', diagnostics);
+  if (status === 413) return new HttpError(502, 'Groq rejected the AI request because it is too large (HTTP 413). Try a shorter check-in. Your records have not changed.', 'ai_input_too_large', diagnostics);
+  return new HttpError(502, `Groq could not complete this request (HTTP ${status}). Your records have not changed. Try again shortly.`, 'ai_provider_failed', diagnostics);
+}
+
 async function groqCompletion(fetcher, apiKey, payload) {
   const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 40000);
   try {
     // The destination, model and options are fixed here. Browser input cannot
     // enable provider tools, paid fallback models, redirects or automatic retries.
     const response = await fetcher(GROQ_URL, {
-      method: 'POST', redirect: 'error', signal: controller.signal,
+      // Workers supports follow/manual, rather than the browser's error mode.
+      // Inspect redirects ourselves so the Authorization header stays here.
+      method: 'POST', redirect: 'manual', signal: controller.signal,
       headers: {'content-type': 'application/json', authorization: 'Bearer ' + apiKey},
       body: JSON.stringify({model: GROQ_MODEL, reasoning_effort: 'low', include_reasoning: false, stream: false, ...payload}),
     });
-    if (!response.ok) {
+    if ((response.status >= 300 && response.status <= 399) || response.redirected) {
       await response.body?.cancel();
-      if (response.status === 429) throw new HttpError(429, 'Groq’s free rate or token limit has been reached. Wait a little and try again; the app will not switch to a paid model.', 'ai_rate_limit');
-      if ([401, 403].includes(response.status)) throw new HttpError(401, 'Groq could not authorize this key or model. Check your key and model access in Groq, then reconnect in Settings.', 'ai_key_invalid');
-      throw new HttpError(502, 'Groq could not complete this request. Your records have not changed. Try again shortly.', 'ai_provider_failed');
+      const diagnostics = {providerStatus: response.status};
+      console.error('Cam’s Life Groq redirect rejected', diagnostics);
+      throw new HttpError(502, 'Groq redirected the AI connection unexpectedly. The request was stopped to protect your key. Your records and previous connection are unchanged.', 'ai_redirect_rejected', diagnostics);
+    }
+    if (!response.ok) {
+      const diagnostics = await groqErrorDiagnostics(response);
+      console.error('Cam’s Life Groq request failed', diagnostics);
+      throw groqResponseError(diagnostics);
     }
     const reader = response.body?.getReader();
     if (!reader) throw new HttpError(502, 'Groq returned an empty response. Your records have not changed.', 'ai_invalid_response');
@@ -234,7 +284,10 @@ async function groqCompletion(fetcher, apiKey, payload) {
     return choice.message.content;
   } catch (error) {
     if (error instanceof HttpError) throw error;
-    if (controller.signal.aborted || error?.name === 'AbortError') throw new HttpError(504, 'The AI took too long to reply. Your records have not changed. Try again.', 'ai_timeout');
+    const timeout = controller.signal.aborted || error?.name === 'AbortError';
+    const category = timeout ? 'timeout' : GROQ_NETWORK_CATEGORIES.get(error?.name) || 'unavailable';
+    console.error('Cam’s Life Groq connection failed', {category});
+    if (timeout) throw new HttpError(504, 'The AI took too long to reply. Your records have not changed. Try again.', 'ai_timeout');
     throw new HttpError(502, 'Groq could not be reached. Check your connection and try again.', 'ai_unavailable');
   } finally {clearTimeout(timer);}
 }
@@ -572,7 +625,7 @@ export function createWorker({fetcher = globalThis.fetch, crypto = globalThis.cr
         }
         return json({error: 'This action is not available.', code: 'not_found'}, 404);
       } catch (error) {
-        if (error instanceof HttpError) return json({error: error.message, code: error.code}, error.status);
+        if (error instanceof HttpError) return json({error: error.message, code: error.code, ...(error.providerDiagnostics || {})}, error.status);
         // Never log request bodies, provider errors, authorization codes or tokens.
         console.error('Cam’s Life API failed', {route: url.pathname, kind: error?.name || 'Error'});
         return json({error: 'This action could not be completed. Your saved data has not been replaced. Try again shortly.', code: 'service_unavailable'}, 503);
