@@ -33,7 +33,7 @@ function harness(mode='normal') {
 }
 test('PWA caches only verified public files and strips gateway identity headers',async()=>{
   const sw=harness();await sw.lifecycle('install');
-  const cache=[...sw.stores.values()][0];assert.equal(cache.size,19);
+  const cache=[...sw.stores.values()][0];assert.equal(cache.size,18);
   for(const [path,response] of cache){assert.ok(!/api|health\.json|photo|callback|auth/.test(path));assert.equal(response.headers.has('Set-Cookie'),false);assert.equal(response.headers.has('X-User-Identity'),false);assert.equal(response.headers.has('Cache-Control'),false);}
   assert.equal(await cache.get('/index.html').clone().text(),index);
   assert.equal(cache.get('/index.html').headers.get('X-Frame-Options'),'DENY');
@@ -47,7 +47,7 @@ test('a poisoned or changed asset aborts installation without removing the previ
 test('offline reloads retain the shell but dynamic/private routes and writes are never intercepted',async()=>{
   const sw=harness();await sw.lifecycle('install');sw.setMode('offline');
   assert.equal(await(await sw.dispatch('/?date=2026-10-04',{navigate:true})).text(),index);
-  for(const path of ['/api/life','/api/inbox/callback?code=synthetic','/data/health.json','/login','https://api.github.com/user','/studio.js?token=synthetic'])assert.equal(await sw.dispatch(path),null,path);
+  for(const path of ['/api/life','/api/ai/setup','/api/assistant','/api/inbox/callback?code=synthetic','/data/health.json','/login','https://api.github.com/user','/studio.js?token=synthetic'])assert.equal(await sw.dispatch(path),null,path);
   assert.equal(await sw.dispatch('/api/life',{method:'PUT'}),null);
   assert.equal(await sw.dispatch('/studio.js',{authorization:true}),null);
 });

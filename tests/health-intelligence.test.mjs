@@ -270,10 +270,12 @@ test('structured schema uses strict objects and per-field metric actions to prev
   assert.deepEqual(healthActionSchema.required,['summary','actions','questions']);
   const actions = healthActionSchema.properties.actions.items.anyOf;
   const metrics = actions.filter(action => action.properties.type.enum[0] === 'set_metrics');
-  assert.equal(metrics.length,3);
+  assert.equal(metrics.length,1);
+  assert.deepEqual(metrics[0].properties.field.enum,['steps','waterMl','weightKg']);
   for (const schema of metrics) {
     assert.equal(schema.additionalProperties,false);
-    assert.equal(schema.required.length,2);
+    assert.equal(schema.required.length,3);
+    assert.deepEqual(new Set(schema.required),new Set(['type','field','value']));
     assert.deepEqual(new Set(schema.required),new Set(Object.keys(schema.properties)));
   }
   assert.match(healthSystemPrompt,/Never infer body fat/);

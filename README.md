@@ -4,7 +4,7 @@ A personal workspace for health, inbox, deliveries, to-dos, and a sourced daily 
 
 **Open the app:** https://cams-health.cameronnel111.chatgpt.site
 
-Your existing health record remains at `dist/data/health.json` on `CameronNel/Cam-s-Health/main`. This overhaul does not alter that file or its history. Read `AGENTS.md` before logging through chat.
+Your existing health record remains at `dist/data/health.json` on `CameronNel/Cam-s-Health/main`. App releases preserve the latest canonical records and their history. Read `AGENTS.md` before logging through chat.
 
 ## The app
 
@@ -12,7 +12,7 @@ Your existing health record remains at `dist/data/health.json` on `CameronNel/Ca
 - **Health:** existing food/recipes, calories/macros, water/steps, workouts/rotation, body measurements and exports. Optional check-ins add mood, energy, sleep, feelings and device-reported skeletal muscle. Trends use actual dates and known readings. Weight extrapolation requires five dates spanning at least a week; missing values stay unknown.
 - **Inbox:** Gmail OAuth, a bounded mailbox scan, attention/noise classification, an action brief, delivery extraction, and reviewed archive/mark-read/Trash operations. Every mailbox change requires selecting exact messages and clicking confirm. There is no permanent-delete API.
 - **Life:** durable private to-dos, deliveries and pickup/Cipio/PIN codes, pickup completion, and 20 source-linked facts with favorites.
-- **Ask:** in-app food recognition from 7,793 USDA reference foods and saved recipes, with editable portions, distinct raw/cooked matches, filled calories/macros, and a verified diary save. Explicit body/activity check-ins can be saved with the meal. Missing portions are requested; unknown nutrition stays unknown. The ordinary food form also offers **Find nutrition**. Deeper questions and photo analysis use a separate ChatGPT handoff. Photos stay in the current tab and are not uploaded or stored by this app. See [food lookup and provenance](docs/FOOD-LOOKUP.md).
+- **Ask:** real in-app inference through Groq’s `openai/gpt-oss-120b`, with structured, validated proposals for food, daily steps/water/weight, body readings, wellbeing and completed workouts. Food estimates include calories/macros, source and assumptions. Follow-ups replace the unsaved review instead of appending duplicates. Review and save uses the existing verified GitHub diary. The ordinary food form offers **Estimate with AI**. GPT-OSS is text-only; this release does not upload or analyze photos.
 
 The interface is phone-only and permanently dark: solid dark sage surfaces, cream text and restrained yellow accents, five thumb-reachable tabs with simple active underlines, readable charts, and Android-friendly bottom sheets. A larger screen keeps the same single-column phone layout. OS appearance and old light-theme preferences cannot switch the app to light. Settings, history, exports and sync diagnostics remain accessible from the header. Keyboard focus and reduced-motion support are retained.
 
@@ -24,13 +24,19 @@ The service worker stores only digest-verified public app HTML, code, styles and
 
 New versions wait for **Review update → Reload app**. The app does not automatically reload drafts, photos or pending saves. The review explains what a reload clears; saved records remain intact. `npm run build` regenerates `dist/sw.js` from the public asset digests and worker template, then packages that exact release. Keep the Worker’s successful-app-shell header and root routing in place so online access/login failures cannot be replaced by an offline page.
 
-## No paid AI requirement
+## Connect the AI
 
-The release makes no OpenAI API calls and requires no OpenAI key. Local parsing is explicitly labelled; it does not pretend to be ChatGPT. The ChatGPT handoff requires a copy/paste step and an existing GitHub connection to update the health record. You can save your own dedicated conversation/project URL in the handoff; only that device-local preference is persisted. Nothing is automatically submitted. Refresh the app after ChatGPT verifies its save.
+1. Create a free account at [Groq Console](https://console.groq.com/keys). Keep it on the **Free** plan; this app does not create billing accounts or upgrade plans.
+2. Open **Settings → Connect AI**, enter the Groq key there, and tap **Connect & test**. Do not paste the key in chat or commit it. A small live model check must succeed before the server saves the encrypted connection.
+3. In **Ask**, describe what you ate or your watch readings. Review the proposed records and save to the diary. The food form can also ask the same model to fill an estimate. GitHub editing authorization remains separate.
 
-OpenAI’s [ChatGPT plan usage documentation](https://developers.openai.com/siwc/token-sharing-open-source) describes an opt-in OAuth path for eligible requests using a ChatGPT plan. Remotely hosted apps require separate access through OpenAI’s interest/preview program. This deployed app does not claim that approval, reuse ChatGPT session credentials, or quietly fall back to billed API access. Its existing Sites sign-in only authenticates visitors; it is not inference authorization.
+The key is encrypted in owner-scoped private D1 using the existing server encryption secret, never browser storage or the public repository. Settings supports a live connection test and disconnect. The fixed provider/model has no fallback to OpenAI’s paid API. A key belonging to a paid Groq account follows that account’s billing terms; the app cannot determine or enforce its plan.
 
-An enabled **Cam’s Life · hourly inbox brief** ChatGPT task scans the connected Gmail mailbox hourly in Europe/Amsterdam and notifies on meaningful new actions/delivery changes. Its briefs arrive in ChatGPT, not automatically in the app's D1 inbox state. Creating the task does not prove that its first run has completed. Existing paused fitness tasks remain paused.
+The app caps provider attempts at 50 per owner per UTC day, including tests and failed calls. Groq’s own free request/token limits may stop calls sooner. Input context and output are bounded; there are no automatic retries, background model calls or queued offline requests. A limit or connection failure keeps the draft available for retry. Structured responses are independently checked for valid fields, ranges and actions before review; the model cannot modify profile, delete records, or access Gmail.
+
+Only bounded health context, recent chat and the unsaved review are sent to Groq when you submit. Nutrition from the model is explicitly marked as an estimate; missing portions prompt a question. Saved-recipe and user-label values identify their supplied source. Unknowns stay unknown, and unsupported photos are never sent. The optional ChatGPT handoff remains separate from this connection.
+
+The **Cam’s Life · hourly inbox brief** ChatGPT task is currently paused. Its schedule is separate from in-app Gmail synchronization and from Groq inference.
 
 ## Storage and privacy
 

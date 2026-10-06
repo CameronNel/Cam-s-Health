@@ -3,7 +3,7 @@ import {createHash} from 'node:crypto';
 
 // Explicit public code/assets only. Never add health JSON, mailbox data or photos.
 const files = ['index.html','studio.js','pwa.js','chatgpt-link.js','studio.css','life.css','life-ui.js','life-model.js',
-  'health-intelligence.js','food-lookup.js','food-catalog.js','model.js','body.js','sync.js','manifest.webmanifest','favicon.svg',
+  'health-intelligence.js','ai-checkin.js','model.js','body.js','sync.js','manifest.webmanifest','favicon.svg',
   'icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png'];
 const types = {html:'text/html',js:'text/javascript',css:'text/css',webmanifest:'application/manifest+json',svg:'image/svg+xml',png:'image/png'};
 const index = await readFile('dist/index.html','utf8');

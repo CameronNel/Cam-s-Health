@@ -1,4 +1,6 @@
 import * as LifeModel from '../dist/life-model.js';
+import {healthActionSchema, healthSystemPrompt} from '../dist/health-intelligence.js';
+import {buildAIContext, parseAIResponse} from '../dist/ai-checkin.js';
 
 // Every API is behind Sites' private access policy AND its authenticated-user
 // header. Service-access bypass tokens deliberately do not establish identity.
@@ -8,6 +10,10 @@ const MAX_MESSAGES = 40;
 const GMAIL_SCOPE = 'https://www.googleapis.com/auth/gmail.modify';
 const CLEANUP_OPERATIONS = new Set(['archive', 'read', 'trash']);
 const METHODS = new Set(['POST', 'PUT', 'PATCH', 'DELETE']);
+const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODEL = 'openai/gpt-oss-120b';
+const AI_DAILY_LIMIT = 50;
+const MAX_AI_BODY_BYTES = 1100 * 1024;
 
 class HttpError extends Error {
   constructor(status, message, code = 'request_failed') {
@@ -45,11 +51,11 @@ function requireOrigin(request) {
   }
 }
 
-async function bodyJson(request) {
+async function bodyJson(request, maxBytes = MAX_JSON_BYTES) {
   if (!/^application\/json(?:\s*;|$)/i.test(request.headers.get('content-type') || '')) {
     throw new HttpError(415, 'Send a JSON request.', 'json_required');
   }
-  if (Number(request.headers.get('content-length') || 0) > MAX_JSON_BYTES) {
+  if (Number(request.headers.get('content-length') || 0) > maxBytes) {
     throw new HttpError(413, 'This request is too large.', 'request_too_large');
   }
   const reader = request.body?.getReader();
@@ -59,7 +65,7 @@ async function bodyJson(request) {
     const { value, done } = await reader.read();
     if (done) break;
     size += value.byteLength;
-    if (size > MAX_JSON_BYTES) { await reader.cancel(); throw new HttpError(413, 'This request is too large.', 'request_too_large'); }
+    if (size > maxBytes) { await reader.cancel(); throw new HttpError(413, 'This request is too large.', 'request_too_large'); }
     chunks.push(value);
   }
   const bytes = new Uint8Array(size); let offset = 0;
@@ -156,6 +162,126 @@ async function saveGoogleClient(request, env, owner, body, crypto, now) {
     db.prepare('DELETE FROM oauth_states WHERE owner_id = ?').bind(owner),
   ]);
   return json({configured: true, message: 'Google app settings saved securely. Connect Gmail to grant mailbox access.'});
+}
+
+async function aiKey(env, owner, crypto) {
+  const row = await database(env).prepare('SELECT encrypted_api_key FROM ai_connections WHERE owner_id = ?').bind(owner).first();
+  if (!row) throw new HttpError(503, 'Connect your free Groq account in Settings to use the in-app AI.', 'ai_not_configured');
+  try { return await decryptSecret(crypto, env, 'groq:' + owner, row.encrypted_api_key); }
+  catch { throw new HttpError(503, 'Your AI connection could not be opened. Reconnect Groq in Settings.', 'ai_reconnect_required'); }
+}
+
+async function aiSetup(env, owner, crypto, now) {
+  const storageReady = Boolean(env.LIFE_DB), encryptionReady = encryptionConfigured(env);
+  let configured = false, reconnectRequired = false, usedToday = 0;
+  if (storageReady) {
+    const row = await database(env).prepare('SELECT encrypted_api_key FROM ai_connections WHERE owner_id = ?').bind(owner).first();
+    if (row) {
+      if (!encryptionReady) reconnectRequired = true;
+      else {
+        try { await decryptSecret(crypto, env, 'groq:' + owner, row.encrypted_api_key); configured = true; }
+        catch { reconnectRequired = true; }
+      }
+    }
+    const usage = await database(env).prepare('SELECT request_count FROM ai_daily_usage WHERE owner_id = ? AND usage_day = ?').bind(owner, now().toISOString().slice(0, 10)).first();
+    usedToday = usage?.request_count || 0;
+  }
+  return {configured, provider: 'Groq', model: GROQ_MODEL, storageReady, encryptionReady, reconnectRequired, usedToday, dailyLimit: AI_DAILY_LIMIT, remainingToday: Math.max(0, AI_DAILY_LIMIT - usedToday)};
+}
+
+async function reserveAIRequest(env, owner, now) {
+  // A single conditional UPSERT reserves usage before the provider call. Failed
+  // calls and connection tests count too; concurrent requests cannot bypass it.
+  const row = await database(env).prepare('INSERT INTO ai_daily_usage (owner_id, usage_day, request_count) VALUES (?, ?, 1) ON CONFLICT(owner_id, usage_day) DO UPDATE SET request_count = request_count + 1 WHERE request_count < ? RETURNING request_count').bind(owner, now().toISOString().slice(0, 10), AI_DAILY_LIMIT).first();
+  if (!row) throw new HttpError(429, 'Today’s 50 AI requests have been used. Try again tomorrow. Groq’s own free limits also apply.', 'ai_daily_limit');
+  return row.request_count;
+}
+
+async function groqCompletion(fetcher, apiKey, payload) {
+  const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 40000);
+  try {
+    // The destination, model and options are fixed here. Browser input cannot
+    // enable provider tools, paid fallback models, redirects or automatic retries.
+    const response = await fetcher(GROQ_URL, {
+      method: 'POST', redirect: 'error', signal: controller.signal,
+      headers: {'content-type': 'application/json', authorization: 'Bearer ' + apiKey},
+      body: JSON.stringify({model: GROQ_MODEL, reasoning_effort: 'low', include_reasoning: false, stream: false, ...payload}),
+    });
+    if (!response.ok) {
+      await response.body?.cancel();
+      if (response.status === 429) throw new HttpError(429, 'Groq’s free rate or token limit has been reached. Wait a little and try again; the app will not switch to a paid model.', 'ai_rate_limit');
+      if ([401, 403].includes(response.status)) throw new HttpError(401, 'Groq could not authorize this key or model. Check your key and model access in Groq, then reconnect in Settings.', 'ai_key_invalid');
+      throw new HttpError(502, 'Groq could not complete this request. Your records have not changed. Try again shortly.', 'ai_provider_failed');
+    }
+    const reader = response.body?.getReader();
+    if (!reader) throw new HttpError(502, 'Groq returned an empty response. Your records have not changed.', 'ai_invalid_response');
+    const chunks = []; let size = 0;
+    for (;;) {
+      const {value, done} = await reader.read(); if (done) break;
+      size += value.byteLength;
+      if (size > 128 * 1024) {await reader.cancel(); throw new HttpError(502, 'Groq returned a response that is too large. Try a shorter check-in.', 'ai_invalid_response');}
+      chunks.push(value);
+    }
+    const bytes = new Uint8Array(size); let offset = 0;
+    for (const chunk of chunks) {bytes.set(chunk, offset); offset += chunk.byteLength;}
+    let result;
+    try {result = JSON.parse(new TextDecoder().decode(bytes));}
+    catch {throw new HttpError(502, 'Groq returned a response that could not be read. Your records have not changed.', 'ai_invalid_response');}
+    const choice = result?.choices?.[0];
+    if (choice?.finish_reason === 'length') throw new HttpError(502, 'This check-in exceeded the AI response limit. Try fewer items at once. Nothing has been saved.', 'ai_response_limit');
+    if (choice?.message?.refusal) throw new HttpError(422, 'The AI could not interpret this check-in. Try describing the food, amount or reading plainly.', 'ai_refused');
+    if (choice?.finish_reason !== 'stop' || typeof choice?.message?.content !== 'string' || !choice.message.content.trim()) throw new HttpError(502, 'Groq returned an incomplete response. Your records have not changed.', 'ai_invalid_response');
+    return choice.message.content;
+  } catch (error) {
+    if (error instanceof HttpError) throw error;
+    if (controller.signal.aborted || error?.name === 'AbortError') throw new HttpError(504, 'The AI took too long to reply. Your records have not changed. Try again.', 'ai_timeout');
+    throw new HttpError(502, 'Groq could not be reached. Check your connection and try again.', 'ai_unavailable');
+  } finally {clearTimeout(timer);}
+}
+
+async function probeAI(fetcher, apiKey) {
+  const content = await groqCompletion(fetcher, apiKey, {
+    max_completion_tokens: 256,
+    messages: [{role: 'system', content: 'Connection test only. Return ready=true using the supplied JSON schema.'}, {role: 'user', content: 'Confirm this connection works. This is synthetic test data.'}],
+    response_format: {type: 'json_schema', json_schema: {name: 'cams_life_connection', strict: true, schema: {type: 'object', additionalProperties: false, properties: {ready: {type: 'boolean', enum: [true]}}, required: ['ready']}}},
+  });
+  try {
+    const result = JSON.parse(content);
+    if (!result || result.ready !== true || Object.keys(result).length !== 1) throw Error();
+  } catch {throw new HttpError(502, 'Groq’s connection test could not be verified. Your previous connection has not changed.', 'ai_invalid_response');}
+}
+
+async function saveAISetup(env, owner, body, crypto, fetcher, now) {
+  const db = database(env);
+  if (!encryptionConfigured(env)) throw new HttpError(503, 'Private encryption must be enabled before an AI key can be saved.', 'encryption_not_configured');
+  const apiKey = typeof body.apiKey === 'string' ? body.apiKey.trim() : '';
+  if (Object.keys(body).some(key => key !== 'apiKey') || !/^gsk_[A-Za-z0-9_-]{16,508}$/.test(apiKey)) throw new HttpError(400, 'Enter a valid Groq API key from console.groq.com/keys.', 'ai_key_invalid');
+  await reserveAIRequest(env, owner, now);
+  await probeAI(fetcher, apiKey);
+  const encrypted = await encryptSecret(crypto, env, 'groq:' + owner, apiKey);
+  await db.prepare('INSERT INTO ai_connections (owner_id, encrypted_api_key, updated_at) VALUES (?, ?, ?) ON CONFLICT(owner_id) DO UPDATE SET encrypted_api_key = excluded.encrypted_api_key, updated_at = excluded.updated_at').bind(owner, encrypted, now().toISOString()).run();
+  return json({configured: true, provider: 'Groq', model: GROQ_MODEL, message: 'Groq connected and tested. Your check-ins can now use the AI inside the app.'});
+}
+
+async function assistant(env, owner, body, crypto, fetcher, now) {
+  if (Object.keys(body).some(key => !['message', 'date', 'health', 'conversation', 'pendingActions'].includes(key))) throw new HttpError(400, 'Send a text check-in with its selected health date. This AI model does not accept photos.', 'ai_input_invalid');
+  if (typeof body.message !== 'string' || !body.message.trim()) throw new HttpError(400, 'Describe the food, activity or reading you want to record.', 'ai_input_invalid');
+  let context;
+  try {context = buildAIContext(body.health, body.date, {message: body.message, conversation: body.conversation, pendingActions: body.pendingActions});}
+  catch (error) {throw new HttpError(400, text(error.message, 500) || 'Check the date and health records before asking the AI.', 'ai_input_invalid');}
+  const payload = {
+    max_completion_tokens: 2000,
+    messages: [{role: 'system', content: healthSystemPrompt}, {role: 'user', content: JSON.stringify(context)}],
+    response_format: {type: 'json_schema', json_schema: {name: 'cams_life_checkin', strict: true, schema: healthActionSchema}},
+  };
+  if (JSON.stringify(payload).length > 22000) throw new HttpError(400, 'This check-in has too much context for the free AI limit. Try a shorter message.', 'ai_input_too_large');
+  const apiKey = await aiKey(env, owner, crypto);
+  await reserveAIRequest(env, owner, now);
+  const content = await groqCompletion(fetcher, apiKey, payload);
+  let result;
+  try {result = parseAIResponse(content, body.health, body.date, {message: body.message, conversation: body.conversation, pendingActions: body.pendingActions});}
+  catch {throw new HttpError(502, 'The AI response did not pass the health checks. Nothing has been saved. Try clarifying the amounts or readings.', 'ai_invalid_actions');}
+  return json({...result, provider: 'Groq', model: GROQ_MODEL});
 }
 
 async function remoteJson(fetcher, url, options = {}, provider = 'Connection') {
@@ -405,10 +531,22 @@ export function createWorker({fetcher = globalThis.fetch, crypto = globalThis.cr
         if (url.pathname === '/api/status' && request.method === 'GET') {
           const account = env.LIFE_DB ? await accountFor(env, owner) : null;
           const setup = await gmailSetup(env, owner, crypto, url.origin);
+          const ai = await aiSetup(env, owner, crypto, now);
           const connected = Boolean(account);
           const hourly = Boolean(env.LIFE_SCHEDULER_ENABLED === 'true' && setup.configured && account);
-          return json({storage: Boolean(env.LIFE_DB), aiMode: 'subscription-handoff', aiConfigured: false, gmail: setup.configured, gmailSetup: setup, inboxConnected: connected, gmailConnected: connected, email: account?.email || null, hourlySync: hourly, hourlyEnabled: hourly});
+          return json({storage: Boolean(env.LIFE_DB), aiMode: 'groq', aiConfigured: ai.configured, aiSetup: ai, gmail: setup.configured, gmailSetup: setup, inboxConnected: connected, gmailConnected: connected, email: account?.email || null, hourlySync: hourly, hourlyEnabled: hourly});
         }
+        if (url.pathname === '/api/ai/setup' && request.method === 'POST') return await saveAISetup(env, owner, await bodyJson(request, 4096), crypto, fetcher, now);
+        if (url.pathname === '/api/ai/setup' && request.method === 'DELETE') {
+          await database(env).prepare('DELETE FROM ai_connections WHERE owner_id = ?').bind(owner).run();
+          return json({configured: false, message: 'Groq disconnected. All health and life records are still saved.'});
+        }
+        if (url.pathname === '/api/ai/test' && request.method === 'POST') {
+          const apiKey = await aiKey(env, owner, crypto);
+          await reserveAIRequest(env, owner, now); await probeAI(fetcher, apiKey);
+          return json({configured: true, provider: 'Groq', model: GROQ_MODEL, message: 'Your Groq connection is working.'});
+        }
+        if (url.pathname === '/api/assistant' && request.method === 'POST') return await assistant(env, owner, await bodyJson(request, MAX_AI_BODY_BYTES), crypto, fetcher, now);
         if (url.pathname === '/api/life' && request.method === 'GET') return json(await readLife(env, owner));
         if (url.pathname === '/api/life' && request.method === 'PUT') {
           const body = await bodyJson(request);

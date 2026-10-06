@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-05T19:51:35.083Z",
+  "updatedAt": "2026-10-06T06:56:36.000Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
     "targets": {
       "kcal": 1900,
-      "protein": 150,
+      "protein": 145,
       "carbs": 210,
       "fat": 50,
       "steps": 10000
@@ -20,7 +20,7 @@
       "Dumbbells up to 20 kg"
     ],
     "equipmentNote": "Normal barbell bench pressing is unavailable with the current setup.",
-    "source": "Cut targets updated 25 Sep 2026 from current 65.5 kg body weight, 12.5% Galaxy Watch BIA trend baseline, and evidence for higher protein intake during energy restriction. Calorie target held at 1,900 pending weight-trend-derived maintenance.",
+    "source": "Cut targets reviewed 5 Oct 2026 from current 64.3 kg body weight and ~10.2% Galaxy Watch BIA reading (~57.7 kg estimated FFM). Protein set to 145 g/day (~2.5 g/kg estimated FFM; ~2.25 g/kg body weight) for lean-mass retention during the cut. Calories retained at 1,900 because a single lower body-weight/BIA reading does not establish maintenance expenditure; adjust from multi-week weight trend and training performance rather than body-fat estimate alone.",
     "heightCm": null
   },
   "training": {
@@ -1688,22 +1688,113 @@
         },
         {
           "id": "food-bddb5435-675b-4b22-9a88-f8a5d328cb5d",
-          "name": "80g of chicken breast left extremely long in the oven",
-          "quantity": "",
-          "kcal": null,
-          "protein": null,
-          "carbs": null,
-          "fat": null,
+          "name": "Very dry oven-baked chicken breast",
+          "quantity": "80 g cooked weight",
+          "kcal": 175,
+          "protein": 30.4,
+          "carbs": 3.7,
+          "fat": 3.6,
+          "estimated": true,
+          "source": "Estimated from saved seasoned-chicken batch plus extra cooking-water loss.",
+          "note": "User reported 80 g after being left in the oven about 3× too long and extremely dry. Final cooked batch yield is unknown, so this is a conservative estimate rather than the provisional recipe-per-gram calculation.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-05-banana-kwark-500g-1",
+          "name": "Milde magere kwark met banaan",
+          "quantity": "1 full 500 g tub",
+          "kcal": 345,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "fibre": null,
           "estimated": false,
-          "source": "Explicit check-in",
-          "note": ""
+          "source": "Saved user-provided nutrition label from 4 Oct 2026.",
+          "note": "Same 500 g banana kwark product previously logged; label gives 46.5 g protein per tub."
+        },
+        {
+          "id": "2026-10-05-machine-lattes-5-1",
+          "name": "Machine latte — low powdered milk setting",
+          "quantity": "5 lattes",
+          "kcal": 175,
+          "protein": 3.5,
+          "carbs": 18.75,
+          "fat": 10,
+          "estimated": true,
+          "source": "Standardized office coffee-machine estimate saved in tracker from 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal, 0.7 g protein, 3.75 g carbs and 2 g fat per latte; machine/product nutrition remains unconfirmed."
+        },
+        {
+          "id": "2026-10-05-medium-banana-1",
+          "name": "Banana",
+          "quantity": "1 medium banana",
+          "kcal": 105,
+          "protein": 1.3,
+          "carbs": 27,
+          "fat": 0.3,
+          "estimated": true,
+          "source": "Generic medium-banana estimate aligned with user's ~100–105 kcal estimate.",
+          "note": "Logged at 105 kcal as requested; macros estimated generically."
+        },
+        {
+          "id": "2026-10-05-chicken-mayo-sesame-109g-1",
+          "name": "Chicken breast with mayonnaise + sesame oil",
+          "quantity": "109 g chicken+mayo on scale + ~3 g sesame oil",
+          "kcal": 305,
+          "protein": 28.1,
+          "carbs": 1.5,
+          "fat": 20.2,
+          "estimated": true,
+          "source": "User-provided scale photo and report, 5 Oct 2026; generic cooked chicken breast/mayonnaise estimates and saved sesame-oil reference.",
+          "note": "Scale photo reads 109 g for the chicken+mayo mixture. Exact mayo weight is unknown; estimated as ~90 g cooked chicken breast + ~19 g mayonnaise, plus ~3 g sesame oil reported separately. Update if mayo quantity/label becomes known."
+        },
+        {
+          "id": "2026-10-05-albert-heijn-milk-330ml-1",
+          "name": "Albert Heijn milk drink",
+          "quantity": "330 ml",
+          "kcal": 178.2,
+          "protein": 15.18,
+          "carbs": 15.18,
+          "fat": 1.65,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 5 Oct 2026.",
+          "note": "Label per 100 ml: 54 kcal, 4.6 g protein, 4.6 g carbs, 0.5 g fat. User drank 330 ml."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": 64.3,
+      "notes": "Partial Sunday 5 Oct food log: 80 g extremely dry oven-baked chicken breast, 1 full 500 g banana kwark, 5 machine lattes on powdered-milk setting 1/3, and 1 medium banana. Also logged 109 g chicken breast + mayo mixture from scale photo, plus ~3 g sesame oil; mayo/chicken split estimated. Added 330 ml Albert Heijn milk drink from user-provided label.",
+      "body": {
+        "bodyFatPct": 10.2,
+        "method": "BIA watch",
+        "notes": "User-reported Galaxy Watch reading; treat as a trend estimate rather than a precise body-fat measurement.",
+        "recordedAt": "2026-10-05T20:41:35.000Z"
+      }
+    },
+    "2026-10-06": {
+      "food": [
+        {
+          "id": "2026-10-06-oats-100g-1",
+          "name": "Oats",
+          "quantity": "100 g dry oats",
+          "kcal": 379,
+          "protein": 13.15,
+          "carbs": 67.7,
+          "fat": 6.52,
+          "fibre": 10.1,
+          "estimated": true,
+          "source": "USDA FoodData Central, cereals/oats regular and quick, unenriched, dry (FDC 173904); looked up 6 Oct 2026.",
+          "note": "Brand/product label not supplied, so generic dry-oats nutrition was used. Update from the package label if provided."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": ""
+      "notes": "Logged 100 g dry oats using a generic USDA dry-oats estimate.",
+      "complete": false
     }
   },
   "recipes": [
