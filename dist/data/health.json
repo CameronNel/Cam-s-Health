@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-06T08:40:06.000Z",
+  "updatedAt": "2026-10-06T19:01:14.000Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1804,11 +1804,52 @@
           "reviewRequired": false
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-10-06-push-rear-delts-1",
+          "sessionId": null,
+          "name": "Chest + Shoulders + Triceps",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Custom session reported by user on 6 Oct 2026. Exact reps, loads and duration not reported.",
+          "actualExercises": [
+            {
+              "name": "Incline DB Press",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm Cable Fly",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Lateral Raise",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Triceps Pushdown",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Face Pull",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Corrected oats entry: 100 g was cooked/wet weight after adding water, not dry weight. Added 1 full 500 g tub of the usual banana kwark from the saved product label.",
+      "notes": "Corrected oats entry: 100 g was cooked/wet weight after adding water, not dry weight. Added 1 full 500 g tub of the usual banana kwark from the saved product label. Workout: 4 sets incline DB press, 4 sets single-arm cable fly, 4 sets lateral raises, 3 sets triceps pushdown, 3 sets face pull.",
       "complete": false
     }
   },
