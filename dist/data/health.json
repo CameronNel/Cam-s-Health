@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-06T06:56:36.000Z",
+  "updatedAt": "2026-10-06T08:36:46.000Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1787,13 +1787,26 @@
           "estimated": true,
           "source": "USDA FoodData Central, cereals/oats regular and quick, unenriched, dry (FDC 173904); looked up 6 Oct 2026.",
           "note": "Brand/product label not supplied, so generic dry-oats nutrition was used. Update from the package label if provided."
+        },
+        {
+          "id": "2026-10-06-banana-kwark-500g-1",
+          "name": "Milde magere kwark met banaan",
+          "quantity": "1 full 500 g tub",
+          "kcal": 345,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "fibre": null,
+          "estimated": false,
+          "source": "Saved user-provided nutrition label from 4 Oct 2026.",
+          "note": "Same 500 g banana kwark product previously logged; label gives 46.5 g protein per tub."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Logged 100 g dry oats using a generic USDA dry-oats estimate.",
+      "notes": "Logged 100 g dry oats using a generic USDA dry-oats estimate. Added 1 full 500 g tub of the usual banana kwark from the saved product label.",
       "complete": false
     }
   },
