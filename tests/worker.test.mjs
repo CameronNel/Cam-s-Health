@@ -307,7 +307,7 @@ test('AI setup requires authenticated same-origin requests and small valid key i
 test('Groq setup verifies a synthetic strict response and encrypts the owner key without echoing it', async () => {
   const app = fixture({groq: options => {
     assert.equal(options.headers.authorization,'Bearer '+GROQ_KEY);
-    assert.equal(options.redirect,'error');
+    assert.equal(options.redirect,'manual');
     const payload = JSON.parse(options.body);
     assert.equal(payload.model,'openai/gpt-oss-120b');
     assert.equal(payload.reasoning_effort,'low');
@@ -455,4 +455,121 @@ test('atomic daily reservations stop concurrent owner requests, retain failed us
   app.setNow('2026-10-06T00:00:01Z');
   assert.equal((await app.request('/api/ai/test',{method:'POST'})).status,200);
   assert.equal((await (await app.request('/api/status')).json()).aiSetup.usedToday,1);
+});
+
+test('Groq failures expose only numeric status and allowlisted codes or parameters, preserving the prior connection', async t => {
+  const logs = []; t.mock.method(console,'error',(...values) => logs.push(values));
+  const app = fixture(); await connectAI(app);
+  const previous = app.db.raw.prepare('SELECT encrypted_api_key FROM ai_connections WHERE owner_id = ?').get(OWNER).encrypted_api_key;
+  const cases = [
+    {status:400,providerCode:'unsupported_parameter',param:'include_reasoning',appStatus:502,appCode:'ai_request_rejected'},
+    {status:401,providerCode:'invalid_api_key',param:'model',appStatus:401,appCode:'ai_key_invalid'},
+    {status:403,providerCode:'model_permission_blocked_org',param:'model',appStatus:403,appCode:'ai_model_permission_org',message:/Organization → Limits/},
+    {status:403,providerCode:'model_permission_blocked_project',param:'model',appStatus:403,appCode:'ai_model_permission_project',message:/Projects → Limits/},
+    {status:403,providerCode:'invalid_request_error',param:'model',appStatus:403,appCode:'ai_access_denied'},
+    {status:404,providerCode:'model_not_found',param:'model',appStatus:502,appCode:'ai_model_unavailable'},
+    {status:422,providerCode:'json_validate_failed',param:'response_format',appStatus:502,appCode:'ai_request_rejected'},
+    {status:429,providerCode:'rate_limit_exceeded',param:'model',appStatus:429,appCode:'ai_rate_limit'},
+    {status:500,providerCode:'server_error',param:'model',appStatus:502,appCode:'ai_provider_failed'},
+  ];
+  for (const entry of cases) {
+    app.setGroq(() => Response.json({error:{message:'private health text '+GROQ_KEY,code:entry.providerCode,param:entry.param,type:'anything '+GROQ_KEY},ownerId:OWNER,key:GROQ_KEY},{status:entry.status}));
+    const before = app.calls.length;
+    const response = await app.request('/api/ai/setup',{method:'POST',body:{apiKey:'gsk_another_fixture_provider_key'}});
+    assert.equal(response.status,entry.appStatus); assert.equal(response.headers.get('cache-control'),'no-store');
+    const result = await response.json();
+    assert.equal(result.code,entry.appCode); assert.equal(result.providerStatus,entry.status);
+    assert.equal(result.providerCode,entry.providerCode); assert.equal(result.providerParam,entry.param);
+    if (entry.message) assert.match(result.error,entry.message);
+    assert.deepEqual(Object.keys(result).sort(),['code','error','providerCode','providerParam','providerStatus']);
+    assert.equal(app.calls.length,before+1);
+    assert.equal(app.db.raw.prepare('SELECT encrypted_api_key FROM ai_connections WHERE owner_id = ?').get(OWNER).encrypted_api_key,previous);
+  }
+  assert.equal((await (await app.request('/api/status')).json()).aiSetup.usedToday,cases.length+1);
+  assert.equal(logs.length,cases.length);
+  for (const values of logs) {
+    assert.equal(values[0],'Cam’s Life Groq request failed');
+    assert.deepEqual(Object.keys(values[1]).sort(),['providerCode','providerParam','providerStatus']);
+  }
+  assert.ok(!JSON.stringify(logs).includes(GROQ_KEY)); assert.ok(!JSON.stringify(logs).includes(OWNER));
+  assert.ok(!JSON.stringify(logs).includes('private health text'));
+});
+
+test('untrusted provider codes, parameters, messages and malformed bodies are never echoed or logged', async t => {
+  const logs = []; t.mock.method(console,'error',(...values) => logs.push(values));
+  const app = fixture();
+  const secrets = [GROQ_KEY,'private health text',OWNER];
+  for (const raw of [JSON.stringify({error:{message:secrets.join(' '),code:GROQ_KEY,param:OWNER,type:'private health text'}}),secrets.join(' ')]) {
+    app.setGroq(() => new Response(raw,{status:400}));
+    const response = await app.request('/api/ai/setup',{method:'POST',body:{apiKey:GROQ_KEY}});
+    const result = await response.json(); assert.equal(response.status,502); assert.equal(result.code,'ai_request_rejected');
+    assert.equal(result.providerStatus,400); assert.equal(result.providerCode,undefined); assert.equal(result.providerParam,undefined);
+    for (const secret of secrets) assert.ok(!JSON.stringify(result).includes(secret));
+  }
+  assert.deepEqual(logs.map(values => values[1]),[{providerStatus:400},{providerStatus:400}]);
+  for (const secret of secrets) assert.ok(!JSON.stringify(logs).includes(secret));
+  assert.equal(app.db.raw.prepare('SELECT count(*) AS count FROM ai_connections').get().count,0);
+});
+
+test('oversized provider error streams are cancelled at the 8 KiB diagnostic bound without storing a key', async t => {
+  const logs = []; t.mock.method(console,'error',(...values) => logs.push(values));
+  const app = fixture(); let cancelled = 0, pulls = 0;
+  app.setGroq(() => new Response(new ReadableStream({
+    pull(controller) {pulls++; controller.enqueue(new TextEncoder().encode('x'.repeat(4097)));},
+    cancel() {cancelled++;},
+  }),{status:400}));
+  const response = await app.request('/api/ai/setup',{method:'POST',body:{apiKey:GROQ_KEY}});
+  assert.equal(response.status,502);
+  assert.deepEqual((await response.json()).providerStatus,400); assert.equal(cancelled,1);
+  assert.ok(pulls<=3); assert.deepEqual(logs[0][1],{providerStatus:400});
+  assert.equal(app.db.raw.prepare('SELECT count(*) AS count FROM ai_connections').get().count,0);
+  assert.equal((await (await app.request('/api/status')).json()).aiSetup.usedToday,1);
+});
+
+test('network exception diagnostics use finite categories without exposing exception names, messages or causes', async t => {
+  const logs = []; t.mock.method(console,'error',(...values) => logs.push(values));
+  const app = fixture();
+  const failures = [
+    {name:'TypeError',category:'type_error',status:502,code:'ai_unavailable'},
+    {name:'NetworkError',category:'network_error',status:502,code:'ai_unavailable'},
+    {name:'SecurityError',category:'security_error',status:502,code:'ai_unavailable'},
+    {name:GROQ_KEY,category:'unavailable',status:502,code:'ai_unavailable'},
+    {name:'__proto__',category:'unavailable',status:502,code:'ai_unavailable'},
+    {name:'AbortError',category:'timeout',status:504,code:'ai_timeout'},
+  ];
+  for (const entry of failures) {
+    app.setGroq(() => {const error = Error('private upstream message '+GROQ_KEY,{cause:{url:'https://private.example',ownerId:OWNER}});error.name=entry.name;throw error;});
+    const response = await app.request('/api/ai/setup',{method:'POST',body:{apiKey:GROQ_KEY}});
+    const result = await response.json(); assert.equal(response.status,entry.status); assert.equal(result.code,entry.code);
+    assert.equal(result.providerStatus,undefined); assert.equal(result.providerCode,undefined); assert.equal(result.providerParam,undefined);
+    for (const secret of [GROQ_KEY,OWNER,'private upstream message','private.example']) assert.ok(!JSON.stringify(result).includes(secret));
+    assert.deepEqual(logs.at(-1),['Cam’s Life Groq connection failed',{category:entry.category}]);
+  }
+  for (const secret of [GROQ_KEY,OWNER,'private upstream message','private.example','__proto__']) assert.ok(!JSON.stringify(logs).includes(secret));
+  assert.equal(app.db.raw.prepare('SELECT count(*) AS count FROM ai_connections').get().count,0);
+  assert.equal((await (await app.request('/api/status')).json()).aiSetup.usedToday,failures.length);
+});
+
+test('Workers-compatible manual redirect handling never follows Groq redirects or forwards a key to Location', async t => {
+  const logs = []; t.mock.method(console,'error',(...values) => logs.push(values));
+  const app = fixture(); let cancelled = 0;
+  for (const status of [301,302,307,308,200]) {
+    app.setGroq(options => {
+      assert.equal(options.redirect,'manual');
+      const response = new Response(new ReadableStream({cancel() {cancelled++;}}),{status,headers:{location:'https://attacker.example/'+GROQ_KEY}});
+      if (status===200) Object.defineProperty(response,'redirected',{value:true});
+      return response;
+    });
+    const before = app.calls.length;
+    const response = await app.request('/api/ai/setup',{method:'POST',body:{apiKey:GROQ_KEY}});
+    assert.equal(response.status,502); const result = await response.json();
+    assert.equal(result.code,'ai_redirect_rejected'); assert.equal(result.providerStatus,status);
+    assert.equal(app.calls.length,before+1); assert.ok(!JSON.stringify(result).includes(GROQ_KEY));
+    assert.ok(!JSON.stringify(result).includes('attacker.example'));
+  }
+  assert.equal(cancelled,5); assert.equal(logs.length,5);
+  for (const entry of logs) assert.equal(entry[0],'Cam’s Life Groq redirect rejected');
+  assert.ok(!JSON.stringify(logs).includes(GROQ_KEY)); assert.ok(!JSON.stringify(logs).includes('attacker.example'));
+  assert.equal(app.db.raw.prepare('SELECT count(*) AS count FROM ai_connections').get().count,0);
+  assert.ok(app.calls.every(call => call.url==='https://api.groq.com/openai/v1/chat/completions'));
 });
