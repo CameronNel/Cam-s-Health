@@ -74,3 +74,5 @@ Verification covers retained health invariants, conflict handling, parser ambigu
 ## Repository name
 
 The product and package are named Cam’s Life. The GitHub repository remains `CameronNel/Cam-s-Health`: admin permission was confirmed, but this session's GitHub tool set has no repository-rename operation and the direct GitHub CLI API is unavailable. No repository or URL is assumed to have been renamed. If renamed later, update `REPO` in `dist/model.js`, documentation, token guidance and automation prompts together; preserve the original health data and GitHub redirects.
+
+The mobile interface uses ambient dark sage backgrounds, translucent rounded tiles, a floating four-tab navigation capsule and a separate quick-log button. Nutrition rings and seven-day step bars come only from real records; missing readings stay unfilled. Motion respects the device’s reduced-motion setting.
