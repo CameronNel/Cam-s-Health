@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {validateLifeHealth, healthInsights, prepareHealthProposal, healthActionSchema, healthSystemPrompt, parseLocalCheckIn} from '../dist/health-intelligence.js';
+import {validateLifeHealth, healthInsights, prepareHealthProposal, parseLocalCheckIn} from '../dist/health-intelligence.js';
 
 const DATE = '2026-10-05';
 const NOW = new Date('2026-10-05T12:00:00Z');
@@ -263,24 +263,6 @@ test('weekly means use observations and do not fill missing days with zero', () 
   assert.deepEqual(insight.week.sleepHours,{value:7,count:2});
   assert.deepEqual(insight.week.mood,{value:3,count:2});
   assert.deepEqual(insight.week.energy,{value:null,count:0});
-});
-
-test('structured schema uses strict objects and per-field metric actions to prevent null placeholder overwrites', () => {
-  assert.equal(healthActionSchema.additionalProperties,false);
-  assert.deepEqual(healthActionSchema.required,['summary','actions','questions']);
-  const actions = healthActionSchema.properties.actions.items.anyOf;
-  const metrics = actions.filter(action => action.properties.type.enum[0] === 'set_metrics');
-  assert.equal(metrics.length,1);
-  assert.deepEqual(metrics[0].properties.field.enum,['steps','waterMl','weightKg']);
-  for (const schema of metrics) {
-    assert.equal(schema.additionalProperties,false);
-    assert.equal(schema.required.length,3);
-    assert.deepEqual(new Set(schema.required),new Set(['type','field','value']));
-    assert.deepEqual(new Set(schema.required),new Set(Object.keys(schema.properties)));
-  }
-  assert.match(healthSystemPrompt,/Never infer body fat/);
-  assert.match(healthSystemPrompt,/Null means the user explicitly/);
-  assert.match(healthSystemPrompt,/Never claim an action has already been saved/);
 });
 
 test('local parser prepares explicit daily totals, readings and wellbeing with no API', () => {

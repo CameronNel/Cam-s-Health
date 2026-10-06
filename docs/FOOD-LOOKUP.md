@@ -1,4 +1,6 @@
-# In-app food logging
+# Historical food lookup reference
+
+This documents an earlier implementation. The current app uses manual food forms, saved repeats and recipes; it has no Ask tab, AI estimate or nutrition lookup button. The reference modules remain for historical context and regression checks and are excluded from the offline app cache.
 
 Ask accepts a food name or a report such as `I ate 200 g cooked chicken breast and 150 g cooked rice`. It prepares separate meal cards with matched food, editable portion, unit, calories and protein/carbs/fat. A bare food name shows per-100 g nutrition and asks for a portion; it does not invent an eaten amount. Standard count/cup/spoon measures show their edible gram equivalent. Raw and cooked matches remain distinct. Descriptions such as extended oven cooking retain the user's words and disclose moisture uncertainty.
 

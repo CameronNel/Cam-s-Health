@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-06T06:56:36.000Z",
+  "updatedAt": "2026-10-06T08:40:06.000Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1777,23 +1777,38 @@
       "food": [
         {
           "id": "2026-10-06-oats-100g-1",
-          "name": "Oats",
-          "quantity": "100 g dry oats",
-          "kcal": 379,
-          "protein": 13.15,
-          "carbs": 67.7,
-          "fat": 6.52,
-          "fibre": 10.1,
+          "name": "Cooked oats",
+          "quantity": "100 g cooked/wet weight, prepared with water",
+          "kcal": 71,
+          "protein": 2.54,
+          "carbs": 12,
+          "fat": 1.52,
+          "fibre": 1.7,
           "estimated": true,
-          "source": "USDA FoodData Central, cereals/oats regular and quick, unenriched, dry (FDC 173904); looked up 6 Oct 2026.",
-          "note": "Brand/product label not supplied, so generic dry-oats nutrition was used. Update from the package label if provided."
+          "source": "USDA SR Legacy / FoodData Central FDC 173905, regular/quick oats cooked with water, without salt; checked 6 Oct 2026.",
+          "note": "Corrected from 100 g dry oats after user clarified the 100 g weight was after adding water. Exact original dry-oat weight is unknown, so this uses the USDA cooked-oatmeal per-100-g reference."
+        },
+        {
+          "id": "08e8344f-17ae-4c09-b95f-c6b658eb0191",
+          "name": "Milde magere kwark met banaan",
+          "quantity": "1 full 500 g tub",
+          "kcal": 345,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "fibre": null,
+          "estimated": false,
+          "source": "Saved user-provided nutrition label from 4 Oct 2026.",
+          "note": "Same 500 g banana kwark product previously logged; label gives 46.5 g protein per tub.",
+          "loggedAt": "2026-10-06T08:39:03.395Z",
+          "reviewRequired": false
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Logged 100 g dry oats using a generic USDA dry-oats estimate.",
+      "notes": "Corrected oats entry: 100 g was cooked/wet weight after adding water, not dry weight. Added 1 full 500 g tub of the usual banana kwark from the saved product label.",
       "complete": false
     }
   },

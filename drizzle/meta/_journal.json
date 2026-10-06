@@ -22,6 +22,13 @@
       "when": 1791271069426,
       "tag": "0002_amusing_tomorrow_man",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1791275884926,
+      "tag": "0003_remove_ai_connections",
+      "breakpoints": true
     }
   ]
 }
