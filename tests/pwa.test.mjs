@@ -9,7 +9,7 @@ const ORIGIN='https://cams-life.example';
 const source=readFileSync(new URL('../dist/sw.js',import.meta.url),'utf8');
 const pwaSource=readFileSync(new URL('../dist/pwa.js',import.meta.url),'utf8');
 const index=readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
-const types={html:'text/html',js:'text/javascript',css:'text/css',webmanifest:'application/manifest+json',svg:'image/svg+xml',png:'image/png'};
+const types={html:'text/html',js:'text/javascript',css:'text/css',webmanifest:'application/manifest+json',svg:'image/svg+xml',png:'image/png',woff2:'font/woff2'};
 function harness(mode='normal') {
   const handlers={},stores=new Map(),deleted=[];let skipped=0;
   const caches={async open(name){if(!stores.has(name))stores.set(name,new Map());const map=stores.get(name);return {async put(key,value){map.set(key,value);},async match(key){return map.get(key)?.clone();}};},async delete(name){deleted.push(name);return stores.delete(name);},async keys(){return [...stores.keys()];}};
@@ -34,7 +34,7 @@ function harness(mode='normal') {
 }
 test('PWA caches only verified public files and strips gateway identity headers',async()=>{
   const sw=harness();await sw.lifecycle('install');
-  const cache=[...sw.stores.values()][0];assert.equal(cache.size,16);
+  const cache=[...sw.stores.values()][0];assert.equal(cache.size,18);
   for(const [path,response] of cache){assert.ok(!/api|health\.json|photo|callback|auth/.test(path));assert.equal(response.headers.has('Set-Cookie'),false);assert.equal(response.headers.has('X-User-Identity'),false);assert.equal(response.headers.has('Cache-Control'),false);}
   assert.equal(await cache.get('/index.html').clone().text(),index);
   assert.equal(cache.get('/index.html').headers.get('X-Frame-Options'),'DENY');
