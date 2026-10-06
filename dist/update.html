@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111a15">
+<meta name="color-scheme" content="dark">
+<meta name="referrer" content="no-referrer">
+<title>Update Cam’s Life</title>
+<style>
+*{box-sizing:border-box}html{background:#111a15;color:#efe9d7;font:16px/1.55 system-ui,sans-serif}body{margin:0}main{max-width:480px;margin:auto;padding:calc(32px + env(safe-area-inset-top)) 24px calc(32px + env(safe-area-inset-bottom))}header{font:30px Georgia,serif;margin-bottom:48px}.eyebrow{color:#bccbb8;letter-spacing:.12em;font-size:12px;text-transform:uppercase}h1{font-size:28px;line-height:1.2;margin:12px 0 20px}p{color:#bccbb8}section{border-top:1px solid #354639;padding-top:20px;margin-top:28px}button,.button{display:block;width:100%;min-height:48px;border:0;border-radius:12px;padding:14px 20px;background:#e8cf79;color:#17231c;font:600 16px system-ui;text-align:center;text-decoration:none;cursor:pointer}button:disabled{opacity:.5;cursor:wait}.secondary{background:#293d30;color:#efe9d7;margin-top:12px}a{color:#e8cf79}button:focus-visible,a:focus-visible{outline:3px solid #efe9d7;outline-offset:4px}.status{min-height:50px}small{display:block;color:#bccbb8;margin:16px 0}[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+<header>Cam’s Life</header>
+<span class="eyebrow">App update</span>
+<h1>Bring your app up to date.</h1>
+<p>The latest app has <b>Connect AI</b> in Settings. An installed app can keep showing an earlier version until you apply its update.</p>
+<button id="check" type="button">Check for updates</button>
+<p id="status" class="status" role="status" aria-live="polite">Check first, then choose when to reload.</p>
+<section id="review" hidden>
+<h2>Ready to open Settings?</h2>
+<p>Finish any saves in your other Cam’s Life tabs first. Copy any unsent check-ins or proposals you want to keep. Reloading clears those drafts and your temporary GitHub editing connection.</p>
+<p>Your saved health history, connections and preferences stay intact.</p>
+<button id="apply" type="button">Update &amp; open Settings</button>
+<a class="button secondary" href="/#settings">Keep working</a>
+</section>
+<a id="open" class="button secondary" href="/#settings" hidden>Open Settings</a>
+<small>This page updates app files. It never clears your data or adds an AI key.</small>
+<noscript><p>Enable JavaScript to check the installed app, or <a href="/#settings">open Settings</a>.</p></noscript>
+</main>
+<script type="module">
+const check=document.querySelector('#check'),apply=document.querySelector('#apply'),status=document.querySelector('#status'),review=document.querySelector('#review'),open=document.querySelector('#open');
+let registration=null,activating=false;
+const waitForInstall=worker=>new Promise((resolve,reject)=>{
+  if(!worker)return resolve();
+  const finish=()=>{if(worker.state==='redundant'){cleanup();reject(Error('The new app files could not be prepared.'));}else if(['installed','activating','activated'].includes(worker.state)){cleanup();resolve();}};
+  const cleanup=()=>{clearTimeout(timer);worker.removeEventListener('statechange',finish);};
+  const timer=setTimeout(()=>{cleanup();reject(Error('The update check timed out.'));},45000);
+  worker.addEventListener('statechange',finish);finish();
+});
+if('serviceWorker' in navigator)navigator.serviceWorker.addEventListener('controllerchange',()=>{if(activating)location.replace('/#settings');});
+check.addEventListener('click',async()=>{
+  check.disabled=true;review.hidden=true;open.hidden=true;status.textContent='Checking the latest app files…';
+  try{
+    if(!navigator.onLine)throw Error('Reconnect to the internet and try again.');
+    if(!('serviceWorker' in navigator)&&window.isSecureContext){status.textContent='Open the current website in Settings to connect AI.';open.hidden=false;return;}
+    if(!window.isSecureContext||!('serviceWorker' in navigator))throw Error('Open this page in Chrome using the secure app link.');
+    registration=await navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'});
+    await registration.update();
+    await waitForInstall(registration.installing);
+    if(registration.waiting){status.textContent='The latest app is ready. Review the reload below.';review.hidden=false;}
+    else{status.textContent='Your app files are up to date. Open Settings, then choose Connect AI.';open.hidden=false;}
+  }catch(error){status.textContent=error.message+' Your saved records are intact.';}
+  finally{check.disabled=false;}
+});
+apply.addEventListener('click',()=>{
+  if(!navigator.onLine){status.textContent='Reconnect before applying the update.';return;}
+  if(!registration?.waiting){status.textContent='Check for updates again before reloading.';review.hidden=true;return;}
+  activating=true;apply.disabled=true;check.disabled=true;status.textContent='Applying the update and opening Settings…';
+  registration.waiting.postMessage({type:'ACTIVATE_UPDATE'});
+});
+</script>
+</body>
+</html>

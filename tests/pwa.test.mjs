@@ -7,6 +7,7 @@ import {createWorker} from '../server/worker.mjs';
 
 const ORIGIN='https://cams-life.example';
 const source=readFileSync(new URL('../dist/sw.js',import.meta.url),'utf8');
+const pwaSource=readFileSync(new URL('../dist/pwa.js',import.meta.url),'utf8');
 const index=readFileSync(new URL('../dist/index.html',import.meta.url),'utf8');
 const types={html:'text/html',js:'text/javascript',css:'text/css',webmanifest:'application/manifest+json',svg:'image/svg+xml',png:'image/png'};
 function harness(mode='normal') {
@@ -47,7 +48,8 @@ test('a poisoned or changed asset aborts installation without removing the previ
 test('offline reloads retain the shell but dynamic/private routes and writes are never intercepted',async()=>{
   const sw=harness();await sw.lifecycle('install');sw.setMode('offline');
   assert.equal(await(await sw.dispatch('/?date=2026-10-04',{navigate:true})).text(),index);
-  for(const path of ['/api/life','/api/ai/setup','/api/assistant','/api/inbox/callback?code=synthetic','/data/health.json','/login','https://api.github.com/user','/studio.js?token=synthetic'])assert.equal(await sw.dispatch(path),null,path);
+  for(const path of ['/update.html','/api/life','/api/ai/setup','/api/assistant','/api/inbox/callback?code=synthetic','/data/health.json','/login','https://api.github.com/user','/studio.js?token=synthetic'])assert.equal(await sw.dispatch(path),null,path);
+  assert.equal(await sw.dispatch('/update.html',{navigate:true}),null);
   assert.equal(await sw.dispatch('/api/life',{method:'PUT'}),null);
   assert.equal(await sw.dispatch('/studio.js',{authorization:true}),null);
 });
@@ -77,4 +79,78 @@ test('Worker marks only successful app HTML and sends service worker update head
   assert.equal((await worker.fetch(new Request(ORIGIN+'/manifest.webmanifest'),asset('{}',200,'application/manifest+json'))).headers.has('X-Cams-Life-Shell'),false);
   const sw=await worker.fetch(new Request(ORIGIN+'/sw.js'),asset(source,200,'text/javascript'));
   assert.equal(sw.headers.get('Service-Worker-Allowed'),'/');assert.equal(sw.headers.get('Cache-Control'),'no-cache');
+  const recovery=await worker.fetch(new Request(ORIGIN+'/update.html'),asset('<html>Update recovery</html>'));
+  assert.equal(recovery.headers.get('Cache-Control'),'no-store');
+  assert.equal(recovery.headers.has('X-Cams-Life-Shell'),false);
+});
+
+function appUpdateHarness() {
+  const document=Object.assign(new EventTarget(),{readyState:'complete',visibilityState:'visible'});
+  const window=Object.assign(new EventTarget(),{isSecureContext:true});
+  const media=Object.assign(new EventTarget(),{matches:true});
+  const serviceWorker=new EventTarget(),messages=[];
+  let reloads=0,updates=0,update=async()=>{};
+  const registration=Object.assign(new EventTarget(),{
+    active:{state:'activated'},waiting:null,installing:null,
+    async update(){updates++;return update();},
+  });
+  serviceWorker.register=async()=>registration;
+  const navigator={serviceWorker,onLine:true};
+  const context={document,window,navigator,matchMedia:()=>media,location:{reload(){reloads++;}},setTimeout,clearTimeout};
+  vm.runInNewContext(pwaSource.replace('export function','function')+'\nthis.createPWA=createPWA;',context);
+  const pwa=context.createPWA();
+  const worker=state=>Object.assign(new EventTarget(),{state,postMessage(message){messages.push(message);}});
+  return {pwa,registration,navigator,document,serviceWorker,messages,worker,setUpdate(fn){update=fn;},get updates(){return updates;},get reloads(){return reloads;}};
+}
+const nextTurn=()=>new Promise(resolve=>setImmediate(resolve));
+
+test('manual update checks wait for a verified install, preserve the running app and require reviewed activation',async()=>{
+  const h=appUpdateHarness();await nextTurn();
+  const worker=h.worker('installing');
+  h.setUpdate(async()=>{h.registration.installing=worker;h.registration.dispatchEvent(new Event('updatefound'));});
+  const check=h.pwa.checkForUpdates();await nextTurn();
+  assert.equal(h.pwa.state.checkingUpdate,true);
+  assert.equal(h.pwa.state.updateChecked,false);
+  assert.equal(h.pwa.state.updateAvailable,false);
+  assert.equal(h.pwa.checkForUpdates(),check);
+  assert.equal(h.updates,1);
+  h.registration.installing=null;h.registration.waiting=worker;worker.state='installed';worker.dispatchEvent(new Event('statechange'));
+  assert.equal(await check,true);
+  assert.equal(h.pwa.state.checkingUpdate,false);
+  assert.equal(h.pwa.state.updateChecked,true);
+  assert.equal(h.pwa.state.updateAvailable,true);
+  assert.deepEqual(h.messages,[]);assert.equal(h.reloads,0);
+  await h.pwa.activateUpdate();
+  assert.equal(h.messages.length,1);assert.equal(h.messages[0].type,'ACTIVATE_UPDATE');
+  assert.equal(h.reloads,0);
+  h.serviceWorker.dispatchEvent(new Event('controllerchange'));
+  assert.equal(h.reloads,1);
+});
+
+test('update failures and offline checks show safe errors and never claim the app is current',async()=>{
+  const h=appUpdateHarness();await nextTurn();
+  h.setUpdate(async()=>{throw Error('synthetic-private-browser-error');});
+  await assert.rejects(h.pwa.checkForUpdates(),/could not be checked/);
+  assert.equal(h.pwa.state.error.includes('synthetic-private-browser-error'),false);
+  assert.equal(h.pwa.state.checkingUpdate,false);assert.equal(h.pwa.state.updateChecked,false);
+  assert.equal(h.pwa.state.ready,true);assert.deepEqual(h.messages,[]);assert.equal(h.reloads,0);
+  h.navigator.onLine=false;
+  await assert.rejects(h.pwa.checkForUpdates(),/Reconnect before checking/);
+  assert.equal(h.updates,1);
+  h.navigator.onLine=true;h.setUpdate(async()=>{});
+  assert.equal(await h.pwa.checkForUpdates(),false);
+  assert.equal(h.updates,2);assert.equal(h.pwa.state.updateChecked,true);assert.equal(h.pwa.state.error,'');
+});
+
+test('a failed update install leaves the previous app available and allows a fresh check',async()=>{
+  const h=appUpdateHarness();await nextTurn();
+  const worker=h.worker('installing');
+  h.setUpdate(async()=>{h.registration.installing=worker;h.registration.dispatchEvent(new Event('updatefound'));});
+  const check=h.pwa.checkForUpdates();await nextTurn();
+  h.registration.installing=null;worker.state='redundant';worker.dispatchEvent(new Event('statechange'));
+  await assert.rejects(check,/could not be checked/);
+  assert.equal(h.pwa.state.ready,true);assert.equal(h.pwa.state.updateChecked,false);
+  assert.deepEqual(h.messages,[]);assert.equal(h.reloads,0);
+  h.setUpdate(async()=>{});await h.pwa.checkForUpdates();
+  assert.equal(h.pwa.state.updateChecked,true);assert.equal(h.pwa.state.error,'');
 });
