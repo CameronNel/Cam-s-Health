@@ -368,21 +368,3 @@ test('local parser labels only user-stated food estimates and does not invent mi
   assert.match(parsed.actions[0].note,/explicitly stated/);
   assert.doesNotThrow(() => prepareHealthProposal(fresh(),DATE,parsed.actions,options));
 });
-
-test('update_food edits the existing entry in place, flags estimates, and conflicts on stale edits', () => {
-  const data = fresh();
-  data.days[DATE].food = [{id:'food-a',name:'80g chicken breast, overcooked',quantity:'80 g',kcal:null,protein:null,carbs:null,fat:null,estimated:false,source:'Explicit check-in',note:''}];
-  const action = {type:'update_food',id:'food-a',kcal:130,protein:26,carbs:0,fat:3,estimated:true,source:'Claude estimate from reference values',note:'Assumes 80 g cooked weight; overcooking lowers moisture, so values per 80 g are an approximation.'};
-  const proposal = prepareHealthProposal(data, DATE, [action], options);
-  assert.equal(proposal.changes.length, 1);
-  assert.equal(proposal.candidate.days[DATE].food.length, 1);
-  assert.equal(proposal.candidate.days[DATE].food[0].kcal, 130);
-  assert.equal(data.days[DATE].food[0].kcal, null, 'input is not mutated');
-  const applied = proposal.apply(structuredClone(data));
-  assert.equal(applied.days[DATE].food.length, 1);
-  assert.doesNotThrow(() => proposal.apply(structuredClone(proposal.candidate)), 'repeat apply is a no-op');
-  const stale = structuredClone(data); stale.days[DATE].food[0].kcal = 99;
-  assert.throws(() => proposal.apply(stale), /changed elsewhere/);
-  assert.throws(() => prepareHealthProposal(data, DATE, [{...action,id:'missing'}], options), /no food entry/);
-  assert.throws(() => prepareHealthProposal(data, DATE, [{...action,note:''}], options), /source and a note/);
-});

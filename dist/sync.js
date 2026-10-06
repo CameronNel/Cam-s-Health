@@ -53,7 +53,6 @@ export class GitHubStore {
     return this.data;
   }
   async connect(token) {
-    if(globalThis.navigator?.onLine===false)throw Error('Offline. Reconnect to authorize editing. Your input has been kept.');
     if(this.busy||this.reading)throw Error('Wait for the current sync to finish, then connect.');
     if(!token?.trim())throw Error('Enter a GitHub token in this form.');
     this.#token=token.trim();
@@ -64,7 +63,6 @@ export class GitHubStore {
   }
   disconnect(){if(this.busy)throw Error('Wait for the current save to finish.');this.#token='';this.account=null;this.notify();}
   async save(mutate,message) {
-    if(globalThis.navigator?.onLine===false)throw Error('Offline. Reconnect to save. No data has been written.');
     if(!this.connected)throw Error('Connect GitHub in this form to save. No data has been written.');
     if(this.busy||this.reading)throw Error('A sync is already in progress. Please retry in a moment.');
     this.busy=true;this.status='Saving';this.notify();

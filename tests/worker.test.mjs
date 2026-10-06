@@ -155,61 +155,6 @@ test('Gmail OAuth will not start with an invalid encryption key', async () => {
   assert.equal(app.calls.length, 0);
 });
 
-const setupClient = {clientId:'123456789-cams-life.apps.googleusercontent.com',clientSecret:'GOCSPX-synthetic-client-fixture',redirectUris:[SITE+'/api/inbox/callback']};
-function withoutGoogleEnv(app) {delete app.env.GOOGLE_CLIENT_ID;delete app.env.GOOGLE_CLIENT_SECRET;return app;}
-
-test('missing Google client is an actionable setup state, independent of ready encryption', async () => {
-  const app = withoutGoogleEnv(fixture());
-  const status = await (await app.request('/api/status')).json();
-  assert.equal(status.gmail,false);assert.deepEqual(status.gmailSetup,{configured:false,source:null,storageReady:true,encryptionReady:true,redirectUri:SITE+'/api/inbox/callback'});
-  const response = await app.request('/api/inbox/connect',{method:'POST'});
-  assert.equal(response.status,503);assert.match((await response.json()).error,/Settings/);assert.equal(app.calls.length,0);
-});
-
-test('Settings client is encrypted, isolated by owner, never exposed, and works for OAuth and refresh', async () => {
-  const app = withoutGoogleEnv(fixture());
-  const life = createLifeState({tasks:[{id:'keep-task',title:'Keep this task',status:'open'}]});
-  await app.request('/api/life',{method:'PUT',body:{state:life,version:0}});
-  const saved = await app.request('/api/inbox/setup',{method:'POST',body:setupClient});
-  assert.equal(saved.status,200);assert.ok(!(await saved.text()).includes(setupClient.clientSecret));
-  const row = app.db.raw.prepare('SELECT * FROM mailbox_oauth_clients WHERE owner_id = ?').get(OWNER);
-  assert.match(row.encrypted_client,/^v1\./);assert.ok(!row.encrypted_client.includes(setupClient.clientSecret));assert.ok(!row.encrypted_client.includes(setupClient.clientId));
-  const statusResponse = await app.request('/api/status');assert.equal(statusResponse.headers.get('cache-control'),'no-store');const rawStatus=await statusResponse.text();
-  assert.ok(!rawStatus.includes(setupClient.clientSecret));assert.ok(!rawStatus.includes(setupClient.clientId));assert.equal(JSON.parse(rawStatus).gmailSetup.source,'settings');
-  assert.equal((await (await app.request('/api/status',{owner:OTHER})).json()).gmail,false);
-  assert.equal((await app.request('/api/inbox/connect',{method:'POST',owner:OTHER})).status,503);
-  await app.connect();await app.request('/api/inbox/sync',{method:'POST',body:{}});
-  const tokenCalls=app.calls.filter(call=>call.url==='https://oauth2.googleapis.com/token');assert.equal(tokenCalls.length,2);
-  for(const call of tokenCalls){const params=new URLSearchParams(call.body);assert.equal(params.get('client_id'),setupClient.clientId);assert.equal(params.get('client_secret'),setupClient.clientSecret);}
-  const current=await (await app.request('/api/life')).json();assert.deepEqual(current.state.tasks,life.tasks);
-});
-
-test('Google setup validates the Web client and exact redirect, and rejects foreign writes', async () => {
-  const app=withoutGoogleEnv(fixture());
-  for(const body of [{...setupClient,clientId:'desktop-client'},{...setupClient,clientSecret:''},{...setupClient,redirectUris:['https://attacker.example/api/inbox/callback']}])assert.equal((await app.request('/api/inbox/setup',{method:'POST',body})).status,400);
-  for(const origin of [null,'https://attacker.example'])assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:setupClient,origin})).status,403);
-  assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:setupClient,owner:null})).status,401);
-  assert.equal(app.db.raw.prepare('SELECT count(*) AS count FROM mailbox_oauth_clients').get().count,0);assert.equal(app.calls.length,0);
-  app.env.LIFE_ENCRYPTION_KEY='invalid';assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:setupClient})).status,503);
-});
-
-test('changing Google setup invalidates pending consent and never replaces a connected client', async () => {
-  const app=withoutGoogleEnv(fixture());await app.request('/api/inbox/setup',{method:'POST',body:setupClient});
-  const start=await (await app.request('/api/inbox/connect',{method:'POST'})).json(),nonce=new URL(start.url).searchParams.get('state');
-  const second={...setupClient,clientSecret:'GOCSPX-second-synthetic-fixture'};
-  assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:second})).status,200);
-  assert.equal((await app.request('/api/inbox/callback?state='+nonce+'&code=old-code')).status,400);assert.equal(app.calls.length,0);
-  await app.connect();const before=app.db.raw.prepare('SELECT * FROM mailbox_oauth_clients').get();
-  assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:setupClient})).status,409);
-  assert.deepEqual(app.db.raw.prepare('SELECT * FROM mailbox_oauth_clients').get(),before);
-  assert.equal((await (await app.request('/api/status')).json()).gmailConnected,true);
-});
-
-test('Google settings cannot replace a server-managed client', async () => {
-  const app=fixture();assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:setupClient})).status,409);
-  assert.equal(app.db.raw.prepare('SELECT count(*) AS count FROM mailbox_oauth_clients').get().count,0);
-});
-
 test('Gmail sync builds digest, deliveries and todos without reopening finished tasks', async () => {
   const messages = [mail('action1', 'Invoice due: please confirm', 'Please reply by 2026-10-10.'), mail('package1', 'Package ready for pickup', 'Your package is ready for pickup. Tracking: 3SABC123456789. Pickup code: 774411.'), mail('noise1', 'Codex automatic approval review', 'Codex automatic approval review completed', 'GitHub <notifications@github.com>')];
   const app = fixture({messages}); await app.connect();

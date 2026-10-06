@@ -25,5 +25,5 @@ http.createServer(async(req,res)=>{try{
  }
  const path=resolve(root,'.'+decodeURIComponent(new URL(url).pathname));
  if(path!==root&&!path.startsWith(root+sep)){res.writeHead(403);res.end();return;}
- const file=path===root?root+'/index.html':path;res.setHeader('Content-Type',types[extname(file)]||'application/octet-stream');res.setHeader('Cache-Control','no-store');if(file===root+'/index.html')res.setHeader('X-Cams-Life-Shell','1');if(extname(file)==='.js')res.setHeader('Service-Worker-Allowed','/');res.end(await readFile(file));
+ const file=path===root?root+'/index.html':path;res.setHeader('Content-Type',types[extname(file)]||'application/octet-stream');res.setHeader('Cache-Control','no-store');res.end(await readFile(file));
 }catch{res.writeHead(404);res.end('Not found');}}).listen(port,'127.0.0.1',()=>console.log('Local Cam’s Life preview: http://127.0.0.1:'+port));
