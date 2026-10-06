@@ -7,14 +7,17 @@
 - Health records live in the Artifact database: `health/meta`, `health/sync` and one `days/YYYY-MM-DD` document per day. To-dos, packages, pickup codes and favourites live under the viewer-private `data/users/<id>/life`. Mailbox data never goes to GitHub.
 - Claude only drafts changes. The app validates them with `validateLifeHealth`, shows a review, saves on one tap, reads the day back, and records the date in `health/sync.dirty`.
 
-## Why GitHub is not written from the Artifact
+## GitHub stays canonical: hourly two-way sync
 
-Artifacts cannot make network calls and claude.ai has no GitHub connector, so the Artifact cannot commit `dist/data/health.json`. GitHub stays the canonical record through an explicit sync in Claude Code:
+Artifacts cannot make network calls and claude.ai has no GitHub connector, so the Artifact cannot commit by itself. A scheduled Claude Code routine does it every hour:
 
-1. Read `health/sync` and export `health/meta` and `days` with `ArtifactData` (`out_dir`).
-2. `node scripts/assemble-health.mjs <export dir> /tmp/health.json` rebuilds the file and runs `validateLifeHealth`.
-3. Compare with `dist/data/health.json` on `main`. Preserve every existing entry and never overwrite a newer GitHub change.
-4. Commit with `update_file` and the blob SHA, read it back, then set `health/sync.lastSyncedAt` and clear the synced `dirty` dates.
+1. Export `health/meta`, `health/sync` and `days` from the Artifact database (`ArtifactData`, `out_dir`).
+2. `git show <baselineCommit>:dist/data/health.json` is the last synced state; `origin/main` is GitHub's current state.
+3. `node scripts/sync-health.mjs --base … --github … --artifact-dir … --out … --artifact-out … --report …` merges all three. Entries merge by id, so meals logged through chat on GitHub and meals logged in the app both survive. A true conflict (the same entry edited in both places) keeps the GitHub value and is reported. Nothing is deleted unless the other side left that entry untouched. The result must pass `validateLifeHealth`.
+4. If GitHub changed, commit `dist/data/health.json` to `main`, verify it, and read it back. If the app is behind, write the merged days back to the Artifact database with version pins.
+5. Update `health/sync` (`baselineCommit`, `lastSyncedAt`) and clear only the `dirty` dates that were synced.
+
+Mail, to-dos, packages and pickup codes live under the viewer-private `data/users/<id>/life` path and are never exported or committed.
 
 ## Not possible on an Artifact
 
