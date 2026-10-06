@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-06T20:45:00.000Z",
+  "updatedAt": "2026-10-06T20:58:13.000Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1188,8 +1188,8 @@
           "fat": 0.99,
           "fibre": 2.97,
           "estimated": false,
-          "source": "User-provided nutrition label image, 30 Sep 2026.",
-          "note": "Label per 100 ml: 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. User reported 330 ml."
+          "source": "Albert Heijn Protein melk drank chocolade smaak, 1 L carton; product nutrition confirmed for the shared carton identification.",
+          "note": "Corrected 6 Oct 2026 to the AH 1 L Protein chocolate milk carton values: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. Logged amount: 330 ml."
         },
         {
           "id": "2026-09-30-starbucks-chilled-latte-110ml-1",
@@ -1275,8 +1275,8 @@
           "fat": 0.66,
           "fibre": 1.98,
           "estimated": false,
-          "source": "User-provided nutrition label image, 30 Sep 2026.",
-          "note": "Additional 220 ml reported on 30 Sep 2026. Reused the same label: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre."
+          "source": "Albert Heijn Protein melk drank chocolade smaak, 1 L carton; product nutrition confirmed for the shared carton identification.",
+          "note": "Corrected 6 Oct 2026 to the AH 1 L Protein chocolate milk carton values: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. Logged amount: 220 ml."
         }
       ],
       "workouts": [
@@ -1377,8 +1377,8 @@
           "fat": 0.99,
           "fibre": 2.97,
           "estimated": false,
-          "source": "User-provided nutrition label image, 30 Sep 2026.",
-          "note": "Albert Heijn high-protein chocolate milk drink. Reused the saved label from 30 Sep 2026: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. User reported 330 ml on 1 Oct 2026."
+          "source": "Albert Heijn Protein melk drank chocolade smaak, 1 L carton; product nutrition confirmed for the shared carton identification.",
+          "note": "Corrected 6 Oct 2026 to the AH 1 L Protein chocolate milk carton values: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. Logged amount: 330 ml."
         },
         {
           "id": "2026-10-01-halfvolle-milk-120ml-1",
@@ -1418,15 +1418,15 @@
         {
           "id": "2026-10-02-high-protein-chocolate-drink-330ml-1",
           "name": "High-protein chocolate milk drink",
-          "quantity": "1 full 330 ml bottle",
-          "kcal": 221.1,
-          "protein": 34.98,
-          "carbs": 17.49,
+          "quantity": "330 ml from 1 L carton",
+          "kcal": 178.2,
+          "protein": 24.75,
+          "carbs": 15.84,
           "fat": 0.99,
-          "fibre": 1.32,
+          "fibre": 2.97,
           "estimated": false,
-          "source": "User-provided nutrition label image, 2 Oct 2026.",
-          "note": "Whole 330 ml bottle. Label per 100 ml: 67 kcal, 10.6 g protein, 5.3 g carbs, 0.3 g fat, 0.4 g fibre. Front/back label also states 35 g protein per 330 ml bottle."
+          "source": "Albert Heijn Protein melk drank chocolade smaak, 1 L carton; product nutrition confirmed for the shared carton identification.",
+          "note": "Corrected 6 Oct 2026 to the AH 1 L Protein chocolate milk carton values: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. Logged amount: 330 ml."
         },
         {
           "id": "2026-10-02-protein-bar-55g-1",
@@ -1836,15 +1836,15 @@
         {
           "id": "2026-10-06-high-protein-chocolate-drink-330ml-1",
           "name": "High-protein chocolate milk drink",
-          "quantity": "1 full 330 ml bottle",
-          "kcal": 221.1,
-          "protein": 34.98,
-          "carbs": 17.49,
+          "quantity": "330 ml from 1 L carton",
+          "kcal": 178.2,
+          "protein": 24.75,
+          "carbs": 15.84,
           "fat": 0.99,
-          "fibre": 1.32,
+          "fibre": 2.97,
           "estimated": false,
-          "source": "Previously saved user-provided nutrition label image, 2 Oct 2026.",
-          "note": "Reused the user's saved 330 ml high-protein chocolate milk values: per 100 ml 67 kcal, 10.6 g protein, 5.3 g carbs, 0.3 g fat, 0.4 g fibre; bottle states ~35 g protein.",
+          "source": "Albert Heijn Protein melk drank chocolade smaak, 1 L carton; product nutrition confirmed for the shared carton identification.",
+          "note": "Corrected 6 Oct 2026 to the AH 1 L Protein chocolate milk carton values: per 100 ml 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. Logged amount: 330 ml.",
           "loggedAt": "2026-10-06T20:10:57.000Z",
           "reviewRequired": false
         }
