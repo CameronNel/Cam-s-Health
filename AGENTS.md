@@ -54,7 +54,7 @@ Read `docs/STUDIO-02.md` and `dist/body.js` before adding body fields. Keep the 
 
 ## Working on the app
 
-The user requires **always dark mode and mobile only**, using an Oppo Find X9 Pro. Preserve the dark sage green, cream and restrained yellow palette, flat surfaces, simple typography and single-column phone layout at every viewport. Do not reintroduce a light/system appearance option or desktop sidebar. Verify readable charts, 44px touch targets, small-phone forms and Android keyboard spacing when changing the UI.
+The user requires **always dark mode and mobile only**, using an Oppo Find X9 Pro. Preserve the dark sage green, cream and restrained yellow palette. The 6 October Samsung Health-inspired redesign uses layered ambient backgrounds, rounded translucent tiles, system sans typography, paired metric tiles and a floating four-tab capsule with a separate add button. Keep one phone-width surface at every viewport; do not restore the old flat bordered-block layout. Do not reintroduce a light/system appearance option or desktop sidebar. Verify readable charts, 44px touch targets, small-phone forms and Android keyboard spacing when changing the UI.
 
 The app is a PWA. Keep its manifest/standalone icons and sage startup colors. `npm run build` must regenerate the digest-pinned service worker after changing a public shell file or its template. Never cache private API/mailbox responses, tokens, photos, health JSON or auth pages in CacheStorage; health uses its existing validated localStorage fallback. Preserve the Worker’s successful-shell marker and canonical-root routing. Updates wait for an explicit reviewed reload, and offline writes are never queued/replayed. Show unavailable private records as unknown, not zero.
 

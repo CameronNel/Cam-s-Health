@@ -64,7 +64,7 @@ test('authorized navigation during an update keeps a coherent old shell until ac
   assert.equal(shell.headers.get('Content-Security-Policy'),"frame-ancestors 'none'");
   assert.equal(shell.headers.get('Referrer-Policy'),'no-referrer');
   assert.equal(shell.headers.has('Set-Cookie'),false);
-  assert.equal(await(await sw.dispatch('/studio.js?v=6')).text(),readFileSync(new URL('../dist/studio.js',import.meta.url),'utf8'));
+  assert.equal(await(await sw.dispatch(index.match(/src="\.([^"]*studio\.js[^"]*)"/)[1])).text(),readFileSync(new URL('../dist/studio.js',import.meta.url),'utf8'));
 });
 test('activation removes only previous app caches and updates require an explicit message',async()=>{
   const sw=harness();await sw.lifecycle('install');sw.stores.set('cams-life-shell-old',new Map());sw.stores.set('other-app',new Map());await sw.lifecycle('activate');
