@@ -14,7 +14,7 @@ await writeFile(out+'/.openai/hosting.json',JSON.stringify(manifest,null,2)+'\n'
 await mkdir(out+'/dist/.openai',{recursive:true});
 await copyFile('.openai/hosting.json',out+'/dist/.openai/hosting.json');
 await cp('drizzle',out+'/drizzle',{recursive:true});
-await writeFile(out+'/dist/server/wrangler.json',JSON.stringify({name:'cams-life',main:'index.js',compatibility_date:'2026-10-01',assets:{directory:'../client',binding:'ASSETS',run_worker_first:['/api/*','/','/index.html','/sw.js']},d1_databases:[{binding:'LIFE_DB',database_name:'cams-life',migrations_dir:'../../drizzle'}]},null,2)+'\n');
+await writeFile(out+'/dist/server/wrangler.json',JSON.stringify({name:'cams-life',main:'index.js',compatibility_date:'2026-10-01',assets:{directory:'../client',binding:'ASSETS',run_worker_first:['/api/*','/','/index.html','/sw.js','/update.html']},d1_databases:[{binding:'LIFE_DB',database_name:'cams-life',migrations_dir:'../../drizzle'}]},null,2)+'\n');
 // Mirror standard build paths for the Sites source packager; never recurse into them.
 for(const name of ['server','client']){
   await rm(resolve('dist',name),{recursive:true,force:true});

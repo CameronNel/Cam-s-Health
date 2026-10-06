@@ -524,6 +524,7 @@ export function createWorker({fetcher = globalThis.fetch, crypto = globalThis.cr
         const headers = new Headers(response.headers);
         if (request.method === 'GET' && ['/', '/index.html'].includes(url.pathname) && (!response.url || new URL(response.url).origin === url.origin) && headers.get('Content-Type')?.startsWith('text/html')) headers.set('X-Cams-Life-Shell', '1');
         if (url.pathname === '/sw.js') {headers.set('Cache-Control','no-cache');headers.set('Service-Worker-Allowed','/');headers.set('Content-Type','text/javascript');}
+        if (url.pathname === '/update.html') {headers.set('Cache-Control','no-store');headers.set('Referrer-Policy','no-referrer');headers.set('X-Content-Type-Options','nosniff');}
         return new Response(response.body,{status:response.status,headers});
       }
       try {
