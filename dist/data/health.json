@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-07T18:26:54.000Z",
+  "updatedAt": "2026-10-07T19:17:51.000Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1988,6 +1988,33 @@
           "source": "Derived from the exact vegetable entry logged on 6 Oct 2026.",
           "note": "20% of yesterday's 225 g vegetable portion. Nutrition taken proportionally from the 6 Oct logged values.",
           "reviewRequired": false
+        },
+        {
+          "id": "2026-10-07-protein-bar-55g-photo-1",
+          "name": "Protein bar",
+          "quantity": "1 bar (55 g)",
+          "kcal": 229,
+          "protein": 18,
+          "carbs": 20,
+          "fat": 8.25,
+          "estimated": false,
+          "source": "User-provided nutrition label image, 7 Oct 2026.",
+          "note": "Label per 55 g bar: 229 kcal, 18 g protein, 20 g carbs, 8.25 g fat. Label also lists 2.6 g sugars, 13 g polyols and 0.28 g salt.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-07-ah-protein-chocolate-milk-330ml-1",
+          "name": "Albert Heijn Protein melk drank chocolade smaak",
+          "quantity": "330 ml",
+          "kcal": 178.2,
+          "protein": 24.75,
+          "carbs": 15.84,
+          "fat": 0.99,
+          "fibre": 2.97,
+          "estimated": false,
+          "source": "Saved confirmed Albert Heijn Protein chocolate milk values from 6 Oct 2026.",
+          "note": "Per 100 ml: 54 kcal, 7.5 g protein, 4.8 g carbs, 0.3 g fat, 0.9 g fibre. Logged amount: 330 ml.",
+          "reviewRequired": false
         }
       ],
       "workouts": [
@@ -2047,7 +2074,7 @@
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Added 1 banana reported as 100 kcal, 1 usual 500 g banana kwark, and 5 machine lattes at milk setting 1. Added leftovers from 6 Oct: 202.5 g salmon (60% of yesterday's logged portion) and 45 g AH stir-fry vegetables (20%). Workout: custom pull + arms session, 23 total working sets. First cable movement logged descriptively because exact exercise name was not confirmed.",
+      "notes": "Added 1 banana reported as 100 kcal, 1 usual 500 g banana kwark, and 5 machine lattes at milk setting 1. Added leftovers from 6 Oct: 202.5 g salmon (60% of yesterday's logged portion) and 45 g AH stir-fry vegetables (20%). Workout: custom pull + arms session, 23 total working sets. First cable movement logged descriptively because exact exercise name was not confirmed. Added 1 x 55 g protein bar from user-provided label and 330 ml AH Protein chocolate milk.",
       "complete": false
     }
   },
