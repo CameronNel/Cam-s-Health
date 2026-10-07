@@ -15,7 +15,7 @@ The target is 100/100 in each applicable review category, earned through evidenc
 
 ## Strict review criteria
 
-1. Reference typography, color, layout and artwork: local Roboto, cream text, cool navy/amber canvas, charcoal cards, generous radii and varied card compositions. Food detail uses its black canvas and purple/coral/yellow macro language. Forms use matching neutral surfaces; unrelated landing artwork is not required inside a form.
+1. Reference typography, color, layout and artwork: compact humanist typography, cream text, cool navy/amber canvas, charcoal cards, generous radii and varied card compositions. The owner's later correction requires smaller default text and broader, rounder letterforms; the active locally served Noto Sans replaces Roboto. Page titles use 22px and supporting card headings 18–20px. This is a reference-informed alternative, not a claim that Samsung's proprietary SamsungOne font is bundled. Food detail uses its black canvas and purple/coral/yellow macro language. Forms use matching neutral surfaces; unrelated landing artwork is not required inside a form.
 2. Text and numbers: full labels, descriptions, units and error messages remain readable and contained, including long user content. Unknown readings stay unknown; recorded values retain their provenance.
 3. Spacing: consistent insets and gaps, natural heights, appropriate card hierarchy and at least 44px app touch targets.
 4. Scrolling and keyboard: all content and final controls can be revealed. Fixed navigation deliberately floats over the next card as in the references; ordinary content passing behind it or an opaque sticky heading is viewport occlusion, not clipped data. Unreachable content or an unrevealable focused control fails.

@@ -1,3 +1,5 @@
+Current compact typography status: reviewer identities below are retained, but predecessor completion labels are historical unless exact current screenshot hashes and applicable interactions are reconciled. No overall 100/100 acceptance is claimed.
+
 # Dedicated menu reviewer queue
 
 One independent GPT-6 Luna/MAX reviewer per inventoried PWA menu or submenu, plus the three native companion menus. Each task visually inspects its own screenshots and state surfaces, reads the manifest/diagnostics, and writes a brief case report under this directory. Do not change app source or real data. Keep unverified states blocked.

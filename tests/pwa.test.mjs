@@ -34,7 +34,7 @@ function harness(mode='normal') {
 }
 test('PWA caches only verified public files and strips gateway identity headers',async()=>{
   const sw=harness();await sw.lifecycle('install');
-  const cache=[...sw.stores.values()][0];assert.equal(cache.size,23);
+  const cache=[...sw.stores.values()][0];assert.equal(cache.size,25);
   for(const [path,response] of cache){assert.ok(!/api|health\.json|photo|callback|auth/.test(path));assert.equal(response.headers.has('Set-Cookie'),false);assert.equal(response.headers.has('X-User-Identity'),false);assert.equal(response.headers.has('Cache-Control'),false);}
   assert.equal(await cache.get('/index.html').clone().text(),index);
   assert.equal(cache.get('/index.html').headers.get('X-Frame-Options'),'DENY');
