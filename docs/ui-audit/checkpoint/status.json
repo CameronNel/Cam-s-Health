@@ -1,0 +1,62 @@
+{
+  "status": "blocked; not release accepted or published",
+  "createdAt": "2026-10-07T06:43:24.896679+00:00",
+  "goal": "100/100 in all applicable criteria after builder and dedicated independent GPT-6 Luna/MAX actual screenshot review",
+  "sourceHashes": {
+    "dist/studio.js": "a024dbe66ea7c05aaefa9b8e76325ffda9560a2fa7be232ee00c85dd2ed0dc88",
+    "dist/life-ui.js": "4b17ea241aaf8921c5b23d81b016dac3f4eb4498e8bc35b737bd5a4bfa1bd54a",
+    "dist/life.css": "8a122a736a9047cab1481b0f545afba18c5ae0fd20de8ef5858bb940f772242f",
+    "dist/health-ui.css": "d714cfda273d3fbc4644a328cfa55578a7db2a2d728e07e997ef401fc84c420b",
+    "dist/training-body-ui.css": "ce6201714fe637ea8ce9b80a5ca7e42019d7341e91d361e351ed0de5be824150",
+    "dist/life-settings-ui.css": "d659575e082792bb0445deb5d757ef0dca0ae63f18d1c01b38c8d81104b1f3ca",
+    "dist/integrations/watch-ui.js": "f3ce13445117d12d74073ab76c5ed1fd8793e1197104fb72b1e9d17d24b5ce3f",
+    "dist/integrations/watch-import.js": "d88917f426c2a7564bec56c2653b6613adafd178afe18da58439e171aebb9399",
+    "dist/sw.js": "37b8e389fab8bbcc77ad489de703dfbea87dab0ef5d0141b777f35cf3e617371"
+  },
+  "validation": {
+    "unitTests": 165,
+    "passed": 165,
+    "failed": 0,
+    "fullBuild": "passed",
+    "schemaValidation": "passed",
+    "diffCheck": "passed",
+    "healthBlobSha": "c3ec4204f16e1378b07ac66f806c584094487bb5",
+    "canonicalRecordedDates": 16,
+    "realDataModified": false
+  },
+  "selectors": {
+    "parents": {
+      "cases": 333,
+      "pngs": 1428,
+      "missing": 54,
+      "sha256": "cbf5b704e8f27bf85d7c28c6e0feba713e270ce7a7349cdf35f5f0b2ae60b24b"
+    },
+    "menus": {
+      "cases": 549,
+      "pngs": 2135,
+      "missing": 27,
+      "sha256": "5f5512fba85f32a1dbb0a1672b38602d049732126106ae6daa06d2279df5ce13"
+    }
+  },
+  "review": {
+    "independentlyReviewedParentCases": 164,
+    "parentCasesPending": 169,
+    "menuAndNativeCasesCompleteInQueue": 21,
+    "menuAndNativeCasesNonCompleteInQueue": 43,
+    "overallScore": null
+  },
+  "blockers": [
+    "Chromium thread creation and unified exec return resource unavailable (OS error 11). Shared, CPU-constrained, minimal and isolated local runners did not restore reliable captures.",
+    "Recapture 36 Training parent and 9 program-notes combinations after artwork change, 18 History combinations after singular count correction, and 18 deletion-confirmation combinations after full-year dates.",
+    "Complete remaining builder and independent reviews, remaining software interaction checks and final current PWA upgrade verification.",
+    "Publish only after the owner-required acceptance is earned."
+  ],
+  "externalUnverified": [
+    "Physical Oppo PWA installation/keyboard",
+    "Live Gmail consent/read/change operations",
+    "Physical Galaxy Watch/Samsung Health permission grants and data transfer"
+  ],
+  "watchIntegration": "Free read-only Health Connect companion and explicitly reviewed file transfer; not automatic or background sync",
+  "privateRawEvidenceBackup": "/workspace/cams-life-audit-checkpoint",
+  "accidentalCakeMenu": "Excluded; working attachment copy removed"
+}

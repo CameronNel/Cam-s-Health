@@ -17,7 +17,7 @@ The interface is phone-only and permanently dark. A cool navy/sage background bl
 
 ## Install on your phone
 
-Open the app in **Chrome on Android**, let it finish its first online load, then choose **Install app** from Chrome’s menu (some versions show **Add to Home screen → Install**). Settings also offers an install button when Chrome makes the native prompt available. Cam’s Life opens in a standalone portrait window with sage splash/theme colors and adaptive Android icons. Sites sign-in still applies; installation does not change who can access the app or authorize GitHub editing.
+Open the app in **Chrome on Android**, let it finish its first online load, then choose **Install app** from Chrome’s menu (some versions show **Add to Home screen → Install**). Settings also offers an install button when Chrome makes the native prompt available. Cam’s Life opens in a standalone portrait window with navy splash/theme colors and adaptive Android icons. Sites sign-in still applies; installation does not change who can access the app or authorize GitHub editing.
 
 The service worker stores only digest-verified public app HTML, code, styles, icons, the local font and decorative tile artwork. After a successful online health read, the existing validated health cache can be reviewed offline with a clear saved-copy warning. Private life/mailbox records, photos, tokens, API responses and health JSON are never added to the service-worker cache. Private records are unavailable on an offline fresh launch, rather than shown as zero tasks or packages. Saves and mailbox actions require a connection and are never queued or replayed.
 
@@ -30,6 +30,12 @@ Enter food name, portion, calories and macros in the food form. Label values and
 In-app AI, the Ask tab, model-based food estimates and the ChatGPT handoff have been removed at the owner’s request. Deprecated AI endpoints return a disabled response even for an older installed app, with no provider requests. The release removes only the app’s encrypted AI connection credential, preserving all saved meals, provenance, Gmail, life records and past request counts. The external Groq key is not revoked.
 
 External chat logging through the connected GitHub repository remains available independently. The **Cam’s Life · hourly inbox brief** ChatGPT task is currently paused; its schedule is separate from in-app Gmail synchronization.
+
+## Galaxy Watch and Samsung Health
+
+Settings → **Watch & Samsung Health** offers a free Health Connect transfer. Install the linked read-only Android companion on Android 14+, let Samsung Health share supported readings, export 7 or 30 days, then choose the JSON in Cam’s Life. Review every new reading or replacement and save through the existing verified GitHub flow. Repeated imports do not duplicate saved sessions; different existing readings remain unselected by default.
+
+Supported: daily steps/water, weight, body fat, known asleep stages and recorded workouts. The companion has no internet or health-write permission. This release is a reviewed file transfer; automatic background synchronization, watch pairing and phone permissions are not completed by installing the PWA. Samsung’s proprietary scores and skeletal muscle are not substituted with guessed values. Accepted readings join the existing public health repository. See [setup, limits and build instructions](integrations/health-connect/README.md).
 
 ## Storage and privacy
 
@@ -68,6 +74,8 @@ npm run build
 `dev:life` serves loopback only and uses `.sites-runtime/life-dev.sqlite`. Its mock identity is local-only and never part of the Worker build. The original `npm run dev` remains a static-health preview.
 
 `npm run build` emits the Cloudflare-compatible Worker and assets under `.sites-runtime/build` and mirrors them to ignored `dist/server` and `dist/client` for the Sites packager. Repeated builds exclude generated trees from source assets. Source schema lives in `db/schema.ts`; generate append-only production migrations with `npm run db:generate`. Sites owns the real D1 resource. Include `.openai/hosting.json`, `dist/server`, `dist/client`, and `drizzle` in the deployment archive. Never include local runtime state or secrets.
+
+The visual acceptance guide is [docs/UI-AUDIT.md](docs/UI-AUDIT.md). `scripts/ui-audit/` inventories and captures every screen/menu with isolated fixtures, full-scroll evidence, enlarged text and keyboard proxies. Builder and independent Luna reviews must inspect actual screenshots; diagnostic counts alone are not approval.
 
 Verification covers retained health invariants, conflict handling, parser ambiguity, real-reading trends, mail extraction, owner isolation, encrypted OAuth, reviewed mailbox actions, preservation of completed tasks/deliveries, and service-worker access/update boundaries. Removal checks ensure cached AI requests make no provider calls and only AI credentials are removed by the migration. Browser checks cover the four phone tabs, manual forms, retained food provenance and an installed-app upgrade with saved history/preferences preserved. Production Gmail consent/reads/writes and physical Oppo installation remain unverified.
 

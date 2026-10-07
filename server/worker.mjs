@@ -399,6 +399,7 @@ export function createWorker({fetcher = globalThis.fetch, crypto = globalThis.cr
         if (request.method === 'GET' && ['/', '/index.html'].includes(url.pathname) && (!response.url || new URL(response.url).origin === url.origin) && headers.get('Content-Type')?.startsWith('text/html')) headers.set('X-Cams-Life-Shell', '1');
         if (url.pathname === '/sw.js') {headers.set('Cache-Control','no-cache');headers.set('Service-Worker-Allowed','/');headers.set('Content-Type','text/javascript');}
         if (url.pathname === '/update.html') {headers.set('Cache-Control','no-store');headers.set('Referrer-Policy','no-referrer');headers.set('X-Content-Type-Options','nosniff');}
+        if (url.pathname === '/integrations/cams-life-watch.apk') {headers.set('Content-Type','application/vnd.android.package-archive');headers.set('Content-Disposition','attachment; filename="Cams-Life-Watch.apk"');headers.set('Cache-Control','no-store');headers.set('X-Content-Type-Options','nosniff');}
         return new Response(response.body,{status:response.status,headers});
       }
       try {

@@ -1,0 +1,15 @@
+# Candidate checkpoint — 7 October 2026
+
+The front-end overhaul is implemented, but **has not completed the owner's acceptance rule and is not published**. No whole-app perfect score is claimed. The goal remains 100/100 for every applicable category after actual builder and independent GPT-6 Luna/MAX screenshot inspection of each screen, menu and submenu.
+
+The candidate uses the supplied Samsung Health references: locally served Roboto, the cool navy-to-amber canvas, rounded charcoal tiles, varied artwork and contained enlarged-text layouts. Changes also preserve drafts during refresh/save refusal, make nested dismissal exclusive, prevent rapid close taps from hitting newly exposed navigation, and keep a focused long field above the keyboard. Dates in entry forms and delete confirmations identify the year; History handles a single session correctly.
+
+All 165 tests, schema validation, the complete Worker/client/migration build and the diff whitespace check pass. The health file exactly matches the freshly fetched canonical GitHub blob `c3ec4204f16e1378b07ac66f806c584094487bb5`, preserving all 16 recorded dates. Audit API writes are intercepted and stay in synthetic memory fixtures.
+
+The current evidence selectors contain 333 parent and 549 menu combinations across 360/390/424 px and 100/130/200% text. Fifty-four parent and 27 menu combinations are explicitly pending after the latest Training artwork, History singular label and deletion-date changes. Existing predecessor screenshots are not acceptance evidence for those changes. The independent checkpoint credits 164 parent cases and leaves 169 pending; the menu/native queue has 21 complete entries and 43 non-complete entries. These are scoped progress counts, not seven-category release acceptance.
+
+Chromium and command execution hit the environment's process/thread limit (`pthread_create` and OS error 11). Stopping abandoned audit processes, using one serialized browser, reducing CPU/process usage and an isolated local runner did not restore reliable browser capture. Remaining captures, builder/reviewer coverage, interactions and the final current PWA upgrade check must finish after environment recovery. The raw synthetic evidence, manifests and inspection ledgers are backed up outside the public repository at `/workspace/cams-life-audit-checkpoint`.
+
+The Watch companion is a free read-only Health Connect export followed by an explicitly reviewed import/save. It does not establish automatic background sync or physical watch pairing. Live Gmail operations and the owner's physical Oppo/Watch permissions remain unverified. The accidentally attached cake menu is excluded, and its working attachment copy was removed.
+
+See [the acceptance rule](UI-AUDIT.md), [machine checkpoint](ui-audit/checkpoint/status.json), [parent coverage](ui-audit/checkpoint/parent-review-coverage.csv), [menu queue](ui-audit/checkpoint/menu-review-queue.md) and [Watch limitations](../integrations/health-connect/README.md). Raw paths in checkpoint reports refer to the retained private execution evidence, not published images.
