@@ -1,4 +1,4 @@
-Current compact typography status: reviewer identities below are retained, but predecessor completion labels are historical unless exact current screenshot hashes and applicable interactions are reconciled. No overall 100/100 acceptance is claimed.
+Current Noto typography: reviewer identities are retained, but historical completion labels do not certify changed screenshots or current interaction acceptance. No whole-app 100/100 claim.
 
 # Dedicated menu reviewer queue
 
