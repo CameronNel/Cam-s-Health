@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111a15">
+<meta name="color-scheme" content="dark">
+<meta name="referrer" content="no-referrer">
+<title>Update Cam’s Life</title>
+<link rel="preload" href="/assets/noto-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Life Noto Sans";src:url("/assets/noto-sans-latin.woff2") format("woff2");font-style:normal;font-weight:100 900;font-display:swap}
+*{box-sizing:border-box}html{background:#132631;color:#f2f0e9;font:14px/1.55 "Life Noto Sans",system-ui,sans-serif;color-scheme:dark}body{margin:0;min-height:100dvh;background:radial-gradient(ellipse 100% 65% at 65% 70%,#96602265,transparent 95%),linear-gradient(180deg,#142936 0%,#1d2937 29%,#342c22 56%,#302411 100%)}main{max-width:480px;margin:auto;padding:calc(22px + env(safe-area-inset-top)) 14px calc(30px + env(safe-area-inset-bottom));min-width:0}header{font-size:21px;line-height:1.3;font-weight:600;letter-spacing:-.01em;margin:0 6px 40px;min-height:44px;display:flex;align-items:center}.eyebrow{color:#b7bbb8;font-size:12px;letter-spacing:.08em;line-height:1.5;text-transform:uppercase;margin:0 22px}h1{font-size:22px;font-weight:400;line-height:1.25;letter-spacing:0;margin:10px 22px 18px}h2{font-size:18px;font-weight:400;line-height:1.3;margin:0 0 16px}p{color:#b7bbb8;margin:0 0 20px;font-size:14px;line-height:1.55}main>p{padding:0 22px}h1,h2,p,small,button,a{overflow-wrap:anywhere}section{border:1px solid #ffffff08;background:#15161ae8;border-radius:28px;padding:22px;margin-top:22px;min-width:0}button,.button{display:flex;align-items:center;justify-content:center;width:100%;min-height:52px;height:auto;border:0;border-radius:26px;padding:14px 20px;background:#ead581;color:#20261c;font:500 14px/1.4 "Life Noto Sans",system-ui,sans-serif;text-align:center;text-decoration:none;cursor:pointer;white-space:normal}button:disabled{opacity:.55;cursor:wait}.secondary{background:#303237;color:#f2f0e9;border:1px solid #ffffff14;margin-top:12px}a{color:#ead581}button:focus-visible,a:focus-visible{outline:3px solid #f2f0e9;outline-offset:4px}.status{background:#15161ae8;border-radius:28px;margin:14px 0 0;padding:20px 22px;min-height:84px}small{display:block;color:#b7bbb8;font-size:13px;line-height:1.6;margin:20px 22px 0}[hidden]{display:none!important}noscript a{display:inline-flex;align-items:center;min-height:44px}#review>p:last-of-type{margin-bottom:24px}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main>
+<header>Cam’s Life</header>
+<span class="eyebrow">App update</span>
+<h1>Bring your app up to date.</h1>
+<p>An installed app can keep showing an earlier version until you apply its update. Check here to load the latest Cam’s Life.</p>
+<button id="check" type="button">Check for updates</button>
+<p id="status" class="status" role="status" aria-live="polite">Check first, then choose when to reload.</p>
+<section id="review" hidden>
+<h2>Ready to open Settings?</h2>
+<p>Finish any saves in your other Cam’s Life tabs first. Keep any unfinished entries you want before reloading a tab. Reloading clears its unsaved forms and temporary GitHub editing connection.</p>
+<p>Your saved health history, Gmail connections and preferences stay intact.</p>
+<button id="apply" type="button">Update &amp; open Settings</button>
+<a class="button secondary" href="/#settings">Keep working</a>
+</section>
+<a id="open" class="button secondary" href="/#settings" hidden>Open Settings</a>
+<small>This page updates app files and preserves your saved records.</small>
+<noscript><p>Enable JavaScript to check the installed app, or <a href="/#settings">open Settings</a>.</p></noscript>
+</main>
+<script type="module">
+const check=document.querySelector('#check'),apply=document.querySelector('#apply'),status=document.querySelector('#status'),review=document.querySelector('#review'),open=document.querySelector('#open');
+let registration=null,activating=false;
+const waitForInstall=worker=>new Promise((resolve,reject)=>{
+  if(!worker)return resolve();
+  const finish=()=>{if(worker.state==='redundant'){cleanup();reject(Error('The new app files could not be prepared.'));}else if(['installed','activating','activated'].includes(worker.state)){cleanup();resolve();}};
+  const cleanup=()=>{clearTimeout(timer);worker.removeEventListener('statechange',finish);};
+  const timer=setTimeout(()=>{cleanup();reject(Error('The update check timed out.'));},45000);
+  worker.addEventListener('statechange',finish);finish();
+});
+if('serviceWorker' in navigator)navigator.serviceWorker.addEventListener('controllerchange',()=>{if(activating)location.replace('/#settings');});
+check.addEventListener('click',async()=>{
+  check.disabled=true;review.hidden=true;open.hidden=true;status.textContent='Checking the latest app files…';
+  try{
+    if(!navigator.onLine)throw Error('Reconnect to the internet and try again.');
+    if(!('serviceWorker' in navigator)&&window.isSecureContext){status.textContent='Open the current website to use Cam’s Life.';open.hidden=false;return;}
+    if(!window.isSecureContext||!('serviceWorker' in navigator))throw Error('Open this page in Chrome using the secure app link.');
+    registration=await navigator.serviceWorker.register('/sw.js',{scope:'/',updateViaCache:'none'});
+    await registration.update();
+    await waitForInstall(registration.installing);
+    if(registration.waiting){status.textContent='The latest app is ready. Review the reload below.';review.hidden=false;}
+    else{status.textContent='Your app files are up to date. Open Settings to return to Cam’s Life.';open.hidden=false;}
+  }catch(error){status.textContent=error.message+' Your saved records are intact.';}
+  finally{check.disabled=false;}
+});
+apply.addEventListener('click',()=>{
+  if(!navigator.onLine){status.textContent='Reconnect before applying the update.';return;}
+  if(!registration?.waiting){status.textContent='Check for updates again before reloading.';review.hidden=true;return;}
+  activating=true;apply.disabled=true;check.disabled=true;status.textContent='Applying the update and opening Settings…';
+  registration.waiting.postMessage({type:'ACTIVATE_UPDATE'});
+});
+</script>
+</body>
+</html>

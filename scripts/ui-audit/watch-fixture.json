@@ -1,0 +1,73 @@
+{
+  "format": "cams-life-health-connect",
+  "version": 1,
+  "exportedAt": "2026-10-06T17:30:00Z",
+  "timezone": "Europe/Amsterdam",
+  "days": [
+    {
+      "date": "2026-10-06",
+      "steps": 7450,
+      "waterMl": 1800,
+      "weightKg": 82,
+      "bodyFatPct": 20.8,
+      "sleepHours": 7.75,
+      "sources": {
+        "steps": {
+          "recordIds": [
+            "synthetic-steps"
+          ],
+          "appPackages": [
+            "com.sec.android.app.shealth"
+          ],
+          "recordedAt": "2026-10-06T17:00:00Z"
+        },
+        "waterMl": {
+          "recordIds": [
+            "synthetic-waterMl"
+          ],
+          "appPackages": [
+            "com.sec.android.app.shealth"
+          ],
+          "recordedAt": "2026-10-06T17:00:00Z"
+        },
+        "weightKg": {
+          "recordIds": [
+            "synthetic-weightKg"
+          ],
+          "appPackages": [
+            "com.sec.android.app.shealth"
+          ],
+          "recordedAt": "2026-10-06T17:00:00Z"
+        },
+        "bodyFatPct": {
+          "recordIds": [
+            "synthetic-bodyFatPct"
+          ],
+          "appPackages": [
+            "com.sec.android.app.shealth"
+          ],
+          "recordedAt": "2026-10-06T17:00:00Z"
+        },
+        "sleepHours": {
+          "recordIds": [
+            "synthetic-sleepHours"
+          ],
+          "appPackages": [
+            "com.sec.android.app.shealth"
+          ],
+          "recordedAt": "2026-10-06T17:00:00Z"
+        }
+      },
+      "workouts": [
+        {
+          "id": "synthetic-health-connect-workout",
+          "name": "Synthetic recorded walk with a long descriptive title for wrapping review",
+          "durationMin": 35,
+          "startTime": "2026-10-06T08:00:00Z",
+          "endTime": "2026-10-06T08:35:00Z",
+          "appPackage": "com.sec.android.app.shealth"
+        }
+      ]
+    }
+  ]
+}

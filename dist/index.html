@@ -3,20 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
-<meta name="theme-color" content="#111a15">
+<meta name="theme-color" content="#10264a">
 <meta name="description" content="Cam’s Life. Health, inbox, deliveries, to-dos, and a little daily perspective.">
 <meta name="color-scheme" content="dark">
 <meta name="referrer" content="no-referrer">
+<meta name="cams-life-shell" content="1">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Cam’s Life">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<style>html,body{background:#10264a;color:#efe9d7}</style>
 <title>Cam’s Life</title>
 <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
-<link rel="stylesheet" href="./studio.css?v=5">
-<link rel="stylesheet" href="./life.css?v=5">
+<link rel="manifest" href="./manifest.webmanifest" crossorigin="use-credentials">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="preload" href="./assets/noto-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="./studio.css?v=8">
+<link rel="stylesheet" href="./life.css?v=8">
+<link rel="stylesheet" href="./health-ui.css?v=9">
+<link rel="stylesheet" href="./training-body-ui.css?v=9">
+<link rel="stylesheet" href="./life-settings-ui.css?v=9">
+<link rel="stylesheet" href="./typography.css?v=1">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -25,6 +32,6 @@
 <aside class="timer-dock" id="timer-dock" aria-label="Rest timer" hidden></aside>
 <div id="toast" role="status" aria-live="polite"></div>
 <noscript><p>This tracker needs JavaScript to read and save your GitHub record.</p></noscript>
-<script type="module" src="./studio.js?v=5"></script>
+<script type="module" src="./studio.js?v=8"></script>
 </body>
 </html>
