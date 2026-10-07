@@ -1,0 +1,19 @@
+{
+  "createdAt": "2026-10-07T06:38:13.809362+00:00",
+  "newFreshOriginalsPersonallyViewed": 320,
+  "nativePixelGalleriesPersonallyViewed": 40,
+  "totalDistinctOriginalPathsPersonallyViewed": 4777,
+  "candidateCases": 150,
+  "candidatePngs": 1006,
+  "currentUnaffectedCasesFullyCovered": 58,
+  "currentUnaffectedCandidatePngsCovered": 335,
+  "currentUnaffectedCandidatePngsUnviewed": 544,
+  "supersededGroups": [
+    "history",
+    "history-empty",
+    "workout-delete-confirm"
+  ],
+  "newTrainingArtworkPendingAllNine": true,
+  "supplementWave2UnviewedFresh": 799,
+  "remainingReason": "Root paused further inspection because serialized browser recapture and final interactions cannot run under persistent process/thread cap. No full-current-source or 100% claim."
+}
