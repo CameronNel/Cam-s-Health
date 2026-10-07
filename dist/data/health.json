@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-07T18:16:27.000Z",
+  "updatedAt": "2026-10-07T18:26:54.000Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1990,11 +1990,64 @@
           "reviewRequired": false
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-10-07-pull-arms-custom-1",
+          "sessionId": null,
+          "name": "Pull + arms",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Custom session. First movement was the user-described shoulder-height cable movement performed facing the cable with straight arms moving back to train the upper back/traps/shoulder blades. Exact exercise name not confirmed.",
+          "actualExercises": [
+            {
+              "name": "Shoulder-height cable reverse fly / scapular retraction movement",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm cable pulldown",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Biceps curl",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Hammer curl",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Wrist extension",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Wrist curl",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Hammer forearm curl",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Added 1 banana reported as 100 kcal, 1 usual 500 g banana kwark, and 5 machine lattes at milk setting 1. Added leftovers from 6 Oct: 202.5 g salmon (60% of yesterday's logged portion) and 45 g AH stir-fry vegetables (20%).",
+      "notes": "Added 1 banana reported as 100 kcal, 1 usual 500 g banana kwark, and 5 machine lattes at milk setting 1. Added leftovers from 6 Oct: 202.5 g salmon (60% of yesterday's logged portion) and 45 g AH stir-fry vegetables (20%). Workout: custom pull + arms session, 23 total working sets. First cable movement logged descriptively because exact exercise name was not confirmed.",
       "complete": false
     }
   },
