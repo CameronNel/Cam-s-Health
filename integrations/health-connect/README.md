@@ -49,7 +49,9 @@ Import files are limited to 2 MB and 31 distinct calendar dates. Timezone must m
 
 ## Build
 
-The release download is `dist/integrations/cams-life-watch.apk` (package `com.camslife.healthbridge`, version 1.0). SHA-256: `13cde29007d52ce641b45f4a6d3a5161d3e51619f6eb447aaa4adbf450e341af`. The signing key stays outside the repository. Source changes require a rebuilt, signed APK and updated digest before publication.
+The release download is `dist/integrations/cams-life-watch.apk` (package `com.camslife.healthbridge`, version 1.1 / code 2). SHA-256: `3bab04bbaac56aff3318582cc7bd02ca5016c6325bc4b21295753ce023d4e5d4`. This release adds a visible radio indicator to the selected seven/thirty-day range and explains that a cloud-backed document destination may sync an exported health file; choose local phone storage. Native setup, privacy and both selected menu states were inspected at 424×923, 390×849 and 360×784 with font scales 1.0, 1.3 and 2.0 on an isolated API35 software emulator. All six health permissions remained denied; no health read or export was performed in this release check. Physical Oppo/Watch authorization and data transfer remain unverified. The signing key stays outside the repository. Source changes require a rebuilt, signed APK and updated digest before publication.
+
+**Signing change in v1.1:** the previous signing key is unavailable, so this APK uses a new certificate, SHA-256 `d46262c7ff0b4d2b5e2ea78871b9705da411caf1a80113d5f75c12ea242be9a4`. Android cannot install it as an update over the differently signed v1.0 companion. Existing users may need to uninstall only the Watch companion before installing v1.1. The companion stores no health history; Samsung Health/Health Connect records and separately saved export files remain intact. Retain this new private signing key securely for future updates.
 
 Use official Android SDK platform 35 and build-tools 35.0.0 plus a JDK with `jdk.compiler`. Dependencies are not installed globally. `android/build.sh` compiles Java, builds DEX/resources, aligns the APK, and optionally signs it using an explicit private key/password file. No key is copied into the app, repository or export.
 

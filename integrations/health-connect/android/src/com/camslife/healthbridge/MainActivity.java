@@ -148,6 +148,7 @@ public final class MainActivity extends Activity {
             this,
             android.R.layout.simple_spinner_dropdown_item,
             new String[] {"Last 7 days", "Last 30 days"});
+    choices.setDropDownViewResource(android.R.layout.select_dialog_singlechoice);
     range.setAdapter(choices);
     range.setMinimumHeight(dp(48));
     add(card, range);

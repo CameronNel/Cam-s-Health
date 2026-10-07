@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-06T20:58:13.000Z",
+  "updatedAt": "2026-10-07T13:26:31.000Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1918,6 +1918,56 @@
         "recordedAt": "2026-10-06T20:45:00.000Z",
         "skeletalMuscleKg": 31.3
       }
+    },
+    "2026-10-07": {
+      "food": [
+        {
+          "id": "2026-10-07-banana-100kcal-1",
+          "name": "Banana",
+          "quantity": "1 banana (reported as 100 kcal)",
+          "kcal": 100,
+          "protein": 1.24,
+          "carbs": 25.71,
+          "fat": 0.29,
+          "estimated": true,
+          "source": "User-reported 100 kcal banana; macros scaled from the saved generic medium-banana estimate.",
+          "note": "Calories set exactly to 100 kcal as reported. Macros are approximate.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-07-banana-kwark-500g-1",
+          "name": "Milde magere kwark met banaan",
+          "quantity": "1 full 500 g tub",
+          "kcal": 345,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "fibre": null,
+          "estimated": false,
+          "source": "Saved user-provided nutrition label from 4 Oct 2026.",
+          "note": "Usual 500 g banana kwark. Label per 100 g: 69 kcal, 9.3 g protein, 7.0 g carbs, 0.1 g fat.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-07-machine-lattes-5-1",
+          "name": "Machine latte — low powdered milk setting",
+          "quantity": "5 lattes",
+          "kcal": 175,
+          "protein": 3.5,
+          "carbs": 18.75,
+          "fat": 10,
+          "estimated": true,
+          "source": "Standardized office coffee-machine estimate saved in tracker from 28 Sep 2026.",
+          "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal, 0.7 g protein, 3.75 g carbs and 2 g fat per latte; machine/product nutrition remains unconfirmed.",
+          "reviewRequired": false
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "Added 1 banana reported as 100 kcal, 1 usual 500 g banana kwark, and 5 machine lattes at milk setting 1.",
+      "complete": false
     }
   },
   "recipes": [
