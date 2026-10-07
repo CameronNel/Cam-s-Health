@@ -1,12 +1,13 @@
 {
-  "status": "Current selected Health screenshots inspected; latest deletion-date recaptures pending",
+  "status": "Current disconnected Health menu screenshot selection matches builder-viewed bytes; changed deletion and connected-account supplements pending",
   "selectedCombinationsCovered": 153,
   "selectedPngsCovered": 343,
-  "unviewedSelectedPngs": 0,
+  "unmatchedSelectedPngs": 0,
   "pendingFoodDeleteCombinations": 9,
   "excludedOlderDeletionPngs": 12,
   "privateFullReport": "/workspace/cams-life-audit-checkpoint/night-audit/health-final-selector-builder-reconciliation.json",
   "fullReportSha256": "cba5c721ba29b97e92e3c263e0971749d9ca15c25443f45b158cf7dbd871f63d",
-  "currentMenuSelectorSha256": "5f5512fba85f32a1dbb0a1672b38602d049732126106ae6daa06d2279df5ce13",
+  "currentMenuSelectorSha256": "eb42d29ca8146cfb5a9ea92282c3d018cf63826c906f4bd93239cebe3eb3fa8f",
+  "rootReconciliation": "Whole-file SHA comparison to builder actual-view report; this does not create new visual inspection or certify changed connected-account states.",
   "wholeAppAcceptance": false
 }
