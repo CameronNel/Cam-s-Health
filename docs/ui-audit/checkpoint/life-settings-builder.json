@@ -1,0 +1,36 @@
+{
+  "createdAt": "2026-10-07T07:00:28.797304+00:00",
+  "builder": "/root/night_inbox_life_settings_builder",
+  "builderInspectedPriorSelectedParents": 117,
+  "builderInspectedPriorSelectedParentPngs": 595,
+  "currentEligibleParentsAfterErrorCopyFix": 108,
+  "currentEligibleParentPngsAfterErrorCopyFix": 544,
+  "pendingSettingsPrivateErrorCases": 9,
+  "builderInspectedSelectedMenus": 207,
+  "builderInspectedSelectedMenuPngs": 700,
+  "parentSupplementRecapturePending": {
+    "cases": 7,
+    "originals": 82,
+    "ids": [
+      "360-200-install-ready",
+      "360-200-installed",
+      "360-200-units-imperial",
+      "360-200-github-connected",
+      "360-200-github-disconnected",
+      "360-200-scan-busy",
+      "360-200-scan-refusal"
+    ],
+    "reason": "Current 200% global parent/header framing differs from their original capture-time framing; Chromium recapture unavailable due process/thread exhaustion."
+  },
+  "newActualViewsThisPass": {
+    "parents": 270,
+    "menus": 338,
+    "overwrittenSupplementRefreshMotion": 10,
+    "total": 618
+  },
+  "newlyConfirmedAssignedDefects": [],
+  "privateFullReport": "/workspace/cams-life-audit-checkpoint/night-inbox-life-settings/STATIC-FINAL-RECONCILIATION.json",
+  "fullReportSha256": "96c7eebc3bee60017890875aefac2e15a5f1d65a47a3706c6a4aab4fe655be7b",
+  "latestScopeLimit": "Settings private-error predecessors and connected-account supplements do not certify the latest scoped copy fixes. Unchanged surfaces retain capture-time provenance.",
+  "wholeAppAcceptance": false
+}

@@ -1,17 +1,17 @@
 {
   "status": "blocked; not release accepted or published",
-  "createdAt": "2026-10-07T06:43:24.896679+00:00",
+  "createdAt": "2026-10-07T07:26:53.762011+00:00",
   "goal": "100/100 in all applicable criteria after builder and dedicated independent GPT-6 Luna/MAX actual screenshot review",
   "sourceHashes": {
-    "dist/studio.js": "a024dbe66ea7c05aaefa9b8e76325ffda9560a2fa7be232ee00c85dd2ed0dc88",
-    "dist/life-ui.js": "4b17ea241aaf8921c5b23d81b016dac3f4eb4498e8bc35b737bd5a4bfa1bd54a",
+    "dist/studio.js": "40ddf9486ff6efc1cb23272b67dd6a31b894bfda27465608527551f91cb04e49",
+    "dist/life-ui.js": "f6e172a4e705df931c4493ba4c95689b8f73785de1e84dc1fbd3eb2590b29b3c",
     "dist/life.css": "8a122a736a9047cab1481b0f545afba18c5ae0fd20de8ef5858bb940f772242f",
     "dist/health-ui.css": "d714cfda273d3fbc4644a328cfa55578a7db2a2d728e07e997ef401fc84c420b",
-    "dist/training-body-ui.css": "ce6201714fe637ea8ce9b80a5ca7e42019d7341e91d361e351ed0de5be824150",
+    "dist/training-body-ui.css": "67e12448ceeb09f0a96b1daf8afc439c0b875d189c15aed81bccfa3c295775d3",
     "dist/life-settings-ui.css": "d659575e082792bb0445deb5d757ef0dca0ae63f18d1c01b38c8d81104b1f3ca",
     "dist/integrations/watch-ui.js": "f3ce13445117d12d74073ab76c5ed1fd8793e1197104fb72b1e9d17d24b5ce3f",
     "dist/integrations/watch-import.js": "d88917f426c2a7564bec56c2653b6613adafd178afe18da58439e171aebb9399",
-    "dist/sw.js": "37b8e389fab8bbcc77ad489de703dfbea87dab0ef5d0141b777f35cf3e617371"
+    "dist/sw.js": "852c25b7f1fb79ac3ff7cac11a2b4da31a82b6075f4f116f5140fa86b4452fc7"
   },
   "validation": {
     "unitTests": 165,
@@ -27,28 +27,34 @@
   "selectors": {
     "parents": {
       "cases": 333,
-      "pngs": 1428,
-      "missing": 54,
-      "sha256": "cbf5b704e8f27bf85d7c28c6e0feba713e270ce7a7349cdf35f5f0b2ae60b24b"
+      "pngs": 1377,
+      "missing": 63,
+      "sha256": "040948199bb96f471dccc78b8d8fa62102b1a8709effbf17804e22d3bb29653c"
     },
     "menus": {
       "cases": 549,
-      "pngs": 2135,
-      "missing": 27,
-      "sha256": "5f5512fba85f32a1dbb0a1672b38602d049732126106ae6daa06d2279df5ce13"
+      "pngs": 1984,
+      "missing": 72,
+      "sha256": "eb42d29ca8146cfb5a9ea92282c3d018cf63826c906f4bd93239cebe3eb3fa8f"
     }
   },
   "review": {
-    "independentlyReviewedParentCases": 164,
-    "parentCasesPending": 169,
-    "menuAndNativeCasesCompleteInQueue": 21,
-    "menuAndNativeCasesNonCompleteInQueue": 43,
+    "independentlyReviewedParentCasesWithMatchingSelectedPngs": 148,
+    "parentCasesPendingCurrentEvidence": 185,
+    "reviewedLabelsInPredecessorOrCurrentLedger": 209,
+    "reviewedLabelsAwaitingCurrentHashReconciliation": 61,
+    "menuAndNativeInventory": 64,
+    "dedicatedMenuReviewersAssigned": 31,
+    "menuIdentitiesUnassigned": 33,
+    "queueCompleteLabels": 19,
+    "queueLabelsAreNotReleaseAcceptance": true,
     "overallScore": null
   },
   "blockers": [
-    "Chromium thread creation and unified exec return resource unavailable (OS error 11). Shared, CPU-constrained, minimal and isolated local runners did not restore reliable captures.",
-    "Recapture 36 Training parent and 9 program-notes combinations after artwork change, 18 History combinations after singular count correction, and 18 deletion-confirmation combinations after full-year dates.",
-    "Complete remaining builder and independent reviews, remaining software interaction checks and final current PWA upgrade verification.",
+    "Chromium still cannot reliably create threads (pthread_create / OS error 11). Serialized, CPU-constrained, minimal and isolated local runners failed. Ordinary shell/image tools recovered.",
+    "Recapture 36 Training parents, 9 program-notes menus, 18 History parents, 18 deletion confirmations, 45 Workout forms and 9 Settings private-error parents: 135 primary cases.",
+    "Recapture 7 enlarged parent supplements (82 PNG positions) after header framing changed, plus connected-account form supplements after removing ambiguous verification wording.",
+    "Complete remaining independent current screenshot reviews, software interaction checks and final current PWA upgrade verification.",
     "Publish only after the owner-required acceptance is earned."
   ],
   "externalUnverified": [

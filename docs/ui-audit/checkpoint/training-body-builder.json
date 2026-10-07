@@ -1,19 +1,68 @@
 {
-  "createdAt": "2026-10-07T06:38:13.809362+00:00",
-  "newFreshOriginalsPersonallyViewed": 320,
-  "nativePixelGalleriesPersonallyViewed": 40,
-  "totalDistinctOriginalPathsPersonallyViewed": 4777,
-  "candidateCases": 150,
-  "candidatePngs": 1006,
-  "currentUnaffectedCasesFullyCovered": 58,
-  "currentUnaffectedCandidatePngsCovered": 335,
-  "currentUnaffectedCandidatePngsUnviewed": 544,
-  "supersededGroups": [
-    "history",
-    "history-empty",
-    "workout-delete-confirm"
+  "createdAt": "2026-10-07T07:20:10.555829+00:00",
+  "directOriginalPathsPersonallyViewedAcrossAllWaves": 6084,
+  "directOriginalPathsStillAvailable": 6084,
+  "distinctWholePNGHashesPersonallyViewed": 5772,
+  "centralCurrentEligible": {
+    "parents": {
+      "cases": 126,
+      "eligibleCapturedCases": 72,
+      "pendingCases": 54,
+      "pngs": 372,
+      "coverageCounts": {
+        "personally-viewed-original-native-pixels": 366,
+        "exact-whole-file-sha256-to-personally-viewed-original": 6
+      }
+    },
+    "menus": {
+      "cases": 189,
+      "eligibleCapturedCases": 126,
+      "pendingCases": 63,
+      "pngs": 953,
+      "coverageCounts": {
+        "personally-viewed-original-native-pixels": 866,
+        "exact-whole-file-sha256-to-personally-viewed-original": 87
+      }
+    }
+  },
+  "centralExpectedCases": 315,
+  "centralEligibleCapturedCases": 198,
+  "centralEligiblePNGInstances": 1325,
+  "centralPendingCases": 117,
+  "supplementWaves": [
+    {
+      "folder": "/tmp/cams-life/night-audit/training-body/supplement-final-wave1",
+      "states": 444,
+      "pngInstances": 3638,
+      "freshOriginalsPersonallyViewed": 1310,
+      "exactSHA256AliasesRechecked": 2328,
+      "galleriesPersonallyViewed": 164,
+      "confirmedNewRawDefects": []
+    },
+    {
+      "folder": "/tmp/cams-life/night-audit/training-body/supplement-final-wave2",
+      "states": 222,
+      "pngInstances": 2557,
+      "freshOriginalsPersonallyViewed": 799,
+      "exactSHA256AliasesRechecked": 1758,
+      "galleriesPersonallyViewed": 100,
+      "confirmedNewRawDefects": []
+    }
   ],
-  "newTrainingArtworkPendingAllNine": true,
-  "supplementWave2UnviewedFresh": 799,
-  "remainingReason": "Root paused further inspection because serialized browser recapture and final interactions cannot run under persistent process/thread cap. No full-current-source or 100% claim."
+  "errorMotionSupplement": {
+    "states": 90,
+    "pngInstances": 453,
+    "freshOriginalsPersonallyViewed": 118,
+    "exactSHA256Aliases": 335,
+    "scope": "Error draft preservation, normal/reduced motion sampled frames, four timer tick frames; prior changed form appearances stay superseded."
+  },
+  "confirmedNewRawDefectsInCurrentStaticPass": [],
+  "limitations": [
+    "117 latest Training/artwork, History grammar, Workout deletion full-year and five Workout form Optional/session-picker cases await reliable recapture and inspection. Predecessor screenshots retained as history only.",
+    "No current-source full-suite acceptance or strict 100% reviewer score is claimed. Builder cannot stand in for the independent Luna reviewer.",
+    "Browser process/thread cap prevented latest recaptures and final live interactions. Physical Oppo/Watch integration and phone background alert behavior remain independently unverified."
+  ],
+  "privateFullReport": "/workspace/cams-life-audit-checkpoint/night-audit/training-body-static-final-ledgers/static-final-current-reconciliation/summary-complete.json",
+  "fullReportSha256": "c3e66af2be4b37885a1a81ebc3f0192c67cde12776714cff6595dc738b13589b",
+  "wholeAppAcceptance": false
 }
