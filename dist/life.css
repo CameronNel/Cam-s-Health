@@ -217,12 +217,30 @@ body.keyboard-open .top-actions{visibility:hidden}
 .bottom-nav .nav-item>span{width:auto;white-space:nowrap;overflow-wrap:normal}
 .bottom-dock.large-text{width:calc(100% - 16px);gap:6px}
 .bottom-dock.large-text>.iconbtn{width:48px;min-width:48px;height:48px}
+.bottom-dock.large-text .bottom-nav{flex-wrap:nowrap;gap:0;padding:3px}
+.bottom-dock.large-text .nav-item{padding-inline:2px}
 .health-tabs{display:flex;flex-wrap:wrap;gap:2px;height:auto;max-height:none;padding:4px}
 .health-tabs button{flex:1 1 min-content;min-width:44px;min-inline-size:max-content;padding:8px 7px;height:auto;min-height:52px;white-space:nowrap}
 .health-tabs button>span{white-space:nowrap;overflow-wrap:normal}
 #main{padding-bottom:calc(var(--dock-clearance,110px) + var(--timer-clearance,0px) + 24px)}
 .timer-dock{bottom:var(--dock-clearance,110px);background:#292b30f2;padding:8px 12px;gap:10px}
 .timer-dock>button{min-height:44px;min-width:44px;font:400 14px/1.4 var(--font);flex-wrap:wrap;gap:8px}
+/* Default phone density: the header action keeps its hit area outside text flow. */
+[data-screen="dashboard"] .day-fuel{position:relative;min-height:190px;padding:20px}
+[data-screen="dashboard"] .day-fuel .card-kicker{flex-wrap:wrap;gap:8px}
+[data-screen="dashboard"] .day-fuel .card-kicker>.textbtn{position:absolute;top:8px;right:20px}
+body:has(.bottom-dock.large-text) [data-screen="dashboard"] .day-fuel .card-kicker>.textbtn{position:static;margin-left:auto}
+
+/* Reference-sized section rail; accessible names stay on each icon button. */
+#main{padding-top:8px}
+.home-categories{height:52px;margin-bottom:22px}
+.home-categories button{height:46px}
+.health-tabs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px;padding:3px;min-height:52px}
+.health-tabs button{min-inline-size:0;min-width:44px;min-height:44px;padding:0;gap:0}
+.health-tabs button>.icon{width:26px;height:26px}
+.health-tabs button>span{display:none}
+[data-screen="training"] .page-intro,[data-screen="body"] .page-intro{margin-bottom:10px}
+[data-screen="training"] .date-controls,[data-screen="body"] .date-controls{margin-bottom:8px}
 .timer-dock>button b{font-variant-numeric:tabular-nums;font-size:20px}
 #toast{bottom:calc(var(--dock-clearance,110px) + var(--timer-clearance,0px));background:#292b30f2;overflow-wrap:anywhere}
 #sheet{background:#1a1b1f;border-color:#ffffff16;max-height:min(calc(100dvh - 12px),calc(var(--visual-height,100dvh) - 12px));overflow:auto;overscroll-behavior:contain;scroll-behavior:auto;scroll-padding-block:88px 24px}

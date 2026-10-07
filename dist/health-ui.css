@@ -132,3 +132,37 @@ body:has(.bottom-dock.large-text) .wellbeing-card .section-head>h2{width:100%;fl
 .sleep-reading:has(.sleep-arc)>strong{position:relative;display:flex;align-items:center;justify-content:center;gap:3px;aspect-ratio:1;width:100%}
 .sleep-reading:has(.sleep-arc)>span:last-child{color:#49bfe8;margin-top:10px}
 details[open]>summary .plus-vertical{display:none}
+/* Paired home tiles follow the reference's near-square proportions. */
+[data-screen="dashboard"] .activity-card{min-height:190px;padding:18px}
+[data-screen="dashboard"] .step-ring:has(.activity-heart){width:100%;height:auto;margin:6px auto 0}
+[data-screen="dashboard"] .step-ring>svg.activity-heart{width:100px;height:100px;flex:none}
+[data-screen="dashboard"] .step-ring:has(.activity-heart)>span{width:100%;padding-top:4px;flex-direction:row;flex-wrap:wrap;align-items:baseline;justify-content:center;gap:4px}
+[data-screen="dashboard"] .step-ring strong{margin:0;font-size:22px;line-height:1.25;font-weight:400}
+[data-screen="dashboard"] .step-ring small{line-height:1.4}
+[data-screen="dashboard"] .sleep-reading{width:min(100%,7.8em);margin:6px auto 0}
+[data-screen="dashboard"] .sleep-reading>strong{margin:0}
+[data-screen="dashboard"] .sleep-reading:has(.sleep-arc)>span:last-child{font-size:12px;line-height:1.4;margin-top:4px}
+
+/* Nutrition density: compact readings with intrinsic growth for enlarged text. */
+.app-shell[data-screen="nutrition"] .nutrition-card{padding:20px 22px}
+.app-shell[data-screen="nutrition"] .nutrition-energy{padding-block:28px;min-height:247px}
+.app-shell[data-screen="nutrition"] .nutrition-energy .energy-layout{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,9em),1fr));align-items:start;gap:16px;margin:0 0 10px;padding:0;min-height:131px}
+.app-shell[data-screen="nutrition"] .nutrition-summary{justify-content:flex-start;min-height:44px;max-width:100%;margin-top:4px;padding-block:8px;font-size:14px;line-height:1.5;text-align:left;white-space:normal;overflow-wrap:anywhere}
+.app-shell[data-screen="nutrition"] .nutrition-energy .energy-number{min-width:0}
+.app-shell[data-screen="nutrition"] .nutrition-energy .energy-number>strong{max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.app-shell[data-screen="nutrition"] .nutrition-unit{margin-top:8px;font-size:16px;line-height:1.5}
+.app-shell[data-screen="nutrition"] .nutrition-target{min-width:0;font-size:16px;line-height:1.45;overflow-wrap:anywhere}
+.app-shell[data-screen="nutrition"] .nutrition-target>span{gap:8px}
+.app-shell[data-screen="nutrition"] .nutrition-target>span>span{min-width:0}
+.app-shell[data-screen="nutrition"] .nutrition-target .icon{width:22px;height:22px;margin-top:1px}
+.app-shell[data-screen="nutrition"] .nutrition-target small{margin-top:2px;font-size:14px;line-height:1.45}
+.app-shell[data-screen="nutrition"] .nutrition-target p{margin-top:8px;font-size:14px;line-height:1.5}
+.app-shell[data-screen="nutrition"] .nutrition-axis{font-size:14px;line-height:1.5;flex-wrap:wrap;gap:4px 16px}
+.app-shell[data-screen="nutrition"] .nutrition-axis>span:last-child{margin-left:auto;text-align:right;overflow-wrap:anywhere;max-width:100%}
+.app-shell[data-screen="nutrition"] .nutrition-macros .card-kicker{margin-bottom:16px}
+.app-shell[data-screen="nutrition"] .nutrition-macros .card-kicker>.help{font-size:14px}
+.app-shell[data-screen="nutrition"] .nutrition-macros .macro{padding:12px 8px}
+.app-shell[data-screen="nutrition"] .nutrition-macros .macro>strong{margin:6px 0 4px}
+.app-shell[data-screen="nutrition"] .nutrition-macros .macro strong small{font-size:14px}
+.app-shell[data-screen="nutrition"] .nutrition-footnote{font-size:14px}
+.app-shell[data-screen="nutrition"] .macro-target-grams{font-size:14px}

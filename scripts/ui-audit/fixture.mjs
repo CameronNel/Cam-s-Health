@@ -142,14 +142,21 @@ export async function captureScroll(fixture, label, { directory = EVIDENCE, text
   const safe = label.replace(/[^a-zA-Z0-9_-]/g, '-'), files = [], samples = [];
   const surfaces = await page.evaluate(include => {
     const result = [], dialog = document.querySelector('#sheet[open]');
-    if (!dialog || include) result.push({ kind: 'document', selector: null, height: innerHeight, max: Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)-innerHeight });
+    if (!dialog || include) {
+      const header=document.querySelector('.topbar'),headStyle=header&&getComputedStyle(header);
+      const topOcclusion=header&&['sticky','fixed'].includes(headStyle.position)?header.getBoundingClientRect().height:0;
+      const dockTops=[...document.querySelectorAll('.bottom-dock,.timer-dock')].filter(e=>{const s=getComputedStyle(e);return s.visibility!=='hidden'&&s.display!=='none'&&e.getClientRects().length;}).map(e=>e.getBoundingClientRect().top);
+      const bottomOcclusion=dockTops.length?Math.max(0,innerHeight-Math.min(...dockTops)):0;
+      result.push({ kind: 'document', selector: null, height: innerHeight, topOcclusion, bottomOcclusion, max: Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)-innerHeight });
+    }
     if (dialog) {
-      for (const [kind, el] of [['sheet', dialog], ['sheet-content', dialog.querySelector('.sheet-content')]]) if (el) { const s = getComputedStyle(el); if (kind === 'sheet' || el.scrollHeight > el.clientHeight + 2 && ['auto','scroll'].includes(s.overflowY)) result.push({ kind, selector: kind === 'sheet' ? '#sheet' : '#sheet .sheet-content', height: el.clientHeight, max: el.scrollHeight - el.clientHeight }); }
+      for (const [kind, el] of [['sheet', dialog], ['sheet-content', dialog.querySelector('.sheet-content')]]) if (el) { const s = getComputedStyle(el); if (kind === 'sheet' || el.scrollHeight > el.clientHeight + 2 && ['auto','scroll'].includes(s.overflowY)) {const head=dialog.querySelector('.sheet-head');const topOcclusion=kind==='sheet'&&head&&getComputedStyle(head).position==='sticky'?head.getBoundingClientRect().height:0;result.push({ kind, selector: kind === 'sheet' ? '#sheet' : '#sheet .sheet-content', height: el.clientHeight, topOcclusion, bottomOcclusion:0, max: el.scrollHeight - el.clientHeight });} }
     }
     return result;
   }, includeDocumentBehindModal);
   for (const surface of surfaces) {
-    const steps = [0], step = Math.max(80, Math.round(surface.height * .78));
+    const visibleHeight=Math.max(1,surface.height-(surface.topOcclusion||0)-(surface.bottomOcclusion||0));
+    const steps = [0], step = Math.max(1, Math.floor(visibleHeight * .78));
     for (let y = step; y < surface.max; y += step) steps.push(y);
     if (surface.max > 0) steps.push(surface.max);
     for (const [i, y] of [...new Set(steps)].entries()) {
@@ -160,7 +167,7 @@ export async function captureScroll(fixture, label, { directory = EVIDENCE, text
   }
   if (fullPage) { const output = path.join(directory, `${safe}-full.png`); await page.screenshot({ path: output, fullPage: true, animations: 'disabled' }); files.push(output); }
   const sourceHashes=Object.fromEntries(await Promise.all(['dist/index.html','dist/update.html','dist/studio.js','dist/life-ui.js','dist/life.css','dist/health-ui.css','dist/training-body-ui.css','dist/life-settings-ui.css','dist/typography.css','dist/assets/noto-sans-latin.woff2','dist/integrations/watch-ui.js'].map(async name=>[name,createHash('sha256').update(await readFile(path.join(ROOT,name))).digest('hex')])));
-  const manifest = { label, createdAt:new Date().toISOString(), sourceHashes, url: page.url(), textScale, files, samples, pageErrors: fixture.errors.slice(), blockedRequests: fixture.blocked.slice(), writes: fixture.writes.slice(), serviceWorker: 'isolated mock lifecycle; no worker installed' };
+  const manifest = { label, createdAt:new Date().toISOString(), sourceHashes, url: page.url(), textScale, files, samples, scrollCoverage:surfaces, pageErrors: fixture.errors.slice(), blockedRequests: fixture.blocked.slice(), writes: fixture.writes.slice(), serviceWorker: 'isolated mock lifecycle; no worker installed' };
   await writeFile(path.join(directory, `${safe}.json`), JSON.stringify(manifest, null, 2) + '\n');
   return manifest;
 }

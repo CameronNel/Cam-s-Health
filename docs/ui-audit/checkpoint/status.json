@@ -1,21 +1,53 @@
 {
-  "createdAt": "2026-10-07T09:43:48.077235+00:00",
-  "status": "Compact Noto typography live in version 19; current scoped Reps/disclosure repair and independent exhaustive acceptance in progress",
-  "goal": "100/100 in every applicable category earned by actual builder and dedicated independent GPT-6 Luna/MAX screenshot inspection",
+  "createdAt": "2026-10-07T11:25:49.569350+00:00",
+  "status": "Compact density candidate captured at the corrected 19.6:9 phone frame; exhaustive acceptance in progress",
+  "goal": "100/100 in every applicable category earned through actual builder and independent GPT-6 Luna/MAX screenshot inspection",
   "sourceHashes": {
     "dist/index.html": "60c94a1cb768776b41ef3180e1963eb7af811889e3f370ae26a29eaf6080a8c0",
     "dist/update.html": "622e4eeb63933539dcd531d60740b55c87b490b3a10f7c001698594061696da7",
-    "dist/studio.js": "69bdd6d35d3fa5412d350993ed597670666b73abf904add5774c6fcbdc23ff8e",
-    "dist/life-ui.js": "263a163ed3fea1d68dc886fbd701f2c945cbf0bfd1096a9f70c485881681f645",
-    "dist/life.css": "8a122a736a9047cab1481b0f545afba18c5ae0fd20de8ef5858bb940f772242f",
-    "dist/health-ui.css": "d714cfda273d3fbc4644a328cfa55578a7db2a2d728e07e997ef401fc84c420b",
-    "dist/training-body-ui.css": "f736935d9dd6b5c8f57fd00c799a56a5dec92f45e9f38fa15a6e2f9744e11b50",
-    "dist/life-settings-ui.css": "d659575e082792bb0445deb5d757ef0dca0ae63f18d1c01b38c8d81104b1f3ca",
+    "dist/studio.js": "a1bc936e8fa098608432923aa66840255eba2de9cd4902fe6e5c9177ceb1ceaa",
+    "dist/life-ui.js": "56a728f9301546c8bd4eb3ca907e9f594ff5b5854f3803e44f8c050d9fca3b77",
+    "dist/life.css": "1b00199bb6de83e9740303f10e1ee68fdf7db24d48ad0e08e8bfbd79c31c0d84",
+    "dist/health-ui.css": "22edad3dea3cdd135cd1a7ed4c6d8262370ff509d2d2e2e5f640dc2591f5ef4e",
+    "dist/training-body-ui.css": "5f02c305e77e13a29c53b87fbe40348fc897cebdb829d531db6a38a19271a6bd",
+    "dist/life-settings-ui.css": "1c72a346cd779b9043f390b23ae35ab974c409702a12647e15020c3cc1ec84bc",
     "dist/typography.css": "f9d000a82551f9b60acf8a9423985931aea441c46e4a89c0a9fbe5473bae6ef7",
     "dist/assets/noto-sans-latin.woff2": "51ca196f49a33e79e7870ff88ebd2829a3f627a51e7d690986618f0e7ad2b52d",
     "dist/integrations/watch-ui.js": "f3ce13445117d12d74073ab76c5ed1fd8793e1197104fb72b1e9d17d24b5ce3f",
-    "dist/sw.js": "ec150da1f353fd3f94e121befed8726df4a68701a61c51a98c7f2df035f81b11",
-    "scripts/ui-audit/fixture.mjs": "4798104b721613ce5aff958a7cdec6eb95949d6696c92d7687de56a73254a854"
+    "dist/sw.js": "fa8b0e89fd713ed01c958590064e7dacfc76d18eb530ec74d4e55271ce5c114e"
+  },
+  "geometry": {
+    "phoneAspectRatio": "19.6:9",
+    "frames": [
+      {
+        "width": 424,
+        "height": 923,
+        "appHeight": 824,
+        "simulatedStatusPx": 47,
+        "simulatedNavigationPx": 52
+      },
+      {
+        "width": 390,
+        "height": 849,
+        "appHeight": 758,
+        "simulatedStatusPx": 43,
+        "simulatedNavigationPx": 48
+      },
+      {
+        "width": 360,
+        "height": 784,
+        "appHeight": 700,
+        "simulatedStatusPx": 40,
+        "simulatedNavigationPx": 44
+      }
+    ],
+    "systemBars": "Reference-derived external audit simulation; never production UI",
+    "defaultTextScale": 100,
+    "accessibilityStressTextScales": [
+      130,
+      200
+    ],
+    "physicalInsetsVerified": false
   },
   "typography": {
     "family": "Locally served Noto Sans variable (OFL-1.1)",
@@ -32,12 +64,13 @@
     "minimumTouchTargetsPx": 44,
     "exactSamsungOneBundled": false
   },
-  "publication": {
+  "publicationSnapshot": {
     "url": "https://cams-health.cameronnel111.chatgpt.site",
-    "version": 19,
-    "commitSha": "6810b09e2b97625fcfc41eedbb11d70a8a749619",
-    "status": "succeeded",
-    "scopedRepairPublished": false
+    "lastVerifiedVersion": 20,
+    "lastVerifiedCommitSha": "bd3ba3c557ac0a206f5412563c5dc5ba5a54fa5a",
+    "lastVerifiedStatus": "succeeded",
+    "candidateDensityPublishedAtSnapshot": false,
+    "note": "Point-in-time snapshot before this compact density release; current deployment must be checked through the publisher receipt."
   },
   "validation": {
     "unitTests": 165,
@@ -48,90 +81,87 @@
     "healthBlobSha": "c3ec4204f16e1378b07ac66f806c584094487bb5",
     "canonicalRecordedDates": 16,
     "realDataModified": false,
-    "originalRealPwaUpgrade": "passed; explicit reload, stored values, other-tab draft and offline font preserved",
+    "currentRealPwaUpgrade": "Final source passed: explicit reviewed reload, stored values/preferences, other-tab draft and offline font preserved; no private cached responses or real writes.",
     "publicShellCacheAssets": 25,
-    "currentSoftwareSuites": [
-      {
-        "name": "reps-repair-software",
-        "code": 0,
-        "log": "/workspace/cams-life-audit-checkpoint/reps-repair-software.log"
-      },
-      {
-        "name": "training-body-narrow-software",
-        "code": 0,
-        "log": "/workspace/cams-life-audit-checkpoint/training-body-narrow-software.log"
-      },
-      {
-        "name": "health-compact-interactions",
-        "code": 1,
-        "log": "/workspace/cams-life-audit-checkpoint/health-compact-interactions.log"
-      },
-      {
-        "name": "life-settings-supplements",
-        "code": 0,
-        "log": "/workspace/cams-life-audit-checkpoint/life-settings-supplements.log"
-      },
-      {
-        "name": "life-settings-interactions",
-        "code": 0,
-        "log": "/workspace/cams-life-audit-checkpoint/life-settings-interactions.log"
-      },
-      {
-        "name": "life-settings-interaction-fixes",
-        "code": 0,
-        "log": "/workspace/cams-life-audit-checkpoint/life-settings-interaction-fixes.log"
-      },
-      {
-        "name": "pwa-narrow-full-scroll",
-        "code": 0,
-        "log": "/workspace/cams-life-audit-checkpoint/pwa-narrow-full-scroll.log"
-      },
-      {
-        "name": "health-close-event-recheck",
-        "code": 0,
-        "log": "/workspace/cams-life-audit-checkpoint/health-close-event-recheck.log",
-        "supersedes": "Four immediate close-event assertions in health-compact-interactions; original failed report preserved. Consolidated24forms/16motion pass."
-      },
-      {
-        "name": "final-compact-real-pwa",
-        "code": 0,
-        "log": "/workspace/cams-life-audit-checkpoint/final-compact-pwa.log",
-        "currentSwDigestVerified": true
-      }
+    "currentGeometryInteractionSupplements": "All five affected 200% suites passed. Six Timer Done cases passed, including ordinary/reduced motion, stable focus/countdown, pause, exclusive overlays and return to the active dock. Actual builder and reviewer screenshot inspection remains separate.",
+    "retainedFailedAttempts": [
+      "Five PWA assertions failed when tests ran before the required service-worker digest rebuild; full build regenerated it and all 165 tests then passed.",
+      "An initial Timer harness raced immediate dialog close/open; the recheck waits for observable completion and passes."
     ]
   },
   "capture": {
-    "browser": "recovered; serialized Chromium lease; independent contexts only",
-    "parents": {
-      "cases": 333,
-      "pngs": 1806,
-      "pending": 0
-    },
-    "menus": {
-      "cases": 549,
-      "pngs": 2215,
-      "pending": 0
-    },
-    "sourceAttribution": "Immutable original hashes retained for unaffected pixels; 270 Reps/disclosure/error replacements plus 135 Training title replacements captured with their own source hashes"
+    "parentCombinations": 333,
+    "parentPngs": 2258,
+    "menuCombinations": 549,
+    "menuPngs": 2814,
+    "missing": 0,
+    "automatedDiagnosticCandidates": 0,
+    "fixtureOnly": true,
+    "isVisualAcceptance": false,
+    "legacy924AppOnlyCaptures": "Historical; no current full-phone fidelity credit",
+    "totalPngs": 5072,
+    "allOriginalHashesVerified": true,
+    "sourceAttribution": "Fresh current-source captures for all 200% app states and every Timer scale. Unaffected 100%/130% and no-dock states retain original hashes under an exact reconstructed inactive/out-of-scope source-delta proof; not whole-source identity.",
+    "scopedSourceProofSha256": "7be4b35ffbb46e28dc34ce6a8f1f8965ae819f3463ad355a9d31c748d492b2de"
   },
   "review": {
-    "independentlyInspectedParentsWithExactSelectedHashes": 136,
-    "parentsAwaitingCurrentInspectionOrReconciliation": 197,
-    "menuAndNativeInventory": 64,
-    "dedicatedReviewerIdentitiesAssigned": 31,
-    "unassignedIdentities": 33,
-    "overallScore": null
+    "mainDefaultRoutesIndependentlyInspected": 9,
+    "mainDefaultWidthCombinations": 27,
+    "reports": [
+      {
+        "report": "STRICT-REVIEWER-OPPO-FRAMED-MAIN9-V2-424-923-100.json",
+        "sha256": "5fc387581e9f24354b9f72a5c56e24a648e7e3332ab7b81e5eb0ffd4208a2d41",
+        "width": 424,
+        "phoneHeight": 923,
+        "textScale": 100,
+        "categories1to3": 100,
+        "scope": "Nine populated main routes; all current top, overlapping scroll and bottom frames. Static-only categories 4–7 remain partial/blocked."
+      },
+      {
+        "report": "STRICT-REVIEWER-OPPO-FRAMED-MAIN9-V2-390-849-100.json",
+        "sha256": "705c647493e219ffea2cc03e477f5d6bf6fadbf8c4b574794da37aa3089f50fa",
+        "width": 390,
+        "phoneHeight": 849,
+        "textScale": 100,
+        "categories1to3": 100,
+        "scope": "Nine populated main routes; all current top, overlapping scroll and bottom frames. Static-only categories 4–7 remain partial/blocked."
+      },
+      {
+        "report": "STRICT-REVIEWER-OPPO-FRAMED-MAIN9-V2-360-784-100.json",
+        "sha256": "0c88ca9f3324975a3a4d5646f85bb2d5b321935d50cf3bdc167d5e8e112987c6",
+        "width": 360,
+        "phoneHeight": 784,
+        "textScale": 100,
+        "categories1to3": 100,
+        "scope": "Nine populated main routes; all current top, overlapping scroll and bottom frames. Static-only categories 4–7 remain partial/blocked."
+      },
+      {
+        "report": "STRICT-REVIEWER-OPPO-FRAMED-MAIN9-V2-360-784-130.json",
+        "sha256": "b61c90e53f6e2adaef389a8e05bcbbb8a733bb916239aba86250e78a9a1348ac",
+        "textScale": 130,
+        "categories1to3": 100,
+        "scope": "Scoped independent static inspection with original hashes and verified inactive/out-of-scope source attribution. Categories 4–7 remain partial/blocked; no whole-app acceptance."
+      },
+      {
+        "report": "STRICT-REVIEWER-OPPO-FRAMED-ALL37-V2-390-849-130.json",
+        "sha256": "df1101a7f4b0c09840cec1135e0054b85dec4c4c5cc395c4fe0226135a7c1c4f",
+        "textScale": 130,
+        "categories1to3": 100,
+        "scope": "Scoped independent static inspection with original hashes and verified inactive/out-of-scope source attribution. Categories 4–7 remain partial/blocked; no whole-app acceptance."
+      }
+    ],
+    "overallScore": null,
+    "uniqueMenuReviewerQueue": "In progress; durable identity ledger is separate and does not imply completed current screenshot acceptance."
   },
   "remaining": [
-    "Finish current builder and dedicated independent menu/screen screenshot inspection.",
-    "Complete and inspect current keyboard, failure, update and motion supplements.",
-    "Publish verified scoped repairs."
+    "Finish actual current builder and dedicated independent screenshot inspection across all scales, menu and interaction states.",
+    "Publish this compact density release and verify exact deployed source."
   ],
   "externalUnverified": [
-    "Physical Oppo keyboard/installation",
+    "Physical Oppo keyboard/installation/system insets",
     "Live Gmail consent and mailbox operations",
     "Physical Galaxy Watch/Samsung Health permissions and transfer"
   ],
-  "watchIntegration": "Free read-only Health Connect export plus explicitly reviewed import/save; not automatic or background sync",
+  "watchIntegration": "Free read-only Health Connect export plus explicitly reviewed import/save; automatic/background sync is not established",
   "accidentalCakeMenu": "Excluded; working copy removed"
 }
