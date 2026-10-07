@@ -1,17 +1,36 @@
 {
-  "status": "blocked; not release accepted or published",
-  "createdAt": "2026-10-07T07:26:53.762011+00:00",
-  "goal": "100/100 in all applicable criteria after builder and dedicated independent GPT-6 Luna/MAX actual screenshot review",
+  "createdAt": "2026-10-07T08:59:10.304992+00:00",
+  "status": "Compact typography implemented and locally verified; full current screenshot audit and independent acceptance in progress; publication pending",
+  "goal": "100/100 in every applicable category after actual builder and dedicated independent GPT-6 Luna/MAX screenshot inspection",
   "sourceHashes": {
+    "dist/index.html": "60c94a1cb768776b41ef3180e1963eb7af811889e3f370ae26a29eaf6080a8c0",
+    "dist/update.html": "622e4eeb63933539dcd531d60740b55c87b490b3a10f7c001698594061696da7",
     "dist/studio.js": "40ddf9486ff6efc1cb23272b67dd6a31b894bfda27465608527551f91cb04e49",
-    "dist/life-ui.js": "f6e172a4e705df931c4493ba4c95689b8f73785de1e84dc1fbd3eb2590b29b3c",
+    "dist/life-ui.js": "263a163ed3fea1d68dc886fbd701f2c945cbf0bfd1096a9f70c485881681f645",
     "dist/life.css": "8a122a736a9047cab1481b0f545afba18c5ae0fd20de8ef5858bb940f772242f",
     "dist/health-ui.css": "d714cfda273d3fbc4644a328cfa55578a7db2a2d728e07e997ef401fc84c420b",
-    "dist/training-body-ui.css": "67e12448ceeb09f0a96b1daf8afc439c0b875d189c15aed81bccfa3c295775d3",
+    "dist/training-body-ui.css": "5ef8a734b642c902120d12d1d3de2d1d213273f1307d43952765c6b47bbac6fd",
     "dist/life-settings-ui.css": "d659575e082792bb0445deb5d757ef0dca0ae63f18d1c01b38c8d81104b1f3ca",
+    "dist/typography.css": "14a41e192e23df683163eb7bdbb4edc628502b7e072a0e327da30705a5136518",
+    "dist/assets/noto-sans-latin.woff2": "51ca196f49a33e79e7870ff88ebd2829a3f627a51e7d690986618f0e7ad2b52d",
     "dist/integrations/watch-ui.js": "f3ce13445117d12d74073ab76c5ed1fd8793e1197104fb72b1e9d17d24b5ce3f",
-    "dist/integrations/watch-import.js": "d88917f426c2a7564bec56c2653b6613adafd178afe18da58439e171aebb9399",
-    "dist/sw.js": "852c25b7f1fb79ac3ff7cac11a2b4da31a82b6075f4f116f5140fa86b4452fc7"
+    "dist/sw.js": "1911e624da03f75b668e5fc3a6da80d0e6517356d93cdd80e0f422409c700c2a",
+    "scripts/ui-audit/fixture.mjs": "8a8131e16e014c750ebd9a2fe4f89708b56c751d65cf47245e2cc00b12503937"
+  },
+  "typography": {
+    "family": "Locally served Noto Sans variable (OFL-1.1)",
+    "pageTitlesPx": 22,
+    "supportingHeadingsPx": [
+      18,
+      20
+    ],
+    "copyPx": [
+      14,
+      15
+    ],
+    "inputValuesPx": 16,
+    "minimumTouchTargetsPx": 44,
+    "exactSamsungOneBundled": false
   },
   "validation": {
     "unitTests": 165,
@@ -22,47 +41,44 @@
     "diffCheck": "passed",
     "healthBlobSha": "c3ec4204f16e1378b07ac66f806c584094487bb5",
     "canonicalRecordedDates": 16,
-    "realDataModified": false
+    "realDataModified": false,
+    "currentTrainingBodySoftwareRuns": 12,
+    "realPwaUpgrade": "passed",
+    "publicShellCacheAssets": 25,
+    "storedValuesAndOtherTabDraftRetained": true
   },
-  "selectors": {
+  "capture": {
+    "browser": "recovered; serialized shared Chromium works",
     "parents": {
       "cases": 333,
-      "pngs": 1377,
-      "missing": 63,
-      "sha256": "040948199bb96f471dccc78b8d8fa62102b1a8709effbf17804e22d3bb29653c"
+      "pngs": 410,
+      "pending": 222
     },
     "menus": {
       "cases": 549,
-      "pngs": 1984,
-      "missing": 72,
-      "sha256": "eb42d29ca8146cfb5a9ea92282c3d018cf63826c906f4bd93239cebe3eb3fa8f"
+      "pngs": 513,
+      "pending": 366
     }
   },
   "review": {
-    "independentlyReviewedParentCasesWithMatchingSelectedPngs": 148,
-    "parentCasesPendingCurrentEvidence": 185,
-    "reviewedLabelsInPredecessorOrCurrentLedger": 209,
-    "reviewedLabelsAwaitingCurrentHashReconciliation": 61,
+    "independentlyInspectedParentsWithExactSelectedHashes": 0,
+    "parentsAwaitingCurrentHashReconciliationOrInspection": 333,
     "menuAndNativeInventory": 64,
-    "dedicatedMenuReviewersAssigned": 31,
-    "menuIdentitiesUnassigned": 33,
-    "queueCompleteLabels": 19,
-    "queueLabelsAreNotReleaseAcceptance": true,
+    "dedicatedReviewerIdentitiesAssigned": 31,
+    "unassignedIdentities": 33,
     "overallScore": null
   },
-  "blockers": [
-    "Chromium still cannot reliably create threads (pthread_create / OS error 11). Serialized, CPU-constrained, minimal and isolated local runners failed. Ordinary shell/image tools recovered.",
-    "Recapture 36 Training parents, 9 program-notes menus, 18 History parents, 18 deletion confirmations, 45 Workout forms and 9 Settings private-error parents: 135 primary cases.",
-    "Recapture 7 enlarged parent supplements (82 PNG positions) after header framing changed, plus connected-account form supplements after removing ambiguous verification wording.",
-    "Complete remaining independent current screenshot reviews, software interaction checks and final current PWA upgrade verification.",
-    "Publish only after the owner-required acceptance is earned."
+  "remaining": [
+    "Complete all immutable compact typography captures and current builder/independent reviews.",
+    "Complete current Health and Life/Settings keyboard, failure, update and motion supplements.",
+    "Verify deployed source and installed-update behavior after publication."
   ],
   "externalUnverified": [
-    "Physical Oppo PWA installation/keyboard",
-    "Live Gmail consent/read/change operations",
-    "Physical Galaxy Watch/Samsung Health permission grants and data transfer"
+    "Physical Oppo keyboard/installation",
+    "Live Gmail consent and mailbox operations",
+    "Physical Galaxy Watch/Samsung Health permissions and transfer"
   ],
-  "watchIntegration": "Free read-only Health Connect companion and explicitly reviewed file transfer; not automatic or background sync",
+  "watchIntegration": "Free read-only Health Connect export plus explicitly reviewed import/save; not automatic or background sync",
   "privateRawEvidenceBackup": "/workspace/cams-life-audit-checkpoint",
-  "accidentalCakeMenu": "Excluded; working attachment copy removed"
+  "accidentalCakeMenu": "Excluded; working copy removed"
 }
