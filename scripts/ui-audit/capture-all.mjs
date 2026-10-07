@@ -15,6 +15,7 @@ try{for(const item of ALL_CASES.filter(c=>(!group||c.group===group)&&(!only||onl
  try{
   if(item.recovery){if(phoneFrame)await fixture.goto('dashboard',{recovery:true});else await fixture.page.goto(fixture.origin+'/update.html');await fixture.page.locator('#check').click();await settle(fixture.page,100);}
   else{await (phoneFrame?fixture.goto.bind(fixture):view=>gotoView(fixture,view,{wait:!item.boot,...(item.date?{date:item.date}:{})}))(item.view,{wait:!item.boot,...(item.date?{date:item.date}:{})});if(item.waitAfter)await fixture.page.waitForTimeout(item.waitAfter);}
+  if(item.boot)await fixture.page.locator('.boot .wordmark').waitFor({state:'visible'});
   if(item.afterOffline){await fixture.page.evaluate(()=>window.__auditSetOffline(true));await settle(fixture.page);}
   for(const[op,selector,value]of item.steps||[]){const locator=fixture.page.locator(selector).first();if(op==='click')await locator.click();else if(op==='file')await locator.setInputFiles(value);else if(op==='fill')await locator.fill(value);else if(op==='select')await locator.selectOption(value);else if(op==='details')await expandDetails(fixture.page,selector);else if(op==='submit')await locator.evaluate(f=>f.requestSubmit());await settle(fixture.page,400);}
   if(height===500)await simulateKeyboard(fixture);

@@ -54,7 +54,7 @@
 .body-layout .trend-chart{margin:0}
 .body-layout .chart-foot,.body-layout .chart-data,.body-layout .inline-warning{margin-inline:-20px}
 .body-layout .chart-foot{padding:16px 20px;gap:10px;font-size:14px;line-height:1.5}
-.body-layout .chart-foot>span{flex:1 1 130px;max-width:none;white-space:normal}
+.body-layout .chart-foot>span{flex:1 1 auto;max-width:100%;white-space:normal}
 .body-layout .chart-data summary{font-size:16px;line-height:1.5;min-height:48px;padding:14px 20px;gap:12px;white-space:normal}
 .body-layout .chart-data table{min-width:0;width:100%;table-layout:auto}
 .body-layout .chart-data th,.body-layout .chart-data td{font-size:14px;line-height:1.5;padding:14px 12px;overflow-wrap:anywhere;white-space:normal}
