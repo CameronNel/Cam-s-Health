@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-07T13:26:31.000Z",
+  "updatedAt": "2026-10-07T18:26:54.000Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -1960,13 +1960,94 @@
           "source": "Standardized office coffee-machine estimate saved in tracker from 28 Sep 2026.",
           "note": "Powdered-milk setting 1 of 3. Standardized at 35 kcal, 0.7 g protein, 3.75 g carbs and 2 g fat per latte; machine/product nutrition remains unconfirmed.",
           "reviewRequired": false
+        },
+        {
+          "id": "2026-10-07-jumbo-pink-salmon-leftovers-202-5g-1",
+          "name": "Jumbo roze zalmfilet, diepvries",
+          "quantity": "202.5 g (60% of 6 Oct logged portion)",
+          "kcal": 200.46,
+          "protein": 38.46,
+          "carbs": 0,
+          "fat": 5.04,
+          "fibre": 0,
+          "estimated": false,
+          "source": "Derived from the exact salmon entry logged on 6 Oct 2026.",
+          "note": "60% of yesterday's 337.5 g salmon portion. Nutrition taken proportionally from the 6 Oct logged values.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-07-ah-roerbakgroente-leftovers-45g-1",
+          "name": "Albert Heijn roerbakgroente, diepvries",
+          "quantity": "45 g (20% of 6 Oct logged portion)",
+          "kcal": 10.8,
+          "protein": 0.54,
+          "carbs": 1.58,
+          "fat": 0.04,
+          "fibre": 1,
+          "estimated": false,
+          "source": "Derived from the exact vegetable entry logged on 6 Oct 2026.",
+          "note": "20% of yesterday's 225 g vegetable portion. Nutrition taken proportionally from the 6 Oct logged values.",
+          "reviewRequired": false
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-10-07-pull-arms-custom-1",
+          "sessionId": null,
+          "name": "Pull + arms",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Custom session. First movement was the user-described shoulder-height cable movement performed facing the cable with straight arms moving back to train the upper back/traps/shoulder blades. Exact exercise name not confirmed.",
+          "actualExercises": [
+            {
+              "name": "Shoulder-height cable reverse fly / scapular retraction movement",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm cable pulldown",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Biceps curl",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Hammer curl",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Wrist extension",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Wrist curl",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Hammer forearm curl",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "Added 1 banana reported as 100 kcal, 1 usual 500 g banana kwark, and 5 machine lattes at milk setting 1.",
+      "notes": "Added 1 banana reported as 100 kcal, 1 usual 500 g banana kwark, and 5 machine lattes at milk setting 1. Added leftovers from 6 Oct: 202.5 g salmon (60% of yesterday's logged portion) and 45 g AH stir-fry vegetables (20%). Workout: custom pull + arms session, 23 total working sets. First cable movement logged descriptively because exact exercise name was not confirmed.",
       "complete": false
     }
   },
