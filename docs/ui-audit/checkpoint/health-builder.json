@@ -1,5 +1,11 @@
 {
-  "status": "Current compact typography actual-inspection and whole-PNG alias reconciliation in progress; predecessor source evidence is historical where pixels changed",
-  "privateFullEvidenceRoot": "/workspace/cams-life-audit-checkpoint",
-  "wholeAppAcceptance": false
+  "caseViewportTextCombinations": 279,
+  "selectedCurrentPngCount": 970,
+  "allCurrentScopedSelectedFilesCovered": true,
+  "uncoveredFiles": [],
+  "confirmedCurrentVisualDefects": [],
+  "wholeApp100Claim": false,
+  "agent": "/root/night_today_health_builder",
+  "currentInteractionActualInspection": "Consolidated24 forms and16 motion checks pass; actual screenshot inspection in progress",
+  "subsequentSourceDelta": "Training weekly tile CSS only; absent from this Health scope"
 }

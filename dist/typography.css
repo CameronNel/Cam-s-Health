@@ -55,6 +55,9 @@ h1,h2,h3,strong,b{letter-spacing:0}
 #sheet #body-form .measurement-fields>summary>.icon:first-child{grid-column:1;grid-row:1}
 #sheet #body-form .measurement-fields>summary>.icon:last-child{grid-column:3;grid-row:1;margin-left:0}
 #sheet #body-form .measurement-fields>summary>span{display:block;grid-column:2;grid-row:2;margin-left:0;font-size:12px;line-height:1.5;white-space:normal}
+.inline-connect>summary{display:grid;grid-template-columns:17px minmax(0,1fr) 17px;align-items:center;gap:8px}
+.inline-connect>summary>.icon:first-child{grid-column:1;grid-row:1}
+.inline-connect>summary>.icon:last-child{grid-column:3;grid-row:1;margin-left:0}
 [data-screen="nutrition"] .nutrition-energy .energy-layout{display:flex;flex-wrap:wrap;gap:22px}
 [data-screen="nutrition"] .nutrition-energy .energy-number{flex:1 1 150px;min-width:min-content}
 [data-screen="nutrition"] .nutrition-energy .energy-number>strong{display:block;white-space:nowrap;overflow-wrap:normal;word-break:normal}

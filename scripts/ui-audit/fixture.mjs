@@ -95,11 +95,11 @@ export async function createFixture({ auditBrowser = null, origin = ORIGIN, widt
   // Fixed time changes Date only; ordinary timers and motion remain active.
   await page.clock.setFixedTime(new Date(DATE + 'T18:00:00Z'));
   page.on('pageerror', e => errors.push(e.message));
-  return { browser, context, page, origin, width, height, textScale, errors, requests, writes, blocked, get health() { return health; }, get life() { return life; }, async close() { try { await context.close(); } finally { if(lease)await lease.release(); } } };
+  return { browser, context, page, origin, width, height, textScale, privateError, errors, requests, writes, blocked, get health() { return health; }, get life() { return life; }, async close() { try { await context.close(); } finally { if(lease)await lease.release(); } } };
 }
 
 export async function settle(page, delay = 100) { await page.evaluate(() => document.fonts.ready); await page.waitForTimeout(delay); }
-export async function gotoView(fixture, view = 'dashboard', { date = DATE, wait = true } = {}) { await fixture.page.goto(`${fixture.origin}/?date=${date}#${view}`, { waitUntil: 'domcontentloaded' }); if (wait) { await fixture.page.locator('.bottom-nav').waitFor(); await settle(fixture.page); } }
+export async function gotoView(fixture, view = 'dashboard', { date = DATE, wait = true } = {}) { await fixture.page.goto(`${fixture.origin}/?date=${date}#${view}`, { waitUntil: 'domcontentloaded' }); if (wait) { await fixture.page.locator('.bottom-nav').waitFor(); if(fixture.privateError&&['dashboard','inbox','life'].includes(view))await fixture.page.locator('.notice.warning').filter({hasText:'Life sync needs attention'}).first().waitFor(); if(fixture.privateError&&view==='settings')await fixture.page.getByText('Private records unavailable',{exact:true}).waitFor(); await settle(fixture.page); } }
 
 /** Scale every CSS font, including px declarations, in one pass. Normal CSS is restored before rescales. */
 export async function scaleText(page, percentage = 100) {

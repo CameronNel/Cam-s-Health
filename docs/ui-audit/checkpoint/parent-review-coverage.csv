@@ -1,334 +1,334 @@
 case_id,width,text_scale,status,selected_pngs
-dashboard,424,100,current compact typography inspection pending,5
-nutrition,424,100,current compact typography inspection pending,5
-training,424,100,current compact typography inspection pending,5
-body,424,100,current compact typography inspection pending,9
-insights,424,100,current compact typography inspection pending,4
-history,424,100,current compact typography inspection pending,7
-inbox,424,100,current compact typography inspection pending,6
-life,424,100,current compact typography inspection pending,5
-settings,424,100,current compact typography inspection pending,4
-workout-upper,424,100,current compact typography inspection pending,3
-workout-lower,424,100,current compact typography inspection pending,2
-workout-rest,424,100,current compact typography inspection pending,1
-workout-missing,424,100,current compact typography inspection pending,1
-dashboard-historical,424,100,current compact typography inspection pending,5
-dashboard-empty,424,100,current compact typography inspection pending,3
-nutrition-empty,424,100,current compact typography inspection pending,4
-training-empty,424,100,current compact typography inspection pending,4
-body-empty,424,100,current compact typography inspection pending,5
-insights-empty,424,100,current compact typography inspection pending,3
-history-empty,424,100,current compact typography inspection pending,2
-inbox-empty,424,100,current compact typography inspection pending,2
-life-empty,424,100,current compact typography inspection pending,2
-dashboard-private-error,424,100,current compact typography inspection pending,4
-inbox-private-error,424,100,current compact typography inspection pending,1
-life-private-error,424,100,current compact typography inspection pending,2
-settings-private-error,424,100,current compact typography inspection pending,4
-boot-loading,424,100,current compact typography inspection pending,1
-boot-no-data-error,424,100,current compact typography inspection pending,1
-offline-first-visit,424,100,current compact typography inspection pending,1
-dashboard-offline-saved-health,424,100,current compact typography inspection pending,5
-inbox-offline-saved-health,424,100,current compact typography inspection pending,6
-life-offline-saved-health,424,100,current compact typography inspection pending,6
-training-paused,424,100,current compact typography inspection pending,6
-training-clearance-unconfirmed,424,100,current compact typography inspection pending,6
-app-update-recovery-ready,424,100,current compact typography inspection pending,1
-app-update-recovery-latest,424,100,current compact typography inspection pending,1
-app-update-recovery-offline,424,100,current compact typography inspection pending,1
-dashboard,424,130,current compact typography inspection pending,0
-nutrition,424,130,current compact typography inspection pending,0
-training,424,130,current compact typography inspection pending,0
-body,424,130,current compact typography inspection pending,0
-insights,424,130,current compact typography inspection pending,0
-history,424,130,current compact typography inspection pending,0
-inbox,424,130,current compact typography inspection pending,0
-life,424,130,current compact typography inspection pending,0
-settings,424,130,current compact typography inspection pending,0
-workout-upper,424,130,current compact typography inspection pending,0
-workout-lower,424,130,current compact typography inspection pending,0
-workout-rest,424,130,current compact typography inspection pending,0
-workout-missing,424,130,current compact typography inspection pending,0
-dashboard-historical,424,130,current compact typography inspection pending,0
-dashboard-empty,424,130,current compact typography inspection pending,0
-nutrition-empty,424,130,current compact typography inspection pending,0
-training-empty,424,130,current compact typography inspection pending,0
-body-empty,424,130,current compact typography inspection pending,0
-insights-empty,424,130,current compact typography inspection pending,0
-history-empty,424,130,current compact typography inspection pending,0
-inbox-empty,424,130,current compact typography inspection pending,0
-life-empty,424,130,current compact typography inspection pending,0
-dashboard-private-error,424,130,current compact typography inspection pending,0
-inbox-private-error,424,130,current compact typography inspection pending,0
-life-private-error,424,130,current compact typography inspection pending,0
-settings-private-error,424,130,current compact typography inspection pending,0
-boot-loading,424,130,current compact typography inspection pending,0
-boot-no-data-error,424,130,current compact typography inspection pending,0
-offline-first-visit,424,130,current compact typography inspection pending,0
-dashboard-offline-saved-health,424,130,current compact typography inspection pending,0
-inbox-offline-saved-health,424,130,current compact typography inspection pending,0
-life-offline-saved-health,424,130,current compact typography inspection pending,0
-training-paused,424,130,current compact typography inspection pending,0
-training-clearance-unconfirmed,424,130,current compact typography inspection pending,0
-app-update-recovery-ready,424,130,current compact typography inspection pending,0
-app-update-recovery-latest,424,130,current compact typography inspection pending,0
-app-update-recovery-offline,424,130,current compact typography inspection pending,0
-dashboard,424,200,current compact typography inspection pending,0
-nutrition,424,200,current compact typography inspection pending,0
-training,424,200,current compact typography inspection pending,0
-body,424,200,current compact typography inspection pending,0
-insights,424,200,current compact typography inspection pending,0
-history,424,200,current compact typography inspection pending,0
-inbox,424,200,current compact typography inspection pending,0
-life,424,200,current compact typography inspection pending,0
-settings,424,200,current compact typography inspection pending,0
-workout-upper,424,200,current compact typography inspection pending,0
-workout-lower,424,200,current compact typography inspection pending,0
-workout-rest,424,200,current compact typography inspection pending,0
-workout-missing,424,200,current compact typography inspection pending,0
-dashboard-historical,424,200,current compact typography inspection pending,0
-dashboard-empty,424,200,current compact typography inspection pending,0
-nutrition-empty,424,200,current compact typography inspection pending,0
-training-empty,424,200,current compact typography inspection pending,0
-body-empty,424,200,current compact typography inspection pending,0
-insights-empty,424,200,current compact typography inspection pending,0
-history-empty,424,200,current compact typography inspection pending,0
-inbox-empty,424,200,current compact typography inspection pending,0
-life-empty,424,200,current compact typography inspection pending,0
-dashboard-private-error,424,200,current compact typography inspection pending,0
-inbox-private-error,424,200,current compact typography inspection pending,0
-life-private-error,424,200,current compact typography inspection pending,0
-settings-private-error,424,200,current compact typography inspection pending,0
-boot-loading,424,200,current compact typography inspection pending,0
-boot-no-data-error,424,200,current compact typography inspection pending,0
-offline-first-visit,424,200,current compact typography inspection pending,0
-dashboard-offline-saved-health,424,200,current compact typography inspection pending,0
-inbox-offline-saved-health,424,200,current compact typography inspection pending,0
-life-offline-saved-health,424,200,current compact typography inspection pending,0
-training-paused,424,200,current compact typography inspection pending,0
-training-clearance-unconfirmed,424,200,current compact typography inspection pending,0
-app-update-recovery-ready,424,200,current compact typography inspection pending,0
-app-update-recovery-latest,424,200,current compact typography inspection pending,0
-app-update-recovery-offline,424,200,current compact typography inspection pending,0
-dashboard,390,100,current compact typography inspection pending,5
-nutrition,390,100,current compact typography inspection pending,5
-training,390,100,current compact typography inspection pending,6
-body,390,100,current compact typography inspection pending,9
-insights,390,100,current compact typography inspection pending,4
-history,390,100,current compact typography inspection pending,7
-inbox,390,100,current compact typography inspection pending,6
-life,390,100,current compact typography inspection pending,5
-settings,390,100,current compact typography inspection pending,4
-workout-upper,390,100,current compact typography inspection pending,3
-workout-lower,390,100,current compact typography inspection pending,3
-workout-rest,390,100,current compact typography inspection pending,1
-workout-missing,390,100,current compact typography inspection pending,1
-dashboard-historical,390,100,current compact typography inspection pending,5
-dashboard-empty,390,100,current compact typography inspection pending,3
-nutrition-empty,390,100,current compact typography inspection pending,4
-training-empty,390,100,current compact typography inspection pending,4
-body-empty,390,100,current compact typography inspection pending,5
-insights-empty,390,100,current compact typography inspection pending,3
-history-empty,390,100,current compact typography inspection pending,2
-inbox-empty,390,100,current compact typography inspection pending,2
-life-empty,390,100,current compact typography inspection pending,2
-dashboard-private-error,390,100,current compact typography inspection pending,4
-inbox-private-error,390,100,current compact typography inspection pending,1
-life-private-error,390,100,current compact typography inspection pending,2
-settings-private-error,390,100,current compact typography inspection pending,4
-boot-loading,390,100,current compact typography inspection pending,1
-boot-no-data-error,390,100,current compact typography inspection pending,1
-offline-first-visit,390,100,current compact typography inspection pending,1
-dashboard-offline-saved-health,390,100,current compact typography inspection pending,5
-inbox-offline-saved-health,390,100,current compact typography inspection pending,6
-life-offline-saved-health,390,100,current compact typography inspection pending,6
-training-paused,390,100,current compact typography inspection pending,6
-training-clearance-unconfirmed,390,100,current compact typography inspection pending,6
-app-update-recovery-ready,390,100,current compact typography inspection pending,2
-app-update-recovery-latest,390,100,current compact typography inspection pending,1
-app-update-recovery-offline,390,100,current compact typography inspection pending,1
-dashboard,390,130,current compact typography inspection pending,0
-nutrition,390,130,current compact typography inspection pending,0
-training,390,130,current compact typography inspection pending,0
-body,390,130,current compact typography inspection pending,0
-insights,390,130,current compact typography inspection pending,0
-history,390,130,current compact typography inspection pending,0
-inbox,390,130,current compact typography inspection pending,0
-life,390,130,current compact typography inspection pending,0
-settings,390,130,current compact typography inspection pending,0
-workout-upper,390,130,current compact typography inspection pending,0
-workout-lower,390,130,current compact typography inspection pending,0
-workout-rest,390,130,current compact typography inspection pending,0
-workout-missing,390,130,current compact typography inspection pending,0
-dashboard-historical,390,130,current compact typography inspection pending,0
-dashboard-empty,390,130,current compact typography inspection pending,0
-nutrition-empty,390,130,current compact typography inspection pending,0
-training-empty,390,130,current compact typography inspection pending,0
-body-empty,390,130,current compact typography inspection pending,0
-insights-empty,390,130,current compact typography inspection pending,0
-history-empty,390,130,current compact typography inspection pending,0
-inbox-empty,390,130,current compact typography inspection pending,0
-life-empty,390,130,current compact typography inspection pending,0
-dashboard-private-error,390,130,current compact typography inspection pending,0
-inbox-private-error,390,130,current compact typography inspection pending,0
-life-private-error,390,130,current compact typography inspection pending,0
-settings-private-error,390,130,current compact typography inspection pending,0
-boot-loading,390,130,current compact typography inspection pending,0
-boot-no-data-error,390,130,current compact typography inspection pending,0
-offline-first-visit,390,130,current compact typography inspection pending,0
-dashboard-offline-saved-health,390,130,current compact typography inspection pending,0
-inbox-offline-saved-health,390,130,current compact typography inspection pending,0
-life-offline-saved-health,390,130,current compact typography inspection pending,0
-training-paused,390,130,current compact typography inspection pending,0
-training-clearance-unconfirmed,390,130,current compact typography inspection pending,0
-app-update-recovery-ready,390,130,current compact typography inspection pending,0
-app-update-recovery-latest,390,130,current compact typography inspection pending,0
-app-update-recovery-offline,390,130,current compact typography inspection pending,0
-dashboard,390,200,current compact typography inspection pending,0
-nutrition,390,200,current compact typography inspection pending,0
-training,390,200,current compact typography inspection pending,0
-body,390,200,current compact typography inspection pending,0
-insights,390,200,current compact typography inspection pending,0
-history,390,200,current compact typography inspection pending,0
-inbox,390,200,current compact typography inspection pending,0
-life,390,200,current compact typography inspection pending,0
-settings,390,200,current compact typography inspection pending,0
-workout-upper,390,200,current compact typography inspection pending,0
-workout-lower,390,200,current compact typography inspection pending,0
-workout-rest,390,200,current compact typography inspection pending,0
-workout-missing,390,200,current compact typography inspection pending,0
-dashboard-historical,390,200,current compact typography inspection pending,0
-dashboard-empty,390,200,current compact typography inspection pending,0
-nutrition-empty,390,200,current compact typography inspection pending,0
-training-empty,390,200,current compact typography inspection pending,0
-body-empty,390,200,current compact typography inspection pending,0
-insights-empty,390,200,current compact typography inspection pending,0
-history-empty,390,200,current compact typography inspection pending,0
-inbox-empty,390,200,current compact typography inspection pending,0
-life-empty,390,200,current compact typography inspection pending,0
-dashboard-private-error,390,200,current compact typography inspection pending,0
-inbox-private-error,390,200,current compact typography inspection pending,0
-life-private-error,390,200,current compact typography inspection pending,0
-settings-private-error,390,200,current compact typography inspection pending,0
-boot-loading,390,200,current compact typography inspection pending,0
-boot-no-data-error,390,200,current compact typography inspection pending,0
-offline-first-visit,390,200,current compact typography inspection pending,0
-dashboard-offline-saved-health,390,200,current compact typography inspection pending,0
-inbox-offline-saved-health,390,200,current compact typography inspection pending,0
-life-offline-saved-health,390,200,current compact typography inspection pending,0
-training-paused,390,200,current compact typography inspection pending,0
-training-clearance-unconfirmed,390,200,current compact typography inspection pending,0
-app-update-recovery-ready,390,200,current compact typography inspection pending,0
-app-update-recovery-latest,390,200,current compact typography inspection pending,0
-app-update-recovery-offline,390,200,current compact typography inspection pending,0
-dashboard,360,100,current compact typography inspection pending,5
-nutrition,360,100,current compact typography inspection pending,5
-training,360,100,current compact typography inspection pending,6
-body,360,100,current compact typography inspection pending,9
-insights,360,100,current compact typography inspection pending,4
-history,360,100,current compact typography inspection pending,7
-inbox,360,100,current compact typography inspection pending,7
-life,360,100,current compact typography inspection pending,6
-settings,360,100,current compact typography inspection pending,4
-workout-upper,360,100,current compact typography inspection pending,3
-workout-lower,360,100,current compact typography inspection pending,3
-workout-rest,360,100,current compact typography inspection pending,1
-workout-missing,360,100,current compact typography inspection pending,1
-dashboard-historical,360,100,current compact typography inspection pending,5
-dashboard-empty,360,100,current compact typography inspection pending,4
-nutrition-empty,360,100,current compact typography inspection pending,4
-training-empty,360,100,current compact typography inspection pending,5
-body-empty,360,100,current compact typography inspection pending,5
-insights-empty,360,100,current compact typography inspection pending,3
-history-empty,360,100,current compact typography inspection pending,2
-inbox-empty,360,100,current compact typography inspection pending,2
-life-empty,360,100,current compact typography inspection pending,2
-dashboard-private-error,360,100,current compact typography inspection pending,4
-inbox-private-error,360,100,current compact typography inspection pending,1
-life-private-error,360,100,current compact typography inspection pending,2
-settings-private-error,360,100,current compact typography inspection pending,4
-boot-loading,360,100,current compact typography inspection pending,1
-boot-no-data-error,360,100,current compact typography inspection pending,1
-offline-first-visit,360,100,current compact typography inspection pending,1
-dashboard-offline-saved-health,360,100,current compact typography inspection pending,5
-inbox-offline-saved-health,360,100,current compact typography inspection pending,7
-life-offline-saved-health,360,100,current compact typography inspection pending,6
-training-paused,360,100,current compact typography inspection pending,6
-training-clearance-unconfirmed,360,100,current compact typography inspection pending,6
-app-update-recovery-ready,360,100,current compact typography inspection pending,2
-app-update-recovery-latest,360,100,current compact typography inspection pending,1
-app-update-recovery-offline,360,100,current compact typography inspection pending,1
-dashboard,360,130,current compact typography inspection pending,0
-nutrition,360,130,current compact typography inspection pending,0
-training,360,130,current compact typography inspection pending,0
-body,360,130,current compact typography inspection pending,0
-insights,360,130,current compact typography inspection pending,0
-history,360,130,current compact typography inspection pending,0
-inbox,360,130,current compact typography inspection pending,0
-life,360,130,current compact typography inspection pending,0
-settings,360,130,current compact typography inspection pending,0
-workout-upper,360,130,current compact typography inspection pending,0
-workout-lower,360,130,current compact typography inspection pending,0
-workout-rest,360,130,current compact typography inspection pending,0
-workout-missing,360,130,current compact typography inspection pending,0
-dashboard-historical,360,130,current compact typography inspection pending,0
-dashboard-empty,360,130,current compact typography inspection pending,0
-nutrition-empty,360,130,current compact typography inspection pending,0
-training-empty,360,130,current compact typography inspection pending,0
-body-empty,360,130,current compact typography inspection pending,0
-insights-empty,360,130,current compact typography inspection pending,0
-history-empty,360,130,current compact typography inspection pending,0
-inbox-empty,360,130,current compact typography inspection pending,0
-life-empty,360,130,current compact typography inspection pending,0
-dashboard-private-error,360,130,current compact typography inspection pending,0
-inbox-private-error,360,130,current compact typography inspection pending,0
-life-private-error,360,130,current compact typography inspection pending,0
-settings-private-error,360,130,current compact typography inspection pending,0
-boot-loading,360,130,current compact typography inspection pending,0
-boot-no-data-error,360,130,current compact typography inspection pending,0
-offline-first-visit,360,130,current compact typography inspection pending,0
-dashboard-offline-saved-health,360,130,current compact typography inspection pending,0
-inbox-offline-saved-health,360,130,current compact typography inspection pending,0
-life-offline-saved-health,360,130,current compact typography inspection pending,0
-training-paused,360,130,current compact typography inspection pending,0
-training-clearance-unconfirmed,360,130,current compact typography inspection pending,0
-app-update-recovery-ready,360,130,current compact typography inspection pending,0
-app-update-recovery-latest,360,130,current compact typography inspection pending,0
-app-update-recovery-offline,360,130,current compact typography inspection pending,0
-dashboard,360,200,current compact typography inspection pending,0
-nutrition,360,200,current compact typography inspection pending,0
-training,360,200,current compact typography inspection pending,0
-body,360,200,current compact typography inspection pending,0
-insights,360,200,current compact typography inspection pending,0
-history,360,200,current compact typography inspection pending,0
-inbox,360,200,current compact typography inspection pending,0
-life,360,200,current compact typography inspection pending,0
-settings,360,200,current compact typography inspection pending,0
-workout-upper,360,200,current compact typography inspection pending,0
-workout-lower,360,200,current compact typography inspection pending,0
-workout-rest,360,200,current compact typography inspection pending,0
-workout-missing,360,200,current compact typography inspection pending,0
-dashboard-historical,360,200,current compact typography inspection pending,0
-dashboard-empty,360,200,current compact typography inspection pending,0
-nutrition-empty,360,200,current compact typography inspection pending,0
-training-empty,360,200,current compact typography inspection pending,0
-body-empty,360,200,current compact typography inspection pending,0
-insights-empty,360,200,current compact typography inspection pending,0
-history-empty,360,200,current compact typography inspection pending,0
-inbox-empty,360,200,current compact typography inspection pending,0
-life-empty,360,200,current compact typography inspection pending,0
-dashboard-private-error,360,200,current compact typography inspection pending,0
-inbox-private-error,360,200,current compact typography inspection pending,0
-life-private-error,360,200,current compact typography inspection pending,0
-settings-private-error,360,200,current compact typography inspection pending,0
-boot-loading,360,200,current compact typography inspection pending,0
-boot-no-data-error,360,200,current compact typography inspection pending,0
-offline-first-visit,360,200,current compact typography inspection pending,0
-dashboard-offline-saved-health,360,200,current compact typography inspection pending,0
-inbox-offline-saved-health,360,200,current compact typography inspection pending,0
-life-offline-saved-health,360,200,current compact typography inspection pending,0
-training-paused,360,200,current compact typography inspection pending,0
-training-clearance-unconfirmed,360,200,current compact typography inspection pending,0
-app-update-recovery-ready,360,200,current compact typography inspection pending,0
-app-update-recovery-latest,360,200,current compact typography inspection pending,0
-app-update-recovery-offline,360,200,current compact typography inspection pending,0
+dashboard,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+nutrition,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+training,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+body,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,9
+insights,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,4
+history,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,7
+inbox,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,6
+life,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+settings,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,4
+workout-upper,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,3
+workout-lower,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,2
+workout-rest,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+workout-missing,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard-historical,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+dashboard-empty,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,3
+nutrition-empty,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,4
+training-empty,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,4
+body-empty,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+insights-empty,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,3
+history-empty,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,2
+inbox-empty,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,2
+life-empty,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,2
+dashboard-private-error,424,100,current independent inspection or scoped repair reconciliation pending,4
+inbox-private-error,424,100,current independent inspection or scoped repair reconciliation pending,1
+life-private-error,424,100,current independent inspection or scoped repair reconciliation pending,2
+settings-private-error,424,100,current independent inspection or scoped repair reconciliation pending,4
+boot-loading,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+boot-no-data-error,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+offline-first-visit,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard-offline-saved-health,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+inbox-offline-saved-health,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,6
+life-offline-saved-health,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,6
+training-paused,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,6
+training-clearance-unconfirmed,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,6
+app-update-recovery-ready,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+app-update-recovery-latest,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+app-update-recovery-offline,424,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,6
+nutrition,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,6
+training,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,7
+body,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,10
+insights,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,5
+history,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,8
+inbox,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,8
+life,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,7
+settings,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,5
+workout-upper,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,3
+workout-lower,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,3
+workout-rest,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,2
+workout-missing,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard-historical,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,6
+dashboard-empty,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,4
+nutrition-empty,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,4
+training-empty,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,5
+body-empty,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,6
+insights-empty,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,3
+history-empty,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,2
+inbox-empty,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,3
+life-empty,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,3
+dashboard-private-error,424,130,current independent inspection or scoped repair reconciliation pending,4
+inbox-private-error,424,130,current independent inspection or scoped repair reconciliation pending,2
+life-private-error,424,130,current independent inspection or scoped repair reconciliation pending,2
+settings-private-error,424,130,current independent inspection or scoped repair reconciliation pending,5
+boot-loading,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+boot-no-data-error,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+offline-first-visit,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard-offline-saved-health,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,6
+inbox-offline-saved-health,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,9
+life-offline-saved-health,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,7
+training-paused,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,7
+training-clearance-unconfirmed,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,7
+app-update-recovery-ready,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,2
+app-update-recovery-latest,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+app-update-recovery-offline,424,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard,424,200,current independent inspection or scoped repair reconciliation pending,11
+nutrition,424,200,current independent inspection or scoped repair reconciliation pending,11
+training,424,200,current independent inspection or scoped repair reconciliation pending,11
+body,424,200,current independent inspection or scoped repair reconciliation pending,20
+insights,424,200,current independent inspection or scoped repair reconciliation pending,8
+history,424,200,current independent inspection or scoped repair reconciliation pending,18
+inbox,424,200,current independent inspection or scoped repair reconciliation pending,16
+life,424,200,current independent inspection or scoped repair reconciliation pending,12
+settings,424,200,current independent inspection or scoped repair reconciliation pending,7
+workout-upper,424,200,current independent inspection or scoped repair reconciliation pending,5
+workout-lower,424,200,current independent inspection or scoped repair reconciliation pending,4
+workout-rest,424,200,current independent inspection or scoped repair reconciliation pending,2
+workout-missing,424,200,current independent inspection or scoped repair reconciliation pending,2
+dashboard-historical,424,200,current independent inspection or scoped repair reconciliation pending,11
+dashboard-empty,424,200,current independent inspection or scoped repair reconciliation pending,7
+nutrition-empty,424,200,current independent inspection or scoped repair reconciliation pending,6
+training-empty,424,200,current independent inspection or scoped repair reconciliation pending,7
+body-empty,424,200,current independent inspection or scoped repair reconciliation pending,11
+insights-empty,424,200,current independent inspection or scoped repair reconciliation pending,6
+history-empty,424,200,current independent inspection or scoped repair reconciliation pending,3
+inbox-empty,424,200,current independent inspection or scoped repair reconciliation pending,4
+life-empty,424,200,current independent inspection or scoped repair reconciliation pending,4
+dashboard-private-error,424,200,current independent inspection or scoped repair reconciliation pending,8
+inbox-private-error,424,200,current independent inspection or scoped repair reconciliation pending,2
+life-private-error,424,200,current independent inspection or scoped repair reconciliation pending,3
+settings-private-error,424,200,current independent inspection or scoped repair reconciliation pending,8
+boot-loading,424,200,current independent inspection or scoped repair reconciliation pending,1
+boot-no-data-error,424,200,current independent inspection or scoped repair reconciliation pending,1
+offline-first-visit,424,200,current independent inspection or scoped repair reconciliation pending,1
+dashboard-offline-saved-health,424,200,current independent inspection or scoped repair reconciliation pending,11
+inbox-offline-saved-health,424,200,current independent inspection or scoped repair reconciliation pending,16
+life-offline-saved-health,424,200,current independent inspection or scoped repair reconciliation pending,12
+training-paused,424,200,current independent inspection or scoped repair reconciliation pending,12
+training-clearance-unconfirmed,424,200,current independent inspection or scoped repair reconciliation pending,12
+app-update-recovery-ready,424,200,current independent inspection or scoped repair reconciliation pending,3
+app-update-recovery-latest,424,200,current independent inspection or scoped repair reconciliation pending,2
+app-update-recovery-offline,424,200,current independent inspection or scoped repair reconciliation pending,2
+dashboard,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+nutrition,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+training,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,6
+body,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,9
+insights,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,4
+history,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,7
+inbox,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,6
+life,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+settings,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,4
+workout-upper,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,3
+workout-lower,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,3
+workout-rest,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+workout-missing,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard-historical,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+dashboard-empty,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,3
+nutrition-empty,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,4
+training-empty,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,4
+body-empty,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+insights-empty,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,3
+history-empty,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,2
+inbox-empty,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,2
+life-empty,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,2
+dashboard-private-error,390,100,current independent inspection or scoped repair reconciliation pending,4
+inbox-private-error,390,100,current independent inspection or scoped repair reconciliation pending,1
+life-private-error,390,100,current independent inspection or scoped repair reconciliation pending,2
+settings-private-error,390,100,current independent inspection or scoped repair reconciliation pending,4
+boot-loading,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+boot-no-data-error,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+offline-first-visit,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard-offline-saved-health,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,5
+inbox-offline-saved-health,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,6
+life-offline-saved-health,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,6
+training-paused,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,6
+training-clearance-unconfirmed,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,6
+app-update-recovery-ready,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,2
+app-update-recovery-latest,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+app-update-recovery-offline,390,100,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,6
+nutrition,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,7
+training,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,7
+body,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,12
+insights,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,5
+history,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,9
+inbox,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,9
+life,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,7
+settings,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,5
+workout-upper,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,3
+workout-lower,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,3
+workout-rest,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,2
+workout-missing,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard-historical,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,6
+dashboard-empty,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,4
+nutrition-empty,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,4
+training-empty,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,5
+body-empty,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,7
+insights-empty,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,3
+history-empty,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,2
+inbox-empty,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,3
+life-empty,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,3
+dashboard-private-error,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,4
+inbox-private-error,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,2
+life-private-error,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,2
+settings-private-error,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,5
+boot-loading,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+boot-no-data-error,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+offline-first-visit,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard-offline-saved-health,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,6
+inbox-offline-saved-health,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,9
+life-offline-saved-health,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,8
+training-paused,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,7
+training-clearance-unconfirmed,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,7
+app-update-recovery-ready,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,2
+app-update-recovery-latest,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+app-update-recovery-offline,390,130,independent current selected PNG inspection verified; full interaction acceptance pending,1
+dashboard,390,200,current independent inspection or scoped repair reconciliation pending,11
+nutrition,390,200,current independent inspection or scoped repair reconciliation pending,12
+training,390,200,current independent inspection or scoped repair reconciliation pending,12
+body,390,200,current independent inspection or scoped repair reconciliation pending,21
+insights,390,200,current independent inspection or scoped repair reconciliation pending,9
+history,390,200,current independent inspection or scoped repair reconciliation pending,18
+inbox,390,200,current independent inspection or scoped repair reconciliation pending,17
+life,390,200,current independent inspection or scoped repair reconciliation pending,13
+settings,390,200,current independent inspection or scoped repair reconciliation pending,8
+workout-upper,390,200,current independent inspection or scoped repair reconciliation pending,5
+workout-lower,390,200,current independent inspection or scoped repair reconciliation pending,4
+workout-rest,390,200,current independent inspection or scoped repair reconciliation pending,2
+workout-missing,390,200,current independent inspection or scoped repair reconciliation pending,2
+dashboard-historical,390,200,current independent inspection or scoped repair reconciliation pending,11
+dashboard-empty,390,200,current independent inspection or scoped repair reconciliation pending,7
+nutrition-empty,390,200,current independent inspection or scoped repair reconciliation pending,6
+training-empty,390,200,current independent inspection or scoped repair reconciliation pending,8
+body-empty,390,200,current independent inspection or scoped repair reconciliation pending,11
+insights-empty,390,200,current independent inspection or scoped repair reconciliation pending,6
+history-empty,390,200,current independent inspection or scoped repair reconciliation pending,3
+inbox-empty,390,200,current independent inspection or scoped repair reconciliation pending,4
+life-empty,390,200,current independent inspection or scoped repair reconciliation pending,4
+dashboard-private-error,390,200,current independent inspection or scoped repair reconciliation pending,8
+inbox-private-error,390,200,current independent inspection or scoped repair reconciliation pending,2
+life-private-error,390,200,current independent inspection or scoped repair reconciliation pending,3
+settings-private-error,390,200,current independent inspection or scoped repair reconciliation pending,8
+boot-loading,390,200,current independent inspection or scoped repair reconciliation pending,1
+boot-no-data-error,390,200,current independent inspection or scoped repair reconciliation pending,1
+offline-first-visit,390,200,current independent inspection or scoped repair reconciliation pending,1
+dashboard-offline-saved-health,390,200,current independent inspection or scoped repair reconciliation pending,12
+inbox-offline-saved-health,390,200,current independent inspection or scoped repair reconciliation pending,17
+life-offline-saved-health,390,200,current independent inspection or scoped repair reconciliation pending,13
+training-paused,390,200,current independent inspection or scoped repair reconciliation pending,12
+training-clearance-unconfirmed,390,200,current independent inspection or scoped repair reconciliation pending,12
+app-update-recovery-ready,390,200,current independent inspection or scoped repair reconciliation pending,3
+app-update-recovery-latest,390,200,current independent inspection or scoped repair reconciliation pending,2
+app-update-recovery-offline,390,200,current independent inspection or scoped repair reconciliation pending,2
+dashboard,360,100,current independent inspection or scoped repair reconciliation pending,5
+nutrition,360,100,current independent inspection or scoped repair reconciliation pending,5
+training,360,100,current independent inspection or scoped repair reconciliation pending,6
+body,360,100,current independent inspection or scoped repair reconciliation pending,9
+insights,360,100,current independent inspection or scoped repair reconciliation pending,4
+history,360,100,current independent inspection or scoped repair reconciliation pending,7
+inbox,360,100,current independent inspection or scoped repair reconciliation pending,7
+life,360,100,current independent inspection or scoped repair reconciliation pending,6
+settings,360,100,current independent inspection or scoped repair reconciliation pending,4
+workout-upper,360,100,current independent inspection or scoped repair reconciliation pending,3
+workout-lower,360,100,current independent inspection or scoped repair reconciliation pending,3
+workout-rest,360,100,current independent inspection or scoped repair reconciliation pending,1
+workout-missing,360,100,current independent inspection or scoped repair reconciliation pending,1
+dashboard-historical,360,100,current independent inspection or scoped repair reconciliation pending,5
+dashboard-empty,360,100,current independent inspection or scoped repair reconciliation pending,4
+nutrition-empty,360,100,current independent inspection or scoped repair reconciliation pending,4
+training-empty,360,100,current independent inspection or scoped repair reconciliation pending,5
+body-empty,360,100,current independent inspection or scoped repair reconciliation pending,5
+insights-empty,360,100,current independent inspection or scoped repair reconciliation pending,3
+history-empty,360,100,current independent inspection or scoped repair reconciliation pending,2
+inbox-empty,360,100,current independent inspection or scoped repair reconciliation pending,2
+life-empty,360,100,current independent inspection or scoped repair reconciliation pending,2
+dashboard-private-error,360,100,current independent inspection or scoped repair reconciliation pending,4
+inbox-private-error,360,100,current independent inspection or scoped repair reconciliation pending,1
+life-private-error,360,100,current independent inspection or scoped repair reconciliation pending,2
+settings-private-error,360,100,current independent inspection or scoped repair reconciliation pending,4
+boot-loading,360,100,current independent inspection or scoped repair reconciliation pending,1
+boot-no-data-error,360,100,current independent inspection or scoped repair reconciliation pending,1
+offline-first-visit,360,100,current independent inspection or scoped repair reconciliation pending,1
+dashboard-offline-saved-health,360,100,current independent inspection or scoped repair reconciliation pending,5
+inbox-offline-saved-health,360,100,current independent inspection or scoped repair reconciliation pending,7
+life-offline-saved-health,360,100,current independent inspection or scoped repair reconciliation pending,6
+training-paused,360,100,current independent inspection or scoped repair reconciliation pending,6
+training-clearance-unconfirmed,360,100,current independent inspection or scoped repair reconciliation pending,6
+app-update-recovery-ready,360,100,current independent inspection or scoped repair reconciliation pending,2
+app-update-recovery-latest,360,100,current independent inspection or scoped repair reconciliation pending,1
+app-update-recovery-offline,360,100,current independent inspection or scoped repair reconciliation pending,1
+dashboard,360,130,current independent inspection or scoped repair reconciliation pending,6
+nutrition,360,130,current independent inspection or scoped repair reconciliation pending,7
+training,360,130,current independent inspection or scoped repair reconciliation pending,8
+body,360,130,current independent inspection or scoped repair reconciliation pending,13
+insights,360,130,current independent inspection or scoped repair reconciliation pending,5
+history,360,130,current independent inspection or scoped repair reconciliation pending,9
+inbox,360,130,current independent inspection or scoped repair reconciliation pending,9
+life,360,130,current independent inspection or scoped repair reconciliation pending,8
+settings,360,130,current independent inspection or scoped repair reconciliation pending,5
+workout-upper,360,130,current independent inspection or scoped repair reconciliation pending,4
+workout-lower,360,130,current independent inspection or scoped repair reconciliation pending,3
+workout-rest,360,130,current independent inspection or scoped repair reconciliation pending,2
+workout-missing,360,130,current independent inspection or scoped repair reconciliation pending,1
+dashboard-historical,360,130,current independent inspection or scoped repair reconciliation pending,6
+dashboard-empty,360,130,current independent inspection or scoped repair reconciliation pending,4
+nutrition-empty,360,130,current independent inspection or scoped repair reconciliation pending,5
+training-empty,360,130,current independent inspection or scoped repair reconciliation pending,5
+body-empty,360,130,current independent inspection or scoped repair reconciliation pending,7
+insights-empty,360,130,current independent inspection or scoped repair reconciliation pending,4
+history-empty,360,130,current independent inspection or scoped repair reconciliation pending,2
+inbox-empty,360,130,current independent inspection or scoped repair reconciliation pending,3
+life-empty,360,130,current independent inspection or scoped repair reconciliation pending,3
+dashboard-private-error,360,130,current independent inspection or scoped repair reconciliation pending,4
+inbox-private-error,360,130,current independent inspection or scoped repair reconciliation pending,2
+life-private-error,360,130,current independent inspection or scoped repair reconciliation pending,2
+settings-private-error,360,130,current independent inspection or scoped repair reconciliation pending,5
+boot-loading,360,130,current independent inspection or scoped repair reconciliation pending,1
+boot-no-data-error,360,130,current independent inspection or scoped repair reconciliation pending,1
+offline-first-visit,360,130,current independent inspection or scoped repair reconciliation pending,1
+dashboard-offline-saved-health,360,130,current independent inspection or scoped repair reconciliation pending,6
+inbox-offline-saved-health,360,130,current independent inspection or scoped repair reconciliation pending,10
+life-offline-saved-health,360,130,current independent inspection or scoped repair reconciliation pending,8
+training-paused,360,130,current independent inspection or scoped repair reconciliation pending,8
+training-clearance-unconfirmed,360,130,current independent inspection or scoped repair reconciliation pending,8
+app-update-recovery-ready,360,130,current independent inspection or scoped repair reconciliation pending,2
+app-update-recovery-latest,360,130,current independent inspection or scoped repair reconciliation pending,1
+app-update-recovery-offline,360,130,current independent inspection or scoped repair reconciliation pending,1
+dashboard,360,200,current independent inspection or scoped repair reconciliation pending,12
+nutrition,360,200,current independent inspection or scoped repair reconciliation pending,13
+training,360,200,current independent inspection or scoped repair reconciliation pending,14
+body,360,200,current independent inspection or scoped repair reconciliation pending,23
+insights,360,200,current independent inspection or scoped repair reconciliation pending,9
+history,360,200,current independent inspection or scoped repair reconciliation pending,18
+inbox,360,200,current independent inspection or scoped repair reconciliation pending,18
+life,360,200,current independent inspection or scoped repair reconciliation pending,14
+settings,360,200,current independent inspection or scoped repair reconciliation pending,9
+workout-upper,360,200,current independent inspection or scoped repair reconciliation pending,6
+workout-lower,360,200,current independent inspection or scoped repair reconciliation pending,5
+workout-rest,360,200,current independent inspection or scoped repair reconciliation pending,2
+workout-missing,360,200,current independent inspection or scoped repair reconciliation pending,2
+dashboard-historical,360,200,current independent inspection or scoped repair reconciliation pending,12
+dashboard-empty,360,200,current independent inspection or scoped repair reconciliation pending,7
+nutrition-empty,360,200,current independent inspection or scoped repair reconciliation pending,7
+training-empty,360,200,current independent inspection or scoped repair reconciliation pending,8
+body-empty,360,200,current independent inspection or scoped repair reconciliation pending,11
+insights-empty,360,200,current independent inspection or scoped repair reconciliation pending,6
+history-empty,360,200,current independent inspection or scoped repair reconciliation pending,3
+inbox-empty,360,200,current independent inspection or scoped repair reconciliation pending,4
+life-empty,360,200,current independent inspection or scoped repair reconciliation pending,4
+dashboard-private-error,360,200,current independent inspection or scoped repair reconciliation pending,8
+inbox-private-error,360,200,current independent inspection or scoped repair reconciliation pending,2
+life-private-error,360,200,current independent inspection or scoped repair reconciliation pending,3
+settings-private-error,360,200,current independent inspection or scoped repair reconciliation pending,9
+boot-loading,360,200,current independent inspection or scoped repair reconciliation pending,1
+boot-no-data-error,360,200,current independent inspection or scoped repair reconciliation pending,1
+offline-first-visit,360,200,current independent inspection or scoped repair reconciliation pending,1
+dashboard-offline-saved-health,360,200,current independent inspection or scoped repair reconciliation pending,13
+inbox-offline-saved-health,360,200,current independent inspection or scoped repair reconciliation pending,18
+life-offline-saved-health,360,200,current independent inspection or scoped repair reconciliation pending,15
+training-paused,360,200,current independent inspection or scoped repair reconciliation pending,14
+training-clearance-unconfirmed,360,200,current independent inspection or scoped repair reconciliation pending,14
+app-update-recovery-ready,360,200,current independent inspection or scoped repair reconciliation pending,3
+app-update-recovery-latest,360,200,current independent inspection or scoped repair reconciliation pending,2
+app-update-recovery-offline,360,200,current independent inspection or scoped repair reconciliation pending,2
