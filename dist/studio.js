@@ -16,7 +16,7 @@ const persist=(k,v)=>{try{localStorage.setItem('cams-health-'+k,v);}catch{}};
 const root=$('#app'),sheet=$('#sheet'),toastNode=$('#toast');
 const sheetBusyState=new WeakMap();
 let activationPoint=null,sheetActivation=null,feedbackAnchor=null;toastNode.hidden=true;
-const state={date:today(),view:'dashboard',detail:null,theme:'dark',units:preference('units','metric'),metric:'weightKg',range:30,filter:'',timerEnd:Number(preference('timer','0')),timerPaused:0};
+const state={date:today(),homeCategory:'overview',view:'dashboard',detail:null,theme:'dark',units:preference('units','metric'),metric:'weightKg',range:30,filter:'',timerEnd:Number(preference('timer','0')),timerPaused:0};
 if(!['metric','imperial'].includes(state.units))state.units='metric';
 const paths={
   mail:'M3 5h18v14H3ZM3 5l9 7 9-7',package:'m12 2 9 5v10l-9 5-9-5V7ZM3 7l9 5 9-5M12 12v10M7.5 4.5l9 5',home:'M3 10 12 3l9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z',
@@ -132,7 +132,7 @@ function render(){
     reconcileHTML(root,boot);return;
   }
   const d=dayFor(store.data,state.date),t=totals(d),foodPage=state.view==='nutrition',title=state.detail?'Workout':foodPage?'Food':'';
-  const key=[state.view,state.detail,state.date,state.units,state.metric,state.range].join('|'),sameView=key===renderedViewKey;
+  const key=[state.view,state.homeCategory,state.detail,state.date,state.units,state.metric,state.range].join('|'),sameView=key===renderedViewKey;
   const brand=`<a class="mobile-brand" href="#dashboard" data-home aria-label="Cam’s Life home">Cam’s Life</a>`;
   const header=`<div class="top-title">${state.detail?iconButton('Back to training','training','left'):foodPage?`<button class="iconbtn" data-view="dashboard" aria-label="Back to Today">${icon('left')}</button>`:brand}<strong class="detail-title">${title}</strong></div><div class="top-actions">${foodPage?iconButton('Log food','food-log','plus'):iconButton('Refresh records','refresh','refresh')}${iconButton('Settings','settings','body')}</div>`;
   const content=`${pwaBanner()}${store.error?`<div class="notice warning" role="status">${icon('info')}<div><b>Sync needs attention</b><p>${esc(store.error)}</p></div>${button('Details','sync-info','','textbtn')}</div>`:''}${['training','body','insights','history'].includes(state.view)?lifeUI.healthTabs():''}${state.detail?workoutDetails():lifeUI.view(state.view)??(state.view==='nutrition'?nutrition(d,t)+lifeUI.wellbeingCard():state.view==='training'?training(d):state.view==='body'?bodyView()+lifeUI.wellbeingCard():state.view==='history'?historyView():intro('YOUR SPACE','Settings','Preferences, connections and saved records.')+pwaSettings()+lifeUI.setupBlock()+watchUI.settings()+settingsView())}`;
@@ -150,7 +150,12 @@ function render(){
   if(view.__lifeHTML!==content&&view.contains(toastNode))view.before(toastNode);
   if(reconcileHTML(view,content)){
     for(const draft of drafts){const field=view.querySelector(draft.selector);if(field){field.value=draft.value;if(draft.focused)field.focus({preventScroll:true});}}
-    attachHolds();
+    if(state.view==='dashboard'){
+    root.querySelectorAll('[data-home-panel]').forEach(panel=>{panel.hidden=state.homeCategory!=='overview'&&!panel.dataset.homePanel.split(' ').includes(state.homeCategory);});
+    const activityGrid=root.querySelector('.activity-grid');
+    if(activityGrid){activityGrid.hidden=!['overview','activity','sleep'].includes(state.homeCategory);activityGrid.querySelector('.tile-steps').hidden=state.homeCategory==='sleep';activityGrid.querySelector('.tile-sleep').hidden=state.homeCategory==='activity';}
+  }
+  attachHolds();
   }
   reconcileHTML($('.sync-footer'),footer);
   reconcileHTML($('.bottom-nav'),nav());
@@ -176,7 +181,7 @@ function foodRows(foods,limit=null){return `<div class="food-list">${(limit?food
 function recordingDateLabel(){return state.date===today(store.data.profile.timezone)?'Recorded today':'Recorded '+dateLabel(state.date);}
 function activity(d){
  const sleep=d.wellbeing?.sleepHours,target=store.data.profile.targets.steps,progress=d.steps!=null?percent(d.steps,target):0;
- return `<div class="activity-grid"><button class="activity-card tile-steps" data-act="steps"><span class="tile-label">Daily activity</span><div class="step-ring" role="img" aria-label="${d.steps==null?'Steps not logged':fmt(d.steps)+' steps'+(target?' of '+fmt(target)+' target':'')}"><svg class="activity-heart" viewBox="0 0 130 130" aria-hidden="true">${[[1,"#b3e660","#6b934947"],[.84,"#42c9e2","#31789055"],[.68,"#b28be9","#6b42905c"]].map(([scale,color,track])=>`<g transform="translate(65 65) scale(${scale}) translate(-65 -65)"><path d="M65 31 C81 7 118 13 118 44 C118 78 73 106 65 112 C57 106 12 78 12 44 C12 13 49 7 65 31" stroke="${track}"/><path d="M65 31 C81 7 118 13 118 44 C118 78 73 106 65 112 C57 106 12 78 12 44 C12 13 49 7 65 31" stroke="${color}" pathLength="100" stroke-dasharray="${progress} 100" stroke-opacity="${d.steps==null||progress===0?0:1}"/></g>`).join("")}</svg><span>${icon('steps')}<strong>${fmt(d.steps)}</strong><small>${d.steps==null?'Not logged':'steps'}</small></span></div></button><button class="activity-card tile-sleep" data-life="wellbeing"><span class="tile-label">Sleep</span><div class="sleep-reading">${sleep==null?'':'<svg class="sleep-arc" viewBox="0 0 130 130" aria-hidden="true"><circle cx="65" cy="65" r="54"/><circle class="sleep-marker" cx="111.8" cy="92" r="7"/></svg>'}${sleep==null?'<span class="tile-art art-moon" aria-hidden="true"></span>':`<strong>${fmt(sleep)}<small>h</small></strong>`}<span>${sleep==null?'Not logged':recordingDateLabel()}</span></div></button></div>`;
+ return `<div class="activity-grid"><button class="activity-card tile-steps" data-act="steps"><span class="tile-label">Daily activity</span><div class="step-ring" role="img" aria-label="${d.steps==null?'Steps not logged':fmt(d.steps)+' steps'+(target?' of '+fmt(target)+' target':'')}"><svg class="activity-heart" viewBox="0 0 130 130" aria-hidden="true">${[[1,"#b3e660","#6b934947"],[.84,"#42c9e2","#31789055"],[.68,"#b28be9","#6b42905c"]].map(([scale,color,track])=>`<g transform="translate(65 65) scale(${scale}) translate(-65 -65)"><path d="M65 31 C81 7 118 13 118 44 C118 78 73 106 65 112 C57 106 12 78 12 44 C12 13 49 7 65 31" stroke="${track}"/><path d="M65 31 C81 7 118 13 118 44 C118 78 73 106 65 112 C57 106 12 78 12 44 C12 13 49 7 65 31" stroke="${color}" pathLength="100" stroke-dasharray="${progress} 100" stroke-opacity="${d.steps==null||progress===0?0:1}"/></g>`).join("")}</svg><span>${icon('steps')}<strong>${fmt(d.steps)}</strong><small>steps</small></span></div><span class="reading-caption">${d.steps==null?'Not logged':recordingDateLabel()}</span></button><button class="activity-card tile-sleep" data-life="wellbeing"><span class="tile-label">Sleep</span><div class="sleep-reading">${sleep==null?'':'<svg class="sleep-arc" viewBox="0 0 130 130" aria-hidden="true"><circle cx="65" cy="65" r="54"/><circle class="sleep-marker" cx="111.8" cy="92" r="7"/></svg>'}${sleep==null?'<span class="tile-art art-moon" aria-hidden="true"></span>':`<strong>${fmt(sleep)}<small>h</small></strong>`}</div><span class="reading-caption">${sleep==null?'Not logged':recordingDateLabel()}</span></button></div>`;
 }
 function workoutTile(s,featured=false){return `<article class="workout-tile ${featured?'featured':''}"><button class="workout-open" data-workout="${esc(s.id)}"><div class="workout-label"><span class="eyebrow">${featured?'Next in your rotation':'Your program'}</span>${icon('arrow')}</div><h3>${esc(s.name)}</h3><p>${esc(s.focus)}</p></button><div class="workout-tile-footer"><div class="workout-chips">${tag(s.id==='rest'?'Recovery':s.exercises.length+' exercises')}${s.id!=='rest'?tag(sessionSets(s)+' prescribed sets'):''}</div><button class="preview" data-preview="${esc(s.id)}" aria-label="Preview ${esc(s.name)}">${icon('eye')}</button></div></article>`;}
 function recordedWorkouts(d,date=state.date){return d.workouts.length?`<div class="record-list">${d.workouts.map(w=>`<button class="record-row" data-record="${esc(w.id)}" data-record-date="${date}"><span class="item-icon lilac">${icon(w.status==='completed'?'check':'train')}</span><span class="row-description"><b>${esc(w.name)}</b><small>${w.status==='completed'?'Completed':'Partial'}${actualSets(w)?' · '+actualSets(w)+' reported sets':''}${w.durationMin!=null?' · '+fmt(w.durationMin)+' min':''}</small></span>${icon('right')}</button>`).join('')}</div>`:'';}
@@ -378,7 +383,7 @@ function updateTimer(){
 }
 setInterval(updateTimer,500);
 function readRoute(){const url=new URL(location.href),date=url.searchParams.get('date');if(validDate(date))state.date=date;const parts=url.hash.slice(1).split('/');state.detail=null;if(parts[0]==='workout'&&parts[1]){state.view='training';try{state.detail=decodeURIComponent(parts[1]);}catch{state.detail=null;}}else state.view=allowedViews.includes(parts[0])?parts[0]:'dashboard';}
-function navigate(view,detail=null){view=allowedViews.includes(view)?view:'dashboard';if(sheet.open){dirty=false;closingFromHistory=true;sheet.close();closingFromHistory=false;history.replaceState({sheet:false},'');}state.view=view;state.detail=detail;const url=new URL(location.href);url.searchParams.set('date',state.date);url.hash=detail?'workout/'+encodeURIComponent(detail):view;history.pushState({sheet:false},'',url);render();window.scrollTo({top:0,behavior:'instant'});$('#main')?.focus({preventScroll:true});}
+function navigate(view,detail=null){if(view==='dashboard')state.homeCategory='overview';view=allowedViews.includes(view)?view:'dashboard';if(sheet.open){dirty=false;closingFromHistory=true;sheet.close();closingFromHistory=false;history.replaceState({sheet:false},'');}state.view=view;state.detail=detail;const url=new URL(location.href);url.searchParams.set('date',state.date);url.hash=detail?'workout/'+encodeURIComponent(detail):view;history.pushState({sheet:false},'',url);render();window.scrollTo({top:0,behavior:'instant'});$('#main')?.focus({preventScroll:true});}
 function selectDate(date,view=state.view){if(!validDate(date))return;view=allowedViews.includes(view)?view:'dashboard';state.date=date;state.view=view;state.detail=null;const url=new URL(location.href);url.searchParams.set('date',date);url.hash=view;history.replaceState({sheet:false},'',url);render();}
 window.addEventListener('popstate',()=>{if(sheet.open&&!history.state?.sheet){if(sheet.querySelector('[aria-busy="true"]')){history.pushState({...history.state,sheet:true},'');return;}if(dirty||suspendedSheet){history.pushState({...history.state,sheet:true},'');closeSheet();}else{closingFromHistory=true;closeSheet(true);closingFromHistory=false;}return;}readRoute();render();});
 window.addEventListener('beforeunload',event=>{if(dirty||suspendedSheet?.dirty||sheet.querySelector('[aria-busy="true"]')){event.preventDefault();event.returnValue='';}});
@@ -420,6 +425,7 @@ document.addEventListener('click',async e=>{
  try {
  if(b.dataset.held==='1'){b.dataset.held='';e.preventDefault();return;}
  if(b.matches('.remove-exercise')){b.closest('.exercise-input').remove();dirty=true;return;}
+ if(b.dataset.homeCategory){state.homeCategory=b.dataset.homeCategory;render();window.scrollTo({top:0,behavior:'instant'});return;}
  if(b.dataset.life){e.preventDefault();return await lifeUI.action(b.dataset.life,b);}
  if(b.dataset.act){e.preventDefault();return await action(b.dataset.act,b);}
  if(b.dataset.view)return navigate(b.dataset.view);

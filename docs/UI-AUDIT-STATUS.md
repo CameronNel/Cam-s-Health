@@ -1,3 +1,9 @@
+# Today navigation correction — 8 October 2026
+
+The top rail now selects local Today categories (Overview, Activity, Sleep, Body, Check-ins and Food) instead of duplicating global routes. Today stays visible and Overview remains reachable. The bottom dock owns Today, Health, Inbox and Life. Returning through Today resets the category to Overview. Activity/Sleep captions use shared bottom-aligned, centered geometry and typography; quick-check-in icons share a 31px size and stroke weight.
+
+The isolated navigation browser harness (`scripts/ui-audit/navigation.mjs`) exercises every category and every global tab at 424/390/360 widths in simulated 19.6:9 phone frames, verifies matching caption baselines/fonts/widths, and makes no record writes. Fresh captures cover the changed dashboard categories. Earlier exhaustive screenshot approvals below are historical for affected pixels; no new global 100/100 claim is made.
+
 # Compact density audit — 7 October 2026
 
 The current candidate uses the owner's **19.6:9** phone geometry: 424×923, 390×849 and 360×784. Reference-derived external status/navigation simulations leave 824/758/700px of actual app content. These are local synthetic preview captures, not physical Oppo measurements. Normal 100% text establishes the default design; 130% and 200% are separate accessibility stress checks. Earlier app-only 924px captures are historical.
