@@ -290,3 +290,12 @@ body{background:#10264a}.boot{background:linear-gradient(180deg,#10264a,#19283c)
 .boot .wordmark{font:600 32px/1.25 var(--font);letter-spacing:-.02em;color:var(--text);max-width:100%;overflow-wrap:normal;text-align:center}
 
 .watch-picker #watch-file.sr-only{position:absolute;min-height:0;width:1px;height:1px;padding:0;border:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+/* Today categories filter this dashboard; the bottom dock owns global routes. */
+[data-home-panel][hidden],.activity-grid[hidden],.activity-card[hidden]{display:none!important}
+.home-category-title{font-size:22px;font-weight:400;margin:0 20px 20px}
+.activity-card{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.activity-card .step-ring,.activity-card .sleep-reading{flex-shrink:0;margin:12px auto}
+.activity-card .reading-caption{display:block;margin-top:auto;padding-top:4px;text-align:center;font-family:var(--font);font-size:13px;line-height:1.4;font-weight:400;color:var(--muted)}
+.checkin-tile>button>.icon,.checkin-tile .mood-choice>.icon{width:31px;height:31px;stroke-width:1.65}
+.activity-grid:has(>.activity-card[hidden]),.home-action-grid:has(>[hidden]),.home-reading-grid:has(>[hidden]){grid-template-columns:minmax(0,1fr)}
