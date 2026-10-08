@@ -169,3 +169,5 @@ details[open]>summary .plus-vertical{display:none}
 
 /* Shared bottom caption geometry for paired Activity and Sleep readings. */
 .activity-card>.reading-caption{align-self:stretch;width:100%;text-align:center;margin-top:auto;font-size:13px;line-height:1.4;color:var(--muted)}
+.home-action-grid:has(>.meal-tile[hidden])>.checkin-tile{grid-template-columns:repeat(4,minmax(0,1fr));min-height:140px;justify-items:center}
+.home-action-grid:has(>.meal-tile[hidden])>.checkin-tile>button{width:100%;max-width:72px}
