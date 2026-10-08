@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-07T19:22:23.000Z",
+  "updatedAt": "2026-10-08T14:50:36.002Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2089,6 +2089,56 @@
       "waterMl": null,
       "weightKg": null,
       "notes": "Added 1 banana reported as 100 kcal, 1 usual 500 g banana kwark, and 5 machine lattes at milk setting 1. Added leftovers from 6 Oct: 202.5 g salmon (60% of yesterday's logged portion) and 45 g AH stir-fry vegetables (20%). Workout: custom pull + arms session, 23 total working sets. First cable movement logged descriptively because exact exercise name was not confirmed. Added 1 x 55 g protein bar from user-provided label and 330 ml AH Protein chocolate milk. Added 1 scoop Bulk Maltodextrin (~33.3 g, inferred from label: 1.5 scoops ≈ 50 g).",
+      "complete": false
+    },
+    "2026-10-08": {
+      "food": [
+        {
+          "id": "2026-10-08-lipton-ice-tea-green-330ml-1",
+          "name": "Lipton Ice Tea Green",
+          "quantity": "1 full 330 ml can (assumed from photo)",
+          "kcal": 33,
+          "protein": 0,
+          "carbs": 7.6,
+          "fat": 0,
+          "estimated": false,
+          "source": "User-provided Lipton can nutrition label photo, 8 Oct 2026.",
+          "note": "Label per can (330 ml): 33 kcal, 0 g protein, 7.6 g carbs including 7.3 g sugars, 0 g fat. Assumes the whole can was consumed.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-08-banana-kwark-500g-1",
+          "name": "Milde magere kwark met banaan",
+          "quantity": "1 full 500 g tub (assumed from photo)",
+          "kcal": 345,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "fibre": null,
+          "estimated": false,
+          "source": "User-provided banana kwark nutrition label photo, 8 Oct 2026; same product previously logged.",
+          "note": "Label per 100 g: 69 kcal, 9.3 g protein, 7 g carbs, 0.1 g fat. Assumes entire 500 g tub was consumed.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-08-machine-lattes-4-setting-1-1",
+          "name": "Machine latte — low powdered milk setting",
+          "quantity": "4 lattes at milk setting 1 of 3",
+          "kcal": 140,
+          "protein": 2.8,
+          "carbs": 15,
+          "fat": 8,
+          "estimated": true,
+          "source": "Standardized office coffee-machine estimate saved in tracker from 28 Sep 2026.",
+          "note": "Powdered milk setting 1/3. Assumes 35 kcal, 0.7 g protein, 3.75 g carbs and 2 g fat per latte. Exact machine/product nutrition remains unconfirmed.",
+          "reviewRequired": false
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "8 Oct: Lipton Ice Tea Green (330 ml), banana kwark (500 g) and 4 office machine lattes at 1/3 milk setting. Full can/tub assumed from packaging; latte macros estimated.",
       "complete": false
     }
   },
