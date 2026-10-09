@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-08T16:36:40.794Z",
+  "updatedAt": "2026-10-09T18:49:50.677Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2165,6 +2165,88 @@
       "waterMl": null,
       "weightKg": null,
       "notes": "8 Oct: Lipton Ice Tea Green (330 ml), banana kwark (500 g) and 4 office machine lattes at 1/3 milk setting. Full can/tub assumed from packaging; latte macros estimated. Added 20 McDonald's Chicken McNuggets (Dutch third-party nutrition estimate) and one full 25 ml sweet-and-sour sauce sachet (packet label; assumes complete use).",
+      "complete": false
+    },
+    "2026-10-09": {
+      "food": [
+        {
+          "id": "2026-10-09-tiger-oats-50g-1",
+          "name": "Tiger Oats",
+          "quantity": "50 g dry oats",
+          "kcal": 190,
+          "protein": 6.6,
+          "carbs": 28.5,
+          "fat": 4,
+          "estimated": true,
+          "source": "User report 9 Oct 2026; earlier ChatGPT nutrition estimate, no Tiger Oats label provided.",
+          "note": "50 g oats. Generic approximate macros; exact Tiger Oats product variant and nutritional label unverified."
+        },
+        {
+          "id": "2026-10-09-banana-kwark-500g-1",
+          "name": "Milde magere kwark met banaan",
+          "quantity": "1 usual 500 g tub",
+          "kcal": 345,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "estimated": false,
+          "source": "User report 9 Oct 2026; user-provided label from same banana kwark product 8 Oct 2026.",
+          "note": "Usual full 500 g tub assumed from user's 'one of the quark thingies' description. Per 100g label: 69 kcal, 9.3g protein, 7g carbs, 0.1g fat."
+        },
+        {
+          "id": "2026-10-09-lean-beef-tomato-mixture-200g-1",
+          "name": "Lean beef mince with canned tomatoes",
+          "quantity": "200 g finished beef-tomato mixture",
+          "kcal": 315,
+          "protein": 34,
+          "carbs": 3,
+          "fat": 18.5,
+          "estimated": true,
+          "source": "User report 9 Oct 2026; earlier ChatGPT estimate based on 1.2 kg lean beef mince mixed with 1 can tomatoes, fat drained.",
+          "note": "200 g of completed beef-tomato mixture (not 200 g plain mince). One can tomatoes per 1.2 kg of mince. Cooked batch yield, actual beef fat percentage and drained-fat weight unknown."
+        },
+        {
+          "id": "2026-10-09-cookies-cream-whey-60g-1",
+          "name": "Cookies & Cream whey protein powder",
+          "quantity": "2 scoops = 60 g powder",
+          "kcal": 228,
+          "protein": 43.4,
+          "carbs": 6.2,
+          "fat": 1.8,
+          "estimated": false,
+          "source": "User-provided Cookies & Cream protein package nutrition photo, 9 Oct 2026.",
+          "note": "Per 30g scoop: 114 kcal, 21.7g protein, 3.1g carbs and 0.9g fat. Counts powder only; no milk or mixing liquid added."
+        },
+        {
+          "id": "2026-10-09-bulk-maltodextrin-scoop-1",
+          "name": "Bulk Maltodextrin",
+          "quantity": "1 scoop (~33.3 g powder)",
+          "kcal": 126.7,
+          "protein": 0,
+          "carbs": 31.7,
+          "fat": 0,
+          "estimated": true,
+          "source": "User-provided Bulk Maltodextrin package nutrition and directions photo, 9 Oct 2026.",
+          "note": "Package directions: 1.5 scoops ≈ 50g, so 1 scoop ≈ 33.3g. Per 100g: 380 kcal, 95g carbohydrate, 0g protein, 0g fat. Actual unweighed scoop could differ."
+        },
+        {
+          "id": "2026-10-09-ah-breaded-chicken-schnitzel-100g-1",
+          "name": "AH voorgegaarde krokante kipschnitzel",
+          "quantity": "1 schnitzel (~100 g, half of 200 g two-piece pack)",
+          "kcal": 187,
+          "protein": 15,
+          "carbs": 18,
+          "fat": 6,
+          "estimated": true,
+          "source": "User-provided Albert Heijn breaded chicken schnitzel package nutrition photo, 9 Oct 2026.",
+          "note": "Package 200g contains two schnitzels, so one assumed 100g. Label per 100g: 187 kcal, 15g protein, 18g carbs, 6g fat. Assumes no added frying oil; actual piece mass may differ."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "9 Oct: 50g Tiger Oats; 500g usual banana kwark; 200g finished beef-tomato mixture (1 can per 1.2kg mince, fat drained); 2 scoops Cookies & Cream whey (60g); 1 scoop Bulk Maltodextrin (~33.3g inferred from 1.5 scoops ≈50g); 1 of 2 AH chicken schnitzels (~100g, no added cooking oil). Oats, beef and approximate scoop/piece mass are estimates.",
       "complete": false
     }
   },
