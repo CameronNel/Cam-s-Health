@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-10T12:29:32.195Z",
+  "updatedAt": "2026-10-10T12:55:13.138Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2336,8 +2336,8 @@
           "carbs": 14.4,
           "fat": 6.1,
           "estimated": true,
-          "source": "https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/search?q=Burger+King+French+Fries+%28Medium%29",
-          "note": "Half of receipt's medium Twister fries, using 50% of FatSecret NL medium values (244 kcal, 3.1P,28.8C,12.2F). No measured weight."
+          "source": "https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/burger-king/twister-fries-%28medium%29/1-portie",
+          "note": "User ate half M Twister Fries per 10 Oct receipt: listed medium is 90g and 244 kcal, 3.1g protein, 28.8g carbs and 12.2g fat per full serving. Half of that is logged. Actual consumed gram weight was not measured."
         },
         {
           "id": "2026-10-10-bk-loaded-bacon-fries-half-1",
@@ -2348,8 +2348,8 @@
           "carbs": 25.1,
           "fat": 12.85,
           "estimated": true,
-          "source": "https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/search?q=Burger+King+Cheesy+Bacon+Fries",
-          "note": "User reported half Loaded Bacon Fries, not itemized on supplied receipt. Based on 50% of FatSecret NL full Loaded Cheese & Bacon Fries (495 kcal, 11.4P,50.2C,25.7F)."
+          "source": "FatSecret NL: https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/search?q=Burger+King+Loaded+Cheese+%26+Bacon+Fries ; cross-checked with official Dutch ordering data transcribed at https://momentummenu.app/f/burger-king/loaded-cheese-bacon-fries",
+          "note": "User ate 1/2 Loaded Cheese & Bacon Fries, not listed separately on receipt. FatSecret lists 495 kcal/full, official-NL-derived listing gives 494.8 kcal/full standard 199g serving. Existing half-portion 247.5 kcal matches rounded listing (exact official derived half 247.4 kcal). Actual portion unweighed."
         },
         {
           "id": "2026-10-10-bk-coke-zero-medium-1",
@@ -2362,13 +2362,37 @@
           "estimated": true,
           "source": "User-provided Burger King receipt, 10 October 2026, listing M Coca Zero",
           "note": "Assumed full Coke Zero consumed; rounding typical trace sugar-free drink calories to zero. Reusable-cup fee is not food."
+        },
+        {
+          "id": "2026-10-10-tiger-oats-50g-1",
+          "name": "Tiger Oats",
+          "quantity": "50 g dry oats",
+          "kcal": 190,
+          "protein": 6.6,
+          "carbs": 28.5,
+          "fat": 4,
+          "estimated": true,
+          "source": "User report 9 Oct 2026; earlier ChatGPT nutrition estimate, no Tiger Oats label provided. Same item reported 10 Oct 2026.",
+          "note": "50g oats, same estimated Tiger Oats product macros logged 9 Oct. No exact product label supplied. No milk or toppings included."
+        },
+        {
+          "id": "2026-10-10-cookies-cream-whey-30g-1",
+          "name": "Cookies & Cream whey protein powder",
+          "quantity": "1 scoop = 30 g powder",
+          "kcal": 114,
+          "protein": 21.7,
+          "carbs": 3.1,
+          "fat": 0.9,
+          "estimated": false,
+          "source": "User-provided Cookies & Cream protein package nutrition photo, 9 Oct 2026.",
+          "note": "Single 30g scoop, from user-provided Cookies & Cream label on 9 Oct. 114 kcal, 21.7g protein, 3.1g carbohydrates, 0.9g fat. Powder alone, without additional caloric mixing liquid."
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
-      "notes": "10 Oct BK receipt: full Big King XXL assumed, half M Twister/curly fries, half Loaded Cheese & Bacon Fries reported separately, medium Coke Zero assumed. Third-party nutrition estimates; portion weights unconfirmed.",
+      "notes": "10 Oct BK receipt: full Big King XXL assumed, half M Twister/curly fries, half Loaded Cheese & Bacon Fries reported separately, medium Coke Zero assumed. Third-party nutrition estimates; portion weights unconfirmed. 10 Oct: 50g Tiger Oats (estimate) and 1 scoop Cookies & Cream whey (30g, user label). Burger King sources rechecked; calories retained.",
       "complete": false
     }
   },
