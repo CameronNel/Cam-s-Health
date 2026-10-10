@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-09T18:49:50.677Z",
+  "updatedAt": "2026-10-10T07:35:12.097Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2160,7 +2160,42 @@
           "reviewRequired": false
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-10-08-chest-shoulders-custom-1",
+          "sessionId": null,
+          "name": "Chest + Shoulders",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Custom workout reported 10 Oct 2026. Sets are reported working sets; reps, loads and duration not provided.",
+          "actualExercises": [
+            {
+              "name": "Dumbbell Shoulder Press",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Cable Crossover",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Cable Lateral Raise",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Dumbbell Lateral Raise",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
@@ -2242,7 +2277,36 @@
           "note": "Package 200g contains two schnitzels, so one assumed 100g. Label per 100g: 187 kcal, 15g protein, 18g carbs, 6g fat. Assumes no added frying oil; actual piece mass may differ."
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-10-09-arms-custom-1",
+          "sessionId": null,
+          "name": "Arms (Triceps + Biceps)",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Custom workout reported 10 Oct 2026. Sets are reported working sets; reps, loads and duration not provided.",
+          "actualExercises": [
+            {
+              "name": "Triceps Rope Pushdown",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Triceps Rope Overhead Extension",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Biceps Curl",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
