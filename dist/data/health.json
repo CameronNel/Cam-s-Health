@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-10T07:35:12.097Z",
+  "updatedAt": "2026-10-10T12:29:32.195Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2311,6 +2311,64 @@
       "waterMl": null,
       "weightKg": null,
       "notes": "9 Oct: 50g Tiger Oats; 500g usual banana kwark; 200g finished beef-tomato mixture (1 can per 1.2kg mince, fat drained); 2 scoops Cookies & Cream whey (60g); 1 scoop Bulk Maltodextrin (~33.3g inferred from 1.5 scoops ≈50g); 1 of 2 AH chicken schnitzels (~100g, no added cooking oil). Oats, beef and approximate scoop/piece mass are estimates.",
+      "complete": false
+    },
+    "2026-10-10": {
+      "food": [
+        {
+          "id": "2026-10-10-bk-big-king-xxl-1",
+          "name": "Big King XXL burger",
+          "quantity": "1 full burger (assumed eaten from receipt)",
+          "kcal": 994,
+          "protein": 59.4,
+          "carbs": 50.7,
+          "fat": 60.8,
+          "estimated": true,
+          "source": "https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/burger-king/big-king-xxl-burger/1-portie",
+          "note": "Receipt shows Big King XXL Menu. Assumed full burger was eaten. Third-party NL nutrition values; actual serving may vary."
+        },
+        {
+          "id": "2026-10-10-bk-medium-twister-fries-half-1",
+          "name": "Burger King Twister / curly fries",
+          "quantity": "1/2 medium M Twister Fries portion",
+          "kcal": 122,
+          "protein": 1.55,
+          "carbs": 14.4,
+          "fat": 6.1,
+          "estimated": true,
+          "source": "https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/search?q=Burger+King+French+Fries+%28Medium%29",
+          "note": "Half of receipt's medium Twister fries, using 50% of FatSecret NL medium values (244 kcal, 3.1P,28.8C,12.2F). No measured weight."
+        },
+        {
+          "id": "2026-10-10-bk-loaded-bacon-fries-half-1",
+          "name": "Burger King Loaded Cheese & Bacon Fries",
+          "quantity": "1/2 regular portion",
+          "kcal": 247.5,
+          "protein": 5.7,
+          "carbs": 25.1,
+          "fat": 12.85,
+          "estimated": true,
+          "source": "https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/search?q=Burger+King+Cheesy+Bacon+Fries",
+          "note": "User reported half Loaded Bacon Fries, not itemized on supplied receipt. Based on 50% of FatSecret NL full Loaded Cheese & Bacon Fries (495 kcal, 11.4P,50.2C,25.7F)."
+        },
+        {
+          "id": "2026-10-10-bk-coke-zero-medium-1",
+          "name": "Coca-Cola Zero",
+          "quantity": "1 medium cup (assumed consumed)",
+          "kcal": 0,
+          "protein": 0,
+          "carbs": 0,
+          "fat": 0,
+          "estimated": true,
+          "source": "User-provided Burger King receipt, 10 October 2026, listing M Coca Zero",
+          "note": "Assumed full Coke Zero consumed; rounding typical trace sugar-free drink calories to zero. Reusable-cup fee is not food."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "10 Oct BK receipt: full Big King XXL assumed, half M Twister/curly fries, half Loaded Cheese & Bacon Fries reported separately, medium Coke Zero assumed. Third-party nutrition estimates; portion weights unconfirmed.",
       "complete": false
     }
   },
