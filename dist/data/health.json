@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-10T12:55:13.138Z",
+  "updatedAt": "2026-10-11T14:42:54.102Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2394,6 +2394,75 @@
       "weightKg": null,
       "notes": "10 Oct BK receipt: full Big King XXL assumed, half M Twister/curly fries, half Loaded Cheese & Bacon Fries reported separately, medium Coke Zero assumed. Third-party nutrition estimates; portion weights unconfirmed. 10 Oct: 50g Tiger Oats (estimate) and 1 scoop Cookies & Cream whey (30g, user label). Burger King sources rechecked; calories retained.",
       "complete": false
+    },
+    "2026-10-11": {
+      "food": [
+        {
+          "id": "2026-10-11-halfvolle-melk-100ml-1",
+          "name": "Halfvolle melk",
+          "quantity": "100 ml",
+          "kcal": 48,
+          "protein": 3.6,
+          "carbs": 4.7,
+          "fat": 1.6,
+          "estimated": true,
+          "source": "Representative Dutch halfvolle melk nutrition, Albert Heijn per 100 ml: https://www.ah.nl/producten/product/wi33693/ah-halfvolle-melk ; exact milk brand not supplied.",
+          "note": "User reported 100 ml. Macros estimated from AH fresh halfvolle melk reference (48 kcal, 3.6g protein, 4.7g carbohydrate, 1.6g fat per 100 ml)."
+        },
+        {
+          "id": "2026-10-11-campina-plain-kwark-500g-1",
+          "name": "Campina milde magere kwark naturel",
+          "quantity": "1 entire tub (500 g)",
+          "kcal": 275,
+          "protein": 50,
+          "carbs": 13.5,
+          "fat": 0.5,
+          "estimated": false,
+          "source": "User-provided 500g Campina kwark nutrition label photo, 11 Oct 2026.",
+          "note": "Per 100g label: 55 kcal, 10g protein, 2.7g carbs, 0.1g fat. Distinct from previously logged banana kwark."
+        },
+        {
+          "id": "2026-10-11-jumbo-pangasius-3-of-5-1",
+          "name": "Jumbo pangasiusfilet, diepvries",
+          "quantity": "3 of 5 fillets in a 675 g bag (estimated 405 g total)",
+          "kcal": 340.2,
+          "protein": 68.9,
+          "carbs": 0,
+          "fat": 7.3,
+          "estimated": true,
+          "source": "User-provided Jumbo Pangasiusfilet 675g package nutrition label photo, 11 Oct 2026.",
+          "note": "Bag weighs 675g; user ate 3 of 5 fillets; assumes similar fillet masses (675 x 3/5 = 405g). Label per 100g: 84 kcal, 17g protein, 0g carbs, 1.8g fat. No added oil, breading or sauce included."
+        },
+        {
+          "id": "2026-10-11-cookies-cream-whey-30g-1",
+          "name": "Cookies & Cream whey protein powder",
+          "quantity": "1 scoop (30 g)",
+          "kcal": 114,
+          "protein": 21.7,
+          "carbs": 3.1,
+          "fat": 0.9,
+          "estimated": false,
+          "source": "Saved user-provided Cookies & Cream whey nutrition label, 9 Oct 2026; same powder logged on 10 Oct 2026.",
+          "note": "Per 30g scoop: 114 kcal, 21.7g protein, 3.1g carbohydrate, 0.9g fat. Milk logged separately."
+        },
+        {
+          "id": "2026-10-11-lidl-spring-rolls-2-of-4-1",
+          "name": "Lidl spring rolls (loempia), excluding sauce",
+          "quantity": "2 of 4 spring rolls (estimated 132 g; 264 g total rolls in pack)",
+          "kcal": 202,
+          "protein": 6.2,
+          "carbs": 33,
+          "fat": 4.6,
+          "estimated": true,
+          "source": "User-provided Lidl spring rolls label photo, 11 Oct 2026.",
+          "note": "Pack labels 280g total comprising 264g spring rolls plus 16g sauce. Two of four equally sized rolls = 132g. Label per 100g: 153 kcal, 4.7g protein, 25g carbs, 3.5g fat. No dipping sauce, cooking oil or extra condiments added."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": ""
     }
   },
   "recipes": [
