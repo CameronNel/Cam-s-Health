@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-11T14:42:54.102Z",
+  "updatedAt": "2026-10-11T15:11:08.177Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2424,14 +2424,14 @@
         {
           "id": "2026-10-11-jumbo-pangasius-3-of-5-1",
           "name": "Jumbo pangasiusfilet, diepvries",
-          "quantity": "3 of 5 fillets in a 675 g bag (estimated 405 g total)",
-          "kcal": 340.2,
-          "protein": 68.9,
+          "quantity": "4 of 5 fillets in a 675 g bag (estimated 540 g total)",
+          "kcal": 453.6,
+          "protein": 91.8,
           "carbs": 0,
-          "fat": 7.3,
+          "fat": 9.7,
           "estimated": true,
           "source": "User-provided Jumbo Pangasiusfilet 675g package nutrition label photo, 11 Oct 2026.",
-          "note": "Bag weighs 675g; user ate 3 of 5 fillets; assumes similar fillet masses (675 x 3/5 = 405g). Label per 100g: 84 kcal, 17g protein, 0g carbs, 1.8g fat. No added oil, breading or sauce included."
+          "note": "Corrected 11 Oct 2026: user ate 4 of 5 fillets (3 originally reported, plus 1 shared by Abby), not 3 of 5. Bag weighs 675 g; equal fillet weights assumed, so estimated 540 g (675 × 4/5). Label per 100 g: 84 kcal, 17 g protein, 0 g carbs, 1.8 g fat. No additional oil or sauce included."
         },
         {
           "id": "2026-10-11-cookies-cream-whey-30g-1",
