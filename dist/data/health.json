@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-12T20:59:02.173Z",
+  "updatedAt": "2026-10-12T21:38:14.158Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2501,6 +2501,18 @@
           "estimated": false,
           "source": "User-provided product label photo, 12 Oct 2026. Campina vanilla kwark 500 g.",
           "note": "Per 100 g label: 69 kcal, 9 g protein, 7.3 g carbs, 0 g fat. Entire 500 g tub consumed."
+        },
+        {
+          "id": "2026-10-12-cookies-cream-whey-45g-1",
+          "name": "Cookies & Cream whey protein powder",
+          "quantity": "1.5 scoops (approximately 45 g powder)",
+          "kcal": 171,
+          "protein": 32.55,
+          "carbs": 4.65,
+          "fat": 1.35,
+          "estimated": true,
+          "source": "Saved user-provided Cookies & Cream whey protein package nutrition label, 9 Oct 2026; same powder logged on 10 and 11 Oct 2026.",
+          "note": "Using the most recently logged protein powder: 1 scoop = 30 g, 114 kcal, 21.7 g protein, 3.1 g carbs and 0.9 g fat. 1.5 scoops assumed to weigh 45 g, not independently weighed. Powder only; no milk or other mixing liquid included."
         }
       ],
       "workouts": [
