@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-12T18:47:02.709Z",
+  "updatedAt": "2026-10-12T20:59:02.173Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2503,7 +2503,36 @@
           "note": "Per 100 g label: 69 kcal, 9 g protein, 7.3 g carbs, 0 g fat. Entire 500 g tub consumed."
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-10-12-shoulders-custom-1",
+          "sessionId": null,
+          "name": "Shoulders (lateral raises, shrugs, shoulder-blade rows)",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Custom shoulder-focused workout reported 12 Oct 2026. Dumbbell rows intentionally emphasized shoulder blades rather than back. Set counts as reported; repetitions, weights, and duration not provided.",
+          "actualExercises": [
+            {
+              "name": "Lateral raises",
+              "sets": 7,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Shrugs",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Dumbbell rows (shoulder-blade focus)",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
