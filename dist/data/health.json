@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-11T15:11:08.177Z",
+  "updatedAt": "2026-10-12T18:47:02.709Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2463,6 +2463,51 @@
       "waterMl": null,
       "weightKg": null,
       "notes": ""
+    },
+    "2026-10-12": {
+      "food": [
+        {
+          "id": "2026-10-12-lidl-fish-sticks-8of15-1",
+          "name": "Lidl Ocean Sea Fish Sticks (fish fingers)",
+          "quantity": "8 of 15 fingers (estimated 240 g of 450 g pack)",
+          "kcal": 470.4,
+          "protein": 29.04,
+          "carbs": 40.8,
+          "fat": 20.64,
+          "estimated": true,
+          "source": "User-provided product label photo, 12 Oct 2026. Lidl Ocean Sea 450 g, 15-piece pack.",
+          "note": "Per 100 g: 196 kcal, 12.1 g protein, 17 g carbs, 8.6 g fat. Assumes eight equally sized fish sticks weigh 8/15 × 450 g = 240 g. No added cooking oil or sauce included."
+        },
+        {
+          "id": "2026-10-12-ah-schnitzel-1of2-1",
+          "name": "AH voorgegaarde krokante kipschnitzel",
+          "quantity": "1 of 2 schnitzels (estimated 100 g of 200 g pack)",
+          "kcal": 187,
+          "protein": 15,
+          "carbs": 18,
+          "fat": 6,
+          "estimated": true,
+          "source": "User-provided product label photo, 12 Oct 2026. AH two-schnitzel 200 g pack.",
+          "note": "Per 100 g: 187 kcal, 15 g protein, 18 g carbs, 6 g fat. Assumes one schnitzel weighs half of 200 g pack. No additional frying oil included."
+        },
+        {
+          "id": "2026-10-12-campina-vanille-kwark-500g-1",
+          "name": "Campina milde magere kwark met vanille",
+          "quantity": "1 entire 500 g tub",
+          "kcal": 345,
+          "protein": 45,
+          "carbs": 36.5,
+          "fat": 0,
+          "estimated": false,
+          "source": "User-provided product label photo, 12 Oct 2026. Campina vanilla kwark 500 g.",
+          "note": "Per 100 g label: 69 kcal, 9 g protein, 7.3 g carbs, 0 g fat. Entire 500 g tub consumed."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "12 Oct: 8 of 15 Lidl fish fingers, 1 of 2 AH kipschnitzels and 1 × 500 g Campina vanilla kwark. Estimated equal-piece weights. Cooking oil/sauce not included."
     }
   },
   "recipes": [
