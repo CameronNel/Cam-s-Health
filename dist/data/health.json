@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-12T21:38:14.158Z",
+  "updatedAt": "2026-10-12T22:13:41.429Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -21,7 +21,7 @@
     ],
     "equipmentNote": "Normal barbell bench pressing is unavailable with the current setup.",
     "source": "Cut targets reviewed 5 Oct 2026 from current 64.3 kg body weight and ~10.2% Galaxy Watch BIA reading (~57.7 kg estimated FFM). Protein set to 145 g/day (~2.5 g/kg estimated FFM; ~2.25 g/kg body weight) for lean-mass retention during the cut. Calories retained at 1,900 because a single lower body-weight/BIA reading does not establish maintenance expenditure; adjust from multi-week weight trend and training performance rather than body-fat estimate alone.",
-    "heightCm": null
+    "heightCm": 182.88
   },
   "training": {
     "rotation": [
@@ -2549,6 +2549,18 @@
       "waterMl": null,
       "weightKg": null,
       "notes": "12 Oct: 8 of 15 Lidl fish fingers, 1 of 2 AH kipschnitzels and 1 × 500 g Campina vanilla kwark. Estimated equal-piece weights. Cooking oil/sauce not included."
+    },
+    "2026-10-13": {
+      "food": [],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": 64,
+      "notes": "",
+      "body": {
+        "notes": "Abdominal skinfold thickness: 10 mm (user-reported single-site measurement; NOT body-fat percentage; measuring instrument and site protocol not specified).",
+        "recordedAt": "2026-10-12T22:13:41.427Z"
+      }
     }
   },
   "recipes": [
