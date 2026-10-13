@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-13T20:01:28.701Z",
+  "updatedAt": "2026-10-13T20:30:31.376Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2604,14 +2604,14 @@
         {
           "id": "2026-10-13-lidl-beef-tomato-wrap-280g-1",
           "name": "Lidl wholewheat wrap with 85/15 beef mince, tomatoes and greens",
-          "quantity": "1 entire 280 g wrap: 61.7 g tortilla + 218.3 g cooked beef-tomato-greens filling",
-          "kcal": 550,
-          "protein": 50,
-          "carbs": 31,
-          "fat": 23,
+          "quantity": "Ate all 218.3 g beef-tomato-greens filling + 3/4 of 61.7 g Lidl tortilla (46.275 g); 264.575 g total eaten",
+          "kcal": 507,
+          "protein": 48.5,
+          "carbs": 23.9,
+          "fat": 22.3,
           "estimated": true,
           "source": "Lidl tortilla back-label photo provided 13 Oct 2026 (61.7 g = 173 kcal, 5.9 g protein, 28.4 g carbs, 2.9 g fat); user's 280 g combined weight and recipe description; beef reference USDA FDC 174034 (cooked 85/15 crumbles = 256 kcal/100 g): https://whatyoueat.io/foods/174034 ; canned diced tomato USDA = 21 kcal/100 g: https://fooddata.the50.store/ingredients/100193-tomatoes-canned-red-ripe-diced",
-          "note": "Measured filling 280 - 61.7 = 218.3 g. Tortilla exactly 173 kcal; filling provisionally 377 kcal after allowing for canned tomatoes, a small amount of greens and some drained rendered fat. Approximate macro allocation: tortilla 5.9P/28.4C/2.9F; filling 44.1P/2.6C/20.1F. Exact cooked beef-to-tomato ratio, total cooked batch yield and fat discarded were not reported. Revise if known."
+          "note": "Corrected by user on 13 Oct 2026: 3/4 of tortilla consumed, all 218.3 g cooked filling consumed. Tortilla 3/4: 46.275 g, 129.75 kcal, 4.425 g protein, 21.3 g carbs, 2.175 g fat based on user's Lidl label. Filling unchanged: estimated 377 kcal, 44.1 g protein, 2.6 g carbs, 20.1 g fat. Combined rounded 507 kcal, 48.5 g protein, 23.9 g carbs, 22.3 g fat. Beef-to-tomato ratio and fat drained unmeasured; filling macros and calories remain estimates."
         }
       ],
       "workouts": [
