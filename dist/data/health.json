@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-12T22:13:41.429Z",
+  "updatedAt": "2026-10-13T08:48:21.690Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2558,8 +2558,9 @@
       "weightKg": 64,
       "notes": "",
       "body": {
-        "notes": "Abdominal skinfold thickness: 10 mm (user-reported single-site measurement; NOT body-fat percentage; measuring instrument and site protocol not specified).",
-        "recordedAt": "2026-10-12T22:13:41.427Z"
+        "notes": "Abdominal skinfold thickness: 10 mm (user-reported caliper measurement at a single abdominal site; NOT body-fat percentage; exact landmark, side and measurement protocol not specified).",
+        "recordedAt": "2026-10-13T08:48:21.687Z",
+        "method": "Calipers"
       }
     }
   },
