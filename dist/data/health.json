@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-13T08:48:21.690Z",
+  "updatedAt": "2026-10-13T18:45:07.025Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2551,8 +2551,93 @@
       "notes": "12 Oct: 8 of 15 Lidl fish fingers, 1 of 2 AH kipschnitzels and 1 × 500 g Campina vanilla kwark. Estimated equal-piece weights. Cooking oil/sauce not included."
     },
     "2026-10-13": {
-      "food": [],
-      "workouts": [],
+      "food": [
+        {
+          "id": "2026-10-13-campina-plain-kwark-500g-1",
+          "name": "Campina milde magere kwark naturel",
+          "quantity": "1 entire tub (500 g)",
+          "kcal": 275,
+          "protein": 50,
+          "carbs": 13.5,
+          "fat": 0.5,
+          "estimated": false,
+          "source": "User-provided Campina plain kwark label, 11 Oct 2026; exact previous GitHub record.",
+          "note": "Per 100 g: 55 kcal, 10 g protein, 2.7 g carbs, 0.1 g fat. This is the 50 g protein plain tub, not vanilla kwark."
+        },
+        {
+          "id": "2026-10-13-cookies-cream-whey-60g-1",
+          "name": "Cookies & Cream whey protein powder",
+          "quantity": "2 scoops (60 g)",
+          "kcal": 228,
+          "protein": 43.4,
+          "carbs": 6.2,
+          "fat": 1.8,
+          "estimated": false,
+          "source": "Saved user-provided Cookies & Cream whey powder label (9 Oct 2026), 114 kcal and 21.7 g protein per 30 g scoop.",
+          "note": "Two 30 g scoops, powder only. No additional milk included."
+        },
+        {
+          "id": "2026-10-13-kania-high-protein-sweet-potato-soup-750ml-1",
+          "name": "Kania High Protein soep zoete aardappel",
+          "quantity": "1 entire 750 ml packet (2 servings)",
+          "kcal": 465,
+          "protein": 15.2,
+          "carbs": 86,
+          "fat": 7,
+          "estimated": true,
+          "source": "User-provided Lidl Kania front-of-pack photo (2 servings, 7.6 g protein per serving), Lidl October 2026 offer confirming 750 ml; kcal/carb/fat benchmark from standard Lidl sweet potato soup at 62 kcal per 100 g: https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/lidl/zoete-aardappelsoep/100g",
+          "note": "Exact product-specific energy, fat and carbs not found online. 465 kcal, 86 g carbs and 7 g fat are provisional estimates and NOT values from the Kania high-protein label. Protein 15.2 g calculated from front label (7.6 g × 2). Replace when back-panel label available.",
+          "reviewRequired": true
+        },
+        {
+          "id": "2026-10-13-machine-lattes-5-1",
+          "name": "Coffee-machine lattes, milk setting 1",
+          "quantity": "5 lattes in 330 ml cups (milk setting 1 of 3)",
+          "kcal": 150,
+          "protein": 5,
+          "carbs": 20,
+          "fat": 5,
+          "estimated": true,
+          "source": "User-provided photo of residual milk foam inside 330 ml cup, 13 Oct 2026; estimated 30 kcal per machine latte.",
+          "note": "Each latte provisionally estimated 30 kcal, 1 g protein, 4 g carbs, 1 g fat. Photo and machine setting cannot determine exact powdered milk grams; revise using machine nutrition/settings."
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-10-13-arms-custom-1",
+          "sessionId": null,
+          "name": "Arms (curls, hammer preacher curls, rope pressdowns, biceps pump curls)",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Reported 13 Oct 2026. 16 total sets: biceps 12 (including four light pump sets); triceps 4. No reps/weights/duration reported.",
+          "actualExercises": [
+            {
+              "name": "Biceps curls",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Hammer preacher curls",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Triceps rope pushdowns",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Light bicep burnout curls (pump)",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": 64,
