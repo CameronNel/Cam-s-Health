@@ -23,7 +23,7 @@ function worker(fetcher=async()=>new Response('asset',{headers:{'content-type':'
 
 test('manifest uses standalone mode and real, correctly sized phone icons',async()=>{
   const manifest=JSON.parse(await readFile(new URL('../dist/manifest.webmanifest',import.meta.url),'utf8'));
-  assert.equal(manifest.display,'standalone');assert.equal(manifest.scope,'./');assert.equal(manifest.name,'Cam’s Life');
+  assert.equal(manifest.display,'standalone');assert.equal(manifest.scope,'./');assert.equal(manifest.name,'Cam’s Health');
   assert.equal(new URL(manifest.start_url,'https://example.test/').pathname,'/');
   for(const icon of manifest.icons){const bytes=await readFile(new URL('../dist/'+icon.src,import.meta.url));assert.equal(bytes.subarray(1,4).toString(),'PNG');assert.equal(bytes.readUInt32BE(16)+'x'+bytes.readUInt32BE(20),icon.sizes);}
   assert.ok(manifest.icons.some(i=>i.purpose==='maskable'));

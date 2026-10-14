@@ -11,3 +11,28 @@ export function createPressHandlers({open,preview,schedule=setTimeout,unschedule
     context(event){event.preventDefault();}
   };
 }
+
+// Intercept only a deliberate two-finger pinch inside the dialog. One-finger
+// scrolling and normal page zoom outside the dialog keep their native behavior.
+export function createPinchHandlers({expand,collapse,isExpanded,threshold=1.18}) {
+  let baseline=null,triggered=false;
+  const distance=touches=>Math.hypot(touches[0].clientX-touches[1].clientX,touches[0].clientY-touches[1].clientY);
+  const cancel=()=>{baseline=null;triggered=false;};
+  return {
+    start(event){
+      if(event.touches.length!==2){if(event.touches.length>2)cancel();return;}
+      if(event.target?.closest?.('input,select,textarea'))return;
+      const d=distance(event.touches);if(d<24)return;
+      baseline=d;triggered=false;event.preventDefault();
+    },
+    move(event){
+      if(baseline===null||event.touches.length!==2)return;
+      event.preventDefault();if(triggered)return;
+      const ratio=distance(event.touches)/baseline;
+      if(!isExpanded()&&ratio>=threshold){triggered=true;expand();}
+      else if(isExpanded()&&ratio<=1/threshold){triggered=true;collapse();}
+    },
+    end(event){if(event.touches.length<2)cancel();},
+    cancel
+  };
+}

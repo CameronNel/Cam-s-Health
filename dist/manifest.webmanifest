@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "Cam’s Life",
-  "short_name": "Cam’s Life",
-  "description": "Your health, inbox, deliveries and daily life.",
+  "name": "Cam’s Health",
+  "short_name": "Cam’s Health",
+  "description": "Food, body composition and workouts. Just the essentials.",
   "lang": "en",
   "start_url": "./?installed=1#dashboard",
   "scope": "./",

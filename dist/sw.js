@@ -1,12 +1,12 @@
 // Cache public code and a generic offline screen only. Never cache user records,
 // authenticated HTML, API responses, tokens, mailbox data or OAuth redirects.
-const CACHE = 'cams-life-assets-v1';
+const CACHE = 'cams-life-assets-v2';
 const ASSETS = new Map([
   ['/offline.html','text/html'], ['/favicon.svg','image/svg+xml'],
-  ['/studio.css','text/css'], ['/life.css','text/css'],
-  ['/studio.js','javascript'], ['/life-ui.js','javascript'], ['/pwa.js','javascript'], ['/chatgpt-link.js','javascript'],
+  ['/studio.css','text/css'], ['/glass.css','text/css'],
+  ['/studio.js','javascript'], ['/pwa.js','javascript'],
   ['/model.js','javascript'], ['/body.js','javascript'], ['/sync.js','javascript'],
-  ['/gestures.js','javascript'], ['/life-model.js','javascript'], ['/health-intelligence.js','javascript'],
+  ['/gestures.js','javascript'], ['/health-intelligence.js','javascript'],
   ['/manifest.webmanifest','application/manifest+json'],
   ['/icons/icon-192.png','image/png'], ['/icons/icon-512.png','image/png'],
   ['/icons/icon-maskable-512.png','image/png'], ['/icons/apple-touch-icon.png','image/png']
