@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-14T19:21:27.874Z",
+  "updatedAt": "2026-10-14T19:40:44.649Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2604,14 +2604,15 @@
         {
           "id": "2026-10-13-lidl-beef-tomato-wrap-280g-1",
           "name": "Lidl wholewheat wrap with 85/15 beef mince, tomatoes and greens",
-          "quantity": "Ate all 218.3 g beef-tomato-greens filling + 3/4 of 61.7 g Lidl tortilla (46.275 g); 264.575 g total eaten",
-          "kcal": 507,
-          "protein": 48.5,
-          "carbs": 23.9,
-          "fat": 22.3,
+          "quantity": "Entire Lidl tortilla (61.7 g) + all 188.3 g beef-tomato-greens filling = 250 g total eaten",
+          "kcal": 498.2,
+          "protein": 43.9,
+          "carbs": 30.6,
+          "fat": 20.2,
           "estimated": true,
-          "source": "Lidl tortilla back-label photo provided 13 Oct 2026 (61.7 g = 173 kcal, 5.9 g protein, 28.4 g carbs, 2.9 g fat); user's 280 g combined weight and recipe description; beef reference USDA FDC 174034 (cooked 85/15 crumbles = 256 kcal/100 g): https://whatyoueat.io/foods/174034 ; canned diced tomato USDA = 21 kcal/100 g: https://fooddata.the50.store/ingredients/100193-tomatoes-canned-red-ripe-diced",
-          "note": "Corrected by user on 13 Oct 2026: 3/4 of tortilla consumed, all 218.3 g cooked filling consumed. Tortilla 3/4: 46.275 g, 129.75 kcal, 4.425 g protein, 21.3 g carbs, 2.175 g fat based on user's Lidl label. Filling unchanged: estimated 377 kcal, 44.1 g protein, 2.6 g carbs, 20.1 g fat. Combined rounded 507 kcal, 48.5 g protein, 23.9 g carbs, 22.3 g fat. Beef-to-tomato ratio and fat drained unmeasured; filling macros and calories remain estimates."
+          "source": "User correction on 14 Oct 2026 for the 13 Oct meal; same user-provided Lidl tortilla label (full 61.7 g: 173 kcal, 5.9 g protein, 28.4 g carbs, 2.9 g fat). Filling recalculated proportionally from original 218.3 g estimate based on cooked 85/15 mince and canned tomato; original reference: https://whatyoueat.io/foods/174034",
+          "note": "Corrects the previously logged 280 g combined plate with 3/4 tortilla. User clarified entire 61.7 g tortilla was eaten, and the entire meal including tortilla weighed 250 g: 250 - 61.7 = 188.3 g filling. Previous 218.3 g filling was estimated at 377 kcal, 44.1 g protein, 2.6 g carbs and 20.1 g fat; revised proportionally ×188.3/218.3. Entire tortilla contributed 173 kcal, 5.9 g protein, 28.4 g carbs, 2.9 g fat. Assumes same beef-to-tomato ratio and cooked drained-fat profile as previous estimate. Full corrected plate estimated at 498.2 kcal; not an additional portion.",
+          "reviewRequired": false
         }
       ],
       "workouts": [
@@ -2674,6 +2675,45 @@
           "source": "User-provided recipe and handwritten weighed serving/photo, 14 Oct 2026; whey label saved 9 Oct; pancake recipe cookies-cream-protein-pancakes-2026-10-14; Voedingscentrum strawberries https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-voedingswaarden-zitten-erin/aardbeien.aspx and banana https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-voedingswaarden-zitten-erin/banaan.aspx",
           "note": "Calculated as 186/637 = 29.199% of 1,450 kcal pancake batch (100 g Cookies & Cream whey, 500 ml Dutch halfvolle melk, 200 g wheat flour, 2 eggs), plus 48 g strawberries and 76 g edible banana. Pancakes ~423.4 kcal, strawberries ~13.9 kcal, banana ~70.0 kcal. Handwritten note says 'kos saam' 308 g but component weights add to 310 g; individual weights used. Assumes no extra cooking oil, butter, toppings or syrup.",
           "loggedAt": "2026-10-14T19:21:27.870Z",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-14-cup-a-soup-champignon-1",
+          "name": "Cup-a-Soup mushroom (champignon)",
+          "quantity": "1 mug / 1 sachet (interpreted user '70 kg' as 70 kcal)",
+          "kcal": 70,
+          "protein": 1.2,
+          "carbs": 9,
+          "fat": 3.2,
+          "estimated": true,
+          "source": "User-reported 70 kcal; Knorr Cup-a-Soup Champignon Ham 70 kcal per sachet nutrition benchmark published by Sligro https://www.sligro.nl/p.757490.html/unox-cup-a-soup-champignon-ham-doos-21-zakjes-x-16-gram.html ; exact mushroom flavor variant unconfirmed.",
+          "note": "User gave 70 (interpreted as kcal, since 70 kg cannot be a cup of soup) and requested complete macros. Used 70 kcal mushroom-and-ham Cup-a-Soup nutrition as proxy: 1.2 g protein, 9 g carbs, 3.2 g fat. Standard 175 ml preparation; product variant unverified, so macros approximate. All 4 nutrition fields are populated.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-14-machine-lattes-2-setting-1-1",
+          "name": "Coffee-machine lattes, milk setting 1",
+          "quantity": "2 lattes, milk setting 1 of 3",
+          "kcal": 60,
+          "protein": 2,
+          "carbs": 8,
+          "fat": 2,
+          "estimated": true,
+          "source": "Existing personalized coffee-machine estimate from 13 Oct 2026: 30 kcal, 1 g protein, 4 g carbs, 1 g fat per latte at milk setting 1.",
+          "note": "Two machine lattes at normal lowest milk setting; same estimate as recorded 13 Oct. The cup may be 330 ml capacity but latte quantity of powder is not measured. Macros estimated with all fields populated.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-14-dr-pepper-vanilla-float-can-1",
+          "name": "Dr Pepper Vanilla Float",
+          "quantity": "1 can (assumed standard Dutch 330 ml can)",
+          "kcal": 58,
+          "protein": 0,
+          "carbs": 14.2,
+          "fat": 0,
+          "estimated": true,
+          "source": "Official Jumbo Netherlands 330 ml Dr Pepper Vanilla Float listing https://www.jumbo.com/producten/dr-pepper-vanilla-float-330ml-683236BLK with can label: 58 kcal, 14.2 g carbs, 0 g protein and fat per can.",
+          "note": "Assumes regular Dutch 330 ml Dr Pepper Vanilla Float (not sugar-free or an imported 355 ml can). Exact product/can size not confirmed by user. Full estimated macros included.",
           "reviewRequired": false
         }
       ],
