@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-13T20:30:31.376Z",
+  "updatedAt": "2026-10-14T19:21:27.874Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2659,6 +2659,29 @@
         "recordedAt": "2026-10-13T08:48:21.687Z",
         "method": "Calipers"
       }
+    },
+    "2026-10-14": {
+      "food": [
+        {
+          "id": "2026-10-14-cookies-cream-protein-pancakes-fruit-1",
+          "name": "Cookies & Cream protein pancakes with banana and strawberries",
+          "quantity": "3 pancakes (186 g from 637 g cooked batch) + 48 g strawberries + 76 g banana; total measured components 310 g",
+          "kcal": 507.3,
+          "protein": 37.6,
+          "carbs": 69.6,
+          "fat": 6.8,
+          "estimated": true,
+          "source": "User-provided recipe and handwritten weighed serving/photo, 14 Oct 2026; whey label saved 9 Oct; pancake recipe cookies-cream-protein-pancakes-2026-10-14; Voedingscentrum strawberries https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-voedingswaarden-zitten-erin/aardbeien.aspx and banana https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-voedingswaarden-zitten-erin/banaan.aspx",
+          "note": "Calculated as 186/637 = 29.199% of 1,450 kcal pancake batch (100 g Cookies & Cream whey, 500 ml Dutch halfvolle melk, 200 g wheat flour, 2 eggs), plus 48 g strawberries and 76 g edible banana. Pancakes ~423.4 kcal, strawberries ~13.9 kcal, banana ~70.0 kcal. Handwritten note says 'kos saam' 308 g but component weights add to 310 g; individual weights used. Assumes no extra cooking oil, butter, toppings or syrup.",
+          "loggedAt": "2026-10-14T19:21:27.870Z",
+          "reviewRequired": false
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": ""
     }
   },
   "recipes": [
@@ -2728,6 +2751,48 @@
       "estimated": true,
       "source": "User report and seasoning label, 4 Oct 2026; generic raw chicken breast estimate.",
       "note": "Final cooked yield still needed. Once supplied, calculate cooked per-100g nutrition and correct provisional portions."
+    },
+    {
+      "id": "cookies-cream-protein-pancakes-2026-10-14",
+      "name": "Cookies & Cream whey protein pancakes — 14 Oct 2026",
+      "yieldG": 637,
+      "ingredients": [
+        {
+          "name": "Cookies & Cream whey protein powder",
+          "quantity": "100 g",
+          "note": "Saved label: 30 g = 114 kcal, 21.7 g protein, 3.1 g carbs, 0.9 g fat."
+        },
+        {
+          "name": "Halfvolle melk",
+          "quantity": "500 ml",
+          "note": "Reference Dutch halfvolle melk per 100 ml: 48 kcal, 3.6 g protein, 4.7 g carbs, 1.6 g fat; exact brand unspecified."
+        },
+        {
+          "name": "Tarwebloem (wheat flour)",
+          "quantity": "200 g",
+          "note": "AH standard tarwebloem reference per 100 g: 349 kcal, 11 g protein, 72 g carbs, 1.1 g fat; actual brand unspecified."
+        },
+        {
+          "name": "Eggs",
+          "quantity": "2 eggs (~50 g edible portion each)",
+          "note": "Voedingscentrum raw egg per egg: 66 kcal, 6.2 g protein, 0.1 g carbs and 4.6 g fat; size unconfirmed."
+        }
+      ],
+      "total": {
+        "kcal": 1450,
+        "protein": 124.73,
+        "carbs": 178.03,
+        "fat": 22.4
+      },
+      "per100g": {
+        "kcal": 227.63,
+        "protein": 19.58,
+        "carbs": 27.95,
+        "fat": 3.52
+      },
+      "estimated": true,
+      "source": "User recipe and written cooked yield photo, 14 Oct 2026; saved 9 Oct Cookies & Cream whey label; Albert Heijn tarwebloem https://www.ah.nl/producten/product/wi36783/tarwebloem and halfvolle melk https://www.ah.nl/producten/product/wi33693/ah-halfvolle-melk; Voedingscentrum raw egg https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-voedingswaarden-zitten-erin/rauw-ei.aspx",
+      "note": "Whole cooked pancake batch weighed 637 g. Fat/butter/oil used in cooking not reported and therefore excluded. Assumes all ingredients remained in batch except moisture lost to cooking. Whey label verified from prior log; milk/flour/egg estimates."
     }
   ],
   "provenance": {
