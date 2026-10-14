@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-14T20:03:43.151Z",
+  "updatedAt": "2026-10-14T20:13:30.766Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2714,6 +2714,20 @@
           "estimated": true,
           "source": "Official Jumbo Netherlands 330 ml Dr Pepper Vanilla Float listing https://www.jumbo.com/producten/dr-pepper-vanilla-float-330ml-683236BLK with can label: 58 kcal, 14.2 g carbs, 0 g protein and fat per can.",
           "note": "Assumes regular Dutch 330 ml Dr Pepper Vanilla Float (not sugar-free or an imported 355 ml can). Exact product/can size not confirmed by user. Full estimated macros included.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-14-whey-protein-zero-chocolate-130g-1",
+          "name": "Whey Protein Zero — Chocolate",
+          "quantity": "130 g powder (4.33 × 30 g scoops); mixing liquid not included",
+          "kcal": 490.1,
+          "protein": 94.3,
+          "carbs": 6.9,
+          "fat": 10,
+          "fibre": 6,
+          "estimated": false,
+          "source": "User-provided nutrition facts photograph dated 14 Oct 2026, chocolate Whey Protein Zero: per 100 g 377 kcal, 72.5 g protein, 5.3 g carbohydrates, 7.7 g fat and 4.6 g fibre.",
+          "note": "User explicitly requested logging 130 g chocolate flavor, not the previously used Cookies & Cream formula. Label values multiplied by 1.3: 490.1 kcal, 94.25 g protein (recorded 94.3 g), 6.89 g carbs (6.9 g), 10.01 g fat (10.0 g), 5.98 g fibre (6.0 g). Water assumed as neutral; no milk or other caloric mixer reported. Powder only.",
           "reviewRequired": false
         }
       ],
