@@ -1,3 +1,4 @@
+import {createLifeUI} from '../dist/life-ui.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {validateHealth,bodySeries,bodySummary,bodyDays,toMetric,fromMetric,sameDayComposition,assertUnchanged,validDate} from '../dist/body.js';
@@ -39,3 +40,35 @@ test('HTTP 409 retries a disjoint mutation against fresh data',async()=>{let d=f
 test('ambiguous network failure never triggers an automatic duplicate PUT',async()=>{let puts=0;const s=new GitHubStore({storage:storeMem(),fetcher:async(url,o)=>{if(url.endsWith('/user'))return json({login:'fixture'});if(o.method==='PUT'){puts++;throw TypeError('Network disconnected');}return file(fresh());}});await s.connect('synthetic-test-token');await assert.rejects(s.save(d=>{d.days['2026-09-22'].steps=10;},'test'),/could not be confirmed/);assert.equal(puts,1);assert.equal(s.lastCommit,null);});
 test('a mismatched readback cannot claim a verified save',async()=>{const d=fresh();const s=new GitHubStore({storage:storeMem(),fetcher:async(url,o)=>{if(url.endsWith('/user'))return json({login:'fixture'});if(o.method==='PUT')return json({commit:{sha:'bad-readback'}});return file(d);}});await s.connect('synthetic-test-token');await assert.rejects(s.save(d=>{d.days['2026-09-22'].weightKg=80;},'test'),/could not be confirmed/);assert.equal(s.lastCommit,null);});
 test('a stale raw response cannot roll back newer verified data',async()=>{const old=fresh(),newer=fresh();newer.updatedAt='2026-09-22T12:00:00Z';newer.days['2026-09-22'].steps=99;const s=new GitHubStore({storage:storeMem(),fetcher:async url=>url.startsWith(RAW)?json(old):file(newer)});s.data=newer;await s.load();assert.equal(s.data.days['2026-09-22'].steps,99);});
+
+
+test('removed AI controls cannot call a provider and manual wellbeing stays available',async()=>{
+ const previousDocument=globalThis.document;globalThis.document={addEventListener(){}};
+ try{
+  const data=fresh(),ui=createLifeUI({store:{data},state:{date:'2026-09-22'},dateControls:()=>'',activity:()=>''});
+  assert.equal(ui.view('ask'),null);
+  assert.equal(ui.estimateFood,undefined);
+  assert.equal(await ui.action('ai-setup',{}),false);
+  assert.equal(await ui.action('ai-test',{}),false);
+  assert.equal(await ui.action('proposal-save',{}),false);
+  assert.equal(await ui.action('chatgpt',{}),false);
+  assert.match(ui.view('dashboard'),/data-life="wellbeing"/);
+  assert.match(ui.setupBlock(),/Set up Gmail/);
+  assert.doesNotMatch(ui.setupBlock()+ui.view('dashboard')+ui.view('insights'),/\b(?:Groq|ChatGPT|GPT-OSS|Connect AI)\b|assistant-form|proposal-save|data-life="ask"/);
+  assert.deepEqual(data,fresh());
+ }finally{if(previousDocument===undefined)delete globalThis.document;else globalThis.document=previousDocument;}
+});
+
+test('manual food saves preserve historical model estimates and unrelated measurements',async()=>{
+ let data=fresh(),puts=0;
+ const historical={id:'historic-estimate',name:'Historic food',quantity:'200 g cooked',kcal:330,protein:62,carbs:0,fat:7.2,estimated:true,source:'Groq · GPT-OSS 120B model estimate',note:'Original model assumptions retained.'};
+ data.days['2026-09-22'].food.push(structuredClone(historical));data.days['2026-09-22'].weightKg=80;
+ const manual={id:'manual-food',name:'Labelled snack',quantity:'1 bar',kcal:180,protein:10,carbs:20,fat:7,estimated:false,source:'Manually entered in Cam’s Life',note:'Nutrition copied from the label.'};
+ const store=new GitHubStore({storage:storeMem(),fetcher:async(url,options)=>{
+  if(url.endsWith('/user'))return json({login:'fixture-user'});
+  if(options.method==='PUT'){puts++;data=JSON.parse(Buffer.from(JSON.parse(options.body).content,'base64').toString());return json({commit:{sha:'manual-food-verified'}});}
+  return file(data);
+ }});
+ await store.connect('synthetic-test-token');await store.save(current=>current.days['2026-09-22'].food.push(structuredClone(manual)),'Log manual food');
+ assert.equal(puts,1);assert.equal(store.lastCommit,'manual-food-verified');assert.deepEqual(store.data.days['2026-09-22'].food,[historical,manual]);assert.equal(store.data.days['2026-09-22'].weightKg,80);
+});

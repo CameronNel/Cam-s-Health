@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-13T20:30:31.376Z",
+  "updatedAt": "2026-10-14T20:13:30.766Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2604,14 +2604,15 @@
         {
           "id": "2026-10-13-lidl-beef-tomato-wrap-280g-1",
           "name": "Lidl wholewheat wrap with 85/15 beef mince, tomatoes and greens",
-          "quantity": "Ate all 218.3 g beef-tomato-greens filling + 3/4 of 61.7 g Lidl tortilla (46.275 g); 264.575 g total eaten",
-          "kcal": 507,
-          "protein": 48.5,
-          "carbs": 23.9,
-          "fat": 22.3,
+          "quantity": "Entire Lidl tortilla (61.7 g) + all 188.3 g beef-tomato-greens filling = 250 g total eaten",
+          "kcal": 498.2,
+          "protein": 43.9,
+          "carbs": 30.6,
+          "fat": 20.2,
           "estimated": true,
-          "source": "Lidl tortilla back-label photo provided 13 Oct 2026 (61.7 g = 173 kcal, 5.9 g protein, 28.4 g carbs, 2.9 g fat); user's 280 g combined weight and recipe description; beef reference USDA FDC 174034 (cooked 85/15 crumbles = 256 kcal/100 g): https://whatyoueat.io/foods/174034 ; canned diced tomato USDA = 21 kcal/100 g: https://fooddata.the50.store/ingredients/100193-tomatoes-canned-red-ripe-diced",
-          "note": "Corrected by user on 13 Oct 2026: 3/4 of tortilla consumed, all 218.3 g cooked filling consumed. Tortilla 3/4: 46.275 g, 129.75 kcal, 4.425 g protein, 21.3 g carbs, 2.175 g fat based on user's Lidl label. Filling unchanged: estimated 377 kcal, 44.1 g protein, 2.6 g carbs, 20.1 g fat. Combined rounded 507 kcal, 48.5 g protein, 23.9 g carbs, 22.3 g fat. Beef-to-tomato ratio and fat drained unmeasured; filling macros and calories remain estimates."
+          "source": "User correction on 14 Oct 2026 for the 13 Oct meal; same user-provided Lidl tortilla label (full 61.7 g: 173 kcal, 5.9 g protein, 28.4 g carbs, 2.9 g fat). Filling recalculated proportionally from original 218.3 g estimate based on cooked 85/15 mince and canned tomato; original reference: https://whatyoueat.io/foods/174034",
+          "note": "Corrects the previously logged 280 g combined plate with 3/4 tortilla. User clarified entire 61.7 g tortilla was eaten, and the entire meal including tortilla weighed 250 g: 250 - 61.7 = 188.3 g filling. Previous 218.3 g filling was estimated at 377 kcal, 44.1 g protein, 2.6 g carbs and 20.1 g fat; revised proportionally ×188.3/218.3. Entire tortilla contributed 173 kcal, 5.9 g protein, 28.4 g carbs, 2.9 g fat. Assumes same beef-to-tomato ratio and cooked drained-fat profile as previous estimate. Full corrected plate estimated at 498.2 kcal; not an additional portion.",
+          "reviewRequired": false
         }
       ],
       "workouts": [
@@ -2659,6 +2660,105 @@
         "recordedAt": "2026-10-13T08:48:21.687Z",
         "method": "Calipers"
       }
+    },
+    "2026-10-14": {
+      "food": [
+        {
+          "id": "2026-10-14-cookies-cream-protein-pancakes-fruit-1",
+          "name": "Cookies & Cream protein pancakes with banana and strawberries",
+          "quantity": "3 pancakes (186 g from 637 g cooked batch) + 48 g strawberries + 76 g banana; total measured components 310 g",
+          "kcal": 507.3,
+          "protein": 37.6,
+          "carbs": 69.6,
+          "fat": 6.8,
+          "estimated": true,
+          "source": "User-provided recipe and handwritten weighed serving/photo, 14 Oct 2026; whey label saved 9 Oct; pancake recipe cookies-cream-protein-pancakes-2026-10-14; Voedingscentrum strawberries https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-voedingswaarden-zitten-erin/aardbeien.aspx and banana https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-voedingswaarden-zitten-erin/banaan.aspx",
+          "note": "Calculated as 186/637 = 29.199% of 1,450 kcal pancake batch (100 g Cookies & Cream whey, 500 ml Dutch halfvolle melk, 200 g wheat flour, 2 eggs), plus 48 g strawberries and 76 g edible banana. Pancakes ~423.4 kcal, strawberries ~13.9 kcal, banana ~70.0 kcal. Handwritten note says 'kos saam' 308 g but component weights add to 310 g; individual weights used. Assumes no extra cooking oil, butter, toppings or syrup.",
+          "loggedAt": "2026-10-14T19:21:27.870Z",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-14-cup-a-soup-champignon-1",
+          "name": "Cup-a-Soup mushroom (champignon)",
+          "quantity": "1 mug / 1 sachet (interpreted user '70 kg' as 70 kcal)",
+          "kcal": 70,
+          "protein": 1.2,
+          "carbs": 9,
+          "fat": 3.2,
+          "estimated": true,
+          "source": "User-reported 70 kcal; Knorr Cup-a-Soup Champignon Ham 70 kcal per sachet nutrition benchmark published by Sligro https://www.sligro.nl/p.757490.html/unox-cup-a-soup-champignon-ham-doos-21-zakjes-x-16-gram.html ; exact mushroom flavor variant unconfirmed.",
+          "note": "User gave 70 (interpreted as kcal, since 70 kg cannot be a cup of soup) and requested complete macros. Used 70 kcal mushroom-and-ham Cup-a-Soup nutrition as proxy: 1.2 g protein, 9 g carbs, 3.2 g fat. Standard 175 ml preparation; product variant unverified, so macros approximate. All 4 nutrition fields are populated.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-14-machine-lattes-2-setting-1-1",
+          "name": "Coffee-machine lattes, milk setting 1",
+          "quantity": "2 lattes, milk setting 1 of 3",
+          "kcal": 60,
+          "protein": 2,
+          "carbs": 8,
+          "fat": 2,
+          "estimated": true,
+          "source": "Existing personalized coffee-machine estimate from 13 Oct 2026: 30 kcal, 1 g protein, 4 g carbs, 1 g fat per latte at milk setting 1.",
+          "note": "Two machine lattes at normal lowest milk setting; same estimate as recorded 13 Oct. The cup may be 330 ml capacity but latte quantity of powder is not measured. Macros estimated with all fields populated.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-14-dr-pepper-vanilla-float-can-1",
+          "name": "Dr Pepper Vanilla Float",
+          "quantity": "1 can (assumed standard Dutch 330 ml can)",
+          "kcal": 58,
+          "protein": 0,
+          "carbs": 14.2,
+          "fat": 0,
+          "estimated": true,
+          "source": "Official Jumbo Netherlands 330 ml Dr Pepper Vanilla Float listing https://www.jumbo.com/producten/dr-pepper-vanilla-float-330ml-683236BLK with can label: 58 kcal, 14.2 g carbs, 0 g protein and fat per can.",
+          "note": "Assumes regular Dutch 330 ml Dr Pepper Vanilla Float (not sugar-free or an imported 355 ml can). Exact product/can size not confirmed by user. Full estimated macros included.",
+          "reviewRequired": false
+        },
+        {
+          "id": "2026-10-14-whey-protein-zero-chocolate-130g-1",
+          "name": "Whey Protein Zero — Chocolate",
+          "quantity": "130 g powder (4.33 × 30 g scoops); mixing liquid not included",
+          "kcal": 490.1,
+          "protein": 94.3,
+          "carbs": 6.9,
+          "fat": 10,
+          "fibre": 6,
+          "estimated": false,
+          "source": "User-provided nutrition facts photograph dated 14 Oct 2026, chocolate Whey Protein Zero: per 100 g 377 kcal, 72.5 g protein, 5.3 g carbohydrates, 7.7 g fat and 4.6 g fibre.",
+          "note": "User explicitly requested logging 130 g chocolate flavor, not the previously used Cookies & Cream formula. Label values multiplied by 1.3: 490.1 kcal, 94.25 g protein (recorded 94.3 g), 6.89 g carbs (6.9 g), 10.01 g fat (10.0 g), 5.98 g fibre (6.0 g). Water assumed as neutral; no milk or other caloric mixer reported. Powder only.",
+          "reviewRequired": false
+        }
+      ],
+      "workouts": [
+        {
+          "id": "2026-10-14-shoulders-db-press-lateral-raises-1",
+          "sessionId": null,
+          "name": "Shoulders (DB shoulder press + lateral raises)",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Reported 14 Oct 2026: 3 sets dumbbell shoulder press, 8 sets lateral raises (11 total sets). Repetitions, loads and duration not provided. Logged as a custom shoulder session; no other exercises assumed.",
+          "actualExercises": [
+            {
+              "name": "Dumbbell shoulder press",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Lateral raises",
+              "sets": 8,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": ""
     }
   },
   "recipes": [
@@ -2728,6 +2828,48 @@
       "estimated": true,
       "source": "User report and seasoning label, 4 Oct 2026; generic raw chicken breast estimate.",
       "note": "Final cooked yield still needed. Once supplied, calculate cooked per-100g nutrition and correct provisional portions."
+    },
+    {
+      "id": "cookies-cream-protein-pancakes-2026-10-14",
+      "name": "Cookies & Cream whey protein pancakes — 14 Oct 2026",
+      "yieldG": 637,
+      "ingredients": [
+        {
+          "name": "Cookies & Cream whey protein powder",
+          "quantity": "100 g",
+          "note": "Saved label: 30 g = 114 kcal, 21.7 g protein, 3.1 g carbs, 0.9 g fat."
+        },
+        {
+          "name": "Halfvolle melk",
+          "quantity": "500 ml",
+          "note": "Reference Dutch halfvolle melk per 100 ml: 48 kcal, 3.6 g protein, 4.7 g carbs, 1.6 g fat; exact brand unspecified."
+        },
+        {
+          "name": "Tarwebloem (wheat flour)",
+          "quantity": "200 g",
+          "note": "AH standard tarwebloem reference per 100 g: 349 kcal, 11 g protein, 72 g carbs, 1.1 g fat; actual brand unspecified."
+        },
+        {
+          "name": "Eggs",
+          "quantity": "2 eggs (~50 g edible portion each)",
+          "note": "Voedingscentrum raw egg per egg: 66 kcal, 6.2 g protein, 0.1 g carbs and 4.6 g fat; size unconfirmed."
+        }
+      ],
+      "total": {
+        "kcal": 1450,
+        "protein": 124.73,
+        "carbs": 178.03,
+        "fat": 22.4
+      },
+      "per100g": {
+        "kcal": 227.63,
+        "protein": 19.58,
+        "carbs": 27.95,
+        "fat": 3.52
+      },
+      "estimated": true,
+      "source": "User recipe and written cooked yield photo, 14 Oct 2026; saved 9 Oct Cookies & Cream whey label; Albert Heijn tarwebloem https://www.ah.nl/producten/product/wi36783/tarwebloem and halfvolle melk https://www.ah.nl/producten/product/wi33693/ah-halfvolle-melk; Voedingscentrum raw egg https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-voedingswaarden-zitten-erin/rauw-ei.aspx",
+      "note": "Whole cooked pancake batch weighed 637 g. Fat/butter/oil used in cooking not reported and therefore excluded. Assumes all ingredients remained in batch except moisture lost to cooking. Whey label verified from prior log; milk/flour/egg estimates."
     }
   ],
   "provenance": {

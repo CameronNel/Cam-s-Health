@@ -1,4 +1,18 @@
-import {sqliteTable, text, integer, index} from 'drizzle-orm/sqlite-core';
+import {sqliteTable, text, integer, index, primaryKey} from 'drizzle-orm/sqlite-core';
+
+// Retired AI tables stay declared so future migrations cannot drop history.
+// Migration 0003 removes only the encrypted connection material.
+export const aiConnections = sqliteTable('ai_connections', {
+  ownerId: text('owner_id').primaryKey().notNull(),
+  encryptedApiKey: text('encrypted_api_key').notNull(),
+  updatedAt: text('updated_at').notNull(),
+});
+
+export const aiDailyUsage = sqliteTable('ai_daily_usage', {
+  ownerId: text('owner_id').notNull(),
+  usageDay: text('usage_day').notNull(),
+  requestCount: integer('request_count').notNull(),
+}, table => [primaryKey({columns: [table.ownerId, table.usageDay]})]);
 
 export const lifeState = sqliteTable('life_state', {
   ownerId: text('owner_id').primaryKey().notNull(),
@@ -12,6 +26,12 @@ export const mailboxAccounts = sqliteTable('mailbox_accounts', {
   encryptedRefreshToken: text('encrypted_refresh_token').notNull(),
   email: text('email').notNull(),
   scopes: text('scopes').notNull(),
+  updatedAt: text('updated_at').notNull(),
+});
+
+export const mailboxOauthClients = sqliteTable('mailbox_oauth_clients', {
+  ownerId: text('owner_id').primaryKey().notNull(),
+  encryptedClient: text('encrypted_client').notNull(),
   updatedAt: text('updated_at').notNull(),
 });
 

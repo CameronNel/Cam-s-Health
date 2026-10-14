@@ -1,0 +1,13 @@
+{
+  "agent": "/root/night_inbox_life_settings_builder",
+  "selectedCases": 324,
+  "selectedPngs": 1280,
+  "actualStaticInspectionComplete": true,
+  "coreFreshRepairOriginals": 24,
+  "delegatedWatchFreshRepairOriginals": 28,
+  "uncoveredSelectedFiles": 0,
+  "confirmedCurrentStaticDefects": [],
+  "subsequentSourceDelta": "Training weekly tile CSS only; absent from this scope",
+  "softwareChecks": "60 selected supplementary cases/265 originals captured; actual screenshot inspection in progress",
+  "wholeAppAcceptance": false
+}

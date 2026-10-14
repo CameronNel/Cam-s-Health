@@ -110,12 +110,12 @@ test('state mutations reject missing and foreign origins without creating data',
   assert.equal(app.db.raw.prepare('SELECT count(*) AS count FROM life_state').get().count, 0);
 });
 
-test('status reports subscription handoff and scheduler stays disabled by default', async () => {
+test('status reports disabled AI and scheduler stays disabled by default', async () => {
   const app = fixture();
   const status = await (await app.request('/api/status')).json();
-  assert.equal(status.aiMode, 'subscription-handoff');
+  assert.equal(status.aiMode, 'disabled');
   assert.equal(status.aiConfigured, false); assert.equal(status.hourlySync, false);
-  assert.equal((await app.request('/api/assistant', {method: 'POST', body: {message: 'Hi'}})).status, 404);
+  assert.equal(status.aiSetup, undefined);
   assert.equal(app.calls.length, 0);
 });
 
@@ -153,6 +153,61 @@ test('Gmail OAuth will not start with an invalid encryption key', async () => {
   const app = fixture(); app.env.LIFE_ENCRYPTION_KEY = 'bad-key';
   assert.equal((await app.request('/api/inbox/connect', {method: 'POST'})).status, 503);
   assert.equal(app.calls.length, 0);
+});
+
+const setupClient = {clientId:'123456789-cams-life.apps.googleusercontent.com',clientSecret:'GOCSPX-synthetic-client-fixture',redirectUris:[SITE+'/api/inbox/callback']};
+function withoutGoogleEnv(app) {delete app.env.GOOGLE_CLIENT_ID;delete app.env.GOOGLE_CLIENT_SECRET;return app;}
+
+test('missing Google client is an actionable setup state, independent of ready encryption', async () => {
+  const app = withoutGoogleEnv(fixture());
+  const status = await (await app.request('/api/status')).json();
+  assert.equal(status.gmail,false);assert.deepEqual(status.gmailSetup,{configured:false,source:null,storageReady:true,encryptionReady:true,redirectUri:SITE+'/api/inbox/callback'});
+  const response = await app.request('/api/inbox/connect',{method:'POST'});
+  assert.equal(response.status,503);assert.match((await response.json()).error,/Settings/);assert.equal(app.calls.length,0);
+});
+
+test('Settings client is encrypted, isolated by owner, never exposed, and works for OAuth and refresh', async () => {
+  const app = withoutGoogleEnv(fixture());
+  const life = createLifeState({tasks:[{id:'keep-task',title:'Keep this task',status:'open'}]});
+  await app.request('/api/life',{method:'PUT',body:{state:life,version:0}});
+  const saved = await app.request('/api/inbox/setup',{method:'POST',body:setupClient});
+  assert.equal(saved.status,200);assert.ok(!(await saved.text()).includes(setupClient.clientSecret));
+  const row = app.db.raw.prepare('SELECT * FROM mailbox_oauth_clients WHERE owner_id = ?').get(OWNER);
+  assert.match(row.encrypted_client,/^v1\./);assert.ok(!row.encrypted_client.includes(setupClient.clientSecret));assert.ok(!row.encrypted_client.includes(setupClient.clientId));
+  const statusResponse = await app.request('/api/status');assert.equal(statusResponse.headers.get('cache-control'),'no-store');const rawStatus=await statusResponse.text();
+  assert.ok(!rawStatus.includes(setupClient.clientSecret));assert.ok(!rawStatus.includes(setupClient.clientId));assert.equal(JSON.parse(rawStatus).gmailSetup.source,'settings');
+  assert.equal((await (await app.request('/api/status',{owner:OTHER})).json()).gmail,false);
+  assert.equal((await app.request('/api/inbox/connect',{method:'POST',owner:OTHER})).status,503);
+  await app.connect();await app.request('/api/inbox/sync',{method:'POST',body:{}});
+  const tokenCalls=app.calls.filter(call=>call.url==='https://oauth2.googleapis.com/token');assert.equal(tokenCalls.length,2);
+  for(const call of tokenCalls){const params=new URLSearchParams(call.body);assert.equal(params.get('client_id'),setupClient.clientId);assert.equal(params.get('client_secret'),setupClient.clientSecret);}
+  const current=await (await app.request('/api/life')).json();assert.deepEqual(current.state.tasks,life.tasks);
+});
+
+test('Google setup validates the Web client and exact redirect, and rejects foreign writes', async () => {
+  const app=withoutGoogleEnv(fixture());
+  for(const body of [{...setupClient,clientId:'desktop-client'},{...setupClient,clientSecret:''},{...setupClient,redirectUris:['https://attacker.example/api/inbox/callback']}])assert.equal((await app.request('/api/inbox/setup',{method:'POST',body})).status,400);
+  for(const origin of [null,'https://attacker.example'])assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:setupClient,origin})).status,403);
+  assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:setupClient,owner:null})).status,401);
+  assert.equal(app.db.raw.prepare('SELECT count(*) AS count FROM mailbox_oauth_clients').get().count,0);assert.equal(app.calls.length,0);
+  app.env.LIFE_ENCRYPTION_KEY='invalid';assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:setupClient})).status,503);
+});
+
+test('changing Google setup invalidates pending consent and never replaces a connected client', async () => {
+  const app=withoutGoogleEnv(fixture());await app.request('/api/inbox/setup',{method:'POST',body:setupClient});
+  const start=await (await app.request('/api/inbox/connect',{method:'POST'})).json(),nonce=new URL(start.url).searchParams.get('state');
+  const second={...setupClient,clientSecret:'GOCSPX-second-synthetic-fixture'};
+  assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:second})).status,200);
+  assert.equal((await app.request('/api/inbox/callback?state='+nonce+'&code=old-code')).status,400);assert.equal(app.calls.length,0);
+  await app.connect();const before=app.db.raw.prepare('SELECT * FROM mailbox_oauth_clients').get();
+  assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:setupClient})).status,409);
+  assert.deepEqual(app.db.raw.prepare('SELECT * FROM mailbox_oauth_clients').get(),before);
+  assert.equal((await (await app.request('/api/status')).json()).gmailConnected,true);
+});
+
+test('Google settings cannot replace a server-managed client', async () => {
+  const app=fixture();assert.equal((await app.request('/api/inbox/setup',{method:'POST',body:setupClient})).status,409);
+  assert.equal(app.db.raw.prepare('SELECT count(*) AS count FROM mailbox_oauth_clients').get().count,0);
 });
 
 test('Gmail sync builds digest, deliveries and todos without reopening finished tasks', async () => {
@@ -222,4 +277,74 @@ test('hourly entry remains dormant until a real scheduler is explicitly enabled'
   const before = app.calls.length;
   await app.worker.scheduled({}, app.env, {});
   assert.equal(app.calls.length, before);
+});
+
+test('cached AI client routes return 410 without reading bodies, touching storage or calling a provider', async () => {
+  const app = fixture();
+  app.env.LIFE_DB = {prepare() {throw Error('Retired AI must never touch private storage');}};
+  app.env.LIFE_ENCRYPTION_KEY = 'invalid-retired-key';
+  for (const path of ['/api/assistant','/api/ai/setup','/api/ai/test']) {
+    for (const method of ['POST','DELETE','GET']) {
+      const response = await app.request(path,{method,body: method==='GET' ? undefined : {apiKey:'private-user-key',health:{private:'existing health'},message:'private check-in'}});
+      assert.equal(response.status,410); assert.equal(response.headers.get('cache-control'),'no-store');
+      const result = await response.json(); assert.equal(result.code,'ai_removed');
+      assert.match(result.error,/AI has been removed/);
+      for (const secret of ['private-user-key','existing health','private check-in']) assert.ok(!JSON.stringify(result).includes(secret));
+    }
+  }
+  assert.equal(app.calls.length,0);
+  // A stale caller with invalid JSON also receives the static removal response.
+  const response = await app.worker.fetch(new Request(SITE+'/api/assistant',{method:'POST',headers:{origin:SITE,'oai-authenticated-user-id':OWNER,'content-type':'application/json'},body:'not-json-private-data'}),app.env);
+  assert.equal(response.status,410); assert.equal(app.calls.length,0);
+});
+
+test('retired AI routes retain authenticated identity and same-origin mutation gates', async () => {
+  const app = fixture(); app.env.LIFE_OWNER_ID = OWNER;
+  for (const path of ['/api/assistant','/api/ai/setup','/api/ai/test']) {
+    assert.equal((await app.request(path,{method:'POST',owner:null})).status,401);
+    assert.equal((await app.request(path,{method:'POST',owner:OTHER})).status,403);
+    for (const origin of [null,'https://attacker.example']) assert.equal((await app.request(path,{method:'POST',origin})).status,403);
+  }
+  assert.equal(app.calls.length,0);
+});
+
+test('disabled AI status never opens retired keys and stale requests leave existing life and mailbox data unchanged', async () => {
+  const app = fixture(); await app.connect();
+  const state = createLifeState();
+  state.tasks.push({id:'keep-task',title:'Receive an existing package',status:'open',source:'manual',createdAt:NOW.toISOString(),updatedAt:NOW.toISOString()});
+  await app.request('/api/life',{method:'PUT',body:{state,version:0}});
+  app.db.raw.prepare('INSERT INTO ai_connections VALUES (?, ?, ?)').run(OWNER,'cannot-decrypt-retired-key',NOW.toISOString());
+  app.db.raw.prepare('INSERT INTO ai_daily_usage VALUES (?, ?, ?)').run(OWNER,'2026-10-05',2);
+  const snapshot = () => JSON.stringify(['life_state','mailbox_accounts','mailbox_oauth_clients','oauth_states','cleanup_previews','mailbox_audit','ai_connections','ai_daily_usage'].map(table => [table,app.db.raw.prepare(`SELECT * FROM ${table}`).all()]));
+  const before = snapshot(), providerCalls = app.calls.length;
+  const status = await (await app.request('/api/status')).json();
+  assert.equal(status.aiMode,'disabled'); assert.equal(status.aiConfigured,false); assert.equal(status.aiSetup,undefined);
+  assert.equal(status.gmailConnected,true); assert.ok(!JSON.stringify(status).includes('cannot-decrypt-retired-key'));
+  for (const path of ['/api/assistant','/api/ai/setup','/api/ai/test']) assert.equal((await app.request(path,{method:'POST',body:{message:'Stale AI request'}})).status,410);
+  assert.equal(snapshot(),before); assert.equal(app.calls.length,providerCalls);
+  assert.equal((await (await app.request('/api/life')).json()).state.tasks[0].id,'keep-task');
+});
+
+test('AI retirement migration deletes encrypted connection material while preserving all other saved tables and usage history', () => {
+  const db = new DatabaseSync(':memory:'), directory = new URL('../drizzle/',import.meta.url);
+  const retirement = '0003_remove_ai_connections.sql';
+  for (const file of readdirSync(directory).filter(name => name.endsWith('.sql') && name < retirement).sort()) db.exec(readFileSync(new URL(file,directory),'utf8'));
+  const state = createLifeState({historical:'retain all private life records'});
+  db.prepare('INSERT INTO life_state VALUES (?, ?, ?, ?)').run(OWNER,JSON.stringify(state),4,NOW.toISOString());
+  db.prepare('INSERT INTO mailbox_accounts VALUES (?, ?, ?, ?, ?)').run(OWNER,'retained-mailbox-token','cam@example.com',SCOPE,NOW.toISOString());
+  db.prepare('INSERT INTO mailbox_oauth_clients VALUES (?, ?, ?)').run(OWNER,'retained-google-client',NOW.toISOString());
+  db.prepare('INSERT INTO oauth_states VALUES (?, ?, ?, ?)').run('retained-oauth-state',OWNER,SITE+'/api/inbox/callback',NOW.getTime()+60000);
+  db.prepare('INSERT INTO cleanup_previews VALUES (?, ?, ?, ?, ?, ?)').run('retained-cleanup',OWNER,'read','["mail-1"]',NOW.getTime()+60000,null);
+  db.prepare('INSERT INTO mailbox_audit (owner_id, operation, count, created_at) VALUES (?, ?, ?, ?)').run(OWNER,'read',1,NOW.toISOString());
+  db.prepare('INSERT INTO ai_daily_usage VALUES (?, ?, ?)').run(OWNER,'2026-10-05',2);
+  for (const owner of [OWNER,OTHER]) db.prepare('INSERT INTO ai_connections VALUES (?, ?, ?)').run(owner,'retired-encrypted-key-'+owner,NOW.toISOString());
+  const tables = ['life_state','mailbox_accounts','mailbox_oauth_clients','oauth_states','cleanup_previews','mailbox_audit','ai_daily_usage'];
+  const snapshot = () => JSON.stringify(tables.map(table => [table,db.prepare(`SELECT * FROM ${table}`).all()]));
+  const before = snapshot();
+  db.exec(readFileSync(new URL(retirement,directory),'utf8'));
+  assert.equal(db.prepare('SELECT count(*) AS count FROM ai_connections').get().count,0);
+  assert.equal(snapshot(),before);
+  assert.equal(db.prepare("SELECT count(*) AS count FROM sqlite_master WHERE type = 'table' AND name IN ('ai_connections','ai_daily_usage')").get().count,2);
+  db.exec(readFileSync(new URL(retirement,directory),'utf8')); assert.equal(snapshot(),before);
+  db.close();
 });

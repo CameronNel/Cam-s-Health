@@ -3,6 +3,7 @@ node_modules/
 *.tar.gz
 *.png
 !dist/icons/*.png
+!dist/assets/health-tiles.png
 .DS_Store
 
 .env

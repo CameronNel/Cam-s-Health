@@ -8,6 +8,27 @@
       "when": 1791199848815,
       "tag": "0000_curly_doctor_faustus",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1791230130188,
+      "tag": "0001_lyrical_lethal_legion",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1791271069426,
+      "tag": "0002_amusing_tomorrow_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1791275884926,
+      "tag": "0003_remove_ai_connections",
+      "breakpoints": true
     }
   ]
 }

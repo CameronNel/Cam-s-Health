@@ -45,11 +45,11 @@ function requireOrigin(request) {
   }
 }
 
-async function bodyJson(request) {
+async function bodyJson(request, maxBytes = MAX_JSON_BYTES) {
   if (!/^application\/json(?:\s*;|$)/i.test(request.headers.get('content-type') || '')) {
     throw new HttpError(415, 'Send a JSON request.', 'json_required');
   }
-  if (Number(request.headers.get('content-length') || 0) > MAX_JSON_BYTES) {
+  if (Number(request.headers.get('content-length') || 0) > maxBytes) {
     throw new HttpError(413, 'This request is too large.', 'request_too_large');
   }
   const reader = request.body?.getReader();
@@ -59,7 +59,7 @@ async function bodyJson(request) {
     const { value, done } = await reader.read();
     if (done) break;
     size += value.byteLength;
-    if (size > MAX_JSON_BYTES) { await reader.cancel(); throw new HttpError(413, 'This request is too large.', 'request_too_large'); }
+    if (size > maxBytes) { await reader.cancel(); throw new HttpError(413, 'This request is too large.', 'request_too_large'); }
     chunks.push(value);
   }
   const bytes = new Uint8Array(size); let offset = 0;
@@ -117,8 +117,45 @@ async function decryptSecret(crypto, env, owner, value) {
   }
 }
 
-function gmailConfigured(env) {
-  return Boolean(env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET && encryptionConfigured(env) && env.LIFE_DB);
+async function googleClient(env, owner, crypto) {
+  if (!env.LIFE_DB || !encryptionConfigured(env)) return null;
+  if (env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET) return {clientId: env.GOOGLE_CLIENT_ID, clientSecret: env.GOOGLE_CLIENT_SECRET, source: 'environment'};
+  const row = await database(env).prepare('SELECT encrypted_client FROM mailbox_oauth_clients WHERE owner_id = ?').bind(owner).first();
+  if (!row) return null;
+  try {
+    const client = JSON.parse(await decryptSecret(crypto, env, 'oauth-client:' + owner, row.encrypted_client));
+    if (typeof client.clientId !== 'string' || typeof client.clientSecret !== 'string') throw Error();
+    return {...client, source: 'settings'};
+  } catch { throw new HttpError(503, 'Your Google app settings could not be opened. Import the client JSON again in Settings.', 'gmail_setup_unavailable'); }
+}
+
+async function gmailSetup(env, owner, crypto, origin) {
+  const client = await googleClient(env, owner, crypto);
+  return {configured: Boolean(client), source: client?.source || null, storageReady: Boolean(env.LIFE_DB), encryptionReady: encryptionConfigured(env), redirectUri: origin + '/api/inbox/callback'};
+}
+
+async function requireGoogleClient(env, owner, crypto) {
+  const client = await googleClient(env, owner, crypto);
+  if (!client) throw new HttpError(503, 'Finish the one-time Gmail setup in Settings, then connect your Google account.', 'gmail_not_configured');
+  return client;
+}
+
+async function saveGoogleClient(request, env, owner, body, crypto, now) {
+  const db = database(env);
+  if (!encryptionConfigured(env)) throw new HttpError(503, 'Mailbox encryption needs to be enabled by the app owner before Google setup can be saved.', 'encryption_not_configured');
+  if (env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET) throw new HttpError(409, 'Google sign-in is already configured on the server. Use Connect Gmail.', 'gmail_setup_managed');
+  if (await accountFor(env, owner)) throw new HttpError(409, 'Disconnect Gmail before replacing the Google app settings. Your saved tasks and deliveries stay intact.', 'gmail_setup_connected');
+  const clientId = typeof body.clientId === 'string' ? body.clientId.trim() : '';
+  const clientSecret = typeof body.clientSecret === 'string' ? body.clientSecret.trim() : '';
+  const redirectUri = new URL(request.url).origin + '/api/inbox/callback';
+  if (clientId.length > 300 || !/^[A-Za-z0-9_-]+\.apps\.googleusercontent\.com$/.test(clientId) || !/^[A-Za-z0-9_-]{8,512}$/.test(clientSecret)) throw new HttpError(400, 'Import the JSON for a Google Web application client, with a client ID and client secret.', 'gmail_client_invalid');
+  if (!Array.isArray(body.redirectUris) || !body.redirectUris.includes(redirectUri)) throw new HttpError(400, 'Add the exact redirect address shown in Settings to your Google Web application client, then download its JSON again.', 'gmail_redirect_missing');
+  const encrypted = await encryptSecret(crypto, env, 'oauth-client:' + owner, JSON.stringify({clientId, clientSecret}));
+  await db.batch([
+    db.prepare('INSERT INTO mailbox_oauth_clients (owner_id, encrypted_client, updated_at) VALUES (?, ?, ?) ON CONFLICT(owner_id) DO UPDATE SET encrypted_client = excluded.encrypted_client, updated_at = excluded.updated_at').bind(owner, encrypted, now().toISOString()),
+    db.prepare('DELETE FROM oauth_states WHERE owner_id = ?').bind(owner),
+  ]);
+  return json({configured: true, message: 'Google app settings saved securely. Connect Gmail to grant mailbox access.'});
 }
 
 async function remoteJson(fetcher, url, options = {}, provider = 'Connection') {
@@ -195,13 +232,13 @@ async function accountFor(env, owner) {
 }
 
 async function accessToken(env, owner, crypto, fetcher) {
-  if (!gmailConfigured(env)) throw new HttpError(503, 'Gmail is not configured yet. Add the Google app settings and mailbox encryption key first.', 'gmail_not_configured');
+  const client = await requireGoogleClient(env, owner, crypto);
   const account = await accountFor(env, owner);
   if (!account) throw new HttpError(409, 'Connect your Gmail account first.', 'mailbox_not_connected');
   const refresh = await decryptSecret(crypto, env, owner, account.encrypted_refresh_token);
   const response = await remoteJson(fetcher, 'https://oauth2.googleapis.com/token', {
     method: 'POST', headers: {'content-type': 'application/x-www-form-urlencoded'},
-    body: new URLSearchParams({client_id: env.GOOGLE_CLIENT_ID, client_secret: env.GOOGLE_CLIENT_SECRET, refresh_token: refresh, grant_type: 'refresh_token'}),
+    body: new URLSearchParams({client_id: client.clientId, client_secret: client.clientSecret, refresh_token: refresh, grant_type: 'refresh_token'}),
   }, 'Gmail');
   if (typeof response.access_token !== 'string') throw new HttpError(503, 'Reconnect Gmail to restore mailbox access.', 'mailbox_reconnect_required');
   return response.access_token;
@@ -246,17 +283,17 @@ async function syncInbox(env, owner, query, crypto, fetcher, now) {
 }
 
 async function connectInbox(request, env, owner, crypto, now) {
-  if (!gmailConfigured(env)) throw new HttpError(503, 'Gmail is not configured yet. Add the Google app settings and mailbox encryption key first.', 'gmail_not_configured');
+  const client = await requireGoogleClient(env, owner, crypto);
   const nonce = base64url(crypto.getRandomValues(new Uint8Array(32)));
   const redirectUri = `${new URL(request.url).origin}/api/inbox/callback`;
   await database(env).prepare('INSERT INTO oauth_states (state_hash, owner_id, redirect_uri, expires_at) VALUES (?, ?, ?, ?)').bind(await digest(crypto, nonce), owner, redirectUri, now().getTime() + 10 * 60 * 1000).run();
   const url = new URL('https://accounts.google.com/o/oauth2/v2/auth');
-  url.search = new URLSearchParams({client_id: env.GOOGLE_CLIENT_ID, redirect_uri: redirectUri, response_type: 'code', scope: GMAIL_SCOPE, state: nonce, access_type: 'offline', prompt: 'consent', include_granted_scopes: 'true'}).toString();
+  url.search = new URLSearchParams({client_id: client.clientId, redirect_uri: redirectUri, response_type: 'code', scope: GMAIL_SCOPE, state: nonce, access_type: 'offline', prompt: 'consent', include_granted_scopes: 'true'}).toString();
   return json({url: url.href});
 }
 
 async function callbackInbox(request, env, owner, crypto, fetcher, now) {
-  if (!gmailConfigured(env)) throw new HttpError(503, 'Gmail is not configured yet.', 'gmail_not_configured');
+  const client = await requireGoogleClient(env, owner, crypto);
   const url = new URL(request.url), nonce = url.searchParams.get('state') || '';
   if (!/^[A-Za-z0-9_-]{43}$/.test(nonce)) throw new HttpError(400, 'This Gmail connection expired. Start again in Settings.', 'oauth_state_invalid');
   const hash = await digest(crypto, nonce), db = database(env);
@@ -270,7 +307,7 @@ async function callbackInbox(request, env, owner, crypto, fetcher, now) {
   if (!code || code.length > 3000) throw new HttpError(400, 'Google did not return a connection code. Try again.', 'oauth_code_missing');
   const tokens = await remoteJson(fetcher, 'https://oauth2.googleapis.com/token', {
     method: 'POST', headers: {'content-type': 'application/x-www-form-urlencoded'},
-    body: new URLSearchParams({client_id: env.GOOGLE_CLIENT_ID, client_secret: env.GOOGLE_CLIENT_SECRET, code, grant_type: 'authorization_code', redirect_uri: state.redirect_uri}),
+    body: new URLSearchParams({client_id: client.clientId, client_secret: client.clientSecret, code, grant_type: 'authorization_code', redirect_uri: state.redirect_uri}),
   }, 'Gmail');
   if (typeof tokens.access_token !== 'string') throw new HttpError(503, 'Google did not return mailbox access. Try connecting again.', 'oauth_token_missing');
   if (!String(tokens.scope || '').split(' ').includes(GMAIL_SCOPE)) throw new HttpError(400, 'Allow Gmail access to connect your mailbox.', 'oauth_scope_missing');
@@ -355,20 +392,34 @@ export function createWorker({fetcher = globalThis.fetch, crypto = globalThis.cr
   return {
     async fetch(request, env = {}, ctx = {}) {
       const url = new URL(request.url);
-      if (!url.pathname.startsWith('/api/')) return env.ASSETS?.fetch ? env.ASSETS.fetch(request) : new Response('Not found', {status: 404});
+      if (!url.pathname.startsWith('/api/')) {
+        const response = env.ASSETS?.fetch ? await env.ASSETS.fetch(request) : new Response('Not found', {status:404});
+        if (!response.ok || response.redirected) return response;
+        const headers = new Headers(response.headers);
+        if (request.method === 'GET' && ['/', '/index.html'].includes(url.pathname) && (!response.url || new URL(response.url).origin === url.origin) && headers.get('Content-Type')?.startsWith('text/html')) headers.set('X-Cams-Life-Shell', '1');
+        if (url.pathname === '/sw.js') {headers.set('Cache-Control','no-cache');headers.set('Service-Worker-Allowed','/');headers.set('Content-Type','text/javascript');}
+        if (url.pathname === '/update.html') {headers.set('Cache-Control','no-store');headers.set('Referrer-Policy','no-referrer');headers.set('X-Content-Type-Options','nosniff');}
+        if (url.pathname === '/integrations/cams-life-watch.apk') {headers.set('Content-Type','application/vnd.android.package-archive');headers.set('Content-Disposition','attachment; filename="Cams-Life-Watch.apk"');headers.set('Cache-Control','no-store');headers.set('X-Content-Type-Options','nosniff');}
+        return new Response(response.body,{status:response.status,headers});
+      }
       try {
         const owner = requireIdentity(request, env); requireOrigin(request);
         if (url.pathname === '/api/status' && request.method === 'GET') {
           const account = env.LIFE_DB ? await accountFor(env, owner) : null;
+          const setup = await gmailSetup(env, owner, crypto, url.origin);
           const connected = Boolean(account);
-          const hourly = Boolean(env.LIFE_SCHEDULER_ENABLED === 'true' && gmailConfigured(env) && account);
-          return json({storage: Boolean(env.LIFE_DB), aiMode: 'subscription-handoff', aiConfigured: false, gmail: gmailConfigured(env), inboxConnected: connected, gmailConnected: connected, email: account?.email || null, hourlySync: hourly, hourlyEnabled: hourly});
+          const hourly = Boolean(env.LIFE_SCHEDULER_ENABLED === 'true' && setup.configured && account);
+          return json({storage: Boolean(env.LIFE_DB), aiMode: 'disabled', aiConfigured: false, gmail: setup.configured, gmailSetup: setup, inboxConnected: connected, gmailConnected: connected, email: account?.email || null, hourlySync: hourly, hourlyEnabled: hourly});
+        }
+        if (['/api/assistant', '/api/ai/setup', '/api/ai/test'].includes(url.pathname)) {
+          return json({error: 'AI has been removed from Cam’s Life. Reload the app to continue with your saved health and life records.', code: 'ai_removed'}, 410);
         }
         if (url.pathname === '/api/life' && request.method === 'GET') return json(await readLife(env, owner));
         if (url.pathname === '/api/life' && request.method === 'PUT') {
           const body = await bodyJson(request);
           return json(await writeLife(env, owner, body.state, body.version, now));
         }
+        if (url.pathname === '/api/inbox/setup' && request.method === 'POST') return await saveGoogleClient(request, env, owner, await bodyJson(request), crypto, now);
         if (url.pathname === '/api/inbox/connect' && request.method === 'POST') return await connectInbox(request, env, owner, crypto, now);
         if (url.pathname === '/api/inbox/callback' && request.method === 'GET') return await callbackInbox(request, env, owner, crypto, fetcher, now);
         if (url.pathname === '/api/inbox/sync' && request.method === 'POST') {
@@ -396,7 +447,7 @@ export function createWorker({fetcher = globalThis.fetch, crypto = globalThis.cr
     async scheduled(event, env = {}, ctx = {}) {
       // Sites does not declare a cron binding today. This entry is inactive until
       // an actual hourly scheduler is configured and verified by the deployer.
-      if (env.LIFE_SCHEDULER_ENABLED !== 'true' || !gmailConfigured(env)) return;
+      if (env.LIFE_SCHEDULER_ENABLED !== 'true' || !env.LIFE_DB || !encryptionConfigured(env)) return;
       const run = async () => {
         const accounts = await database(env).prepare('SELECT owner_id FROM mailbox_accounts').all();
         for (const account of accounts.results || []) {

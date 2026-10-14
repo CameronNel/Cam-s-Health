@@ -1,0 +1,228 @@
+{
+  "createdAt": "2026-10-07T19:07:02.143335+00:00",
+  "status": "Version 21 established the compact typography and 19.6:9 previews. This verified packaging snapshot includes the inspected follow-up refinements and latest canonical records; the linked PR records the exact subsequent publication receipt. The whole-app 100/100 goal remains open.",
+  "goal": "100/100 in every applicable category earned through actual builder and independent GPT-6 Luna/MAX screenshot inspection",
+  "sourceHashes": {
+    "dist/index.html": "60c94a1cb768776b41ef3180e1963eb7af811889e3f370ae26a29eaf6080a8c0",
+    "dist/update.html": "622e4eeb63933539dcd531d60740b55c87b490b3a10f7c001698594061696da7",
+    "dist/studio.js": "6dfa2d24a8372280aa11b46ee8ea9f12c4b7be1db64f3518f90216d674f9952a",
+    "dist/life-ui.js": "c13d78d38873ce8e965c076cdb394c8dc745ea5282414fc1d0608308f87e1e2a",
+    "dist/life.css": "1b00199bb6de83e9740303f10e1ee68fdf7db24d48ad0e08e8bfbd79c31c0d84",
+    "dist/health-ui.css": "22edad3dea3cdd135cd1a7ed4c6d8262370ff509d2d2e2e5f640dc2591f5ef4e",
+    "dist/training-body-ui.css": "377b56df1a0548a614501644cbb64b98a50e349d2b4512c07886a6aaa4854818",
+    "dist/life-settings-ui.css": "1c72a346cd779b9043f390b23ae35ab974c409702a12647e15020c3cc1ec84bc",
+    "dist/typography.css": "f9d000a82551f9b60acf8a9423985931aea441c46e4a89c0a9fbe5473bae6ef7",
+    "dist/assets/noto-sans-latin.woff2": "51ca196f49a33e79e7870ff88ebd2829a3f627a51e7d690986618f0e7ad2b52d",
+    "dist/integrations/watch-ui.js": "f3ce13445117d12d74073ab76c5ed1fd8793e1197104fb72b1e9d17d24b5ce3f",
+    "dist/sw.js": "24907ab0d5a3e05df8bb89bdddcc777503a68826f89a2092e50d773178e61a13",
+    "dist/data/health.json": "f8b7d7e59f4ceac14589e72dcd346c9e6e64bc8682087c1ab9ea502f2129fd71"
+  },
+  "geometry": {
+    "phoneAspectRatio": "19.6:9",
+    "frames": [
+      {
+        "width": 424,
+        "height": 923,
+        "appHeight": 824,
+        "simulatedStatusPx": 47,
+        "simulatedNavigationPx": 52
+      },
+      {
+        "width": 390,
+        "height": 849,
+        "appHeight": 758,
+        "simulatedStatusPx": 43,
+        "simulatedNavigationPx": 48
+      },
+      {
+        "width": 360,
+        "height": 784,
+        "appHeight": 700,
+        "simulatedStatusPx": 40,
+        "simulatedNavigationPx": 44
+      }
+    ],
+    "systemBars": "Reference-derived external audit simulation; never production UI",
+    "defaultTextScale": 100,
+    "accessibilityStressTextScales": [
+      130,
+      200
+    ],
+    "physicalInsetsVerified": false
+  },
+  "typography": {
+    "family": "Locally served Noto Sans variable (OFL-1.1)",
+    "pageTitlesPx": 22,
+    "supportingHeadingsPx": [
+      18,
+      20
+    ],
+    "copyPx": [
+      14,
+      15
+    ],
+    "inputValuesPx": 16,
+    "minimumTouchTargetsPx": 44,
+    "exactSamsungOneBundled": false
+  },
+  "publicationSnapshot": {
+    "url": "https://cams-health.cameronnel111.chatgpt.site",
+    "lastVerifiedVersion": 21,
+    "lastVerifiedCommitSha": "b2eafb634d9a4a48f6c4c0e0e11b4ec321fe1f5e",
+    "lastVerifiedStatus": "succeeded",
+    "deploymentId": "appgdep_6ac62c8f38b08191874557db2ed666c5",
+    "candidateDensityPublishedAtSnapshot": true,
+    "candidateFooterPublishedAtSnapshot": false,
+    "note": "Point-in-time pre-publication receipt for version21. This inspected follow-up is prepared separately; the linked PR records the verified next release source, version and deployment after publication.",
+    "releaseReceiptUrl": "https://github.com/CameronNel/Cam-s-Health/pull/6"
+  },
+  "validation": {
+    "unitTests": 165,
+    "passed": 165,
+    "failed": 0,
+    "fullBuild": "passed",
+    "schemaValidation": "passed",
+    "healthBlobSha": "7fc51672e873cf973ba8718504c0d3018d74b750",
+    "canonicalRecordedDates": 17,
+    "realDataModified": false,
+    "currentRealPwaUpgrade": "Current V9 source passes all eight actual service-worker checks: explicit reviewed reload, preserved values/preferences and another-tab draft, Noto Sans online/offline, and 25 digest-verified public cache assets. Root and the same Luna/MAX reviewer inspected all 15 image instances (13 unique). Local 424\u00d7824 content scope; physical phone not verified.",
+    "publicShellCacheAssets": 25,
+    "currentGeometryInteractionSupplements": "Five affected200% suites and six Timer Done cases passed. All applicable builder software screenshots are inspected, including four rescaled enlarged-feedback runs and two actual long-note inner tails. Independent software acceptance remains separate.",
+    "retainedFailedAttempts": [
+      "Five PWA assertions failed when tests ran before the required service-worker digest rebuild; full build regenerated it and all 165 tests then passed.",
+      "An initial Timer harness raced immediate dialog close/open; the recheck waits for observable completion and passes.",
+      "Two direct target-handler guard probes did not exercise the actual delegated app-action path; failed harness results are retained and excluded.",
+      "The V8 real delegated Print suite confirmed18/18 history navigation races toSettings. Corrected Print uses navigate to close/replace modalhistory before Dashboard navigation; all18V9 cases pass.",
+      "Initial V9 print-return stress captures rescaled before a final close/history render; final harness settles450ms and verifies all4nav labels at12px\u00d7requestedscale. Earlier stress return captures excluded.",
+      "The first Daily brief dismissal run reapplied transient font overrides after focus restoration and moved enlarged layout. Retained and excluded from final acceptance.",
+      "Two intermediate persistent-font runs missed variable-family CSS font shorthand expansion. Final runner asserts the brief at 15/19.5/30px and title at 20/26/40px before testing dismissal; no app source changed."
+    ],
+    "canonicalHealthSourceCommit": "9874a10b6bf5fb800499fb5a3123bf2132e3df01",
+    "packagedFallbackRefreshedFromCanonical": true,
+    "canonicalHealthWrites": 0,
+    "currentDeletionCancelIntegrity": "Twelve synthetic dirty food/workout Cancel, Escape and Back cases preserve original form DOM, draft, dirty guard, health/private-life records and readback. Eight separate ordinary/reduced-motion focus, stability and rapid-close checks pass. Builders inspected all 222 current integrity/preview image instances. Confirmed deletion and live GitHub remain unverified.",
+    "currentPreviewRestActivation": "Six width/motion combinations at 200% pass 48 actual rest-chip activations, enlarged 28px feedback and six actual 1:30\u21921:29 countdown ticks. Zero health/life writes or mutating requests. Root inspected all 12 raw screenshots; the same independent identity reviewed the documented scope. Physical frame timing remains unverified.",
+    "currentDefaultPreview": "Root separately inspected the final canonical 7 October Today and Food previews at 424\u00d7923, 100% text, simulated external bars and empty synthetic private-life panels. All 17 dates and every prior food/workout entry are preserved. Local previews, not hosted or physical phone captures.",
+    "currentDailyBriefActions": "All 18 V9 width/text/motion cases pass actual Clipboard write/readback, keyboard Close focus/wrap, one Print callback on Dashboard and the delegated rapid guard. Fresh digests match expected/readback SHA-256 and 262 UTF-16 code units in every case. All 54 image instances are exact aliases of previously actually inspected originals, independently reverified by the same Luna/MAX identity. Physical printing remains unverified.",
+    "currentPreviewCloseGuard": "Six current width/motion cases at 200% use a transparent real delegated underlay action: a second pointer click 39\u201345ms after native Preview Close is blocked; the same point after 450ms opens the brief. Root and the same independent reviewer inspected all 12 instances (six unique). Zero health/life writes or mutating requests; physical timing remains unverified.",
+    "currentDefaultPreviewLedgerSha256": "525e5fa3fd4bf56f041b08d5cf22ba4cc532c0733e85614f587b6939b57d17ef",
+    "canonicalHealthSha256": "f8b7d7e59f4ceac14589e72dcd346c9e6e64bc8682087c1ab9ea502f2129fd71",
+    "currentDailyBriefClipboardDigestProofSha256": "bf3882b8622e3e536a384491e5870b00abd721f494c800f3f29c66938a821716",
+    "currentDailyBriefClipboardDigestResultsSha256": "7dd87a9d77f7c80abdb56248a0ca4557b5787e9e4861a8d3b02e7b21be221924",
+    "canonicalPreservationProofSha256": "bd09597b03dd7696b26b94359e50d73f9846b8ca32519f2b6f7691e1a26f0cc5",
+    "currentDailyBriefDismissalResultsSha256": "16786e859227fb6c579326df7e7fa959bc66331466e9a4b740de1a3d06c0faf4",
+    "currentDailyBriefDismissalBuilderLedgerSha256": "10f3a138d82c7e40d87c62944a708df077f300cb4ca513870498210ac833ae50",
+    "currentDailyBriefDismissal": "All 36 cases across nine width/text configurations, ordinary/reduced motion and Escape/outside pointer dismissal pass. Persistent fixture typography survives rerenders; opener focus remains visible and modal/inert state clears, with no record writes or mutating requests. Root and the same GPT-6 Luna/MAX identity actually inspected all 27 unique full originals and verified 45 exact aliases. C6=100 for the tested local Daily brief scope; physical printing, native keyboard and live/owner workflows remain unverified."
+  },
+  "capture": {
+    "parentCombinations": 333,
+    "parentPngs": 2269,
+    "menuCombinations": 549,
+    "menuPngs": 2851,
+    "missing": 0,
+    "automatedDiagnosticCandidates": 0,
+    "fixtureOnly": true,
+    "isVisualAcceptance": false,
+    "legacy924AppOnlyCaptures": "Historical; no current full-phone fidelity credit",
+    "totalPngs": 5120,
+    "allOriginalHashesVerified": true,
+    "sourceAttribution": "All72 Body states and all18 Gmail states recaptured. Other original pixels retain exact verified inactive/out-of-scope V4/V6/V7/V8 source attribution. Full19.6:9 external bars are simulated, not physical Oppo/hosted evidence. V9 only corrects the Print action; static renderers/CSS and all non-Print paths byte unchanged under exact reverse proof.",
+    "scopedSourceProofSha256": "fb5c54580932f747c7198cab59826a31b2851c3a1c38f8287bd4c3349f1c7fa4",
+    "selectors": [
+      {
+        "name": "FINAL-SCREEN-EVIDENCE.json",
+        "sha256": "8a1e21b0783719d182464c9ad7778119a4556f74b5039bbef1aa51edd12c25dc"
+      },
+      {
+        "name": "FINAL-MENU-EVIDENCE-V8.json",
+        "sha256": "ecd20b82fd2bb985e336eaacde1aba4c16ea8c38ce3e1f0abb0486458e0b3c3b"
+      }
+    ],
+    "additionalScopedSourceProofs": [
+      {
+        "name": "OPPO-V7-GMAIL-FOCUS-SCOPED-SOURCE-ATTRIBUTION.json",
+        "sha256": "03e5fd1326a08ba0c6adafad8780a5c75df7ac371f6288319689c1f46b446527"
+      },
+      {
+        "name": "OPPO-V8-GMAIL-INLINE-STATUS-SCOPED-SOURCE-ATTRIBUTION.json",
+        "sha256": "f5998bd80e0939a48edbce20dd7728a4a9cdb179325c8ae30d377c9fa4593ba4"
+      },
+      {
+        "name": "OPPO-V9-PRINT-NAVIGATION-SCOPED-SOURCE-ATTRIBUTION.json",
+        "sha256": "1249965d386cf8fecb5e0b64c2d99639b2555789150146b777a7827327f2f55a"
+      }
+    ]
+  },
+  "review": {
+    "currentExactParentCombinationsIndependentlyReviewed": 333,
+    "parentCombinationsPending": 0,
+    "parentSelectorSha256": "8a1e21b0783719d182464c9ad7778119a4556f74b5039bbef1aa51edd12c25dc",
+    "coverageSnapshotGeneratedAt": "2026-10-07T17:13:06+00:00",
+    "note": "All 333 parent combinations and 2,269 selected originals have independent actual-view provenance. Twenty stale row records were reconciled against existing reviewer reports, the exact selector and disk hashes; prior scores were retained. Full category acceptance is separately scoped.",
+    "overallScore": null,
+    "uniqueMenuReviewerQueue": "64 distinct reviewer identities: 61 PWA menus/submenus and 3 native flows. Current scoped classification is reconciled separately; no whole-app perfect score is assigned.",
+    "currentPwaSoftwareVisualReview": "Same GPT-6 Luna/MAX identity actually inspected all15 V9 real-worker update/offline instances and both V7 mock focus/motion originals (20 hash-verified instances). C4/C7 are100 within the local lifecycle scope; C5/C6 retain explicit local-unrun limits. Physical phone/live workflows remain unverified.",
+    "exactCoverageProofSha256": "68b9584979ed5c656c9c9c2ffdb727963add8956c52f2d8c9269b99a93269e47",
+    "parentCoverageJsonSha256": "68b9584979ed5c656c9c9c2ffdb727963add8956c52f2d8c9269b99a93269e47",
+    "parentCoverageCsvSha256": "6ddbed4ef21451ba92d5056c315893a47b5eb34b9f7c2a42270083eaffeeaff7",
+    "parentExactFileInstances": 2269,
+    "parentExactRowMismatches": 0,
+    "reconciledStaticIntegrityProofSha256": "4fdf95c75d8805e20718c76dad01045b3246641241f93941c17e81d304b63fc2",
+    "currentClassificationSha256": "010660a37a7b162a56611219285d1302ec37b091b4f9246f33713791010bf3b0",
+    "uniqueMenuReviewerCount": 64,
+    "pwaReviewerCount": 61,
+    "nativeReviewerCount": 3,
+    "confirmedCurrentActionableDefects": 0,
+    "menusWithLocalUnrunOrPartialScope": 15,
+    "menusWithExternalOrPhysicalLimits": 18,
+    "classificationNote": "Current scoped reports are reconciled. The final Daily brief dismissal supplement is independently accepted within its named local scope. Local unrun criteria and external boundaries remain distinct; no aggregate score is assigned.",
+    "uiCodeReviewCommitSha": "734c4390df8b8d19652060bbeff8fdcddb923b62",
+    "dailyBriefIndependentReportSha256": "4e1a329b517a3798db2c165d737b52f21f6ee9282a947c53a38cbdb81648af64",
+    "dailyBriefIndependentJsonSha256": "9170cdff0ba1510cf86779830455aee3db4f49e71d9f64558589fd54e98e7336"
+  },
+  "remaining": [
+    "Complete locally unrun interaction criteria recorded in the per-menu reports before claiming whole-app 100/100.",
+    "Verify physical Oppo keyboard, installation and system insets, live Gmail consent/operations, and physical Watch/Health Connect transfer."
+  ],
+  "externalUnverified": [
+    "Physical Oppo keyboard/installation/system insets",
+    "Live Gmail consent and mailbox operations",
+    "Physical Galaxy Watch/Samsung Health permissions and transfer"
+  ],
+  "watchIntegration": "Free read-only Health Connect export plus explicitly reviewed import/save; automatic/background sync is not established",
+  "accidentalCakeMenu": "Excluded; working copy removed",
+  "builder": {
+    "completeCases": 882,
+    "totalCases": 882,
+    "creditedOriginalInstances": 5120,
+    "totalOriginalInstances": 5120,
+    "proofSha256": "128c25611a1cb5f1a47d81f59d6065dff331a412ab29e736b5c6d91d528eb4a7",
+    "errors": 0,
+    "isIndependentAcceptance": false
+  },
+  "nativeCandidate": {
+    "version": "1.1",
+    "versionCode": 2,
+    "apkSha256": "3bab04bbaac56aff3318582cc7bd02ca5016c6325bc4b21295753ce023d4e5d4",
+    "phoneAndTextConfigurations": 9,
+    "selectedPopupStates": 18,
+    "noHealthPermissionsGrantedDuringCandidateReview": true,
+    "newCertificateRequiresReinstallOverV1_0": true,
+    "independentCurrentReview": "Setup and privacy reviews complete within their local scopes. Same Luna/MAX range reviewer inspected31 range originals,64 raw video frames and18 outside-tap originals. C5/C6=100 within tested API35 software flows across9 configurations; physical/live Health Connect remains unverified.",
+    "physicalDeviceVerified": false,
+    "priorSelectedCueCandidateInspectedOriginals": 155,
+    "currentPrivacyBuilderInspectedOriginals": 43,
+    "currentPrivacyBuilderLedgerSha256": "1f534ab0ed0697fe3632f3552a966d53da3080514db6322f2fbdbd7b1703f11a",
+    "independentCurrentPrivacy": "All 43 current PNG/XML instances reviewed at nine configurations: C1\u20134=100 and C7 copy-only=100 within the tested scope. Physical/live behavior remains unverified.",
+    "currentRangeBuilderInspectedOriginals": 31,
+    "currentRangeBuilderLedgerSha256": "141c2f3271ea0544fe610cda539ac7fcef2215f8bac1a745c548efd9b4546cca",
+    "currentRangeStageValidationSha256": "7b24509d5638f4e2d8438869ce012c79dc3245d9e2c38f3a36fed835d5c75b67",
+    "allNineLocalRangeChecksPassed": true,
+    "currentNativePermissionsGranted": 0,
+    "independentCurrentSetup": "All 82 setup/range/permission originals and PNG/XML hashes verified; unchanged MainActivity scope C1\u20136=100. Live data and permission grants remain blocked.",
+    "currentOutsideTapBuilderInspectedOriginals": 18,
+    "currentOutsideTapBuilderLedgerSha256": "c5560ef0723daa0e3bc232600316da00490c8b2d7913e0e59107dc7384a70875",
+    "currentOutsideTapValidationSha256": "c37d78d37090dadc44d4093d9c433b5ffdf9e3477f2ffe41aa54a373c01490cb",
+    "allNineLocalOutsideTapChecksPassed": true
+  }
+}
