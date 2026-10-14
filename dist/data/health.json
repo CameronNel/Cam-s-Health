@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-14T19:40:44.649Z",
+  "updatedAt": "2026-10-14T20:03:43.151Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2717,7 +2717,30 @@
           "reviewRequired": false
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-10-14-shoulders-db-press-lateral-raises-1",
+          "sessionId": null,
+          "name": "Shoulders (DB shoulder press + lateral raises)",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "Reported 14 Oct 2026: 3 sets dumbbell shoulder press, 8 sets lateral raises (11 total sets). Repetitions, loads and duration not provided. Logged as a custom shoulder session; no other exercises assumed.",
+          "actualExercises": [
+            {
+              "name": "Dumbbell shoulder press",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Lateral raises",
+              "sets": 8,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
