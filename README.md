@@ -4,7 +4,7 @@ Food, body composition and workouts in a single, always-dark phone layout.
 
 **App:** https://cams-health.cameronnel111.chatgpt.site
 
-Three translucent liquid glass cards show the essentials. Hold a card (or tap it) to open a compact preview. Pinch out or use Expand for full-screen details; pinch in or Android Back returns to the preview. Each card’s + button opens its logging form. Settings contains tracking targets, units, GitHub editing authorization, exports and installation.
+A compact widget grid shows Food, Weight, Body comp and Workouts. Seafoam, apricot and periwinkle accents sit over a mineral-dark background, with transparent glass rims, ambient light, animated progress and responsive press/hover reflections. Reduced motion is respected. Hold a card (or tap it) to open a compact preview. Pinch out or use Expand for full-screen details; pinch in or Android Back returns to the preview. Widget + buttons and Quick log open the logging forms. Settings contains tracking targets, units, GitHub editing authorization, exports and installation.
 
 Food retains portions, calories, macros, estimates, recipe portions, repeats and corrections. Body retains dated weight, body fat, device-reported muscle, 13 tape measurements and graphs of actual readings. Workouts retain the prescribed rotation, actual sessions, exercises, durations and rest timer. Unknown values stay unknown.
 
