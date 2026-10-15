@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-15T21:48:19.140Z",
+  "updatedAt": "2026-10-15T21:53:03.880Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2848,15 +2848,16 @@
         },
         {
           "id": "2026-10-15-protein-drink-chocolate-240ml-1",
-          "name": "Protein drink — chocolate",
-          "quantity": "1 bottle (240 ml)",
-          "kcal": 139,
-          "protein": 20,
-          "carbs": 10,
-          "fat": 1.9,
+          "name": "XXL Nutrition Whey Protein Zero — Chocolate",
+          "quantity": "1 scoop (~30 g powder), mixed with water assumed",
+          "kcal": 113.1,
+          "protein": 21.75,
+          "carbs": 1.59,
+          "fat": 2.31,
           "estimated": true,
-          "source": "User-provided bottle nutrition label image, 27 Sep 2026.",
-          "note": "User requested one of the chocolate protein shakes on 15 Oct. Logged as one 240 ml ready-to-drink bottle matching their previously supplied 27 Sep product label (139 kcal, 20 g protein). Product identity assumed because user did not specify bottle/brand; correct this entry rather than duplicate if they meant AH 330 ml carton."
+          "source": "Chocolate XXL Nutrition Whey Protein Zero nutrition panel supplied 14 Oct 2026: per 100 g 377 kcal, 72.5 g protein, 5.3 g carbs, 7.7 g fat, 4.6 g fibre. Product https://xxlnutrition.com/nl/whey-protein-zero",
+          "note": "Corrected 15 Oct: not a bottled 240 ml protein drink. XXL Nutrition chocolate whey powder, one standard 30 g scoop assumed, scaled from user's prior label. Water assumed and no milk. Existing entry corrected; not an additional shake.",
+          "fibre": 1.38
         }
       ],
       "workouts": [],
