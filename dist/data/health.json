@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-14T20:13:30.766Z",
+  "updatedAt": "2026-10-15T16:58:20.624Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2755,6 +2755,99 @@
           ]
         }
       ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": ""
+    },
+    "2026-10-15": {
+      "food": [
+        {
+          "id": "2026-10-15-cup-a-soup-bacon-74kcal-1",
+          "name": "Cup-a-Soup bacon (champignon-ham style)",
+          "quantity": "1 cup / sachet (74 kcal reported)",
+          "kcal": 74,
+          "protein": 1.3,
+          "carbs": 9.5,
+          "fat": 3.4,
+          "estimated": true,
+          "source": "User reported 74 kcal for bacon Cup-a-Soup 15 Oct 2026; previously calculated macros using comparable Knorr Champignon-Ham bacon variety.",
+          "note": "Flavour described by user as bacon; exact sachet nutrition panel not supplied. Calorie value provided by user; protein, carbs and fat estimated from similar Cup-a-Soup; all macros populated."
+        },
+        {
+          "id": "2026-10-15-campina-plain-kwark-500g-1",
+          "name": "Campina milde magere kwark naturel",
+          "quantity": "1 whole 500 g plain tub (50 g protein)",
+          "kcal": 275,
+          "protein": 50,
+          "carbs": 13.5,
+          "fat": 0.5,
+          "estimated": false,
+          "source": "User-provided Campina plain kwark label, 11 Oct 2026; exact previous GitHub record.",
+          "note": "Per 100 g: 55 kcal, 10 g protein, 2.7 g carbs, 0.1 g fat. This is the 50 g protein plain tub, not vanilla kwark."
+        },
+        {
+          "id": "2026-10-15-cookies-cream-whey-one-scoop-1",
+          "name": "Cookies & Cream whey protein powder",
+          "quantity": "1 scoop (~30 g)",
+          "kcal": 114,
+          "protein": 21.7,
+          "carbs": 3.1,
+          "fat": 0.9,
+          "estimated": true,
+          "source": "Saved Cookies & Cream whey nutrition label user photo 9 Oct 2026, 114 kcal and 21.7 g protein per 30 g scoop.",
+          "note": "Assumes the usual Cookies & Cream whey because the user did not identify flavour. Exact user-provided label values for this product; no milk included."
+        },
+        {
+          "id": "2026-10-15-banana-medium-1",
+          "name": "Banana",
+          "quantity": "1 medium banana (~120 g edible)",
+          "kcal": 111,
+          "protein": 1.3,
+          "carbs": 24,
+          "fat": 0.4,
+          "estimated": true,
+          "source": "User-reported fruit count; existing 23 Sep 2026 food estimate.",
+          "note": "Portion weight was not supplied. Retains the previously stated medium banana / 120 g edible-portion estimate."
+        },
+        {
+          "id": "2026-10-15-bk-whopper-half-1",
+          "name": "Burger King Whopper",
+          "quantity": "1/2 burger",
+          "kcal": 310,
+          "protein": 14.95,
+          "carbs": 25.3,
+          "fat": 16.35,
+          "estimated": true,
+          "source": "FatSecret Netherlands: https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/search?q=Burger+King+Whopper (whole burger: 620 kcal, 29.9 g protein, 50.6 g carbs, 32.7 g fat).",
+          "note": "Half the Whopper from Burger King deal; half of regular full-burger nutrition. Unweighed, no extras reported."
+        },
+        {
+          "id": "2026-10-15-bk-long-chicken-half-1",
+          "name": "Burger King Long Chicken",
+          "quantity": "1/2 burger",
+          "kcal": 297,
+          "protein": 11.3,
+          "carbs": 27.45,
+          "fat": 15.65,
+          "estimated": true,
+          "source": "FatSecret Netherlands: https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/burger-king/long-chicken-burger/1-portie (whole burger: 594 kcal, 22.6 g protein, 54.9 g carbs, 31.3 g fat).",
+          "note": "Half the Long Chicken from Burger King deal; half of regular full-burger nutrition. Unweighed, no extras reported."
+        },
+        {
+          "id": "2026-10-15-bk-loaded-bacon-fries-half-1",
+          "name": "Burger King Loaded Cheese & Bacon Fries",
+          "quantity": "1/2 regular portion (confirmed Cheesy Bacon topping)",
+          "kcal": 247.5,
+          "protein": 5.7,
+          "carbs": 25.1,
+          "fat": 12.85,
+          "estimated": true,
+          "source": "FatSecret NL: https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/search?q=Burger+King+Loaded+Cheese+%26+Bacon+Fries ; cross-checked with official Dutch ordering data transcribed at https://momentummenu.app/f/burger-king/loaded-cheese-bacon-fries",
+          "note": "15 Oct 2026: user confirmed loaded fries were Cheesy Bacon and ate half; same values as prior 10 Oct 2026 half serving (247.5 kcal). No drink reported."
+        }
+      ],
+      "workouts": [],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
