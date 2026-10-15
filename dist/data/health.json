@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-15T16:58:20.624Z",
+  "updatedAt": "2026-10-15T21:48:19.140Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2845,6 +2845,18 @@
           "estimated": true,
           "source": "FatSecret NL: https://www.fatsecret.nl/calorie%C3%ABn-voedingswaarde/search?q=Burger+King+Loaded+Cheese+%26+Bacon+Fries ; cross-checked with official Dutch ordering data transcribed at https://momentummenu.app/f/burger-king/loaded-cheese-bacon-fries",
           "note": "15 Oct 2026: user confirmed loaded fries were Cheesy Bacon and ate half; same values as prior 10 Oct 2026 half serving (247.5 kcal). No drink reported."
+        },
+        {
+          "id": "2026-10-15-protein-drink-chocolate-240ml-1",
+          "name": "Protein drink — chocolate",
+          "quantity": "1 bottle (240 ml)",
+          "kcal": 139,
+          "protein": 20,
+          "carbs": 10,
+          "fat": 1.9,
+          "estimated": true,
+          "source": "User-provided bottle nutrition label image, 27 Sep 2026.",
+          "note": "User requested one of the chocolate protein shakes on 15 Oct. Logged as one 240 ml ready-to-drink bottle matching their previously supplied 27 Sep product label (139 kcal, 20 g protein). Product identity assumed because user did not specify bottle/brand; correct this entry rather than duplicate if they meant AH 330 ml carton."
         }
       ],
       "workouts": [],
