@@ -5,6 +5,15 @@ varying vec2 vUv;
 void main(){ vUv = aPosition * .5 + .5; gl_Position = vec4(aPosition, 0., 1.); }
 `;
 
+// Small glass surfaces need their own crisp backing store: the fullscreen-quad
+// context's MSAA does not antialias the curved shape drawn inside its shader.
+export function liquidRenderSize(cssWidth,cssHeight,devicePixelRatio=1){
+  const w=Math.max(1,Number(cssWidth)||1),h=Math.max(1,Number(cssHeight)||1);
+  const density=Number.isFinite(devicePixelRatio)&&devicePixelRatio>0?devicePixelRatio:1;
+  const scale=Math.min(Math.max(2,density*1.25),640/Math.max(w,h));
+  return {width:Math.max(1,Math.round(w*scale)),height:Math.max(1,Math.round(h*scale))};
+}
+
 const FRAGMENT = `
 precision highp float;
 varying vec2 vUv;
@@ -106,7 +115,11 @@ void main(){
   glass = pow(glass,vec3(.80));
   float reflectedLight = dot(reflected,vec3(.2126,.7152,.0722));
   float opacity = clamp(.045+fresnel*.68+reflectedLight*.20+illuminated*(.018+pow(1.-facing,2.)*.18),.045,.96);
-  gl_FragColor = vec4(glass,opacity);
+  // A subpixel coverage ramp removes the hard ray-hit staircase along both
+  // curved rims. The backing store also supersamples narrow reflected lights.
+  float pixelFootprint = 2.15 * hit / (3.35 * uResolution.y);
+  float edgeCoverage = smoothstep(0.,sqrt(pixelFootprint/.178),facing);
+  gl_FragColor = vec4(glass,opacity*edgeCoverage);
 }
 `;
 
@@ -207,9 +220,7 @@ function mountScene(canvas) {
   };
   const resize = () => {
     // FLIP/press transforms change the visual box, never the drawing-buffer aspect.
-    const dpr = Math.min(win.devicePixelRatio || 1,1.6);
-    const width = Math.max(1,Math.round(canvas.clientWidth*dpr));
-    const height = Math.max(1,Math.round(canvas.clientHeight*dpr));
+    const {width,height}=liquidRenderSize(canvas.clientWidth,canvas.clientHeight,win.devicePixelRatio);
     if (canvas.width !== width || canvas.height !== height) {
       canvas.width = width;
       canvas.height = height;
@@ -218,7 +229,8 @@ function mountScene(canvas) {
   };
   const sizeObserver = win.ResizeObserver ? new win.ResizeObserver(resize) : null;
   if (sizeObserver) sizeObserver.observe(canvas);
-  else win.addEventListener('resize',resize,{passive:true});
+  // Pixel density can change without a change in CSS dimensions.
+  win.addEventListener('resize',resize,{passive:true});
   const mutationObserver = new win.MutationObserver(refresh);
   mutationObserver.observe(canvas,{attributes:true,attributeFilter:['data-progress','data-empty']});
   const intersectionObserver = win.IntersectionObserver ? new win.IntersectionObserver(entries => {
