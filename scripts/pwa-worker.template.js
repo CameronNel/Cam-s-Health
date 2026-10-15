@@ -3,6 +3,7 @@ const SHELL = __PWA_ASSETS__;
 const CACHE_PREFIX = 'cams-life-shell-';
 const CACHE_NAME = CACHE_PREFIX + '__PWA_VERSION__';
 const BY_PATH = new Map(SHELL.map(asset => [asset.url, asset]));
+const PENDING_ASSETS = new Map();
 const SECURITY_HEADERS = ['Content-Security-Policy', 'X-Frame-Options', 'Referrer-Policy', 'X-Content-Type-Options', 'Permissions-Policy', 'Cross-Origin-Opener-Policy', 'Cross-Origin-Embedder-Policy', 'Cross-Origin-Resource-Policy'];
 function copySecurityHeaders(from, to) {
   for (const name of SECURITY_HEADERS) if (from.has(name)) to.set(name, from.get(name));
@@ -22,13 +23,14 @@ function safeResponse(response, asset) {
     && (!response.url || new URL(response.url).origin === self.location.origin)
     && (response.headers.get('Content-Type')?.split(';')[0].trim() === asset.type
       || asset.type === 'text/javascript' && response.headers.get('Content-Type')?.startsWith('application/javascript')
-      || asset.type === 'application/manifest+json' && response.headers.get('Content-Type')?.startsWith('application/json'));
+      || asset.type === 'application/manifest+json' && response.headers.get('Content-Type')?.startsWith('application/json')
+      || asset.type === 'application/gzip' && ['application/x-gzip','application/octet-stream'].includes(response.headers.get('Content-Type')?.split(';')[0].trim()));
 }
 async function verifiedResponse(response, asset) {
   if (!safeResponse(response, asset)) throw Error('App asset unavailable');
   const bytes = await response.arrayBuffer();
   const digest = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(n => n.toString(16).padStart(2,'0')).join('');
-  if (digest !== asset.sha256) throw Error('App asset changed during installation');
+  if (digest !== asset.sha256) throw Error('App asset changed from this installed release');
   // Gateway cookies, identity headers and sensitive URLs must not enter CacheStorage.
   const headers = new Headers({'Content-Type': asset.type, 'X-Cams-Life-Cached-Shell': '1', 'X-Content-Type-Options': 'nosniff'});
   copySecurityHeaders(response.headers, headers);
@@ -38,7 +40,7 @@ self.addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE_NAME);
     try {
-      for (const asset of SHELL) {
+      for (const asset of SHELL.filter(asset => !asset.lazy)) {
         const response = await fetch(asset.url === '/index.html' ? '/' : asset.url, {cache:'no-store', credentials:'same-origin', redirect:'error'});
         await cache.put(asset.url, await verifiedResponse(response, asset));
       }
@@ -76,6 +78,24 @@ async function navigate(request) {
     return await cache.match('/index.html') || new Response('Cam’s Life is offline. Connect once to prepare the app.', {status:503,headers:{'Content-Type':'text/plain'}});
   }
 }
+async function publicAsset(request, asset) {
+  const cache = await caches.open(CACHE_NAME), cached = await cache.match(asset.url);
+  if (cached) return cached;
+  // A library first requested later still belongs to this exact release. Never
+  // cache a newer engine, login response, redirect or unverified network body.
+  let pending = PENDING_ASSETS.get(asset.url);
+  if (!pending) {
+    pending = (async () => {
+      const response = await fetch(asset.url + asset.query, {cache:'no-store',credentials:'same-origin',redirect:'error'});
+      const verified = await verifiedResponse(response,asset);
+      await cache.put(asset.url,verified.clone());
+      return verified;
+    })();
+    PENDING_ASSETS.set(asset.url,pending);
+    pending.then(() => PENDING_ASSETS.delete(asset.url), () => PENDING_ASSETS.delete(asset.url));
+  }
+  return (await pending).clone();
+}
 self.addEventListener('fetch', event => {
   const request = event.request, url = new URL(request.url);
   if (request.method !== 'GET' || url.origin !== self.location.origin || request.headers.has('Authorization')) return;
@@ -84,8 +104,5 @@ self.addEventListener('fetch', event => {
     return;
   }
   const asset = assetFor(request);
-  if (asset) event.respondWith((async () => {
-    const cached = await (await caches.open(CACHE_NAME)).match(asset.url);
-    return cached || fetch(request);
-  })());
+  if (asset) event.respondWith(publicAsset(request,asset));
 });

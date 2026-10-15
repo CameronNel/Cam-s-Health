@@ -15,7 +15,10 @@
     "esbuild": "^0.28.2"
   },
   "dependencies": {
+    "@tesseract.js-data/eng": "1.0.0",
+    "@zxing/browser": "0.1.5",
     "drizzle-orm": "^0.45.3",
+    "tesseract.js": "6.0.1",
     "three": "0.180.0"
   }
 }

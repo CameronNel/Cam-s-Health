@@ -1,0 +1,14 @@
+import {build} from 'esbuild';
+import {copyFile,mkdir,writeFile} from 'node:fs/promises';
+await mkdir('dist/vendor/ocr',{recursive:true});
+await build({stdin:{contents:"export {createWorker} from 'tesseract.js';",resolveDir:process.cwd(),sourcefile:'nutrition-ocr-public-entry.js'},bundle:true,format:'esm',platform:'browser',minify:true,outfile:'dist/vendor/nutrition-ocr.js',legalComments:'inline',target:'es2022'});
+await build({stdin:{contents:"export {BrowserMultiFormatReader} from '@zxing/browser';",resolveDir:process.cwd(),sourcefile:'food-barcode-public-entry.js'},bundle:true,format:'esm',platform:'browser',minify:true,outfile:'dist/vendor/food-barcode.js',legalComments:'inline',target:'es2022'});
+await copyFile('node_modules/tesseract.js/dist/worker.min.js','dist/vendor/ocr/worker.min.js');
+for(const name of ['tesseract-core-lstm.wasm.js','tesseract-core-simd-lstm.wasm.js','tesseract-core.wasm.js','tesseract-core-simd.wasm.js'])await copyFile('node_modules/tesseract.js-core/'+name,'dist/vendor/ocr/'+name);
+await copyFile('node_modules/@tesseract.js-data/eng/4.0.0_best_int/eng.traineddata.gz','dist/vendor/ocr/eng.traineddata.gz');
+await copyFile('node_modules/tesseract.js/LICENSE.md','dist/vendor/ocr/TESSERACT-LICENSE.txt');
+await copyFile('node_modules/tesseract.js-core/LICENSE','dist/vendor/ocr/CORE-LICENSE.txt');
+await copyFile('node_modules/@zxing/browser/LICENSE','dist/vendor/ocr/ZXING-BROWSER-LICENSE.txt');
+await copyFile('node_modules/@zxing/library/LICENSE','dist/vendor/ocr/ZXING-LIBRARY-LICENSE.txt');
+await writeFile('dist/vendor/ocr/NOTICE.txt','Tesseract.js and tesseract.js-core are Apache-2.0 licensed. English trained data: @tesseract.js-data/eng 1.0.0, MIT, https://github.com/naptha/tessdata. Barcode reader: @zxing/browser 0.1.5 and @zxing/library, Apache-2.0. No photos or OCR results are cached by this app.\n');
+console.log('Built local nutrition OCR and barcode reader.');

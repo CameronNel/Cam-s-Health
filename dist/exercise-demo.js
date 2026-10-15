@@ -9,6 +9,48 @@ const mid = (a,b) => a.map((n,i)=>(n+b[i])/2);
 const mix = (a,b,t) => a.map((n,i)=>n+(b[i]-n)*t);
 let illustrationSerial = 0;
 
+const demoAngles=new Set(['front','side','rear','three-quarter']);
+const unilateralSides={
+  'cable-lateral-raise':'right','one-arm-cable-row':'right','bulgarian-split-squat':'left',
+  'single-leg-db-rdl':'left','step-up':'left','cable-hamstring-curl':'right',
+  'single-leg-calf-raise':'left','single-arm-cable-shoulder-press':'right',
+  'reverse-db-lunge':'left','single-leg-hip-thrust':'right','cable-leg-extension':'right',
+  'single-arm-cable-fly':'right','single-arm-cable-pulldown':'right',
+  'single-arm-preacher-curl':'right','hammer-preacher-curl':'right',
+  'single-arm-db-overhead-extension':'right','behind-body-cable-curl':'right'
+};
+/** The authored working side is explicit; a bilateral movement is never relabelled. */
+export const exerciseDemoWorkingSide=id=>unilateralSides[id]||null;
+export function normalizeDemoControls(value={}){
+  return {angle:demoAngles.has(value.angle)?value.angle:'three-quarter',side:value.side==='left'?'left':'right',speed:[.5,1,1.5].includes(Number(value.speed))?Number(value.speed):1,overlay:value.overlay===true||value.overlay==='true'};
+}
+export function exerciseDemoCamera(pose,angle='three-quarter',side='right'){
+  const camera=pose.camera||[2.9,1.8,3.9],target=pose.target||[0,.91,0];
+  const radius=Math.hypot(camera[0]-target[0],camera[2]-target[2]);
+  if(angle==='front')return [target[0],camera[1],target[2]+radius];
+  if(angle==='rear')return [target[0],camera[1],target[2]-radius];
+  if(angle==='side')return [target[0]+(side==='left'?-radius:radius),camera[1],target[2]];
+  return [target[0]+(side==='left'?-1:1)*Math.abs(camera[0]-target[0]),camera[1],camera[2]];
+}
+const mirrorPoint=p=>[-p[0],p[1],p[2]];
+/** Reflection includes every piece of equipment, including its local rotation. */
+export function reflectExercisePose(pose){
+  return {...pose,joints:Object.fromEntries(Object.entries(pose.joints).map(([key,p])=>[key,mirrorPoint(p)])),
+    camera:pose.camera?mirrorPoint(pose.camera):undefined,
+    target:pose.target?mirrorPoint(pose.target):undefined,
+    headRotation:pose.headRotation?[pose.headRotation[0],-pose.headRotation[1],-pose.headRotation[2]]:undefined,
+    props:pose.props.map(prop=>({...prop,...Object.fromEntries(['from','to','position'].filter(key=>prop[key]).map(key=>[key,mirrorPoint(prop[key])])),...(prop.rotation?{rotation:[prop.rotation[0],-prop.rotation[1],-prop.rotation[2]]}:{})}))};
+}
+export function projectExercisePoint(point,camera,target,width,height){
+  const eye=v(camera),forward=v(target).sub(eye).normalize(),right=new T.Vector3().crossVectors(forward,UP).normalize(),up=new T.Vector3().crossVectors(right,forward).normalize(),rel=v(point).sub(eye);
+  const z=rel.dot(forward),scale=(height/2)/Math.tan(16*Math.PI/180)/Math.max(z,.05);
+  return [width/2+rel.dot(right)*scale,height/2-rel.dot(up)*scale,z];
+}
+function displayExercisePose(pose,controls={}){
+  const displayed=controls.mirrored?reflectExercisePose(pose):pose;
+  return {...displayed,camera:exerciseDemoCamera(displayed,controls.angle,controls.side)};
+}
+
 function oriented(mesh,from,to,width=1,depth=width) {
   const a=v(from), b=v(to), delta=b.clone().sub(a);
   mesh.position.copy(a.add(b).multiplyScalar(.5));
@@ -115,13 +157,16 @@ function makeThree(host,descriptor){
     const fill=new T.DirectionalLight(0xc8e4ed,1.1);fill.position.set(-3,1,-1);scene.add(fill);
     const floor=new T.Mesh(new T.CircleGeometry(1.7,64),new T.ShadowMaterial({color:0x05060b,opacity:.25}));floor.rotation.x=-Math.PI/2;floor.position.y=-.025;floor.receiveShadow=true;scene.add(floor);
     const ring=new T.Mesh(new T.TorusGeometry(1.13,.0025,6,100),new T.MeshBasicMaterial({color:0x9b9eb9,transparent:true,opacity:.16}));ring.rotation.x=Math.PI/2;ring.position.y=-.019;scene.add(ring);
-    anatomy=createExerciseAnatomy(T,scene,descriptor.muscles);const updateProps=makeProps(scene);
+    const model=new T.Group();scene.add(model);
+    anatomy=createExerciseAnatomy(T,model,descriptor.muscles);const updateProps=makeProps(model);
     renderer.setSize(width,height,false);host?.append(canvas);
-    function apply(pose){
+    function apply(pose,controls={}){
       if(disposed)return;
       const w=Math.max(mountHost?.clientWidth||width,1),h=Math.max(mountHost?.clientHeight||height,1);
       if(width!==w||height!==h){width=w;height=h;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
-      camera.position.set(...(pose.camera||[2.9,1.8,3.9]));camera.lookAt(...(pose.target||[0,.91,0]));
+      const displayed=displayExercisePose(pose,controls);
+      model.scale.x=controls.mirrored?-1:1;
+      camera.position.set(...displayed.camera);camera.lookAt(...(displayed.target||[0,.91,0]));
       anatomy.update(pose);updateProps(pose.props||[]);
     }
     function releaseResources(){
@@ -133,7 +178,7 @@ function makeThree(host,descriptor){
       isContextLost:()=>disposed||renderer.getContext().isContextLost(),
       attach(next,description){mountHost=next;next.append(canvas);anatomy.setMuscles?.(description.muscles);},
       detach(){canvas.remove();mountHost=null;},
-      render(pose){apply(pose);renderer.render(scene,camera);},
+      render(pose,controls){apply(pose,controls);renderer.render(scene,camera);},
       async prepare(){
         // Build every equipment combination once. Geometry/materials and the body rig
         // stay shared, so navigation needs neither a download nor a new GPU context.
@@ -199,12 +244,10 @@ if(typeof window!=='undefined')window.addEventListener('pagehide',event=>{if(!ev
 function makeFallback(host) {
   const uid='movement-'+(++illustrationSerial),svg=document.createElementNS('http://www.w3.org/2000/svg','svg');
   svg.setAttribute('viewBox','0 0 420 360');svg.setAttribute('aria-hidden','true');svg.classList.add('exercise-demo-vector');host.append(svg);
-  const pt=(p,camera,target)=>{
-    const eye=v(camera),forward=v(target).sub(eye).normalize(),right=new T.Vector3().crossVectors(forward,UP).normalize(),up=new T.Vector3().crossVectors(right,forward).normalize(),rel=v(p).sub(eye);
-    const z=rel.dot(forward),scale=590/Math.max(z,.5);return [210+rel.dot(right)*scale,180-rel.dot(up)*scale];
-  };
-  function render(pose){
-    const j=pose.joints,cam=pose.camera||[2.9,1.8,3.9],tar=pose.target||[0,.91,0],project=p=>pt(p,cam,tar),a=p=>project(p).map(n=>n.toFixed(2)).join(','),hip=mid(j.hipL,j.hipR),sh=mid(j.shoulderL,j.shoulderR);
+  function render(original,controls={}){
+    const pose=displayExercisePose(original,controls),width=host.clientWidth||420,height=host.clientHeight||360;
+    svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
+    const j=pose.joints,cam=pose.camera||[2.9,1.8,3.9],tar=pose.target||[0,.91,0],project=p=>projectExercisePoint(p,cam,tar,width,height).slice(0,2),a=p=>project(p).map(n=>n.toFixed(2)).join(','),hip=mid(j.hipL,j.hipR),sh=mid(j.shoulderL,j.shoulderR);
     const line=(from,to,width,paint='skin')=>`<path d="M${a(from)}L${a(to)}" fill="none" stroke="url(#${uid}-${paint})" stroke-width="${width}" stroke-linecap="round"/>`;
     let props='';
     for(const p of pose.props||[]){
@@ -229,6 +272,44 @@ function makeFallback(host) {
   return {render,dispose:()=>svg.remove()};
 }
 
+function makeFormOverlay(host,descriptor){
+  const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),cue=document.createElement('p');
+  svg.classList.add('exercise-demo-form');svg.setAttribute('aria-hidden','true');
+  cue.className='exercise-demo-form-cue';cue.setAttribute('aria-hidden','true');
+  cue.textContent=descriptor.cues[1]||descriptor.cues[0];host.append(svg,cue);
+  const lower=descriptor.muscles.some(m=>['quads','hamstrings','glutes','calves'].includes(m));
+  const neck=descriptor.muscles.includes('neck'),trunk=!lower&&descriptor.muscles.includes('abs');
+  const base=neck?['head','neck']:trunk?['chest','waist']:lower?['hip','knee','ankle']:['shoulder','elbow','wrist'];
+  const samples=new Map();let signature='';
+  function render(pose,controls,variant){
+    svg.toggleAttribute('hidden',!controls.overlay);cue.hidden=!controls.overlay;if(!controls.overlay)return;
+    const width=host.clientWidth||336,height=host.clientHeight||300;
+    svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
+    const displayed=displayExercisePose(pose,controls),target=displayed.target||[0,.91,0];
+    const project=point=>projectExercisePoint(point,displayed.camera,target,width,height);
+    const sides=exerciseDemoWorkingSide(descriptor.id)?[exerciseDemoWorkingSide(descriptor.id)]:['left','right'];
+    const groups=neck||trunk?[base]:sides.map(side=>base.map(name=>name+(side==='left'?'L':'R')));
+    const key=variant||'';
+    if(!samples.has(key))samples.set(key,Array.from({length:33},(_,i)=>getExercisePose(descriptor.id,exercisePhaseAt(descriptor.id,i/32),variant)));
+    const pointString=points=>points.map(point=>{const p=project(point);return `${p[0].toFixed(1)},${p[1].toFixed(1)}`;}).join(' ');
+    const next=[width,height,variant,controls.angle,controls.side,controls.mirrored].join(':');
+    if(signature!==next){
+      signature=next;svg.replaceChildren();
+      for(const joints of groups){
+        for(const joint of joints.slice(1)){
+          const path=document.createElementNS(ns,'polyline');path.classList.add('demo-joint-path');
+          path.setAttribute('points',pointString(samples.get(key).map(sample=>controls.mirrored?mirrorPoint(sample.joints[joint]):sample.joints[joint])));svg.append(path);
+        }
+        const line=document.createElementNS(ns,'polyline');line.classList.add('demo-joint-link');line.dataset.joints=joints.join(',');svg.append(line);
+        for(const joint of joints){const dot=document.createElementNS(ns,'circle');dot.classList.add('demo-joint-marker');dot.setAttribute('r','3');dot.dataset.joint=joint;svg.append(dot);}
+      }
+    }
+    svg.querySelectorAll('[data-joints]').forEach(line=>line.setAttribute('points',pointString(line.dataset.joints.split(',').map(name=>displayed.joints[name]))));
+    svg.querySelectorAll('[data-joint]').forEach(dot=>{const p=project(displayed.joints[dot.dataset.joint]);dot.setAttribute('cx',p[0]);dot.setAttribute('cy',p[1]);});
+  }
+  return {render,dispose(){svg.remove();cue.remove();samples.clear();}};
+}
+
 export function mountExerciseDemos(root=document) {
   const host=root.querySelector('[data-exercise-demo]');
   if(!host)return ()=>{};
@@ -237,59 +318,87 @@ export function mountExerciseDemos(root=document) {
   host.querySelector('.demo-loading')?.remove();
   let disposed=false,raf=0,last=0,elapsed=0,visible=true,playing=!matchMedia('(prefers-reduced-motion: reduce)').matches;
   let variant=host.dataset.variant||descriptor.variants?.[0]?.id||'default';
+  const controls=normalizeDemoControls({angle:host.dataset.demoAngleValue,side:host.dataset.demoSideValue,speed:host.dataset.demoSpeedValue,overlay:host.dataset.demoOverlayValue});
+  const workingSide=exerciseDemoWorkingSide(descriptor.id);
   const media=matchMedia('(prefers-reduced-motion: reduce)'),toggle=root.querySelector('[data-demo-toggle]'),phaseNode=root.querySelector('[data-demo-phase]');
-  const variantButtons=[...root.querySelectorAll('[data-demo-variant]')];
+  const variantButtons=[...root.querySelectorAll('[data-demo-variant]')],angleButtons=[...root.querySelectorAll('[data-demo-angle]')],sideButtons=[...root.querySelectorAll('[data-demo-side]')];
+  const scrub=root.querySelector('[data-demo-scrub]'),speedControl=root.querySelector('[data-demo-speed]'),overlayToggle=root.querySelector('[data-demo-overlay]');
+  const sideControls=root.querySelector('[data-demo-side-controls]'),sideLabel=root.querySelector('[data-demo-side-label]');
+  if(sideControls)sideControls.hidden=!workingSide;
+  sideButtons.forEach(button=>{button.disabled=!workingSide;});
+  host.dataset.demoUnilateral=String(!!workingSide);
   host.classList.add('exercise-demo-stage');
   activeViewer?.();
   let visual=acquireVisual(host,descriptor);
+  const formOverlay=makeFormOverlay(host,descriptor);
   host.dataset.renderer=visual.canvas?'webgl':'svg';
   const cycle=Math.max(Number(descriptor.cycleSeconds)||2.2,1);
+  const savedProgress=Number(host.dataset.demoProgressValue);
+  if(Number.isFinite(savedProgress))elapsed=Math.max(0,Math.min(savedProgress,99.999999))/100*cycle;
   host.dataset.cycleSeconds=String(cycle);
+  const renderControls=()=>({...controls,mirrored:!!workingSide&&controls.side!==workingSide});
+  const progress=()=>((elapsed/cycle)%1+1)%1*100;
   function state(){
     host.dataset.demoState=playing?'playing':'paused';
+    host.dataset.workingSide=workingSide?controls.side:'both';
+    host.dataset.demoAngleValue=controls.angle;host.dataset.demoSideValue=controls.side;host.dataset.demoSpeedValue=String(controls.speed);host.dataset.demoOverlayValue=String(controls.overlay);
     if(toggle){
       toggle.setAttribute('aria-label',playing?'Pause exercise illustration':'Play exercise illustration');toggle.setAttribute('aria-pressed',String(playing));
       toggle.innerHTML=playing?'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg><span>Pause</span>':'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 10 7-10 7Z"/></svg><span>Play</span>';
     }
     variantButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.demoVariant===variant)));
-    host.dispatchEvent(new CustomEvent('exercise-demo-state',{bubbles:true,detail:{playing,variant}}));
+    angleButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.demoAngle===controls.angle)));
+    sideButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.demoSide===controls.side)));
+    if(speedControl)speedControl.value=String(controls.speed);
+    if(overlayToggle){overlayToggle.setAttribute('aria-pressed',String(controls.overlay));overlayToggle.classList.toggle('is-active',controls.overlay);}
+    if(sideLabel)sideLabel.textContent=workingSide?`${controls.side==='left'?'Left':'Right'} side`:'Both sides';
+    host.dispatchEvent(new CustomEvent('exercise-demo-state',{bubbles:true,detail:{playing,variant,...controls,progress:progress()}}));
   }
   function draw(){
     if(disposed)return;
     const pose=getExercisePose(descriptor.id,exercisePhaseAt(descriptor.id,elapsed/cycle),variant);
     if(!pose)return;
-    try{visual.render(pose);}catch{
-      visual.canvas?.removeEventListener('webglcontextlost',onContextLost);invalidateVisual(visual);visual=makeFallback(host);host.dataset.renderer='svg';visual.render(pose);
+    const options=renderControls();
+    try{visual.render(pose,options);}catch{
+      visual.canvas?.removeEventListener('webglcontextlost',onContextLost);invalidateVisual(visual);visual=makeFallback(host);host.dataset.renderer='svg';visual.render(pose,options);
     }
+    formOverlay.render(pose,options,variant);
     const label=pose.phaseLabel||'Controlled movement';
     if(host.dataset.phase!==label){host.dataset.phase=label;if(phaseNode)phaseNode.textContent=label;}
-    host.style.setProperty('--demo-progress',String((elapsed/cycle)%1));
+    const position=progress();host.style.setProperty('--demo-progress',String(position/100));host.dataset.demoProgressValue=String(position);
+    if(scrub){scrub.value=position.toFixed(1);scrub.setAttribute('aria-valuetext',`${Math.round(position)}% through illustration`);}
   }
   function frame(time){
     raf=0;if(disposed||!playing||!visible||document.hidden){last=0;return;}
     if(!last)last=time;
-    if(time-last>=1000/30){elapsed+=(time-last)/1000;last=time;draw();}
+    if(time-last>=1000/30){elapsed+=(time-last)/1000*controls.speed;last=time;draw();}
     raf=requestAnimationFrame(frame);
   }
   function schedule(){if(!disposed&&playing&&visible&&!document.hidden&&!raf){last=0;raf=requestAnimationFrame(frame);}}
   function pauseFrame(){if(raf)cancelAnimationFrame(raf);raf=0;last=0;}
   function onToggle(){playing=!playing;state();if(playing)schedule();else pauseFrame();}
   const onVariant=e=>{variant=e.currentTarget.dataset.demoVariant;host.dataset.variant=variant;elapsed=0;state();draw();};
+  const onAngle=e=>{controls.angle=normalizeDemoControls({angle:e.currentTarget.dataset.demoAngle}).angle;state();draw();};
+  const onSide=e=>{if(!workingSide)return;controls.side=e.currentTarget.dataset.demoSide==='left'?'left':'right';state();draw();};
+  const onSpeed=()=>{controls.speed=normalizeDemoControls({speed:speedControl.value}).speed;state();last=0;};
+  const onScrub=()=>{const value=Number(scrub.value);if(!Number.isFinite(value))return;playing=false;pauseFrame();elapsed=Math.max(0,Math.min(value,99.999999))/100*cycle;draw();state();};
+  const onOverlay=()=>{controls.overlay=!controls.overlay;state();draw();};
   const onVisibility=()=>{if(document.hidden)pauseFrame();else{draw();schedule();}};
   const onPreference=()=>{if(media.matches){playing=false;state();pauseFrame();}};
   const onContextLost=e=>{
     if(disposed)return;e.preventDefault();
     const old=visual;old.canvas?.removeEventListener('webglcontextlost',onContextLost);visual=makeFallback(host);host.dataset.renderer='svg';invalidateVisual(old);draw();
   };
-  toggle?.addEventListener('click',onToggle);variantButtons.forEach(b=>b.addEventListener('click',onVariant));
+  const events=[[toggle,'click',onToggle],[speedControl,'change',onSpeed],[scrub,'input',onScrub],[overlayToggle,'click',onOverlay],...variantButtons.map(b=>[b,'click',onVariant]),...angleButtons.map(b=>[b,'click',onAngle]),...sideButtons.map(b=>[b,'click',onSide])];
+  events.forEach(([element,event,handler])=>element?.addEventListener(event,handler));
   document.addEventListener('visibilitychange',onVisibility);media.addEventListener('change',onPreference);
   visual.canvas?.addEventListener('webglcontextlost',onContextLost);
   const resize=new ResizeObserver(()=>draw());resize.observe(host);
   const intersection=new IntersectionObserver(entries=>{visible=entries[0]?.isIntersecting!==false;if(visible){draw();schedule();}else pauseFrame();},{threshold:.01});intersection.observe(host);
   state();draw();schedule();
   const cleanup=()=>{
-    if(disposed)return;disposed=true;pauseFrame();resize.disconnect();intersection.disconnect();
-    toggle?.removeEventListener('click',onToggle);variantButtons.forEach(b=>b.removeEventListener('click',onVariant));
+    if(disposed)return;disposed=true;pauseFrame();resize.disconnect();intersection.disconnect();formOverlay.dispose();
+    events.forEach(([element,event,handler])=>element?.removeEventListener(event,handler));
     document.removeEventListener('visibilitychange',onVisibility);media.removeEventListener('change',onPreference);
     visual.canvas?.removeEventListener('webglcontextlost',onContextLost);releaseVisual(visual);
     if(activeViewer===cleanup)activeViewer=null;

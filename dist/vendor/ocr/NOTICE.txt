@@ -1,0 +1,1 @@
+Tesseract.js and tesseract.js-core are Apache-2.0 licensed. English trained data: @tesseract.js-data/eng 1.0.0, MIT, https://github.com/naptha/tessdata. Barcode reader: @zxing/browser 0.1.5 and @zxing/library, Apache-2.0. No photos or OCR results are cached by this app.

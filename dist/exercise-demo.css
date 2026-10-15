@@ -4,7 +4,32 @@
 .exercise-demo-stage::after{content:"";position:absolute;pointer-events:none;inset:auto 19% 11% 19%;height:1px;background:linear-gradient(90deg,transparent,rgba(205,204,229,.12),transparent);z-index:0}
 .exercise-demo-canvas,.exercise-demo-vector{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:1;pointer-events:none}
 .exercise-demo-stage[data-renderer=svg]{background:radial-gradient(ellipse at 50% 40%,rgba(153,151,191,.09),transparent 75%)}
+.demo-transport [data-demo-toggle] .icon{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 dialog[data-mode=full] .exercise-demo-stage{height:clamp(320px,45svh,460px)}
 @media(max-width:350px){.exercise-demo-stage{height:270px;border-radius:21px}}
 @media(max-width:350px) and (max-height:750px){dialog:not([data-mode=full]) .exercise-demo-stage{height:240px}}
 @media(prefers-reduced-motion:reduce){.exercise-demo-stage{scroll-behavior:auto}}
+
+/* Controls use the sheet's clear surface; the movement remains the visual focus. */
+.demo-camera-controls,.demo-side-controls,.demo-playback-controls{display:flex;align-items:center;gap:5px;min-width:0;flex-wrap:wrap}
+.demo-camera-controls{padding:5px;border-radius:18px;background:rgba(255,255,255,.035);box-shadow:inset 0 1px rgba(255,255,255,.07);margin:12px 0}
+.demo-camera-controls button{flex:1 1 auto;min-height:44px;padding:9px 10px;border:0;border-radius:13px;background:transparent;color:var(--muted,#a5a9ba);font:inherit;font-size:12px;transition:background .18s ease,color .18s ease,box-shadow .18s ease}
+.demo-camera-controls button[aria-pressed=true],.demo-side-controls button[aria-pressed=true]{background:linear-gradient(155deg,rgba(226,229,255,.12),rgba(207,207,238,.045));color:#f1f1f8;box-shadow:inset 0 1px rgba(255,255,255,.14),0 2px 10px rgba(0,0,0,.12)}
+.demo-playback-controls{justify-content:space-between;margin:12px 0;gap:8px}
+.demo-playback-controls button,.demo-playback-controls select,.demo-side-controls button{min-height:44px;border:1px solid rgba(233,235,255,.10);border-radius:13px;background:rgba(255,255,255,.025);color:#d8dce7;font:inherit;font-size:12px;padding:9px 12px}
+.demo-playback-controls [data-demo-overlay][aria-pressed=true]{border-color:rgba(206,196,255,.35);background:rgba(187,173,240,.10);color:#e6dfff}
+.demo-playback-controls label{display:flex;align-items:center;gap:7px;color:var(--muted,#a5a9ba);font-size:12px}
+.demo-side-controls{margin:8px 0}
+.demo-side-controls[hidden]{display:none}
+.demo-side-controls button{flex:1}
+.demo-scrub-label{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 0;color:var(--muted,#a5a9ba);font-size:12px}
+input[data-demo-scrub]{display:block;width:100%;height:44px;min-height:44px;margin:0;accent-color:#c9c5e6;cursor:ew-resize;background:transparent;box-shadow:none;padding:0;touch-action:pan-y}
+.demo-camera-controls button:focus-visible,.demo-side-controls button:focus-visible,.demo-playback-controls button:focus-visible,.demo-playback-controls select:focus-visible,input[data-demo-scrub]:focus-visible{outline:2px solid #d5caff;outline-offset:3px}
+.exercise-demo-form{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none;overflow:hidden}
+.exercise-demo-form[hidden],.exercise-demo-form-cue[hidden]{display:none}
+.demo-joint-path{fill:none;stroke:#c8b6f3;stroke-width:1.25;stroke-dasharray:3 4;opacity:.63;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
+.demo-joint-link{fill:none;stroke:#e4def7;stroke-width:1;opacity:.7;vector-effect:non-scaling-stroke}
+.demo-joint-marker{fill:#ebe4ff;stroke:#483e65;stroke-width:1.3;vector-effect:non-scaling-stroke}
+.exercise-demo-form-cue{position:absolute;z-index:4;bottom:10px;left:12px;right:12px;margin:0;padding:8px 11px;border-radius:12px;background:rgba(12,14,24,.72);box-shadow:inset 0 1px rgba(231,226,255,.10);backdrop-filter:blur(12px);color:#dedbeb;font-size:11px;line-height:1.5;text-align:center;pointer-events:none;text-wrap:pretty}
+@media(max-width:350px){.demo-camera-controls button{padding-inline:7px;font-size:11px}.demo-playback-controls{gap:6px}.demo-playback-controls button,.demo-playback-controls select{padding-inline:9px}.exercise-demo-form-cue{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.demo-camera-controls button{transition:none}}

@@ -1,5 +1,6 @@
 import {dayFor, totals, round, shiftDate, nextSession} from './model.js';
 import {validateHealth, validDate, assertUnchanged, ensureDay, BODY_FIELDS, METHODS, sameDayComposition} from './body.js';
+import {validateTrackerExtensions} from './tracker-model.js';
 
 const NUTRIENTS = ['kcal', 'protein', 'carbs', 'fat'];
 const BODY_KEYS = BODY_FIELDS.map(([key]) => key);
@@ -30,6 +31,7 @@ function keysOnly(value, allowed, name) {
 
 export function validateLifeHealth(data) {
   validateHealth(data);
+  validateTrackerExtensions(data);
   for (const [date, day] of Object.entries(data.days)) {
     const wellbeing = day.wellbeing;
     if (wellbeing != null) {
