@@ -2,7 +2,7 @@ import {readFile, writeFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 
 // Explicit public code/assets only. Never add health JSON, mailbox data or photos.
-const files = ['index.html', 'studio.js', 'pwa.js', 'studio.css', 'glass.css', 'gestures.js', 'widget-motion.js', 'health-intelligence.js', 'model.js', 'body.js', 'sync.js', 'manifest.webmanifest', 'favicon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/apple-touch-icon.png', 'assets/noto-sans-latin.woff2'];
+const files = ['index.html', 'studio.js', 'pwa.js', 'studio.css', 'glass.css', 'gestures.js', 'widget-motion.js', 'liquid-scene.js', 'health-intelligence.js', 'model.js', 'body.js', 'sync.js', 'manifest.webmanifest', 'favicon.svg', 'icons/icon-192.png', 'icons/icon-512.png', 'icons/icon-maskable-512.png', 'icons/apple-touch-icon.png', 'assets/noto-sans-latin.woff2'];
 const types = {html:'text/html',js:'text/javascript',css:'text/css',webmanifest:'application/manifest+json',svg:'image/svg+xml',png:'image/png',woff2:'font/woff2'};
 const index = await readFile('dist/index.html','utf8');
 const assets = await Promise.all(files.map(async file => {
