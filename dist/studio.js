@@ -5,6 +5,7 @@ import {createPressHandlers,createPinchHandlers} from './gestures.js';
 import {createPWA} from './pwa.js';
 import {mountWidgetMotion} from './widget-motion.js';
 import {mountLiquidScenes} from './liquid-scene.js';
+import {findExerciseDemo} from './exercise-catalogue.js';
 
 const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -86,7 +87,17 @@ const trackerNames={food:'Food',body:'Body comp',workouts:'Workouts'};
 function latestReading(key){
   return Object.entries(store.data.days).filter(([date,d])=>date<=state.date&&d.body?.[key]!=null).sort(([a],[b])=>b.localeCompare(a)).map(([date,d])=>({date,value:d.body[key]}))[0]||null;
 }
-let cleanWidgetMotion=()=>{},cleanLiquidScenes=()=>{},cleanSheetScenes=()=>{};
+let cleanWidgetMotion=()=>{},cleanLiquidScenes=()=>{},cleanSheetScenes=()=>{},cleanExerciseDemos=()=>{},sheetMediaVersion=0;
+function cleanSheetMedia(){sheetMediaVersion++;cleanSheetScenes();cleanExerciseDemos();cleanSheetScenes=()=>{};cleanExerciseDemos=()=>{};}
+function mountSheetMedia(){
+  cleanSheetScenes=mountLiquidScenes(sheet);
+  if(!$('[data-exercise-demo]',sheet))return;
+  const version=sheetMediaVersion;
+  import('./exercise-demo.js').then(({mountExerciseDemos})=>{if(version===sheetMediaVersion&&sheet.open)cleanExerciseDemos=mountExerciseDemos(sheet);}).catch(()=>{
+    if(version!==sheetMediaVersion)return;
+    const stage=$('[data-exercise-demo]',sheet);if(stage)stage.innerHTML='<p class="demo-load-error">The illustration could not load. Your movement cues are below. Reopen the preview to try again.</p>';
+  });
+}
 function opticalBackdrop(){return `<div class="optical-backdrop" aria-hidden="true"><svg viewBox="0 0 440 1100" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="ribbon-body" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f3efff" stop-opacity=".02"/><stop offset=".24" stop-color="#b8c7da" stop-opacity=".18"/><stop offset=".5" stop-color="#ededfa" stop-opacity=".06"/><stop offset=".74" stop-color="#d7bdec" stop-opacity=".15"/><stop offset="1" stop-color="#dcfaff" stop-opacity=".02"/></linearGradient><linearGradient id="ribbon-edge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity="0"/><stop offset=".22" stop-color="#d7eef7" stop-opacity=".25"/><stop offset=".45" stop-color="#f8f3ff" stop-opacity=".06"/><stop offset=".65" stop-color="#dcc7f3" stop-opacity=".24"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><filter id="silk-soft"><feGaussianBlur stdDeviation=".7"/></filter></defs><g class="silk-flow" fill="none"><path d="M550-80C80 30 570 300 260 410S-60 620 180 760 490 890 340 1170" stroke="url(#ribbon-body)" stroke-width="78"/><path d="M529-99C59 11 549 281 239 391S-81 601 159 741 469 871 319 1151" stroke="url(#ribbon-edge)" stroke-width="1.4" filter="url(#silk-soft)"/><path d="M573-58C103 52 593 322 283 432S-37 642 203 782 513 912 363 1192" stroke="url(#ribbon-edge)" stroke-width="1"/></g></svg><div class="optical-haze"></div></div>`;}
 function render(){
   cleanWidgetMotion();cleanLiquidScenes();
@@ -167,7 +178,7 @@ function trainingNotice(){return store.data.profile.trainingStatus==='ready'?'':
 function nutrition(d,t){return `${intro('NUTRITION', 'Food & activity', 'Meals, movement, and your daily fuel.',button('Log food','food-log','plus'))}${dateControls()}<div class="dashboard-grid"><div class="primary-column">${nutritionHero(d,t)}<section>${heading('Your food diary',tag(d.food.length+' entries'))}<label class="search-field">${icon('search')}<input id="food-search" type="search" placeholder="Find something you logged" aria-label="Search today’s food"></label><div class="card">${d.food.length?foodRows(d.food):empty('food','A fresh page','Food you log will appear here.',button('Add food','food-log','plus'))}<p id="search-empty" class="help padded" hidden>No matching entries.</p></div></section></div><div class="secondary-column"><section>${heading('Quick repeat')}<p class="help">Review a previous portion before saving it again.</p><div class="card repeat-list">${recentFood().length?recentFood().map(f=>`<button class="record-row" data-repeat="${esc(f.id)}" data-origin="${f.date}"><span class="item-icon">${icon(foodIcon(f))}</span><span class="row-description"><b>${esc(f.name)}</b><small>${esc(f.quantity)} · ${fmt(f.kcal)} kcal</small></span>${icon('plus')}</button>`).join(''):empty('history','Build your shortcuts','Your recent foods become repeatable here.')}</div></section><section>${heading('Saved recipes')}<div class="card">${(store.data.recipes||[]).map(r=>`<button class="record-row" data-recipe="${esc(r.id)}"><span class="item-icon peach">${icon('food')}</span><span class="row-description"><b>${esc(r.name)}</b><small>${fmt(r.yieldG)} g batch · choose your portion</small></span>${icon('plus')}</button>`).join('')||empty('food','No saved recipes','Batch recipes can be added through chat.')}</div></section>${t.pending?`<div class="notice soft">${icon('info')}<div><b>Some nutrition is missing</b><p>${t.pending} ${t.pending===1?'entry has':'entries have'} unknown values. The + ? marker means the total is incomplete, not zero.</p></div></div>`:''}</div></div>`;}
 function recentFood(){const seen=new Set();return Object.entries(store.data.days).filter(([d])=>d<=state.date).sort(([a],[b])=>b.localeCompare(a)).flatMap(([date,d])=>d.food.map(f=>({...f,date}))).filter(f=>{const key=f.name+'|'+f.quantity;if(seen.has(key))return false;seen.add(key);return true;}).slice(0,5);}
 function training(d){return `${intro('TRAINING', 'Your training', 'Your next session and the work you logged.',button('Log session','workout-log','plus'))}${dateControls()}${trainingNotice()}<div class="section-head"><h2>Today’s work</h2>${button('Rest timer','timer','timer','textbtn')}</div>${d.workouts.length?recordedWorkouts(d):`<div class="card">${empty('train','No session logged','Prescribed workouts are not automatically marked as done.',button('Log a session','workout-log','plus'))}</div>`}<section>${heading('Your rotation',tag('PUSH / PULL / LEGS'))}<p class="help">Hold to preview. Tap for the details. Only completed program sessions advance the rotation.</p><div class="workout-grid">${store.data.training.rotation.map(sid=>store.data.training.sessions.find(s=>s.id===sid)).filter(Boolean).map(s=>workoutTile(s,nextSession(store.data,state.date)?.id===s.id)).join('')}</div></section><section>${heading('Recent sessions')}<div class="card">${Object.entries(store.data.days).filter(([date])=>date<=state.date).sort(([a],[b])=>b.localeCompare(a)).filter(([,d])=>d.workouts.length).slice(0,10).map(([date,day])=>`<div class="history-date">${dateLabel(date,{weekday:'short',day:'numeric',month:'short'})}</div>${recordedWorkouts(day,date)}`).join('')||empty('history','No workout records','Completed and partial sessions will appear together.')}</div></section><details class="card disclosure"><summary>Program notes ${icon('plus')}</summary><div class="padded">${(Array.isArray(store.data.training.notes)?store.data.training.notes:[store.data.training.notes]).filter(Boolean).map(n=>`<p class="help">${esc(n)}</p>`).join('')}</div></details>`;}
-function exerciseList(s){return `<ol class="exercise-list">${s.exercises.map((e,i)=>`<li><span class="exercise-index">${String(i+1).padStart(2,'0')}</span><div><b>${esc(e.name)}</b><span>${esc(e.sets)} sets × ${esc(e.reps)}${/sec/i.test(e.reps)?'':' reps'}</span>${e.note?`<details><summary>Technique & progression</summary><p>${esc(e.note)}</p></details>`:''}</div><button class="rest-chip" data-seconds="${Number(e.rest)||60}" aria-label="Start ${Number(e.rest)||60} second rest timer">${icon('timer')}${Number(e.rest)||60}s</button></li>`).join('')}</ol>`;}
+function exerciseList(s){return `<p class="exercise-hold-hint">${icon('eye')}Hold an exercise to see it in motion.</p><ol class="exercise-list">${s.exercises.map((e,i)=>`<li><span class="exercise-index">${String(i+1).padStart(2,'0')}</span><div>${findExerciseDemo(e.name)?`<button type="button" class="exercise-demo-open" data-exercise-session="${esc(s.id)}" data-exercise-index="${i}" aria-label="Watch ${esc(e.name)} demonstration; hold to preview"><b>${esc(e.name)}</b><span>${esc(e.sets)} sets × ${esc(e.reps)}${/sec/i.test(e.reps)?'':' reps'}</span><small>${icon('eye')}View movement</small></button>`:`<b>${esc(e.name)}</b><span>${esc(e.sets)} sets × ${esc(e.reps)}${/sec/i.test(e.reps)?'':' reps'}</span>`}${e.note?`<details><summary>Technique & progression</summary><p>${esc(e.note)}</p></details>`:''}</div><button class="rest-chip" data-seconds="${Number(e.rest)||60}" aria-label="Start ${Number(e.rest)||60} second rest timer">${icon('timer')}${Number(e.rest)||60}s</button></li>`).join('')}</ol>`;}
 function workoutDetails(){const s=store.data.training.sessions.find(s=>s.id===state.detail);if(!s)return empty('train','Workout not found','This session may have changed.',button('Back to training','training','left'));return `${intro('YOUR PROGRAM',esc(s.name),esc(s.focus))}${trainingNotice()}<div class="workout-detail-stats">${tag(s.exercises.length+' exercises')}${tag(sessionSets(s)+' prescribed sets')}${tag('Not a performance log')}</div><div class="card">${s.id==='rest'?empty('moon','Recovery is part of the plan','Log your rest day to advance the rotation.'):exerciseList(s)}</div><div class="detail-footer">${button(s.id==='rest'?'Log rest day':'Log this session','workout-log','check','btn',`data-session="${esc(s.id)}"`)}${button('Rest timer','timer','timer','btn secondary')}</div>`;}
 function chart(points,key,{mixed=false}={}) {
   if(!points.length)return `<div class="chart-empty"><div class="chart-grid-placeholder"></div><span class="empty-icon">${icon('history')}</span><h3>Your trend starts here.</h3><p>Add a measurement to begin. Charts use your recorded values.</p>${button('Add a measurement','body-log','plus','btn secondary')}</div>`;
@@ -191,14 +202,14 @@ function settingsView(){return `<div class="settings-layout"><section class="car
 const TOKEN_URL='https://github.com/settings/personal-access-tokens/new?name=Cam%27s%20Health&description=Browser%20editing%20for%20Cam-s-Health&target_name=CameronNel&expires_in=30&contents=write';
 let returnFocus=null,dirty=false,closingFromHistory=false,sheetDetail=null;
 function openSheet(title,content,setup=()=>{},detail=null) {
-  cleanSheetScenes();
+  cleanSheetMedia();
   if(!sheet.open){cleanLiquidScenes();returnFocus=document.activeElement;history.pushState({...history.state,sheet:true,fullscreen:false},'');}
   const keepFull=sheet.open&&sheet.dataset.mode==='full';
   dirty=false;sheetDetail=detail;sheet.dataset.mode=keepFull?'full':'popup';sheet.dataset.tracker=detail?.tracker||'';
   if(keepFull&&detail)content=detail.full();
   sheet.innerHTML=`<div class="sheet-grip"></div><header class="sheet-head"><div><span class="micro-label">A CLOSER LOOK</span><h2 id="sheet-title">${title}</h2></div><div class="sheet-head-actions">${iconButton('Expand to full screen','expand-sheet','expand')}${iconButton('Close dialog','close-sheet','close')}</div></header><div class="pinch-guide">Pinch out for the full picture ${icon('expand')}</div><div class="sheet-content">${content}</div><div class="discard-confirm" hidden><b>Discard unsaved changes?</b><p>These edits have not been saved to GitHub.</p><div class="form-actions">${button('Keep editing','keep-editing','','btn secondary')}${button('Discard','discard','','btn danger')}</div></div>`;
   sheet.setAttribute('aria-labelledby','sheet-title');document.body.classList.add('sheet-open');
-  if(!sheet.open)sheet.showModal();if(keepFull){const b=$('[data-act=expand-sheet]',sheet);b.innerHTML=icon('collapse');b.setAttribute('aria-label','Return to popup');$('.pinch-guide',sheet).innerHTML='Pinch in to return to your preview '+icon('collapse');}sheet.scrollTop=0;setup();attachSheetHolds();cleanSheetScenes=mountLiquidScenes(sheet);
+  if(!sheet.open)sheet.showModal();if(keepFull){const b=$('[data-act=expand-sheet]',sheet);b.innerHTML=icon('collapse');b.setAttribute('aria-label','Return to popup');$('.pinch-guide',sheet).innerHTML='Pinch in to return to your preview '+icon('collapse');}sheet.scrollTop=0;setup();attachSheetHolds();mountSheetMedia();
 }
 function animateLens(from){
   if(!from||!sheet.open||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
@@ -210,7 +221,7 @@ function setSheetMode(full,fromHistory=false){
   if(!sheet.open||full===(sheet.dataset.mode==='full'))return;
   const from=sheet.getBoundingClientRect(),focused=document.activeElement,expand=$('[data-act=expand-sheet]',sheet);
   sheet.dataset.mode=full?'full':'popup';
-  if(sheetDetail){cleanSheetScenes();$('.sheet-content',sheet).innerHTML=(full?sheetDetail.full:sheetDetail.compact)();attachSheetHolds();cleanSheetScenes=mountLiquidScenes(sheet);}
+  if(sheetDetail&&!sheetDetail.preserveContent){cleanSheetMedia();$('.sheet-content',sheet).innerHTML=(full?sheetDetail.full:sheetDetail.compact)();attachSheetHolds();mountSheetMedia();}
   expand.innerHTML=icon(full?'collapse':'expand');expand.setAttribute('aria-label',full?'Return to popup':'Expand to full screen');expand.title=expand.getAttribute('aria-label');
   $('.pinch-guide',sheet).innerHTML=full?'Pinch in to return to your preview '+icon('collapse'):'Pinch out for the full picture '+icon('expand');
   sheet.scrollTop=0;
@@ -231,7 +242,7 @@ function closeSheet(force=false) {
 sheet.addEventListener('cancel',event=>{event.preventDefault();closeSheet();});
 sheet.addEventListener('input',e=>{if(e.target.closest('form')&&e.target.name!=='githubToken')dirty=true;});
 sheet.addEventListener('click',e=>{if(e.target===sheet){const r=sheet.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)closeSheet();}});
-sheet.addEventListener('close',()=>{cleanSheetScenes();document.body.classList.remove('sheet-open');sheet.innerHTML='';sheetDetail=null;pinch.cancel();render();if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});else $('#main')?.focus({preventScroll:true});});
+sheet.addEventListener('close',()=>{cleanSheetMedia();disposeSheetHolds.forEach(fn=>fn());disposeSheetHolds=[];document.body.classList.remove('sheet-open');sheet.innerHTML='';sheetDetail=null;demoContext=null;pinch.cancel();render();if(returnFocus?.isConnected)returnFocus.focus({preventScroll:true});else $('#main')?.focus({preventScroll:true});});
 function authFields(){return store.connected?`<p class="auth-status">${icon('lock')}Save to GitHub as ${esc(store.account)}. Verified after writing.</p>`:`<details class="inline-connect"><summary>${icon('github')}Connect GitHub to save here ${icon('plus')}</summary><p>Chat’s GitHub connection is separate from this browser. Create a fine-grained token for <b>only Cam-s-Health</b> with <b>Contents: Read and write</b>.</p><a class="btn secondary full" href="${TOKEN_URL}" target="_blank" rel="noopener noreferrer">Create token on GitHub ${icon('arrow')}</a><label class="field">GitHub token<input name="githubToken" type="password" autocomplete="off" spellcheck="false" autocapitalize="off" placeholder="Paste token in this form, never in chat"></label><small>Held in memory for this tab only. Never written into your repository or browser storage.</small></details>`;}
 function numberField(name,label,value,{min=0,max=100000,step='any',help='',placeholder='Not measured',wide=false}={}){return `<label class="field ${wide?'wide':''}">${label}<input name="${name}" type="number" inputmode="decimal" min="${min}" max="${max}" step="${step}" value="${value==null?'':esc(value)}" placeholder="${esc(placeholder)}">${help?`<small>${help}</small>`:''}</label>`;}
 function saveFooter(label='Save to GitHub'){return `${authFields()}<p class="form-error" role="alert" id="form-error"></p><div class="form-actions sticky-actions">${button('Cancel','close-sheet','','btn secondary')}<button class="btn" type="submit">${icon('check')}<span>${label}</span></button></div>`;}
@@ -328,11 +339,47 @@ function bindHold(el,open,preview=open){
   for(const [name,fn] of Object.entries(bindings))el.addEventListener(name,fn);
   return ()=>{h.cancel();for(const [name,fn] of Object.entries(bindings))el.removeEventListener(name,fn);};
 }
-function attachHolds(){disposeHolds.forEach(fn=>fn());disposeHolds=[];$$('[data-peek]',root).forEach(el=>disposeHolds.push(bindHold(el,()=>openTracker(el.dataset.peek))));}
+function attachHolds(){disposeHolds.forEach(fn=>fn());disposeHolds=[];$$('[data-peek]',root).forEach(el=>disposeHolds.push(bindHold(el,()=>openTracker(el.dataset.peek),()=>{
+  if(el.dataset.peek!=='workouts')return openTracker(el.dataset.peek);
+  const latest=dayFor(store.data,state.date).workouts.at(-1),next=nextSession(store.data,state.date);
+  if(latest&&(latest.actualExercises?.length||store.data.training.sessions.find(s=>s.id===latest.sessionId)?.exercises.length))return previewRecordedWorkout(latest.id,state.date);
+  if(next?.exercises.length)return previewWorkout(next.id);
+  openTracker('workouts');
+})));}
 let disposeSheetHolds=[];
-function attachSheetHolds(){disposeSheetHolds.forEach(fn=>fn());disposeSheetHolds=[];$$('[data-workout]',sheet).forEach(el=>disposeSheetHolds.push(bindHold(el,()=>navigate('training',el.dataset.workout),()=>previewWorkout(el.dataset.workout))));}
+function attachSheetHolds(){
+  disposeSheetHolds.forEach(fn=>fn());disposeSheetHolds=[];
+  $$('[data-workout]',sheet).forEach(el=>disposeSheetHolds.push(bindHold(el,()=>navigate('training',el.dataset.workout),()=>previewWorkout(el.dataset.workout))));
+  $$('[data-exercise-session]',sheet).forEach(el=>disposeSheetHolds.push(bindHold(el,()=>previewWorkout(el.dataset.exerciseSession,Number(el.dataset.exerciseIndex)))));
+  $$('[data-record]',sheet).forEach(el=>disposeSheetHolds.push(bindHold(el,()=>recordDetails(el.dataset.record,el.dataset.recordDate),()=>previewRecordedWorkout(el.dataset.record,el.dataset.recordDate))));
+}
 
-function previewWorkout(sid){const s=store.data.training.sessions.find(s=>s.id===sid);if(s)openSheet('Workout preview',`<span class="eyebrow">PRESCRIBED, NOT COMPLETED</span><h3 class="sheet-hero-title">${esc(s.name)}</h3><p class="help">${esc(s.focus)}</p>${exerciseList(s)}${button('Open full workout','open-workout','arrow','btn full',`data-id="${esc(s.id)}"`)}`);}
+let demoContext=null;
+function exerciseStudio(context,index){
+  const exercise=context.exercises[index],demo=findExerciseDemo(exercise.name),count=context.exercises.length;
+  const variant=demo?.variants?.[0]?.id||'';
+  return `<section class="exercise-studio"><button type="button" class="demo-back" data-act="demo-back">${icon('left')}<span>${esc(context.title)}</span></button><div class="demo-heading"><span class="eyebrow">${context.prescribed?'YOUR PROGRAM':'YOUR RECORDED MOVEMENTS'} · ${String(index+1).padStart(2,'0')} / ${String(count).padStart(2,'0')}</span><h3>${esc(exercise.name)}</h3><p>${esc(demo?.focus||'Movement details')}</p></div>${demo?`<div class="demo-stage-wrap"><div class="exercise-stage exercise-demo-stage" data-exercise-demo="${esc(demo.id)}" data-variant="${esc(variant)}" role="img" aria-label="Looping illustration of ${esc(demo.name)}"><span class="demo-loading">Preparing your movement</span></div><span class="demo-stage-label" aria-hidden="true">MOVEMENT STUDY</span><span class="demo-stage-index" aria-hidden="true">${String(index+1).padStart(2,'0')}</span></div><div class="demo-transport"><button type="button" data-demo-toggle aria-label="Pause demonstration">Pause</button><span data-demo-phase>Controlled movement</span><span class="demo-loop-mark">${icon('refresh')}Loop</span></div>${demo.variants?.length>1?`<div class="demo-variants" role="group" aria-label="Demonstration variation">${demo.variants.map((v,i)=>`<button type="button" data-demo-variant="${esc(v.id)}" aria-pressed="${i===0}">${esc(v.label)}</button>`).join('')}</div>`:''}`:`<div class="demo-unavailable">${icon('train')}<p>An illustration for this custom movement isn’t available yet.</p></div>`}<div class="demo-pagination">${iconButton('Previous exercise','demo-step','left',`data-step="-1" ${index===0?'disabled':''}`)}<div><b>${String(index+1).padStart(2,'0')}<span> / ${String(count).padStart(2,'0')}</span></b><small>${context.prescribed?`${esc(exercise.sets)} sets · ${esc(exercise.reps)}${/sec/i.test(exercise.reps)?'':' reps'} prescribed`:'Illustration · not a performance record'}</small></div>${iconButton('Next exercise','demo-step','right',`data-step="1" ${index===count-1?'disabled':''}`)}</div>${count>1?`<div class="demo-sequence" role="group" aria-label="Choose an exercise">${context.exercises.map((e,i)=>`<button type="button" data-act="demo-select" data-index="${i}" aria-pressed="${index===i}"><span>${String(i+1).padStart(2,'0')}</span>${esc(e.name)}</button>`).join('')}</div>`:''}${demo?`<section class="demo-cues"><span class="eyebrow">THE MOVEMENT</span><ol>${demo.cues.map((cue,i)=>`<li><span>${String(i+1).padStart(2,'0')}</span><p>${esc(cue)}</p></li>`).join('')}</ol><p class="demo-equipment">${icon('train')}${esc(Array.isArray(demo.equipment)?demo.equipment.join(' · '):demo.equipment)}</p></section>`:''}${exercise.note?`<details class="demo-program-note"><summary>Your program notes ${icon('plus')}</summary><p>${esc(exercise.note)}</p></details>`:''}${store.data.profile.trainingStatus==='ready'?'':`<p class="demo-clearance">${esc(store.data.profile.trainingStatus==='paused'?'Training is paused.':'Exercise clearance is unconfirmed.')} Viewing a demonstration does not change your training status.</p>`}</section>`;
+}
+function openExerciseStudio(context,index=0,resetMode=true){
+  if(!context.exercises.length)return;
+  index=Math.max(0,Math.min(context.exercises.length-1,index));demoContext={...context,index};
+  const from=$('[data-exercise-session="'+CSS.escape(context.sessionId||'')+'"][data-exercise-index="'+index+'"]',sheet)?.getBoundingClientRect();
+  if(resetMode&&sheet.dataset.mode==='full')setSheetMode(false);
+  const content=()=>exerciseStudio(context,index);
+  openSheet('Movement studio',content(),()=>{}, {compact:content,full:content,tracker:'exercise',preserveContent:true});
+  if(resetMode)animateLens(from);
+}
+function previewWorkout(sid,index=0){
+  const s=store.data.training.sessions.find(s=>s.id===sid);if(!s)return;
+  if(!s.exercises.length)return openSheet('Recovery',`<h3 class="sheet-hero-title">${esc(s.name)}</h3><p class="help">${esc(s.focus)}</p>${button('Open rest day','open-workout','arrow','btn full',`data-id="${esc(s.id)}"`)}`);
+  openExerciseStudio({title:s.name,sessionId:s.id,exercises:s.exercises,prescribed:true,back:()=>navigate('training',sid)},index);
+}
+function previewRecordedWorkout(recordId,date){
+  const w=dayFor(store.data,date).workouts.find(w=>w.id===recordId);if(!w)return;
+  const s=store.data.training.sessions.find(s=>s.id===w.sessionId),actual=w.actualExercises?.length?w.actualExercises:null,exercises=actual||s?.exercises||[];
+  if(!exercises.length)return recordDetails(recordId,date);
+  openExerciseStudio({title:w.name,sessionId:s?.id,exercises,prescribed:!actual,back:()=>recordDetails(recordId,date)});
+}
 async function action(act,b){
  if(act==='expand-sheet')return setSheetMode(sheet.dataset.mode!=='full');if(act==='close-sheet')return closeSheet();if(act==='discard'){dirty=false;return closeSheet(true);}if(act==='keep-editing'){$('.discard-confirm',sheet).hidden=true;return;}
  if(act==='quick')return quickLog();if(act==='body-log')return bodyForm();if(act==='food-log')return foodForm();if(act==='workout-log')return workoutForm(null,state.date,b?.dataset.session||state.detail);
@@ -342,6 +389,8 @@ async function action(act,b){
  if(act==='today')return selectDate(today(store.data.profile.timezone));if(act==='prev'||act==='next')return selectDate(shiftDate(state.date,act==='prev'?-1:1));
  if(['training','body','history','settings'].includes(act))return navigate(act);if(act==='food-page')return navigate('nutrition');
  if(act==='open-workout')return navigate('training',b.dataset.id);
+ if(act==='demo-back')return demoContext?.back();
+ if(act==='demo-step'||act==='demo-select'){if(demoContext){const context=demoContext,index=act==='demo-step'?context.index+Number(b.dataset.step):Number(b.dataset.index);openExerciseStudio(context,index,false);}return;}
  if(act==='connect')return connectForm();if(act==='disconnect'){store.disconnect();closeSheet(true);toast('Disconnected. Read-only access remains available.');return;}
  if(act==='sync-info')return syncInfo();if(act==='targets')return targetsForm();if(act==='brief')return briefSheet();if(act==='copy-brief')return copyText(brief(store.data,state.date));
  if(act==='print'){closeSheet(true);navigate('dashboard');setTimeout(()=>window.print(),150);return;}
@@ -356,7 +405,7 @@ document.addEventListener('click',async e=>{
  if(e.target.closest('[data-home]')){e.preventDefault();navigate('dashboard');return;}
  const b=e.target.closest('button');if(!b)return;
  try {
- if(b.dataset.peek||b.dataset.workout)return;
+ if(b.dataset.peek||b.dataset.workout||b.dataset.exerciseSession||b.dataset.record||b.hasAttribute('data-demo-toggle')||b.hasAttribute('data-demo-variant'))return;
  if(b.matches('.remove-exercise')){b.closest('.exercise-input').remove();dirty=true;return;}
  if(b.dataset.life){e.preventDefault();return await pwaAction(b.dataset.life);}
  if(b.dataset.act){e.preventDefault();return await action(b.dataset.act,b);}

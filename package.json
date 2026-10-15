@@ -15,6 +15,7 @@
     "esbuild": "^0.28.2"
   },
   "dependencies": {
-    "drizzle-orm": "^0.45.3"
+    "drizzle-orm": "^0.45.3",
+    "three": "0.180.0"
   }
 }
