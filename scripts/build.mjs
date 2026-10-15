@@ -2,6 +2,7 @@ import {build} from 'esbuild';
 import {mkdir,readFile,writeFile,readdir,copyFile,cp,rm} from 'node:fs/promises';
 import {resolve} from 'node:path';
 await import('./build-exercise-vendor.mjs');
+await import('./build-exercise-anatomy.mjs');
 await import('./build-pwa.mjs');
 const out=resolve('.sites-runtime/build');
 await rm(out,{recursive:true,force:true});

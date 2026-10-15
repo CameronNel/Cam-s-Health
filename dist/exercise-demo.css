@@ -6,4 +6,5 @@
 .exercise-demo-stage[data-renderer=svg]{background:radial-gradient(ellipse at 50% 40%,rgba(153,151,191,.09),transparent 75%)}
 dialog[data-mode=full] .exercise-demo-stage{height:clamp(320px,45svh,460px)}
 @media(max-width:350px){.exercise-demo-stage{height:270px;border-radius:21px}}
+@media(max-width:350px) and (max-height:750px){dialog:not([data-mode=full]) .exercise-demo-stage{height:240px}}
 @media(prefers-reduced-motion:reduce){.exercise-demo-stage{scroll-behavior:auto}}

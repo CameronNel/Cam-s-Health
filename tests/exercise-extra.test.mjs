@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {extraExerciseDemos,getExtraExercisePose} from '../dist/exercise-extra.js';
-import {getExercisePose} from '../dist/exercise-catalogue.js';
+import {getExercisePose,getExerciseDemo,exercisePhaseAt} from '../dist/exercise-catalogue.js';
 
 const distance=(a,b)=>Math.hypot(...a.map((v,i)=>v-b[i]));
 test('historical extras have explicit unique identities and honest illustration equipment',()=>{
@@ -38,4 +38,20 @@ test('distinct historical exercises use their own equipment and only the working
   for(const id of ['single-arm-preacher-curl','hammer-preacher-curl'])assert.ok(pose(id,.25).props.filter(p=>p.kind==='bench').length===2);
   const a=pose('bent-over-db-row',0),b=pose('bent-over-db-row',.5);
   assert.deepEqual(a.joints.shoulderR,b.joints.shoulderR);assert.ok(b.joints.elbowR[2]<a.joints.elbowR[2]);
+});
+
+
+test('recorded-movement playback shares the same natural cadence as the integrated catalogue',()=>{
+  for(const d of extraExerciseDemos){
+    const integrated=getExerciseDemo(d.id);
+    assert.equal(integrated.cycleSeconds,d.cycleSeconds);
+    assert.equal(d.durationMs,d.cycleSeconds*1000);
+    assert.deepEqual(integrated.cadence,d.cadence);
+    assert.ok(d.cycleSeconds>=1.8&&d.cycleSeconds<=2.4,`${d.id} natural cycle`);
+    const p=exercisePhaseAt(d.id,.4);
+    assert.ok(p>=0&&p<1);
+  }
+  assert.equal(getExerciseDemo('rdl-example').cadence.firstHalf,'lower');
+  assert.equal(getExerciseDemo('db-shoulder-press').cadence.firstHalf,'lift');
+  assert.equal(getExerciseDemo('db-lateral-raise').cycleSeconds,1.9);
 });

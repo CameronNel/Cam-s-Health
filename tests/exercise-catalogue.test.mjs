@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {exerciseDemos,findExerciseDemo,getExerciseDemo,getExercisePose} from '../dist/exercise-catalogue.js';
+import {exerciseDemos,findExerciseDemo,getExerciseDemo,getExercisePose,exercisePhaseAt} from '../dist/exercise-catalogue.js';
 
 const data=JSON.parse(fs.readFileSync(new URL('../dist/data/health.json',import.meta.url),'utf8'));
 const required=['hipL','hipR','kneeL','kneeR','ankleL','ankleR','toeL','toeR','shoulderL','shoulderR','elbowL','elbowR','wristL','wristR','handL','handR','neck','head','waist','chest'];
@@ -28,7 +28,7 @@ test('matching is exact after punctuation normalization; unknown custom activiti
 });
 test('every authored variant produces finite complete skeletons and a closed looping pose',()=>{
   for(const d of exerciseDemos){
-    assert.ok(d.cycleSeconds>=4&&d.cycleSeconds<=30,`${d.id} tempo`);
+    assert.ok(d.cycleSeconds>=1.8&&d.cycleSeconds<=8,`${d.id} tempo`);
     for(const variant of d.variants?.map(v=>v.id)||[undefined]){
       for(const phase of [0,.125,.25,.375,.5,.625,.75,.875,1]){
         const p=pose(d.id,phase,variant);assert.ok(p.phaseLabel,`${d.id} phase label`);
@@ -80,4 +80,62 @@ test('movement directions distinguish fly, rear fly, hip hinge, leg extension an
   assert.ok(pose('db-rdl',.5).joints.hipR[2]<pose('db-rdl',0).joints.hipR[2]-.15);
   assert.ok(pose('cable-leg-extension',.5).joints.ankleR[2]>pose('cable-leg-extension',0).joints.ankleR[2]+.4);
   assert.ok(pose('cable-hamstring-curl',.5).joints.ankleR[2]<pose('cable-hamstring-curl',0).joints.ankleR[2]-.4);
+});
+
+
+test('ordinary illustrations play at natural rep speed with a quicker lift and controlled return',()=>{
+  for(const d of exerciseDemos.filter(d=>d.cadence.kind==='rep')){
+    assert.ok(d.cycleSeconds>=1.8&&d.cycleSeconds<=2.6,`${d.id} visibly faster cycle`);
+    assert.equal(d.durationMs,d.cycleSeconds*1000);
+    const firstSeconds=d.cycleSeconds*d.cadence.firstHalfFraction;
+    const secondSeconds=d.cycleSeconds-firstSeconds;
+    const lift=d.cadence.firstHalf==='lift'?firstSeconds:secondSeconds;
+    const lower=d.cadence.firstHalf==='lower'?firstSeconds:secondSeconds;
+    assert.ok(lift<lower,`${d.id} lift is quicker than lowering`);
+  }
+  for(const id of ['bulgarian-split-squat','single-leg-db-rdl','step-up','reverse-db-lunge','single-leg-hip-thrust'])assert.equal(getExerciseDemo(id).cycleSeconds,2.6);
+});
+
+test('time warping accelerates pressing while preserving the opposite direction of lowering-first movements',()=>{
+  const press=getExerciseDemo('db-shoulder-press'),dip=getExerciseDemo('dips');
+  const peakPress=pose(press.id,exercisePhaseAt(press.id,.4));
+  const atOneSecond=pose(press.id,exercisePhaseAt(press.id,1/press.cycleSeconds));
+  assert.ok(distance(peakPress.joints.wristR,pose(press.id,.5).joints.wristR)<1e-8);
+  assert.ok(atOneSecond.joints.wristR[1]>1.95,'press is already near its overhead turn after one second');
+  assert.equal(dip.cadence.firstHalf,'lower');
+  assert.ok(Math.abs(exercisePhaseAt(dip.id,.6)-.5)<1e-10,'dip lowering takes 60% of the loop');
+  const bottom=pose(dip.id,exercisePhaseAt(dip.id,.6));
+  assert.ok(bottom.joints.shoulderR[1]<pose(dip.id,0).joints.shoulderR[1]-.25);
+  for(const id of ['dips','bulgarian-split-squat','single-leg-db-rdl','weighted-deficit-push-up','reverse-db-lunge','db-rdl','rdl-example'])assert.equal(getExerciseDemo(id).cadence.firstHalf,'lower',id);
+});
+
+test('retimed loops remain monotonic and continuous and tolerate wrapped or invalid playback times',()=>{
+  for(const d of exerciseDemos){
+    let previous=0;
+    for(let i=0;i<100;i++){
+      const phase=exercisePhaseAt(d.id,i/100);
+      assert.ok(Number.isFinite(phase)&&phase>=0&&phase<1,d.id);
+      assert.ok(phase>=previous-1e-10,`${d.id} phase never reverses`);previous=phase;
+    }
+    assert.equal(exercisePhaseAt(d.id,0),exercisePhaseAt(d.id,1));
+    assert.ok(Math.abs(exercisePhaseAt(d.id,-.25)-exercisePhaseAt(d.id,.75))<1e-10);
+    assert.equal(exercisePhaseAt(d.id,Infinity),0);
+    const a=pose(d.id,exercisePhaseAt(d.id,0)),b=pose(d.id,exercisePhaseAt(d.id,1-1e-6));
+    for(const key of required)assert.ok(distance(a.joints[key],b.joints[key])<.0001,`${d.id} retimed loop seam ${key}`);
+  }
+  assert.equal(exercisePhaseAt('unknown exercise',.4),null);
+});
+
+test('circuit timing keeps gentle subcycles, isolated wrists and genuine static holds',()=>{
+  assert.equal(getExerciseDemo('neck-circuit').cycleSeconds,8);
+  assert.equal(getExerciseDemo('wrist-flexion-extension').cycleSeconds,4.8);
+  for(const id of ['neck-circuit','wrist-flexion-extension','wrist-curl','wrist-extension'])assert.ok(Math.abs(exercisePhaseAt(id,.25)-.25)<1e-10);
+  for(const t of [0,.2,.5,.8,1])for(const variant of ['farmer-hold','dead-hang']){
+    assert.equal(exercisePhaseAt('farmer-hold-dead-hang',t),0);
+    assert.deepEqual(pose('farmer-hold-dead-hang',exercisePhaseAt('farmer-hold-dead-hang',t),variant).joints,pose('farmer-hold-dead-hang',0,variant).joints);
+  }
+  const a=pose('wrist-flexion-extension',exercisePhaseAt('wrist-flexion-extension',.125)).joints;
+  const b=pose('wrist-flexion-extension',exercisePhaseAt('wrist-flexion-extension',.375)).joints;
+  assert.deepEqual(a.elbowR,b.elbowR);assert.deepEqual(a.wristR,b.wristR);
+  assert.ok(distance(a.handR,b.handR)>.01);
 });

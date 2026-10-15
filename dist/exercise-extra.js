@@ -1,7 +1,23 @@
 /* Public movement studies for exercises recorded outside the prescribed rotation.
    Aliases are deliberately exact. Equipment marked as an illustrated variation
    describes this teaching model, never an inference about a historical workout. */
-const define=(id,name,focus,equipment,muscles,cues,aliases=[],extra={})=>Object.freeze({id,name,focus,equipment,muscles:Object.freeze(muscles),cues:Object.freeze(cues),aliases:Object.freeze(aliases),durationMs:5600,...extra});
+// Animation timing only: these values never prescribe or record a training tempo.
+const motionCadence={
+  'db-shoulder-press':[2.2,'lift'], 'db-lateral-raise':[1.9,'lift'], 'db-shrug':[1.8,'lift'],
+  'bent-over-db-row':[2.2,'lift'], 'face-pull':[2.0,'lift'], 'single-arm-cable-fly':[2.0,'lift'],
+  'single-arm-db-overhead-extension':[1.9,'lift'], 'single-arm-preacher-curl':[2.0,'lift'],
+  'hammer-preacher-curl':[2.0,'lift'], 'behind-body-cable-curl':[2.0,'lift'],
+  'single-arm-cable-pulldown':[2.2,'lift'], 'db-curl':[1.9,'lift'], 'rdl-example':[2.4,'lower'],
+  'wrist-curl':[2.0,'balanced','wrist'], 'wrist-extension':[2.0,'balanced','wrist'],
+  'hammer-forearm-curl':[1.9,'lift'], 'rope-pushdown':[1.9,'lift'],
+  'triceps-pushdown-example':[1.9,'lift'], 'rope-overhead-extension':[1.9,'lift'],
+  'cable-crossover-example':[2.0,'lift'], 'scapular-cable-fly':[2.0,'lift']
+};
+const define=(id,name,focus,equipment,muscles,cues,aliases=[],extra={})=>{
+  const [cycleSeconds,firstHalf,kind='rep']=motionCadence[id];
+  const cadence=Object.freeze(kind==='rep'?{kind,firstHalf,firstHalfFraction:firstHalf==='lower'?.6:.4}:{kind});
+  return Object.freeze({id,name,focus,equipment,muscles:Object.freeze(muscles),cues:Object.freeze(cues),aliases:Object.freeze(aliases),...extra,durationMs:cycleSeconds*1000,cycleSeconds,cadence});
+};
 
 export const extraExerciseDemos=Object.freeze([
   define('db-shoulder-press','Dumbbell Shoulder Press','Shoulders · triceps','Dumbbells · standing variation',['shoulders','triceps'],['Keep your ribs over the pelvis and plant both feet.','Press upward with wrists stacked over the elbows.','Lower smoothly to a comfortable shoulder-level position.'],['DB Shoulder Press']),

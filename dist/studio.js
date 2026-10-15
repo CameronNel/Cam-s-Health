@@ -88,12 +88,27 @@ function latestReading(key){
   return Object.entries(store.data.days).filter(([date,d])=>date<=state.date&&d.body?.[key]!=null).sort(([a],[b])=>b.localeCompare(a)).map(([date,d])=>({date,value:d.body[key]}))[0]||null;
 }
 let cleanWidgetMotion=()=>{},cleanLiquidScenes=()=>{},cleanSheetScenes=()=>{},cleanExerciseDemos=()=>{},sheetMediaVersion=0;
+let exerciseViewerModule=null,exerciseViewerPromise=null,exerciseWarmupScheduled=false;
+function loadExerciseViewer(){
+  if(!exerciseViewerPromise)exerciseViewerPromise=import('./exercise-demo.js').then(module=>{exerciseViewerModule=module;return module;}).catch(error=>{exerciseViewerPromise=null;throw error;});
+  return exerciseViewerPromise;
+}
+function prepareExerciseViewer(){
+  if(exerciseWarmupScheduled)return;exerciseWarmupScheduled=true;
+  // Fetch/compile public movement assets before interaction, after the overview paints.
+  loadExerciseViewer().then(module=>{
+    const warm=()=>module.preloadExerciseDemos().then(status=>{document.documentElement.dataset.exerciseReady=status;}).catch(()=>{document.documentElement.dataset.exerciseReady='retry';});
+    if('requestIdleCallback' in window)requestIdleCallback(warm,{timeout:650});else setTimeout(warm,30);
+  }).catch(()=>{exerciseWarmupScheduled=false;});
+}
 function cleanSheetMedia(){sheetMediaVersion++;cleanSheetScenes();cleanExerciseDemos();cleanSheetScenes=()=>{};cleanExerciseDemos=()=>{};}
 function mountSheetMedia(){
   cleanSheetScenes=mountLiquidScenes(sheet);
   if(!$('[data-exercise-demo]',sheet))return;
   const version=sheetMediaVersion;
-  import('./exercise-demo.js').then(({mountExerciseDemos})=>{if(version===sheetMediaVersion&&sheet.open)cleanExerciseDemos=mountExerciseDemos(sheet);}).catch(()=>{
+  const mount=module=>{if(version===sheetMediaVersion&&sheet.open)cleanExerciseDemos=module.mountExerciseDemos(sheet);};
+  if(exerciseViewerModule){mount(exerciseViewerModule);return;}
+  loadExerciseViewer().then(mount).catch(()=>{
     if(version!==sheetMediaVersion)return;
     const stage=$('[data-exercise-demo]',sheet);if(stage)stage.innerHTML='<p class="demo-load-error">The illustration could not load. Your movement cues are below. Reopen the preview to try again.</p>';
   });
@@ -429,3 +444,4 @@ document.addEventListener('input',e=>{if(e.target.id==='food-search'){const q=e.
 function foregroundRefresh(){if(!sheet.open&&document.visibilityState==='visible')store.load();}
 window.addEventListener('online',foregroundRefresh);document.addEventListener('visibilitychange',foregroundRefresh);setInterval(foregroundRefresh,300000);
 readRoute();history.replaceState({sheet:false},'');render();store.load();
+requestAnimationFrame(()=>requestAnimationFrame(prepareExerciseViewer));

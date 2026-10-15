@@ -1,19 +1,43 @@
 /** Public, procedural exercise illustrations. These are technique guides, never logged performance. */
 import {extraExerciseDemos,getExtraExercisePose} from './exercise-extra.js';
-const define = (id,name,focus,equipment,muscles,cues,extra={}) => Object.freeze({id,name,focus,equipment,muscles:Object.freeze(muscles),cues:Object.freeze(cues),durationMs:5600,cycleSeconds:(extra.durationMs||5600)/1000,...extra});
+// Playback cadence belongs to the illustration, never to the user's prescribed training tempo.
+// The second value describes the existing pose's phase 0 → 0.5 direction.
+const motionCadence = {
+  'dips':[2.4,'lower'], 'incline-db-press':[2.2,'lift'], 'cable-fly':[2.0,'lift'],
+  'cable-lateral-raise':[1.9,'lift'], 'cable-triceps-pressdown':[1.9,'lift'],
+  'neck-circuit':[8,'balanced','circuit'], 'pull-ups':[2.4,'lift'],
+  'v-bar-pulldown':[2.2,'lift'], 'one-arm-cable-row':[2.2,'lift'],
+  'cable-rear-delt-fly':[2.0,'lift'], 'hammer-curl':[1.9,'lift'],
+  'wrist-flexion-extension':[4.8,'balanced','wrist'], 'bulgarian-split-squat':[2.6,'lower'],
+  'single-leg-db-rdl':[2.6,'lower'], 'step-up':[2.6,'lift'],
+  'cable-hamstring-curl':[2.0,'lift'], 'single-leg-calf-raise':[1.9,'lift'],
+  'cable-crunch':[2.0,'lift'], 'weighted-deficit-push-up':[2.2,'lower'],
+  'flat-db-press':[2.2,'lift'], 'single-arm-cable-shoulder-press':[2.2,'lift'],
+  'overhead-cable-triceps-extension':[1.9,'lift'], 'chin-ups':[2.4,'lift'],
+  'lat-pulldown':[2.2,'lift'], 'straight-arm-pulldown':[2.0,'lift'],
+  'cable-curl':[1.9,'lift'], 'farmer-hold-dead-hang':[6,'static','hold'],
+  'reverse-db-lunge':[2.6,'lower'], 'db-rdl':[2.4,'lower'],
+  'single-leg-hip-thrust':[2.6,'lift'], 'cable-leg-extension':[2.0,'lift'],
+  'hanging-leg-raise':[2.4,'lift']
+};
+const define = (id,name,focus,equipment,muscles,cues,extra={}) => {
+  const [cycleSeconds,firstHalf,kind='rep']=motionCadence[id];
+  const cadence=Object.freeze(kind==='rep'?{kind,firstHalf,firstHalfFraction:firstHalf==='lower'?.6:.4}:{kind});
+  return Object.freeze({id,name,focus,equipment,muscles:Object.freeze(muscles),cues:Object.freeze(cues),...extra,durationMs:cycleSeconds*1000,cycleSeconds,cadence});
+};
 export const exerciseDemos = Object.freeze([
   define('dips','Dips','Chest · triceps','Stable parallel bars',['chest','triceps'],['Use a stable, rated setup; keep shoulders down.','Lower only through a comfortable, controlled range.','Press the bars away without bouncing or swinging.']),
   define('incline-db-press','Incline DB Press','Upper chest · triceps','Incline bench · dumbbells',['chest','shoulders','triceps'],['Set a modest incline and plant both feet.','Keep wrists stacked over elbows; lower with control.','Press upward without shrugging or flaring the ribs.']),
   define('cable-fly','Cable Fly','Chest','Two chest-height pulleys',['chest'],['Set the handles around chest height.','Keep a soft, steady elbow bend as the arms arc together.','Return slowly; avoid pulling the shoulders behind a comfortable range.']),
   define('cable-lateral-raise','Cable Lateral Raise','Side delts','Low pulley · single handle',['shoulders'],['Stand tall with the cable crossing in front.','Lead out with the upper arm; keep a soft elbow.','Stop around shoulder height and lower without swinging.']),
   define('cable-triceps-pressdown','Cable Triceps Pressdown','Triceps','High pulley · bar',['triceps'],['Keep upper arms beside the torso.','Straighten the elbows without leaning your body onto the bar.','Return the forearms slowly while the upper arms stay still.']),
-  define('neck-circuit','Neck Circuit','Controlled neck motion','Light manual resistance',['neck'],['Use only light resistance and a small, comfortable range.','Move slowly through flexion, extension and each side.','Keep the torso still; no neck bridges or forced end ranges.'],{durationMs:16000,variants:[{id:'circuit',label:'Full circuit'},{id:'flexion',label:'Flexion'},{id:'extension',label:'Extension'},{id:'lateral',label:'Each side'}]}),
+  define('neck-circuit','Neck Circuit','Controlled neck motion','Light manual resistance',['neck'],['Use only light resistance and a small, comfortable range.','Move slowly through flexion, extension and each side.','Keep the torso still; no neck bridges or forced end ranges.'],{variants:[{id:'circuit',label:'Full circuit'},{id:'flexion',label:'Flexion'},{id:'extension',label:'Extension'},{id:'lateral',label:'Each side'}]}),
   define('pull-ups','Pull-ups','Lats · biceps','Overhead pull-up bar',['back','biceps'],['Start from a comfortable overhead hang with an overhand grip.','Draw elbows down to lift your chest toward the bar.','Lower smoothly; keep the legs quiet and avoid kipping.']),
   define('v-bar-pulldown','V-bar Pulldown','Lats · biceps','High pulley · neutral V handle',['back','biceps'],['Sit tall with a close, neutral grip.','Draw the handle toward the upper chest with elbows down.','Let the arms lengthen slowly without rocking the torso.']),
   define('one-arm-cable-row','One-arm Cable Row','Back · biceps','Mid-height pulley · single handle',['back','biceps'],['Use a stable stance and keep the torso square.','Pull the elbow toward the hip without twisting.','Reach forward under control; repeat on the other side.']),
   define('cable-rear-delt-fly','Cable Rear-Delt Fly','Rear delts · upper back','Two shoulder-height pulleys',['shoulders','back'],['Hold the opposite handles with a soft elbow bend.','Open the arms out in a broad arc at shoulder level.','Keep shoulders relaxed and bring the handles back slowly.']),
   define('hammer-curl','Hammer Curl','Biceps · forearms','Dumbbells · neutral grip',['biceps','forearms'],['Keep palms facing in and elbows beside your ribs.','Curl without swinging the shoulders or bending the wrists.','Lower the dumbbells slowly to the start.']),
-  define('wrist-flexion-extension','Wrist Flexion + Extension','Forearms','Light dumbbells · bench',['forearms'],['Support the forearms on the thighs; let hands clear the knees.','Use palms up for flexion and palms down for extension.','Move only at the wrists through a small, controlled range.'],{durationMs:10000,variants:[{id:'both',label:'Both movements'},{id:'flexion',label:'Flexion'},{id:'extension',label:'Extension'}]}),
+  define('wrist-flexion-extension','Wrist Flexion + Extension','Forearms','Light dumbbells · bench',['forearms'],['Support the forearms on the thighs; let hands clear the knees.','Use palms up for flexion and palms down for extension.','Move only at the wrists through a small, controlled range.'],{variants:[{id:'both',label:'Both movements'},{id:'flexion',label:'Flexion'},{id:'extension',label:'Extension'}]}),
   define('bulgarian-split-squat','Bulgarian Split Squat','Quads · glutes','Stable bench · dumbbells',['quads','glutes'],['Rest the rear foot on a stable, low support.','Lower mostly through the front leg; let the knee follow the toes.','Push through the front foot and keep the pelvis level.']),
   define('single-leg-db-rdl','Single-leg DB RDL','Hamstrings · glutes','Dumbbells',['hamstrings','glutes'],['Keep a soft bend in the standing knee.','Hinge at the hip as the other leg reaches behind; keep hips square.','Stop before the back rounds, then drive the hip forward.']),
   define('step-up','Step-up','Quads · glutes','Stable platform · dumbbells',['quads','glutes'],['Place the whole lead foot on a stable platform.','Drive through that foot to stand tall with a level pelvis.','Step down slowly instead of dropping onto the trailing leg.']),
@@ -28,7 +52,7 @@ export const exerciseDemos = Object.freeze([
   define('lat-pulldown','Lat Pulldown','Lats · upper back','High pulley · wide bar',['back','biceps'],['Use a comfortable overhand grip and keep the torso steady.','Bring the bar in front toward the upper chest.','Control the return overhead; never pull behind the neck.']),
   define('straight-arm-pulldown','Straight-arm Pulldown','Lats','High pulley · bar',['back'],['Use a small hip hinge and a soft, fixed elbow bend.','Sweep the bar toward your thighs without turning it into a pressdown.','Return upward slowly while keeping the ribs controlled.']),
   define('cable-curl','Cable Curl','Biceps','Low pulley · bar',['biceps'],['Keep upper arms near your sides and wrists neutral.','Curl by bending the elbows without leaning back.','Lower slowly until the arms are comfortably lengthened.']),
-  define('farmer-hold-dead-hang','Farmer Hold / Dead Hang','Grip · forearms','Dumbbells or a secure overhead bar',['forearms'],['Choose the farmer hold or dead hang; these are static holds.','Keep a firm grip, steady breathing and a comfortable shoulder position.','Stop before grip failure compromises control of the equipment.'],{durationMs:6000,variants:[{id:'farmer-hold',label:'Farmer hold'},{id:'dead-hang',label:'Dead hang'}]}),
+  define('farmer-hold-dead-hang','Farmer Hold / Dead Hang','Grip · forearms','Dumbbells or a secure overhead bar',['forearms'],['Choose the farmer hold or dead hang; these are static holds.','Keep a firm grip, steady breathing and a comfortable shoulder position.','Stop before grip failure compromises control of the equipment.'],{variants:[{id:'farmer-hold',label:'Farmer hold'},{id:'dead-hang',label:'Dead hang'}]}),
   define('reverse-db-lunge','Reverse DB Lunge','Quads · glutes','Dumbbells',['quads','glutes'],['Step one foot back while keeping the front foot planted.','Lower under control and let the front knee track with the toes.','Push through the front foot to return; repeat on the other side.']),
   define('db-rdl','DB RDL','Hamstrings · glutes','Dumbbells',['hamstrings','glutes'],['Soften the knees, then push the hips back.','Keep the dumbbells close as the torso hinges with a long spine.','Stop at your available hamstring range; stand by driving the hips forward.']),
   define('single-leg-hip-thrust','Single-leg Hip Thrust','Glutes','Stable bench · dumbbell',['glutes','hamstrings'],['Support the upper back on a stable bench and plant one foot.','Lift the hips while the free leg stays bent; keep the pelvis level.','Finish with ribs down rather than arching the lower back.']),
@@ -45,6 +69,22 @@ const extraIds=new Set(extraExerciseDemos.map(d=>d.id));
 for (const [alias,id] of [['Dumbbell Romanian Deadlift','db-rdl'],['Dumbbell RDL','db-rdl'],['Single leg dumbbell RDL','single-leg-db-rdl'],['Pull up','pull-ups'],['Pull ups','pull-ups'],['Chin up','chin-ups'],['Chin ups','chin-ups']]) byName.set(normalize(alias),byId.get(id));
 export const getExerciseDemo = id => byId.get(id) || null;
 export const findExerciseDemo = name => byName.get(normalize(name)) || null;
+
+/** Map one normalized playback cycle onto the authored pose cycle.
+ * Rep poses reach their turnaround at phase .5. A quicker lifting segment and
+ * longer lowering segment work in either direction, without altering positions.
+ * Circuits retain their internal subcycles; timed holds never create repetitions.
+ */
+export function exercisePhaseAt(id,normalizedTime=0){
+  const demo=getExerciseDemo(id);if(!demo)return null;
+  const t=((Number.isFinite(normalizedTime)?normalizedTime:0)%1+1)%1;
+  const cadence=demo.cadence;
+  if(cadence.kind==='hold')return 0;
+  if(cadence.kind!=='rep')return t;
+  const split=cadence.firstHalfFraction;
+  return t<split?.5*t/split:.5+.5*(t-split)/(1-split);
+}
+
 
 const PI = Math.PI;
 const mix = (a,b,t)=>a+(b-a)*t;
@@ -158,8 +198,8 @@ export function getExercisePose(id,phase=0,variant){
       if(!['flexion','extension','lateral'].includes(mode)){const segment=Math.min(3,Math.floor(p*4));mode=['flexion','extension','lateral-left','lateral-right'][segment];local=(p*4)%1;}
       const small=.5-.5*Math.cos(local*2*PI),a=.23*small;
       const lateral=mode.startsWith('lateral');
-      if(lateral){const side=mode==='lateral-left'?-1:mode==='lateral-right'?1:(p<.5?-1:1);const angle=side*a;headRotation=[0,0,-angle];j.head=add(j.neck,[Math.sin(angle)*.15,Math.cos(angle)*.15,0]);const s=side<0?'L':'R';const resting=add(j['shoulder'+s],[side*.015,-.548,.025]);arm(j,s,blend(resting,add(j.head,[side*.105,.005,0]),small),[side,0,.8]);phaseLabel=angle<0?'Gentle left lateral flexion':'Gentle right lateral flexion';}
-      else{const angle=(mode==='flexion'?1:-1)*a;headRotation=[angle,0,0];j.head=add(j.neck,[0,Math.cos(angle)*.15,Math.sin(angle)*.15]);const resting=add(j.shoulderR,[.015,-.548,.025]);arm(j,'R',blend(resting,add(j.head,[.07,0,mode==='flexion'?.105:-.105]),small),[1,0,.6]);phaseLabel=mode==='flexion'?'Gentle neck flexion':'Gentle neck extension';}
+      if(lateral){const side=mode==='lateral-left'?-1:mode==='lateral-right'?1:(p<.5?-1:1);const angle=side*a;headRotation=[0,0,-angle];j.head=add(j.neck,[Math.sin(angle)*.15,Math.cos(angle)*.15,0]);const s=side<0?'L':'R';const resting=add(j['shoulder'+s],[side*.015,-.548,.025]);arm(j,s,blend(resting,add(j.head,[side*.105,.005,0]),small),[side,0,.3]);phaseLabel=angle<0?'Gentle left lateral flexion':'Gentle right lateral flexion';}
+      else{const angle=(mode==='flexion'?1:-1)*a;headRotation=[angle,0,0];j.head=add(j.neck,[0,Math.cos(angle)*.15,Math.sin(angle)*.15]);const resting=add(j.shoulderR,[.015,-.548,.025]);arm(j,'R',blend(resting,add(j.head,[.07,0,mode==='flexion'?.105:-.105]),small),[1,0,.3]);phaseLabel=mode==='flexion'?'Gentle neck flexion':'Gentle neck extension';}
       camera=[2.1,1.65,3.05];target=[0,1.36,0];break;
     }
     case 'pull-ups':
