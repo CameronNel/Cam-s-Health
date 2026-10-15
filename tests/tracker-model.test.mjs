@@ -161,7 +161,12 @@ test('undo refuses an inserted record that has since changed', () => {
   const before = fresh(), after = structuredClone(before); after.days[DATE].food.push(food('added'));
   const current = structuredClone(after); current.days[DATE].food.find(f=>f.id==='added').kcal = 900;
   const snapshot = structuredClone(current);
-  assert.throws(()=>applyUndoPatch(current,createUndoPatch(before,after)),/changed after your save.*Nothing was overwritten/);
+  assert.throws(()=>applyUndoPatch(current,createUndoPatch(before,after)), error => {
+    assert.match(error.message,/Undo unavailable: This entry changed after your save.*Nothing was overwritten/);
+    assert.equal(error.path,`days.${DATE}.food.[added]`);
+    assert.doesNotMatch(error.message,/days\.|\[added\]/);
+    return true;
+  });
   assert.deepEqual(current,snapshot);
 });
 

@@ -250,7 +250,11 @@ function location(root, path) {
   return {parent,key,value,exists,blocked:false};
 }
 function pathLabel(path) { return path.map(part => typeof part === 'string' ? part : `[${part.id ?? part.name}]`).join('.'); }
-function conflict(path) { fail('Undo unavailable', `${pathLabel(path)} changed after your save. Nothing was overwritten.`); }
+function conflict(path) {
+  const error = Error('Undo unavailable: This entry changed after your save. Nothing was overwritten. Reopen it to review the latest version.');
+  error.path = pathLabel(path);
+  throw error;
+}
 function matches(found, expected) { return !found.blocked && found.exists === expected.exists && (!expected.exists || equal(found.value, expected.value)); }
 function restore(root, change) {
   const found = location(root, change.path);

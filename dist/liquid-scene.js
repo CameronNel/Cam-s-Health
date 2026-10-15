@@ -21,6 +21,7 @@ uniform vec2 uResolution;
 uniform float uTime;
 uniform float uProgress;
 uniform float uEmpty;
+uniform float uLightTheme;
 const float PI = 3.14159265359;
 
 vec3 localPoint(vec3 p){
@@ -55,6 +56,18 @@ vec3 environment(vec3 d){
   float sidebox = (1.-smoothstep(.045,.075,abs(d.x+.68))) * smoothstep(-.65,-.3,d.y) * (1.-smoothstep(.2,.4,d.y)) * smoothstep(-.1,.25,d.z);
   c += vec3(3.8,4.0,3.9) * softbox;
   c += vec3(1.8,1.7,2.3) * sidebox;
+  // On pearl glass also reflects the room's dark flags. Those narrow ink
+  // reflections define a clear surface without painting an opaque gray ring.
+  if(uLightTheme > .5){
+    vec3 pearl = mix(vec3(.49,.54,.65),vec3(.92,.94,.99),smoothstep(-.8,.8,d.y));
+    float flag = pow(max(dot(d,normalize(vec3(.80,.15,.9))),0.),24.);
+    float lowFlag = pow(max(dot(d,normalize(vec3(-.65,-.45,.7))),0.),18.);
+    pearl = mix(pearl,vec3(.11,.14,.23),flag*.88);
+    pearl = mix(pearl,vec3(.24,.27,.38),lowFlag*.65);
+    pearl += vec3(2.7,2.8,3.0)*top + vec3(3.8,3.9,4.0)*strip;
+    pearl += vec3(1.5,1.6,1.9)*softbox + vec3(.6,.55,.8)*sidebox;
+    return pearl;
+  }
   return c;
 }
 float hitSurface(vec3 ro, vec3 rd){
@@ -99,6 +112,7 @@ void main(){
   float illuminated = (1. - smoothstep(uProgress-.004,uProgress+.004,angle)) * (1.-uEmpty);
   illuminated *= step(.0001,uProgress);
   vec3 tint = mix(vec3(.84,.85,.94),vec3(.72,.65,1.),illuminated);
+  tint = mix(tint,mix(vec3(.67,.71,.82),vec3(.53,.43,.80),illuminated),uLightTheme);
   vec3 absorption = exp(-depth*mix(vec3(.30,.28,.22),vec3(.25,.35,.08),illuminated));
   vec3 glass = transmission*absorption*.20 + tint*.02;
   // Fine spectral separation is restricted to grazing light rather than a rainbow fill.
@@ -106,13 +120,14 @@ void main(){
   glass = mix(glass,reflected,clamp(fresnel*.85+.14,0.,1.));
   glass += spectral * pow(1.-facing,2.) * .075;
   glass += tint*illuminated*pow(1.-facing,1.6)*.32;
-  glass += vec3(.20,.13,.58)*illuminated*pow(1.-facing,2.5)*.55;
+  glass += mix(vec3(.20,.13,.58),vec3(.15,.10,.34),uLightTheme)*illuminated*pow(1.-facing,2.5)*.55;
   float spec = pow(max(dot(reflection,normalize(vec3(-.4,.85,1.3))),0.),155.);
   float edge = pow(1.-facing,4.);
   glass += vec3(.92,1.,.98) * spec*1.5;
   glass += vec3(.84,.83,1.)*edge*.78;
   glass = glass/(glass+vec3(.46));
   glass = pow(glass,vec3(.80));
+  glass = mix(glass,glass*mix(vec3(.87,.89,.95),vec3(.78,.74,.92),illuminated*.55),uLightTheme);
   float reflectedLight = dot(reflected,vec3(.2126,.7152,.0722));
   float opacity = clamp(.045+fresnel*.68+reflectedLight*.20+illuminated*(.018+pow(1.-facing,2.)*.18),.045,.96);
   // A subpixel coverage ramp removes the hard ray-hit staircase along both
@@ -152,7 +167,7 @@ function makeRenderer(canvas) {
     const position = gl.getAttribLocation(program, 'aPosition');
     gl.enableVertexAttribArray(position);
     gl.vertexAttribPointer(position,2,gl.FLOAT,false,0,0);
-    const uniforms = Object.fromEntries(['uResolution','uTime','uProgress','uEmpty'].map(name => [name,gl.getUniformLocation(program,name)]));
+    const uniforms = Object.fromEntries(['uResolution','uTime','uProgress','uEmpty','uLightTheme'].map(name => [name,gl.getUniformLocation(program,name)]));
     gl.clearColor(0,0,0,0);
     const dispose = () => {
       if (buffer) gl.deleteBuffer(buffer);
@@ -171,6 +186,7 @@ function makeRenderer(canvas) {
         gl.uniform1f(uniforms.uTime,time);
         gl.uniform1f(uniforms.uProgress,progress);
         gl.uniform1f(uniforms.uEmpty,empty ? 1 : 0);
+        gl.uniform1f(uniforms.uLightTheme,canvas.ownerDocument.documentElement.dataset.theme === 'light' ? 1 : 0);
         gl.clear(gl.COLOR_BUFFER_BIT);
         gl.drawArrays(gl.TRIANGLES,0,6);
       },
@@ -233,6 +249,7 @@ function mountScene(canvas) {
   win.addEventListener('resize',resize,{passive:true});
   const mutationObserver = new win.MutationObserver(refresh);
   mutationObserver.observe(canvas,{attributes:true,attributeFilter:['data-progress','data-empty']});
+  mutationObserver.observe(doc.documentElement,{attributes:true,attributeFilter:['data-theme']});
   const intersectionObserver = win.IntersectionObserver ? new win.IntersectionObserver(entries => {
     visible = entries[0]?.isIntersecting ?? true;
     refresh();

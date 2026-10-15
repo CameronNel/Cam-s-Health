@@ -30,6 +30,45 @@ input[data-demo-scrub]{display:block;width:100%;height:44px;min-height:44px;marg
 .demo-joint-path{fill:none;stroke:#c8b6f3;stroke-width:1.25;stroke-dasharray:3 4;opacity:.63;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
 .demo-joint-link{fill:none;stroke:#e4def7;stroke-width:1;opacity:.7;vector-effect:non-scaling-stroke}
 .demo-joint-marker{fill:#ebe4ff;stroke:#483e65;stroke-width:1.3;vector-effect:non-scaling-stroke}
-.exercise-demo-form-cue{position:absolute;z-index:4;bottom:10px;left:12px;right:12px;margin:0;padding:8px 11px;border-radius:12px;background:rgba(12,14,24,.72);box-shadow:inset 0 1px rgba(231,226,255,.10);backdrop-filter:blur(12px);color:#dedbeb;font-size:11px;line-height:1.5;text-align:center;pointer-events:none;text-wrap:pretty}
+.exercise-demo-form-cue{position:relative;margin:8px 0 0;padding:8px 11px;border-radius:12px;background:rgba(12,14,24,.36);box-shadow:inset 0 1px rgba(231,226,255,.08);color:#dedbeb;font-size:11px;line-height:1.5;text-align:center;pointer-events:none;text-wrap:pretty}
+.demo-cues li>span{flex:0 0 auto;white-space:nowrap}
 @media(max-width:350px){.demo-camera-controls button{padding-inline:7px;font-size:11px}.demo-playback-controls{gap:6px}.demo-playback-controls button,.demo-playback-controls select{padding-inline:9px}.exercise-demo-form-cue{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.demo-camera-controls button{transition:none}}
+
+/* Pearl keeps the same transparent studio, with ink controls and soft optical edges. */
+:root[data-theme=light] .exercise-demo-stage{background:radial-gradient(ellipse at 42% 32%,rgba(255,255,255,.72),transparent 65%),radial-gradient(ellipse at 77% 88%,rgba(143,130,178,.10),transparent 54%),linear-gradient(155deg,rgba(211,219,233,.34),rgba(224,230,241,.18) 75%);box-shadow:inset 0 1px rgba(255,255,255,.9),inset 0 -1px rgba(86,101,137,.07)}
+:root[data-theme=light] .exercise-demo-stage::before{border-color:rgba(83,99,132,.06);background:linear-gradient(115deg,rgba(255,255,255,.24),transparent 35%,transparent 70%,rgba(156,141,188,.025))}
+:root[data-theme=light] .exercise-demo-stage::after{background:linear-gradient(90deg,transparent,rgba(83,99,132,.18),transparent)}
+:root[data-theme=light] .exercise-demo-stage[data-renderer=svg]{background:radial-gradient(ellipse at 50% 40%,rgba(207,215,232,.32),transparent 75%)}
+:root[data-theme=light] .demo-stage-wrap{border-color:rgba(94,105,137,.13);background:radial-gradient(ellipse at 50% 40%,rgba(177,164,204,.07),transparent 70%)}
+:root[data-theme=light] .demo-stage-wrap::after{box-shadow:inset 0 1px rgba(255,255,255,.92),inset 0 -1px rgba(84,100,134,.06)}
+:root[data-theme=light] :is(.demo-stage-label,.demo-stage-index){color:#68728b}
+:root[data-theme=light] .demo-camera-controls{background:rgba(96,110,142,.055);box-shadow:inset 0 1px rgba(255,255,255,.75)}
+:root[data-theme=light] :is(.demo-camera-controls button,.demo-playback-controls label,.demo-scrub-label){color:#626b7e}
+:root[data-theme=light] :is(.demo-playback-controls button,.demo-playback-controls select,.demo-side-controls button){border-color:rgba(92,105,137,.19);background:rgba(255,255,255,.38);color:#364157}
+:root[data-theme=light] :is(.demo-camera-controls button,.demo-side-controls button)[aria-pressed=true]{background:linear-gradient(155deg,rgba(255,255,255,.9),rgba(224,224,241,.44));color:#33364c;box-shadow:inset 0 1px rgba(255,255,255,.98),0 2px 10px rgba(54,65,96,.08)}
+:root[data-theme=light] .demo-playback-controls [data-demo-overlay][aria-pressed=true]{border-color:rgba(107,88,150,.4);background:rgba(135,113,180,.09);color:#5f487f}
+:root[data-theme=light] input[data-demo-scrub]{accent-color:#7b6a9e}
+:root[data-theme=light] :is(.demo-camera-controls button,.demo-side-controls button,.demo-playback-controls button,.demo-playback-controls select,input[data-demo-scrub]):focus-visible{outline-color:#73608f}
+:root[data-theme=light] .demo-joint-path{stroke:#765a9e;opacity:.72}
+:root[data-theme=light] .demo-joint-link{stroke:#57476f;opacity:.8}
+:root[data-theme=light] .demo-joint-marker{fill:#f8f4ff;stroke:#70558d}
+:root[data-theme=light] .exercise-demo-form-cue{background:rgba(227,224,239,.6);box-shadow:inset 0 1px rgba(255,255,255,.9);color:#51445f}
+:root[data-theme=light] :is(.demo-back,.demo-heading p,.demo-transport>[data-demo-phase],.demo-loop-mark,.demo-pagination small,.demo-sequence button,.demo-equipment,.demo-program-note>p,.demo-clearance,.demo-loading,.demo-load-error){color:#626b7e}
+:root[data-theme=light] :is(.demo-heading .eyebrow,.demo-cues li>span,.demo-pagination b>span,.demo-sequence button>span){color:#716480}
+:root[data-theme=light] :is(.demo-transport,.demo-cues,.demo-program-note){border-color:rgba(94,105,137,.16)}
+:root[data-theme=light] :is(.demo-transport>button,.demo-cues li>p,.demo-program-note summary){color:#364157}
+:root[data-theme=light] :is(.demo-pagination>.iconbtn,.demo-sequence button,.demo-variants button){border-color:rgba(94,105,137,.2);color:#5e5770}
+:root[data-theme=light] :is(.demo-sequence button,.demo-variants button)[aria-pressed=true]{border-color:rgba(121,99,154,.36);background:rgba(143,120,180,.08);color:#514267}
+:root[data-theme=light] .demo-sequence button[aria-pressed=true]>span{color:#6e5488}
+@media(hover:hover){:root[data-theme=light] :is(.demo-sequence button,.demo-variants button):hover{background:rgba(143,120,180,.08)}}
+
+/* Keep movement variants whole as enlarged controls reflow. */
+.demo-variants button {
+  flex: 1 1 max-content;
+  min-inline-size: min-content;
+  max-inline-size: 100%;
+  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+}

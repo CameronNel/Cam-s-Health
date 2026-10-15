@@ -1,0 +1,1100 @@
+{
+  "scope": "Body studio and Body widget routes",
+  "metrics": [
+    "weightKg",
+    "bodyFatPct",
+    "skeletalMuscleKg",
+    "neck",
+    "shoulders",
+    "chest",
+    "waist",
+    "hips",
+    "upperArmLeft",
+    "upperArmRight",
+    "forearmLeft",
+    "forearmRight",
+    "thighLeft",
+    "thighRight",
+    "calfLeft",
+    "calfRight"
+  ],
+  "cases": [
+    {
+      "id": "body-tracker",
+      "route": "body-popup",
+      "states": [
+        "popup",
+        "full",
+        "rich",
+        "empty"
+      ],
+      "notes": "Legacy widget Body preview/full chart/history and existing full check-in remain part of reachability."
+    },
+    {
+      "id": "body-home",
+      "route": "home",
+      "states": [
+        "popup",
+        "full",
+        "rich",
+        "empty",
+        "all-pinned",
+        "no-pins"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-map",
+      "route": "map",
+      "states": [
+        "popup",
+        "full",
+        "rich",
+        "empty",
+        "all-13-hotspots",
+        "all-13-text-buttons",
+        "keyboard"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-weightKg",
+      "route": "measure:weightKg",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-weightKg",
+      "route": "goals:weightKg",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-bodyFatPct",
+      "route": "measure:bodyFatPct",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-bodyFatPct",
+      "route": "goals:bodyFatPct",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-skeletalMuscleKg",
+      "route": "measure:skeletalMuscleKg",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-skeletalMuscleKg",
+      "route": "goals:skeletalMuscleKg",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-neck",
+      "route": "measure:neck",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-neck",
+      "route": "goals:neck",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-shoulders",
+      "route": "measure:shoulders",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-shoulders",
+      "route": "goals:shoulders",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-chest",
+      "route": "measure:chest",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-chest",
+      "route": "goals:chest",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-waist",
+      "route": "measure:waist",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-waist",
+      "route": "goals:waist",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-hips",
+      "route": "measure:hips",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-hips",
+      "route": "goals:hips",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-upperArmLeft",
+      "route": "measure:upperArmLeft",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-upperArmLeft",
+      "route": "goals:upperArmLeft",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-upperArmRight",
+      "route": "measure:upperArmRight",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-upperArmRight",
+      "route": "goals:upperArmRight",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-forearmLeft",
+      "route": "measure:forearmLeft",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-forearmLeft",
+      "route": "goals:forearmLeft",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-forearmRight",
+      "route": "measure:forearmRight",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-forearmRight",
+      "route": "goals:forearmRight",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-thighLeft",
+      "route": "measure:thighLeft",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-thighLeft",
+      "route": "goals:thighLeft",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-thighRight",
+      "route": "measure:thighRight",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-thighRight",
+      "route": "goals:thighRight",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-calfLeft",
+      "route": "measure:calfLeft",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-calfLeft",
+      "route": "goals:calfLeft",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-measure-calfRight",
+      "route": "measure:calfRight",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "connected",
+        "authorization",
+        "invalid",
+        "conflict",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-goal-calfRight",
+      "route": "goals:calfRight",
+      "states": [
+        "metric",
+        "imperial",
+        "empty",
+        "lower-only",
+        "upper-only",
+        "band",
+        "invalid-order",
+        "clear",
+        "authorization",
+        "keyboard",
+        "200pct-text"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-weightKg",
+      "route": "trend:weightKg",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-bodyFatPct",
+      "route": "trend:bodyFatPct",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-skeletalMuscleKg",
+      "route": "trend:skeletalMuscleKg",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-neck",
+      "route": "trend:neck",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-shoulders",
+      "route": "trend:shoulders",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-chest",
+      "route": "trend:chest",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-waist",
+      "route": "trend:waist",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-hips",
+      "route": "trend:hips",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-upperArmLeft",
+      "route": "trend:upperArmLeft",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-upperArmRight",
+      "route": "trend:upperArmRight",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-forearmLeft",
+      "route": "trend:forearmLeft",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-forearmRight",
+      "route": "trend:forearmRight",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-thighLeft",
+      "route": "trend:thighLeft",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-thighRight",
+      "route": "trend:thighRight",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-calfLeft",
+      "route": "trend:calfLeft",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-trend-calfRight",
+      "route": "trend:calfRight",
+      "states": [
+        "7d",
+        "30d",
+        "90d",
+        "all",
+        "empty",
+        "single",
+        "rich",
+        "method-all",
+        "known-method",
+        "unspecified-method",
+        "goal-band",
+        "chart-note",
+        "point-popup",
+        "point-full"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-methods",
+      "route": "trend",
+      "states": [
+        "Not specified",
+        "BIA scale",
+        "BIA watch",
+        "Calipers",
+        "DEXA",
+        "Visual estimate",
+        "Other"
+      ],
+      "notes": "Each method filtered on body fat, muscle and a tape measurement; unknown methods remain unconnected."
+    },
+    {
+      "id": "body-points",
+      "route": "point",
+      "states": [
+        "rich",
+        "empty-notes",
+        "long-notes",
+        "recorded-at",
+        "chart-note",
+        "correct",
+        "full-check-in"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-compare",
+      "route": "compare",
+      "states": [
+        "same-method",
+        "mixed-method",
+        "unknown-method",
+        "missing-date",
+        "same-date",
+        "reverse-dates",
+        "metric",
+        "imperial"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-pairs",
+      "route": "pairs",
+      "states": [
+        "all-pairs",
+        "partial",
+        "missing",
+        "metric",
+        "imperial"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-pins",
+      "route": "pins",
+      "states": [
+        "defaults",
+        "all",
+        "none",
+        "save",
+        "authorization"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-annotations",
+      "route": "annotations",
+      "states": [
+        "empty",
+        "rich",
+        "long-note",
+        "add",
+        "edit",
+        "delete",
+        "required-error",
+        "authorization",
+        "keyboard"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-reminders",
+      "route": "reminders",
+      "states": [
+        "disabled",
+        "enabled",
+        "all-days",
+        "no-days-error",
+        "notification-default",
+        "notification-granted",
+        "notification-denied",
+        "notification-unavailable",
+        "calendar-download",
+        "authorization",
+        "time-field-keyboard"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-import",
+      "route": "import",
+      "states": [
+        "empty",
+        "format-expanded",
+        "upload-error",
+        "oversize",
+        "mapping-guessed",
+        "mapping-manual",
+        "missing-date-map-error",
+        "duplicate-map-error",
+        "no-measurement-map-error",
+        "new-preview",
+        "exact-duplicate-preview",
+        "replacement-consent",
+        "row-errors",
+        "duplicate-row-error",
+        "long-values",
+        "concurrent-conflict",
+        "verified-save",
+        "keyboard"
+      ],
+      "notes": ""
+    },
+    {
+      "id": "body-full-check-in",
+      "route": "legacy-body-form",
+      "states": [
+        "metric",
+        "imperial",
+        "rich",
+        "empty",
+        "all-tape-expanded",
+        "all-fields-keyboard",
+        "authorization",
+        "validation",
+        "draft"
+      ],
+      "notes": ""
+    }
+  ],
+  "profiles": "awaiting shared harness profile IDs; every route family will get every provided geometry/text profile"
+}

@@ -1,0 +1,47 @@
+import {makeFixture,sourceFingerprint} from './harness.mjs';
+let playwright;try{playwright=await import('playwright');}catch{playwright=await import('/opt/codex/runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright/index.mjs');}
+const {chromium}=playwright;
+import fs from 'node:fs/promises';
+import path from 'node:path';
+const out=process.env.AUDIT_PWA_OUT||'/workspace/cams-health-layout-audit/pwa-final';
+const fixture=makeFixture('rich');
+const sourceHash=await sourceFingerprint(),results={sourceHash,checks:[]};
+if(process.env.AUDIT_EXPECT_SOURCE&&sourceHash!==process.env.AUDIT_EXPECT_SOURCE)throw Error('PWA source does not match frozen release');
+const browser=await chromium.launch({executablePath:'/usr/bin/chromium',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+const context=await browser.newContext({viewport:{width:424,height:924},deviceScaleFactor:3,serviceWorkers:'allow',isMobile:true,hasTouch:true});
+let offline=false;const writes=[],errors=[],requests=[];
+await context.route('**/*',async route=>{const req=route.request(),u=new URL(req.url());if(!['GET','HEAD','OPTIONS'].includes(req.method())){writes.push({method:req.method(),url:req.url()});return route.abort();}if(['localhost','127.0.0.1'].includes(u.hostname)){if(u.pathname==='/data/health.json')return route.fulfill({json:fixture});return route.continue();}if(offline)return route.abort();if(u.hostname==='raw.githubusercontent.com')return route.fulfill({json:fixture,headers:{'access-control-allow-origin':'*'}});if(u.hostname==='api.github.com'&&u.pathname.includes('/contents/dist/data/health.json'))return route.fulfill({json:{sha:'synthetic-pwa-blob',content:Buffer.from(JSON.stringify(fixture)).toString('base64')}});return route.abort();});
+context.on('request',r=>{requests.push(new URL(r.url()).pathname);});
+const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
+const cacheState=()=>page.evaluate(async()=>{const names=(await caches.keys()).filter(k=>k.startsWith('cams-life-shell-'));const all=[];for(const name of names){const cache=await caches.open(name);for(const request of await cache.keys()){const response=await cache.match(request);all.push({path:new URL(request.url).pathname,type:response.headers.get('Content-Type'),verified:response.headers.get('X-Cams-Life-Cached-Shell'),identity:response.headers.has('X-User-Identity')||response.headers.has('Set-Cookie')});}}return {names,assets:all};});
+const assert=(value,message)=>{if(!value)throw Error(message);};
+try{
+ await page.goto('http://localhost:5173/?date=2026-10-15');await page.locator('.health-widget').first().waitFor();
+ await page.evaluate(async()=>{await navigator.serviceWorker.ready;});await page.waitForFunction(()=>navigator.serviceWorker.controller!==null,{timeout:30000});
+ const installed=await cacheState();results.installed=installed;console.log('Installed',JSON.stringify({cacheCount:installed.names.length,assets:installed.assets.length,controlled:await page.evaluate(()=>!!navigator.serviceWorker.controller)}));
+ assert(installed.names.length===1,'Expected one current shell cache');assert(installed.assets.length===40,'Expected forty eager public assets');
+ assert(!installed.assets.some(a=>a.path.startsWith('/vendor/ocr/')||a.path==='/vendor/nutrition-ocr.js'||a.path==='/vendor/food-barcode.js'),'OCR/camera assets downloaded eagerly');
+ assert(!requests.some(p=>p.startsWith('/vendor/ocr/')||p==='/vendor/nutrition-ocr.js'),'OCR resources fetched before use');
+ assert(installed.assets.every(a=>a.verified==='1'&&!a.identity),'Cached public assets were not sanitized');
+ const keys=await page.evaluate(()=>Object.keys(localStorage));assert(keys.some(k=>k.includes('health')),'Health browser fallback not prepared');
+ offline=true;await context.setOffline(true);await page.reload();await page.locator('.health-widget').first().waitFor();assert(await page.locator('.health-widget').count()===3,'Offline reload did not render three trackers');
+ assert((await page.locator('#app').innerText()).includes('Saved copy'),'Offline health source not labelled saved copy');
+ console.log('Offline overview',JSON.stringify({widgets:await page.locator('.health-widget').count(),savedCopy:true,calorieValue:await page.locator('.calorie-value').innerText()}));
+ results.checks.push({name:'Dark overview loads offline from the installed shell',pass:true,theme:await page.locator('html').getAttribute('data-theme')});
+ offline=false;await context.setOffline(false);await page.reload();await page.locator('.health-widget').first().waitFor();
+ await page.locator('[data-act=settings]').click();await page.locator('[data-theme-choice=light]').click();
+ assert(await page.locator('html').getAttribute('data-theme')==='light','Light theme control did not apply');
+ await page.locator('[data-act=close-sheet]').click();await page.waitForFunction(()=>!document.querySelector('#sheet').open&&!document.querySelector('#sheet').innerHTML);
+ const openOCR=async()=>{await page.locator('[data-peek=food]').click();await page.locator('[data-act=food-tools]').click();await page.locator('[data-fs=label]').click();};
+ await openOCR();
+ const png=await page.evaluate(()=>{const c=document.createElement('canvas');c.width=1400;c.height=1000;const g=c.getContext('2d');g.fillStyle='white';g.fillRect(0,0,c.width,c.height);g.fillStyle='black';g.font='56px Arial';['Nutrition per 100 g','Energy 320 kcal','Fat 8 g','Carbohydrates 40 g','Protein 22 g'].forEach((t,i)=>g.fillText(t,70,140+i*150));return c.toDataURL().split(',')[1];});
+ const recognize=async()=>{await page.locator('[data-fs-label-file]').setInputFiles({name:'synthetic-label.png',mimeType:'image/png',buffer:Buffer.from(png,'base64')});await page.waitForFunction(()=>/Numbers extracted|could not/.test(document.querySelector('[data-fs-ocr-status]')?.textContent||''),null,{timeout:60000});const status=await page.locator('[data-fs-ocr-status]').textContent();assert(!status.includes('could not'),status);const values={};for(const[k,v]of Object.entries({kcal:'320',fat:'8',carbs:'40',protein:'22'})){values[k]=await page.locator(`[name=${k}]`).inputValue();assert(values[k]===v,`OCR ${k} incorrect: ${values[k]}`);}assert(!await page.locator('[name=basisConfirmed]').isChecked(),'OCR bypassed manual basis confirmation');return values;};
+ const onlineOCR=await recognize();const warmed=await cacheState(),lazy=warmed.assets.filter(a=>!installed.assets.some(b=>b.path===a.path));
+ assert(lazy.some(a=>a.path==='/vendor/nutrition-ocr.js'),'OCR module not cached');assert(lazy.some(a=>a.path==='/vendor/ocr/worker.min.js'),'OCR worker not cached');assert(lazy.some(a=>a.path.includes('-lstm.wasm.js')),'Selected OCR engine not cached');assert(lazy.some(a=>a.path==='/vendor/ocr/eng.traineddata.gz'),'OCR language not cached');
+ console.log('First-use actual OCR',JSON.stringify({values:onlineOCR,lazyCached:lazy.map(a=>a.path)}));
+ offline=true;await context.setOffline(true);await page.reload();await page.locator('.health-widget').first().waitFor();await openOCR();const offlineOCR=await recognize();
+ assert(await page.locator('html').getAttribute('data-theme')==='light','Light theme did not persist through offline reload');
+ results.checks.push({name:'Actual Light choice persists through offline reload and local OCR',pass:true,theme:'light'});
+ const final=await cacheState();assert(final.assets.every(a=>!/^\/(data|api|photos|imports)\//.test(a.path)&&!a.path.endsWith('.png')||a.path.startsWith('/icons/')),'Private data or image entered cache');assert(final.assets.every(a=>a.verified==='1'&&!a.identity),'Lazy asset cached gateway identity');assert(writes.length===0,'Unexpected write attempt');assert(errors.length===0,'Browser script errors: '+errors.join('; '));
+ Object.assign(results,{sourceHashAfter:await sourceFingerprint(),sourceChangedSinceStart:sourceHash!==await sourceFingerprint(),passed:true,offlineOCR,finalAssets:final.assets.length,cacheNames:final.names,writes,errors});await fs.mkdir(out,{recursive:true});await fs.writeFile(path.join(out,'results.json'),JSON.stringify(results,null,2));console.log(JSON.stringify({passed:true,sourceHash,offlineOCR,finalAssets:final.assets.length,writes,errors},null,2));
+}finally{await browser.close();}

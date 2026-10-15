@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {exerciseDemos,getExercisePose} from '../dist/exercise-catalogue.js';
-import {exerciseDemoWorkingSide,normalizeDemoControls,exerciseDemoCamera,reflectExercisePose,projectExercisePoint} from '../dist/exercise-demo.js';
+import {exerciseDemoWorkingSide,exerciseDemoGuideJoints,normalizeDemoControls,exerciseDemoCamera,reflectExercisePose,projectExercisePoint} from '../dist/exercise-demo.js';
 
 const distance=(a,b)=>Math.hypot(...a.map((n,i)=>n-b[i]));
 const near=(a,b,message='')=>assert.ok(distance(a,b)<1e-8,message);
@@ -60,4 +60,21 @@ test('projected form guides align to the camera target and preserve their positi
     near(projectExercisePoint(target,eye,target,390,460).slice(0,2),[195,230]);
     assert.ok(projectExercisePoint(point,eye,target,390,460).every(Number.isFinite));
   }
+});
+
+test('technique paths follow isolated wrist motion, raised legs and the calf-raise foot',()=>{
+  for(const id of ['wrist-flexion-extension','wrist-curl','wrist-extension']){
+    const groups=exerciseDemoGuideJoints(id);assert.ok(groups.every(g=>g.some(j=>j.startsWith('hand'))));
+    const a=getExercisePose(id,.125,'flexion'),b=getExercisePose(id,.625,'flexion');
+    assert.ok(distance(a.joints.handR,b.joints.handR)>.03,'the guide includes the moving hand');
+    near(a.joints.wristR,b.joints.wristR,'the supported wrist remains stationary');
+  }
+  const legs=exerciseDemoGuideJoints('hanging-leg-raise').flat();
+  assert.ok(legs.includes('ankleL')&&legs.includes('ankleR')&&legs.includes('kneeL')&&legs.includes('kneeR'));
+  const low=getExercisePose('hanging-leg-raise',0),high=getExercisePose('hanging-leg-raise',.5);
+  assert.ok(distance(low.joints.ankleR,high.joints.ankleR)>.5);
+  const calf=exerciseDemoGuideJoints('single-leg-calf-raise')[0];assert.deepEqual(calf,['kneeL','ankleL','toeL']);
+  const down=getExercisePose('single-leg-calf-raise',0),up=getExercisePose('single-leg-calf-raise',.5);
+  near(down.joints.toeL,up.joints.toeL,'calf guide includes the planted toe reference');assert.ok(distance(down.joints.ankleL,up.joints.ankleL)>.08);
+  assert.deepEqual(exerciseDemoGuideJoints('unknown'),[]);
 });

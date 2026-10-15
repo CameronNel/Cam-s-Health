@@ -1,18 +1,20 @@
-import {BODY_FIELDS, METHODS, validDate, ensureDay, assertUnchanged, toMetric} from './body.js';
+import {BODY_FIELDS, METHODS, validDate, ensureDay, assertUnchanged, toMetric, fromMetric} from './body.js';
 import {shiftDate} from './model.js';
 
 export const BODY_METRICS = [['weightKg','Weight'],['bodyFatPct','Body fat'],['skeletalMuscleKg','Reported muscle'],...BODY_FIELDS];
 const keys = new Set(BODY_METRICS.map(([key])=>key));
 const DAY = 86400000;
 export const metricStorageUnit = key => key==='bodyFatPct'?'%':key==='weightKg'||key==='skeletalMuscleKg'?'kg':'cm';
+// Numeric inputs require plain decimal strings; localized grouping is invalid HTML.
+export const bodyInputValue = (value,key,units='metric') => value==null?'':String(Math.round(fromMetric(value,key==='skeletalMuscleKg'?'weightKg':key,units)*100)/100);
 export const metricValue = (day,key) => key==='weightKg'?day?.weightKg??null:['bodyFatPct','skeletalMuscleKg'].includes(key)?day?.body?.[key]??null:day?.body?.measurementsCm?.[key]??null;
 export function readings(data,key,end,range='all',method='all') {
   if(!keys.has(key)) return [];
   const start=range==='all'?'0000-00-00':shiftDate(end,1-Number(range));
   return Object.entries(data.days).filter(([date])=>date>=start&&date<=end).map(([date,day])=>({date,value:metricValue(day,key),method:day.body?.method||'Not specified',notes:day.body?.notes||''})).filter(p=>Number.isFinite(p.value)&&(method==='all'||p.method===method)).sort((a,b)=>a.date.localeCompare(b.date));
 }
-export function smoothedWeight(points,windowDays=7) {
-  return points.map(point=>{const start=Date.parse(point.date)-(windowDays-1)*DAY;const sample=points.filter(p=>p.date<=point.date&&Date.parse(p.date)>=start);return {date:point.date,value:sample.reduce((sum,p)=>sum+p.value,0)/sample.length,count:sample.length};});
+export function smoothedWeight(points,windowDays=7,history=points) {
+  return points.map(point=>{const start=Date.parse(point.date)-(windowDays-1)*DAY;const sample=history.filter(p=>p.date<=point.date&&Date.parse(p.date)>=start);return {date:point.date,value:sample.reduce((sum,p)=>sum+p.value,0)/sample.length,count:sample.length};});
 }
 export function readingSegments(points,maxGapDays=7,matchMethod=false) {
   const segments=[];

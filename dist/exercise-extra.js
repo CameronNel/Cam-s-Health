@@ -85,6 +85,7 @@ export function getExtraExercisePose(id,phase=0,variant,basePoseFn){
     }
     case 'single-arm-cable-pulldown':{
       pose=basePoseFn('v-bar-pulldown',p);const j=pose.joints;rest(j,'L');arm(j,'R',[.29,mix(1.64,1.12,w),mix(.13,.21,w)],[1,-1,.15]);dropHands(j);
+      pose.camera=[4.4,1.8,1.97];
       pose.props=[bench([0,.53,-.05],[.55,.12,.65]),...pulley([.36,2.04,.45],j.wristR)];pose.phaseLabel=p<.5?'Draw the elbow down':'Lengthen the arm slowly';return complete(pose);
     }
     case 'single-arm-preacher-curl':

@@ -1,4 +1,6 @@
-.food-studio { --fs-muted: #a1a4af; padding-bottom: 12px; }
+.food-studio { --fs-muted: #a1a4af; padding-bottom: 12px; container-type: inline-size; }
+.food-studio .form-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 10em), 1fr)); }
+.food-studio .btn.textbtn { background: transparent; border-color: transparent; box-shadow: none; }
 .fs-intro { margin: 10px 0 24px; }
 .fs-intro h3 { font-size: clamp(28px, 8vw, 38px); font-weight: 480; letter-spacing: -.055em; line-height: 1.09; margin: 10px 0 14px; max-width: 320px; }
 .fs-intro .help { max-width: 36ch; line-height: 1.7; }
@@ -19,11 +21,12 @@
 .fs-result, .fs-history-row { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 14px; border: 0; border-bottom: 1px solid #ffffff10; background: transparent; color: inherit; padding: 17px 0; min-height: 68px; text-align: left; }
 .fs-result > span:first-child, .fs-history-row > span:first-child { min-width: 0; }
 .fs-result b, .fs-history-row b { display: block; font-size: 14px; font-weight: 500; line-height: 1.55; overflow-wrap: anywhere; }
-.fs-result > span:last-child, .fs-history-row > span:last-child { flex-shrink: 0; text-align: right; max-width: 90px; font-size: 15px; }
+.fs-result > span:last-child, .fs-history-row > span:last-child { flex-shrink: 0; text-align: right; max-width: 8em; white-space: nowrap; font-size: 15px; }
 .fs-result small, .fs-history-row small { display: block; margin-top: 3px; font-size: 11px; color: var(--fs-muted); line-height: 1.6; }
 .fs-source { display: block; color: var(--fs-muted); font-size: 11px; line-height: 1.65; margin-top: 7px; overflow-wrap: anywhere; }
 .fs-source-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; color: #d9d1ed; margin-bottom: 12px; text-decoration: underline; text-underline-offset: 4px; }
 .fs-nutrition { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 17px 14px; margin: 23px 0 16px; padding: 22px 0; border-block: 1px solid #ffffff12; }
+.food-studio .fs-nutrition:not(.compact) { grid-template-columns: repeat(auto-fit, minmax(min(100%, 10em), 1fr)); }
 .fs-nutrition > div { display: flex; min-width: 0; flex-direction: column; gap: 7px; }
 .fs-nutrition span { color: var(--fs-muted); font-size: 11px; }
 .fs-nutrition b { font-size: 24px; font-weight: 460; letter-spacing: -.045em; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
@@ -57,20 +60,21 @@
 .fs-photo-input { padding: 20px 0 12px; }
 .food-studio input[type="file"] { width: 100%; max-width: 100%; min-height: 48px; font-size: 12px; padding: 10px; }
 .food-studio input[type="file"]::file-selector-button { border: 0; border-radius: 8px; background: #ffffff12; color: #eceaf0; padding: 10px 12px; margin-right: 10px; }
-.food-studio textarea[data-fs-ocr-text] { width: 100%; margin-top: 12px; }
+.food-studio textarea[data-fs-ocr-text] { width: 100%; max-width: 100%; min-width: 0; min-height: 86px; margin-top: 12px; background: #04050c30; color: var(--text); border: 1px solid #f0e7ff19; border-radius: 14px; padding: 12px; font: inherit; line-height: 1.6; resize: vertical; }
 .food-studio details { margin: 15px 0 22px; }
 .food-studio details > summary { min-height: 44px; align-content: center; font-size: 12px; color: var(--fs-muted); cursor: pointer; }
 .fs-camera { position: relative; margin: 20px 0; }
 .fs-camera[hidden] { display: none; }
 .fs-camera video { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 18px; background: #030406; }
 .fs-camera > button { position: absolute; bottom: 13px; left: 13px; background: #101116d9; backdrop-filter: blur(12px); }
+.food-studio .fs-camera > .btn.secondary { background: #101116; color: #f4f0f8; border-color: #ffffff33; }
 .fs-week-chart { height: 193px; display: grid; grid-template-columns: repeat(7,minmax(0,1fr)); gap: 11px; padding-top: 16px; margin: 20px 0; }
 .fs-week-day { display: flex; flex-direction: column; min-width: 0; align-items: center; gap: 10px; }
 .fs-week-track { width: 100%; height: 158px; position: relative; border-bottom: 1px solid #ffffff18; }
 .fs-week-bar { display: block; position: absolute; bottom: 0; left: 16%; right: 16%; border-radius: 7px 7px 2px 2px; background: linear-gradient(180deg,#d8cdecaf,#b8a3dc38); box-shadow: inset 1px 0 0 #ffffff30; }
 .fs-week-bar.incomplete { background: repeating-linear-gradient(135deg,#bcb0ce32 0 3px,transparent 3px 6px); border: 1px dashed #c1b4d375; box-shadow: none; }
 .fs-week-target { position: absolute; z-index: 1; left: 4px; right: 4px; border-top: 1px solid #ece8f0bb; }
-.fs-week-gap { position: absolute; bottom: 2px; width: 100%; text-align: center; color: #777681; }
+.fs-week-gap { position: absolute; bottom: 2px; width: 100%; text-align: center; color: var(--fs-muted); }
 .fs-week-day > small { font-size: 11px; color: var(--fs-muted); }
 .fs-pattern-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0 16px; }
 .fs-pattern-summary b { font-weight: 450; font-size: 29px; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
@@ -84,4 +88,54 @@
 .food-studio [hidden] { display: none !important; }
 .food-studio button:focus-visible, .food-studio a:focus-visible { outline: 2px solid #d4c5ed; outline-offset: 4px; }
 @media (max-width: 350px) { .fs-primary-actions { flex-direction: column; } .fs-nutrition.compact { grid-template-columns: repeat(2,minmax(0,1fr)); } .fs-week-chart { gap: 7px; } }
+@container (max-width: 22em) { .fs-nutrition.compact { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@container (max-width: 10em) { .fs-nutrition.compact { grid-template-columns: minmax(0, 1fr); } }
 @media (prefers-reduced-motion: no-preference) { .fs-tool, .fs-result, .fs-history-row { transition: background .18s ease; } }
+
+/* Pearl glass keeps the Food tools legible without changing their composition. */
+html[data-theme="light"] .food-studio {
+  --fs-muted: #5e6575;
+  --fs-line: #343b5821;
+  --fs-accent: #65518b;
+}
+html[data-theme="light"] .food-studio :is(.fs-tool, .fs-result, .fs-history-row, .fs-nutrition, .fs-saved-row, .fs-bundle-items, .fs-recipe, .fs-ingredient, .fs-group-row),
+html[data-theme="light"] .food-studio .fs-checklist .checkbox-label,
+html[data-theme="light"] .food-studio .fs-week-table > div { border-color: var(--fs-line); }
+html[data-theme="light"] .food-studio .fs-tool > span:last-child { color: #74618f; }
+html[data-theme="light"] .food-studio :is(.fs-tool, .fs-result, .fs-history-row):active { background: #8f80b30c; }
+html[data-theme="light"] .food-studio .fs-source-link { color: var(--fs-accent); }
+html[data-theme="light"] .food-studio .fs-progress { color: #5f5275; }
+html[data-theme="light"] .food-studio input[type="file"]::file-selector-button {
+  background: #e7e3f080;
+  color: #353046;
+  box-shadow: inset 0 0 0 1px #ffffffa8, 0 2px 8px #42496808;
+}
+html[data-theme="light"] .food-studio textarea[data-fs-ocr-text] {
+  background: #ffffff80;
+  color: #222635;
+  border-color: #777c942e;
+  box-shadow: inset 0 1px 0 #ffffffc9;
+}
+html[data-theme="light"] .food-studio textarea[data-fs-ocr-text]::placeholder { color: #697080; opacity: 1; }
+html[data-theme="light"] .food-studio .fs-camera video { background: #e4e7ee; }
+html[data-theme="light"] .food-studio .fs-camera > .btn.secondary {
+  background: #f8f8f4ed;
+  color: #222635;
+  border-color: #ffffffb8;
+  box-shadow: 0 4px 18px #20253d24, inset 0 1px 0 #ffffffd9;
+}
+html[data-theme="light"] .food-studio .fs-week-track { border-color: #343b5826; }
+html[data-theme="light"] .food-studio .fs-week-bar {
+  background: linear-gradient(180deg, #8b76b4b8, #9b8dc35e);
+  box-shadow: inset 1px 0 0 #ffffffa3, inset -1px 0 0 #62518720;
+}
+html[data-theme="light"] .food-studio .fs-week-bar.incomplete {
+  background: repeating-linear-gradient(135deg, #83719e3d 0 3px, transparent 3px 6px);
+  border-color: #78648e9c;
+  box-shadow: none;
+}
+html[data-theme="light"] .food-studio .fs-week-target {
+  border-color: #626b7ec9;
+  box-shadow: 0 1px 0 #ffffff8a;
+}
+html[data-theme="light"] .food-studio :is(button, a):focus-visible { outline-color: var(--fs-accent); }

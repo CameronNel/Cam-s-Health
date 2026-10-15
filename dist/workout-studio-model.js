@@ -97,3 +97,20 @@ export function correctWorkoutRecord(record,changes={}, {imperial=false}={}){
   result.actualExercises=(result.actualExercises||[]).filter(e=>!Array.isArray(e.setLog)||e.setLog.length);
   return result;
 }
+
+/** Combine unsaved session setup edits in one explicit save, without losing other sessions. */
+export function mergeWorkoutSetup(data,baseline,edits=[],fields={}){
+  const cfg=structuredClone(baseline);cfg.equipment=[...(fields.equipment??baseline.equipment??[])];cfg.substitutions??={};cfg.supersets??={};cfg.progression??={};
+  for(const edit of edits){const session=data.training.sessions.find(s=>s.id===edit.sessionId);if(!session)throw Error('This session changed. Reopen training setup.');cfg.substitutions[session.id]={};
+    for(const e of session.exercises){const name=edit.substitutions?.[e.name];if(name)cfg.substitutions[session.id][e.name]=name;}
+    const groups=(baseline.supersets?.[session.id]||[]).filter((_,i)=>edit.keepGroupIndices.includes(i)),added=[...new Set(edit.addGroupIndices)].map(i=>session.exercises[i]?.name).filter(Boolean);
+    if(added.length===1)throw Error(`${session.name}: choose at least two movements for a superset, or leave the new group empty.`);
+    if(added.length>1){if(groups.some(g=>g.some(n=>added.includes(n))))throw Error(`${session.name}: remove the existing overlapping group before adding this superset.`);groups.push(added);}cfg.supersets[session.id]=groups;
+  }
+  if(fields.keepRules)for(const name of Object.keys(cfg.progression))if(!fields.keepRules.includes(name))delete cfg.progression[name];
+  if(fields.ruleName){const read=(value,min,max,integer=false)=>{if(value==null||String(value).trim()==='')return null;const n=Number(value);if(!Number.isFinite(n)||n<min||n>max||(integer&&!Number.isInteger(n)))throw Error('Enter valid progression thresholds.');return n;};
+    const sets=read(fields.ruleSets,1,100,true),reps=read(fields.ruleReps,1,1000,true);if(sets==null||reps==null)throw Error('A progression rule requires working sets and reps.');
+    const load=read(fields.ruleLoad,0,fields.imperial?2204.6226:1000);cfg.progression[fields.ruleName]={sets,reps,load:load==null?null:Math.round((fields.imperial?load/2.20462262185:load)*10000)/10000,rir:read(fields.ruleRir,0,10)};
+  }
+  return cfg;
+}

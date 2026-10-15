@@ -21,6 +21,18 @@ const unilateralSides={
 };
 /** The authored working side is explicit; a bilateral movement is never relabelled. */
 export const exerciseDemoWorkingSide=id=>unilateralSides[id]||null;
+/** Guides follow the joints that demonstrate this movement, including isolated
+ * hands and raised legs whose motion is not described by the muscle label. */
+export function exerciseDemoGuideJoints(id){
+  const descriptor=getExerciseDemo(id);if(!descriptor)return [];
+  const wristOnly=['wrist-flexion-extension','wrist-curl','wrist-extension'].includes(id);
+  const lower=id==='hanging-leg-raise'||descriptor.muscles.some(m=>['quads','hamstrings','glutes','calves'].includes(m));
+  const neck=descriptor.muscles.includes('neck'),trunk=!lower&&descriptor.muscles.includes('abs');
+  const base=neck?['head','neck']:trunk?['chest','waist']:wristOnly?['elbow','wrist','hand']:id==='single-leg-calf-raise'?['knee','ankle','toe']:lower?['hip','knee','ankle']:['shoulder','elbow','wrist'];
+  if(neck||trunk)return [base];
+  const side=exerciseDemoWorkingSide(id),sides=side?[side]:['left','right'];
+  return sides.map(side=>base.map(name=>name+(side==='left'?'L':'R')));
+}
 export function normalizeDemoControls(value={}){
   return {angle:demoAngles.has(value.angle)?value.angle:'three-quarter',side:value.side==='left'?'left':'right',speed:[.5,1,1.5].includes(Number(value.speed))?Number(value.speed):1,overlay:value.overlay===true||value.overlay==='true'};
 }
@@ -151,7 +163,7 @@ function makeThree(host,descriptor){
     renderer.shadowMap.enabled=true;renderer.shadowMap.type=T.PCFSoftShadowMap;
     scene=new T.Scene();const camera=new T.PerspectiveCamera(32,width/height,.05,30);
     environment=studioEnvironment(renderer);if(environment)scene.environment=environment.texture;
-    scene.add(new T.HemisphereLight(0xe4e9ff,0x202333,1.55));
+    const hemisphere=new T.HemisphereLight(0xe4e9ff,0x202333,1.55);scene.add(hemisphere);
     const key=new T.DirectionalLight(0xf4f8ff,2.65);key.position.set(-2.3,4.4,4);key.castShadow=true;key.shadow.mapSize.set(512,512);key.shadow.camera.left=-2;key.shadow.camera.right=2;key.shadow.camera.top=3;key.shadow.camera.bottom=-2;key.shadow.normalBias=.025;key.shadow.bias=-.0004;scene.add(key);
     const rim=new T.DirectionalLight(0xb0a2df,1.65);rim.position.set(2.6,2,-2.2);scene.add(rim);
     const fill=new T.DirectionalLight(0xc8e4ed,1.1);fill.position.set(-3,1,-1);scene.add(fill);
@@ -160,8 +172,21 @@ function makeThree(host,descriptor){
     const model=new T.Group();scene.add(model);
     anatomy=createExerciseAnatomy(T,model,descriptor.muscles);const updateProps=makeProps(model);
     renderer.setSize(width,height,false);host?.append(canvas);
+    let lightTheme=null;
+    function syncTheme(){
+      const light=canvas.ownerDocument.documentElement.dataset.theme==='light';
+      if(light===lightTheme)return;lightTheme=light;
+      // Retain the prepared materials and transparent scene. A slightly softer
+      // studio exposure keeps the porcelain anatomy dimensional on pearl.
+      renderer.toneMappingExposure=light ? .88 : 1.04;
+      hemisphere.intensity=light?1.25:1.55;key.intensity=light?2.3:2.65;
+      rim.intensity=light?1.25:1.65;fill.intensity=light ? .85 : 1.1;
+      floor.material.opacity=light ? .15 : .25;
+      ring.material.color.setHex(light?0x67728c:0x9b9eb9);ring.material.opacity=light ? .22 : .16;
+    }
     function apply(pose,controls={}){
       if(disposed)return;
+      syncTheme();
       const w=Math.max(mountHost?.clientWidth||width,1),h=Math.max(mountHost?.clientHeight||height,1);
       if(width!==w||height!==h){width=w;height=h;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
       const displayed=displayExercisePose(pose,controls);
@@ -246,6 +271,8 @@ function makeFallback(host) {
   svg.setAttribute('viewBox','0 0 420 360');svg.setAttribute('aria-hidden','true');svg.classList.add('exercise-demo-vector');host.append(svg);
   function render(original,controls={}){
     const pose=displayExercisePose(original,controls),width=host.clientWidth||420,height=host.clientHeight||360;
+    const light=host.ownerDocument.documentElement.dataset.theme==='light';
+    const skinStops=light?['#726d97','#d3dae3','#a5b2c6','#5a647d']:['#8b81bb','#edf2f0','#bdc9d1','#6a708b'];
     svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
     const j=pose.joints,cam=pose.camera||[2.9,1.8,3.9],tar=pose.target||[0,.91,0],project=p=>projectExercisePoint(p,cam,tar,width,height).slice(0,2),a=p=>project(p).map(n=>n.toFixed(2)).join(','),hip=mid(j.hipL,j.hipR),sh=mid(j.shoulderL,j.shoulderR);
     const line=(from,to,width,paint='skin')=>`<path d="M${a(from)}L${a(to)}" fill="none" stroke="url(#${uid}-${paint})" stroke-width="${width}" stroke-linecap="round"/>`;
@@ -267,7 +294,7 @@ function makeFallback(host) {
     const limb=s=>line(j['hip'+s],j['knee'+s],24)+line(j['knee'+s],j['ankle'+s],15)+line(j['ankle'+s],j['toe'+s],12,'gear')+line(j['hip'+s],mix(j['hip'+s],j['knee'+s],.35),27,'gear');
     const arm=s=>line(j['shoulder'+s],j['elbow'+s],16)+line(j['elbow'+s],j['wrist'+s],12)+line(j['wrist'+s],j['hand'+s]||mix(j['elbow'+s],j['wrist'+s],1.2),9);
     const hc=project(j.head),nc=project(j.neck),headangle=(pose.headRotation?.[2]||0)*180/Math.PI;
-    svg.innerHTML=`<defs><linearGradient id="${uid}-skin" gradientUnits="userSpaceOnUse" x1="125" y1="80" x2="285" y2="270"><stop stop-color="#8b81bb"/><stop offset=".3" stop-color="#edf2f0"/><stop offset=".65" stop-color="#bdc9d1"/><stop offset="1" stop-color="#6a708b"/></linearGradient><linearGradient id="${uid}-gear" gradientUnits="userSpaceOnUse" x1="125" y1="60" x2="295" y2="295"><stop stop-color="#252d3c"/><stop offset=".5" stop-color="#757f96"/><stop offset="1" stop-color="#222736"/></linearGradient><radialGradient id="${uid}-floor"><stop stop-color="#aaa3da" stop-opacity=".12"/><stop offset="1" stop-color="#a4a4dc" stop-opacity="0"/></radialGradient></defs><ellipse cx="210" cy="315" rx="148" ry="28" fill="url(#${uid}-floor)"/><ellipse cx="210" cy="309" rx="135" ry="23" fill="none" stroke="#a5a3c6" stroke-opacity=".15"/>${props}${limb('R')}${arm('R')}${line(hip,j.waist||mix(hip,sh,.3),39,'gear')}${line(j.waist||mix(hip,sh,.3),sh,46)}${line(j.shoulderL,j.shoulderR,32)}${line(sh,j.neck,18)}${line(j.neck,j.head,13)}${limb('L')}${arm('L')}<ellipse cx="${hc[0]}" cy="${hc[1]}" rx="13.5" ry="18" fill="url(#${uid}-skin)" transform="rotate(${headangle} ${hc.join(' ')})"/><path d="M${hc[0]+7} ${hc[1]-2}l6 5-7 2" fill="#d6dce2"/>`;
+    svg.innerHTML=`<defs><linearGradient id="${uid}-skin" gradientUnits="userSpaceOnUse" x1="125" y1="80" x2="285" y2="270"><stop stop-color="${skinStops[0]}"/><stop offset=".3" stop-color="${skinStops[1]}"/><stop offset=".65" stop-color="${skinStops[2]}"/><stop offset="1" stop-color="${skinStops[3]}"/></linearGradient><linearGradient id="${uid}-gear" gradientUnits="userSpaceOnUse" x1="125" y1="60" x2="295" y2="295"><stop stop-color="#252d3c"/><stop offset=".5" stop-color="#757f96"/><stop offset="1" stop-color="#222736"/></linearGradient><radialGradient id="${uid}-floor"><stop stop-color="#aaa3da" stop-opacity=".12"/><stop offset="1" stop-color="#a4a4dc" stop-opacity="0"/></radialGradient></defs><ellipse cx="210" cy="315" rx="148" ry="28" fill="url(#${uid}-floor)"/><ellipse cx="210" cy="309" rx="135" ry="23" fill="none" stroke="#a5a3c6" stroke-opacity=".15"/>${props}${limb('R')}${arm('R')}${line(hip,j.waist||mix(hip,sh,.3),39,'gear')}${line(j.waist||mix(hip,sh,.3),sh,46)}${line(j.shoulderL,j.shoulderR,32)}${line(sh,j.neck,18)}${line(j.neck,j.head,13)}${limb('L')}${arm('L')}<ellipse cx="${hc[0]}" cy="${hc[1]}" rx="13.5" ry="18" fill="url(#${uid}-skin)" transform="rotate(${headangle} ${hc.join(' ')})"/><path d="M${hc[0]+7} ${hc[1]-2}l6 5-7 2" fill="${light?skinStops[1]:'#d6dce2'}"/>`;
   }
   return {render,dispose:()=>svg.remove()};
 }
@@ -276,10 +303,11 @@ function makeFormOverlay(host,descriptor){
   const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg'),cue=document.createElement('p');
   svg.classList.add('exercise-demo-form');svg.setAttribute('aria-hidden','true');
   cue.className='exercise-demo-form-cue';cue.setAttribute('aria-hidden','true');
-  cue.textContent=descriptor.cues[1]||descriptor.cues[0];host.append(svg,cue);
-  const lower=descriptor.muscles.some(m=>['quads','hamstrings','glutes','calves'].includes(m));
-  const neck=descriptor.muscles.includes('neck'),trunk=!lower&&descriptor.muscles.includes('abs');
-  const base=neck?['head','neck']:trunk?['chest','waist']:lower?['hip','knee','ankle']:['shoulder','elbow','wrist'];
+  cue.textContent=descriptor.cues[1]||descriptor.cues[0];host.append(svg);
+  // Keep the complete cue beside its illustration. An absolute caption can
+  // cover the very ankle or hand being taught when the reader enlarges text.
+  (host.closest('.demo-stage-wrap')||host).after(cue);
+  const groups=exerciseDemoGuideJoints(descriptor.id);
   const samples=new Map();let signature='';
   function render(pose,controls,variant){
     svg.toggleAttribute('hidden',!controls.overlay);cue.hidden=!controls.overlay;if(!controls.overlay)return;
@@ -287,8 +315,6 @@ function makeFormOverlay(host,descriptor){
     svg.setAttribute('viewBox',`0 0 ${width} ${height}`);
     const displayed=displayExercisePose(pose,controls),target=displayed.target||[0,.91,0];
     const project=point=>projectExercisePoint(point,displayed.camera,target,width,height);
-    const sides=exerciseDemoWorkingSide(descriptor.id)?[exerciseDemoWorkingSide(descriptor.id)]:['left','right'];
-    const groups=neck||trunk?[base]:sides.map(side=>base.map(name=>name+(side==='left'?'L':'R')));
     const key=variant||'';
     if(!samples.has(key))samples.set(key,Array.from({length:33},(_,i)=>getExercisePose(descriptor.id,exercisePhaseAt(descriptor.id,i/32),variant)));
     const pointString=points=>points.map(point=>{const p=project(point);return `${p[0].toFixed(1)},${p[1].toFixed(1)}`;}).join(' ');
@@ -394,10 +420,11 @@ export function mountExerciseDemos(root=document) {
   document.addEventListener('visibilitychange',onVisibility);media.addEventListener('change',onPreference);
   visual.canvas?.addEventListener('webglcontextlost',onContextLost);
   const resize=new ResizeObserver(()=>draw());resize.observe(host);
+  const themeObserver=new MutationObserver(()=>draw());themeObserver.observe(host.ownerDocument.documentElement,{attributes:true,attributeFilter:['data-theme']});
   const intersection=new IntersectionObserver(entries=>{visible=entries[0]?.isIntersecting!==false;if(visible){draw();schedule();}else pauseFrame();},{threshold:.01});intersection.observe(host);
   state();draw();schedule();
   const cleanup=()=>{
-    if(disposed)return;disposed=true;pauseFrame();resize.disconnect();intersection.disconnect();formOverlay.dispose();
+    if(disposed)return;disposed=true;pauseFrame();resize.disconnect();intersection.disconnect();themeObserver.disconnect();formOverlay.dispose();
     events.forEach(([element,event,handler])=>element?.removeEventListener(event,handler));
     document.removeEventListener('visibilitychange',onVisibility);media.removeEventListener('change',onPreference);
     visual.canvas?.removeEventListener('webglcontextlost',onContextLost);releaseVisual(visual);
