@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-16T10:08:50.860Z",
+  "updatedAt": "2026-10-16T10:23:21.014Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2879,6 +2879,19 @@
           "estimated": true,
           "source": "User-supplied Lidl nutrition label (16 Oct 2026), per 100 g edible portion excluding bones: 188 kcal, 17.5 g protein, 1.7 g carbs, 12.3 g fat; user weighed 85 g bones remaining after consuming ~310 g of bone-in chicken.",
           "note": "Replaces previous 70% edible-yield estimate with user's measured 85 g bones. Calculated 310 - 85 = 225 g edible meat assuming the original 310 g was food weight and no other discarded/remaining edible portions; package weight ambiguity remains."
+        },
+        {
+          "id": "2026-10-16-xxl-chocolate-whey-scoop-1",
+          "name": "XXL Nutrition Whey Protein Zero — Chocolate",
+          "quantity": "1 scoop (~30 g powder), mixed with water assumed",
+          "kcal": 113.1,
+          "protein": 21.75,
+          "carbs": 1.59,
+          "fat": 2.31,
+          "estimated": true,
+          "source": "Chocolate XXL Nutrition Whey Protein Zero nutrition panel supplied 14 Oct 2026: per 100 g 377 kcal, 72.5 g protein, 5.3 g carbs, 7.7 g fat, 4.6 g fibre. Product https://xxlnutrition.com/nl/whey-protein-zero",
+          "note": "Same scoop as 15 October. 30 g chocolate whey powder, water assumed.",
+          "fibre": 1.38
         }
       ],
       "workouts": [],
