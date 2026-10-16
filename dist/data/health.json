@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-16T10:23:21.014Z",
+  "updatedAt": "2026-10-16T15:52:20.852Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2892,6 +2892,31 @@
           "source": "Chocolate XXL Nutrition Whey Protein Zero nutrition panel supplied 14 Oct 2026: per 100 g 377 kcal, 72.5 g protein, 5.3 g carbs, 7.7 g fat, 4.6 g fibre. Product https://xxlnutrition.com/nl/whey-protein-zero",
           "note": "Same scoop as 15 October. 30 g chocolate whey powder, water assumed.",
           "fibre": 1.38
+        },
+        {
+          "id": "2026-10-16-lidl-chicken-extra-130g",
+          "name": "Lidl bone-in chicken wings (additional portion)",
+          "quantity": "130 g additional bone-in portion (~94.4 g edible estimated)",
+          "kcal": 177.387,
+          "protein": 16.512,
+          "carbs": 1.604,
+          "fat": 11.606,
+          "estimated": true,
+          "source": "User-provided Lidl chicken nutrition label and measured breakfast bone ratio on 16 Oct 2026 (225 g edible from 310 g bone-in; 188 kcal, 17.5 g protein, 1.7 g carbs, 12.3 g fat per 100 g edible).",
+          "note": "Additional to morning 310 g entry, not a correction. Assumes the added 130 g includes bones and applies the earlier measured 225/310 (72.6%) edible yield; estimated 94.4 g edible. If the new 130 g was edible meat only, correct this entry."
+        },
+        {
+          "id": "2026-10-16-chocolate-protein-bar-60g",
+          "name": "Chocolate protein bar (photo nutrition label)",
+          "quantity": "1 whole bar (60 g)",
+          "kcal": 239,
+          "protein": 17,
+          "carbs": 19,
+          "fat": 10,
+          "fibre": 5.7,
+          "estimated": false,
+          "source": "Photo of the chocolate bar nutrition label supplied 16 Oct 2026 (per 60 g bar: 239 kcal, 17 g protein, 19 g carbohydrate, 10 g fat, 5.7 g fibre).",
+          "note": "Product name not fully visible. Recorded whole 60 g bar based on 1 bar portion on wrapper; saturated fat 5.6 g, sugar 5.6 g, salt 0.15 g."
         }
       ],
       "workouts": [],
