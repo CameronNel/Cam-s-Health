@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-16T07:37:05.194Z",
+  "updatedAt": "2026-10-16T10:08:50.860Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2870,15 +2870,15 @@
       "food": [
         {
           "id": "2026-10-16-lidl-meat-310g",
-          "name": "Lidl bone-in chicken (estimated edible portion)",
-          "quantity": "~310 g removed from a 750 g bone-in pack; estimated ~217 g edible (70%)",
-          "kcal": 407.96,
-          "protein": 37.975,
-          "carbs": 3.689,
-          "fat": 26.691,
+          "name": "Lidl bone-in chicken (225 g edible)",
+          "quantity": "310 g portion less 85 g measured bones = 225 g edible",
+          "kcal": 423,
+          "protein": 39.375,
+          "carbs": 3.825,
+          "fat": 27.675,
           "estimated": true,
-          "source": "User-supplied Lidl photo 16 Oct 2026, nutrition per 100 g edible without bones: 188 kcal, 17.5 g protein, 1.7 g carbs, 12.3 g fat; user said pack 750 g and remaining pack weighed 440 g.",
-          "note": "Corrected earlier overestimate that treated 310 g as edible meat. Approx 310 g removed by pack-weight difference including bone, 70% edible portion ASSUMED, ~217 g edible. Remaining 440 g might include packaging; exact type of cut, eaten skin and bone mass unknown. Revise if clarified."
+          "source": "User-supplied Lidl nutrition label (16 Oct 2026), per 100 g edible portion excluding bones: 188 kcal, 17.5 g protein, 1.7 g carbs, 12.3 g fat; user weighed 85 g bones remaining after consuming ~310 g of bone-in chicken.",
+          "note": "Replaces previous 70% edible-yield estimate with user's measured 85 g bones. Calculated 310 - 85 = 225 g edible meat assuming the original 310 g was food weight and no other discarded/remaining edible portions; package weight ambiguity remains."
         }
       ],
       "workouts": [],
