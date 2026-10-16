@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-15T21:53:03.880Z",
+  "updatedAt": "2026-10-16T07:27:52.336Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2858,6 +2858,27 @@
           "source": "Chocolate XXL Nutrition Whey Protein Zero nutrition panel supplied 14 Oct 2026: per 100 g 377 kcal, 72.5 g protein, 5.3 g carbs, 7.7 g fat, 4.6 g fibre. Product https://xxlnutrition.com/nl/whey-protein-zero",
           "note": "Corrected 15 Oct: not a bottled 240 ml protein drink. XXL Nutrition chocolate whey powder, one standard 30 g scoop assumed, scaled from user's prior label. Water assumed and no milk. Existing entry corrected; not an additional shake.",
           "fibre": 1.38
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": ""
+    },
+    "2026-10-16": {
+      "food": [
+        {
+          "id": "2026-10-16-lidl-meat-310g",
+          "name": "Lidl chicken, label shown",
+          "quantity": "310 g (edible portion assumed)",
+          "kcal": 582.8,
+          "protein": 54.25,
+          "carbs": 5.27,
+          "fat": 38.13,
+          "estimated": true,
+          "source": "Lidl nutrition label in user's photo (16 October 2026)",
+          "note": "Per 100 g edible portion without bones: 188 kcal, 17.5 g protein, 1.7 g carbs, 12.3 g fat. If weighed with bones, entry needs correction."
         }
       ],
       "workouts": [],
