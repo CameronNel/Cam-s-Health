@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-16T15:52:20.852Z",
+  "updatedAt": "2026-10-16T19:00:25.883Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2896,14 +2896,14 @@
         {
           "id": "2026-10-16-lidl-chicken-extra-130g",
           "name": "Lidl bone-in chicken wings (additional portion)",
-          "quantity": "130 g additional bone-in portion (~94.4 g edible estimated)",
-          "kcal": 177.387,
-          "protein": 16.512,
-          "carbs": 1.604,
-          "fat": 11.606,
-          "estimated": true,
-          "source": "User-provided Lidl chicken nutrition label and measured breakfast bone ratio on 16 Oct 2026 (225 g edible from 310 g bone-in; 188 kcal, 17.5 g protein, 1.7 g carbs, 12.3 g fat per 100 g edible).",
-          "note": "Additional to morning 310 g entry, not a correction. Assumes the added 130 g includes bones and applies the earlier measured 225/310 (72.6%) edible yield; estimated 94.4 g edible. If the new 130 g was edible meat only, correct this entry."
+          "quantity": "200 g bone-in portion, including 70 g bones = 130 g edible",
+          "kcal": 244.4,
+          "protein": 22.75,
+          "carbs": 2.21,
+          "fat": 15.99,
+          "estimated": false,
+          "source": "User-provided Lidl chicken nutrition label on 16 Oct 2026: per 100 g edible chicken (bones excluded) 188 kcal, 17.5 g protein, 1.7 g carbohydrate, 12.3 g fat. Corrected edible weight per user.",
+          "note": "Corrected from earlier assumed 130 g bone-in portion. User clarified 200 g including bones, with 130 g edible meat and 70 g bones. Nutrition calculated from product label per 100 g edible portion."
         },
         {
           "id": "2026-10-16-chocolate-protein-bar-60g",
@@ -2917,12 +2917,25 @@
           "estimated": false,
           "source": "Photo of the chocolate bar nutrition label supplied 16 Oct 2026 (per 60 g bar: 239 kcal, 17 g protein, 19 g carbohydrate, 10 g fat, 5.7 g fibre).",
           "note": "Product name not fully visible. Recorded whole 60 g bar based on 1 bar portion on wrapper; saturated fat 5.6 g, sugar 5.6 g, salt 0.15 g."
+        },
+        {
+          "id": "2026-10-16-xxl-chocolate-whey-scoop-2",
+          "name": "XXL Nutrition Whey Protein Zero — Chocolate",
+          "quantity": "1 additional scoop (~30 g powder), mixed with water assumed",
+          "kcal": 113.1,
+          "protein": 21.75,
+          "carbs": 1.59,
+          "fat": 2.31,
+          "estimated": true,
+          "source": "Chocolate XXL Nutrition Whey Protein Zero nutrition panel supplied 14 Oct 2026: per 100 g 377 kcal, 72.5 g protein, 5.3 g carbs, 7.7 g fat, 4.6 g fibre. Product https://xxlnutrition.com/nl/whey-protein-zero",
+          "note": "Additional scoop reported on 16 Oct 2026 evening. Same XXL Nutrition Whey Protein Zero chocolate powder as earlier.",
+          "fibre": 1.38
         }
       ],
       "workouts": [],
       "steps": null,
       "waterMl": null,
-      "weightKg": null,
+      "weightKg": 65,
       "notes": ""
     }
   },
