@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-16T19:00:25.883Z",
+  "updatedAt": "2026-10-16T20:33:23.120Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2932,7 +2932,54 @@
           "fibre": 1.38
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-10-16-arms-forearms-23sets",
+          "sessionId": null,
+          "name": "Arms + Forearms (23 sets)",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "3 very light concentration curl sets performed to failure. Reps, weights and duration not reported.",
+          "actualExercises": [
+            {
+              "name": "Curls",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm preacher curls",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Hammer curls",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Forearm curls (wrist flexion)",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Forearm extensions (wrist extension)",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Concentration curls (very light; to failure)",
+              "sets": 3,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": 65,
