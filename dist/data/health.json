@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-16T20:33:23.120Z",
+  "updatedAt": "2026-10-17T08:58:34.004Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2983,6 +2983,27 @@
       "steps": null,
       "waterMl": null,
       "weightKg": 65,
+      "notes": ""
+    },
+    "2026-10-17": {
+      "food": [
+        {
+          "id": "2026-10-17-lean-beef-taco-bowl-110g-1",
+          "name": "Lean beef taco bowl (beef mince, tomatoes & taco seasoning)",
+          "quantity": "110 g from 1,290 g batch",
+          "kcal": 171.9,
+          "protein": 17.7,
+          "carbs": 2.8,
+          "fat": 9.7,
+          "estimated": true,
+          "source": "Saved recipe lean-beef-taco-bowl-2026-09-22 (original 1,290 g prepared batch)",
+          "note": "110 g serving of previously logged 1 kg lean beef mince with one can of Picnic tomato mix and one taco-seasoning sachet. Estimated using original saved batch nutrition; drained-fat reduction and exact tomato/seasoning labels not verified."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
       "notes": ""
     }
   },
