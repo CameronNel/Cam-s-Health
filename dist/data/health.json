@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-18T16:30:29.080Z",
+  "updatedAt": "2026-10-18T20:46:21.461Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3128,6 +3128,18 @@
           "estimated": false,
           "source": "DekaMarkt confirmed Melkan product nutritional label: https://www.dekamarkt.nl/producten/zuivel-kaas/yoghurt-kwark-pap/melkan-magere-kwark-aardbei-framboos/74937 ; 46 kcal, 6.5 g protein, 4.8 g carbs, 0 g fat per 100 g",
           "note": "Exact user-stated nutrition matches this Melkan 500g strawberry-raspberry kwark; assumes the entire tub was consumed."
+        },
+        {
+          "id": "2026-10-18-protein-bar-unidentified-60g",
+          "name": "Protein bar (brand not visible on label)",
+          "quantity": "1 bar (60 g)",
+          "kcal": 231,
+          "protein": 22,
+          "carbs": 18,
+          "fat": 6.7,
+          "estimated": false,
+          "source": "Nutrition label photographed by user on 18 Oct 2026; per 1 bar (60 g)",
+          "note": "Per label: 231 kcal (968 kJ), 22 g protein, 18 g carbohydrate including 6.7 g sugar and 8.0 g polyols, 6.7 g fat including 4.2 g saturated fat, 8.1 g fibre, 0.18 g salt. Product brand and flavor not visible."
         }
       ],
       "workouts": [],
