@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-18T08:23:43.705Z",
+  "updatedAt": "2026-10-18T16:30:29.080Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3089,6 +3089,52 @@
       "waterMl": null,
       "weightKg": null,
       "notes": ""
+    },
+    "2026-10-18": {
+      "food": [
+        {
+          "id": "2026-10-18-chicken-basmati-pot-one-fifth",
+          "name": "One-pot chicken, basmati rice & mixed vegetables",
+          "quantity": "~1/5 of whole cooked pot (700 g raw chicken, 200 g dry basmati rice, 200 g mixed veg, ~2 tsp Chinese cooking oil for whole pot)",
+          "kcal": 344,
+          "protein": 35.8,
+          "carbs": 34,
+          "fat": 5.8,
+          "estimated": true,
+          "source": "User's batch recipe, 18 Oct 2026; prior saved raw chicken breast estimate (~120 kcal/100 g), AH basmati rice dry reference (355 kcal/100g), generic mixed vegetable and cooking oil estimates",
+          "note": "Estimated assuming 700 g raw skinless chicken breast, 200 g DRY basmati rice, 200 g peas/carrots/other low-calorie vegetables (~45 kcal/100g), and 2 tsp (~9g/80 kcal) sesame/soy cooking oil. Whole batch estimated 1,720 kcal, 179.1g P, 170g C, 28.9g F; ate approximately 20%. Chicken cut, rice brand, mixed-veg blend and oil type unspecified, so estimate is provisional. Cooked yield not provided.",
+          "recipeId": "chicken-basmati-mixed-veg-pot-2026-10-18"
+        },
+        {
+          "id": "2026-10-18-campina-strawberry-kwark-500g",
+          "name": "Campina magere milde kwark met 'n vleugje aardbei",
+          "quantity": "1 usual full 500 g tub (assumed)",
+          "kcal": 345,
+          "protein": 45,
+          "carbs": 36.5,
+          "fat": 0.5,
+          "estimated": true,
+          "source": "Campina official nutritional values: https://www.campina.nl/producten/campina-magere-milde-kwark-met-n-vleugje-aardbei-500g",
+          "note": "User described usual strawberry kwark, NOT the plain Campina 50 g protein tub. Matched to Campina mild low-fat strawberry kwark (69 kcal, 9g protein, 7.3g carbs, 0.1g fat per 100g). A full 500g tub is assumed; verify if a different strawberry product or partial tub."
+        },
+        {
+          "id": "2026-10-18-melkan-kwark-aardbei-framboos-500g",
+          "name": "Melkan Magere kwark met magere yoghurt aardbei-framboos 0% vet",
+          "quantity": "1 full 500 g tub (assumed)",
+          "kcal": 230,
+          "protein": 32.5,
+          "carbs": 24,
+          "fat": 0,
+          "estimated": false,
+          "source": "DekaMarkt confirmed Melkan product nutritional label: https://www.dekamarkt.nl/producten/zuivel-kaas/yoghurt-kwark-pap/melkan-magere-kwark-aardbei-framboos/74937 ; 46 kcal, 6.5 g protein, 4.8 g carbs, 0 g fat per 100 g",
+          "note": "Exact user-stated nutrition matches this Melkan 500g strawberry-raspberry kwark; assumes the entire tub was consumed."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": ""
     }
   },
   "recipes": [
@@ -3200,6 +3246,43 @@
       "estimated": true,
       "source": "User recipe and written cooked yield photo, 14 Oct 2026; saved 9 Oct Cookies & Cream whey label; Albert Heijn tarwebloem https://www.ah.nl/producten/product/wi36783/tarwebloem and halfvolle melk https://www.ah.nl/producten/product/wi33693/ah-halfvolle-melk; Voedingscentrum raw egg https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-voedingswaarden-zitten-erin/rauw-ei.aspx",
       "note": "Whole cooked pancake batch weighed 637 g. Fat/butter/oil used in cooking not reported and therefore excluded. Assumes all ingredients remained in batch except moisture lost to cooking. Whey label verified from prior log; milk/flour/egg estimates."
+    },
+    {
+      "id": "chicken-basmati-mixed-veg-pot-2026-10-18",
+      "name": "One-pot chicken, basmati rice, mixed vegetables & oil — 18 Oct 2026",
+      "yieldG": null,
+      "ingredients": [
+        {
+          "name": "Raw skinless chicken breast (assumed)",
+          "quantity": "700 g",
+          "note": "Generic raw breast estimate 120 kcal, 22.5g protein, 2.62g fat per 100g; chicken cut not specified."
+        },
+        {
+          "name": "Basmati rice, uncooked",
+          "quantity": "200 g dry",
+          "note": "Saved AH basmati rice reference: 355 kcal, 8.8g protein, 78g carbs, 0.5g fat per 100g."
+        },
+        {
+          "name": "Mixed vegetables (peas, carrots, green veg)",
+          "quantity": "200 g",
+          "note": "Estimated 45 kcal, 2g protein, 7g carbs, 0.3g fat per 100g."
+        },
+        {
+          "name": "Chinese cooking oil (type not specified)",
+          "quantity": "2 teaspoons (~9g)",
+          "note": "Estimated 80 kcal and 9g fat for whole pot; oil type (soy or sesame) uncertain."
+        }
+      ],
+      "total": {
+        "kcal": 1720,
+        "protein": 179.1,
+        "carbs": 170,
+        "fat": 28.9
+      },
+      "per100g": null,
+      "estimated": true,
+      "source": "User's description on 18 Oct 2026; saved raw chicken and AH dry basmati nutritional references, estimated mixed veg and oil",
+      "note": "Batch assumed uniform; cooked total yield weight not provided. Food log is 1/5 of this batch. Final cooked mass is not needed to log a fraction of the pot; no per-100g value until measured."
     }
   ],
   "provenance": {
