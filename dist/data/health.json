@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-17T08:58:34.004Z",
+  "updatedAt": "2026-10-18T08:23:43.705Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -2998,6 +2998,90 @@
           "estimated": true,
           "source": "Saved recipe lean-beef-taco-bowl-2026-09-22 (original 1,290 g prepared batch)",
           "note": "110 g serving of previously logged 1 kg lean beef mince with one can of Picnic tomato mix and one taco-seasoning sachet. Estimated using original saved batch nutrition; drained-fat reduction and exact tomato/seasoning labels not verified."
+        },
+        {
+          "id": "2026-10-17-chocomel-original-glass-2x200ml",
+          "name": "Chocomel Original (glass bottles)",
+          "quantity": "2 × 200 ml glass bottles = 400 ml",
+          "kcal": 348,
+          "protein": 13.2,
+          "carbs": 48,
+          "fat": 10.8,
+          "estimated": false,
+          "source": "Chocomel NL official 200 ml glass bottle, 87 kcal / 100 ml; https://www.cecemel.com/nl-nl/products/chocomel-vol-rv-fles-24x200ml",
+          "note": "Assumed standard Dutch Original 200 ml glass bottles. If a different bottle size or recipe, adjust."
+        },
+        {
+          "id": "2026-10-17-event-chicken-nuggets-3",
+          "name": "Chicken nuggets (event snack platter)",
+          "quantity": "3 small/standard nuggets",
+          "kcal": 135,
+          "protein": 7.5,
+          "carbs": 9,
+          "fat": 7.5,
+          "estimated": true,
+          "source": "Estimated typical fried chicken nugget ~45 kcal each; exact event catering unknown",
+          "note": "User described platter-sized snacks; assumed 3 nuggets at ~20 g each."
+        },
+        {
+          "id": "2026-10-17-event-mini-cheese-pocket-1",
+          "name": "Mini cheese pocket / kaassoufflé (event platter)",
+          "quantity": "1 small cheese pocket (~28 g assumed)",
+          "kcal": 100,
+          "protein": 2.1,
+          "carbs": 8.3,
+          "fat": 6.5,
+          "estimated": true,
+          "source": "Voedingscentrum kaassoufflé prepared 205 kcal per 57 g, scaled to mini ~28 g; https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-calorieen-zitten-erin-/caloriechecker/kaassouffle-bereid.aspx",
+          "note": "Small McDonald's-style cheese-pocket snack, not a full-size 57 g kaassoufflé."
+        },
+        {
+          "id": "2026-10-17-event-bitterballen-3",
+          "name": "Bitterballen (fried)",
+          "quantity": "3 standard snack-sized bitterballen (~17 g each)",
+          "kcal": 186,
+          "protein": 5.1,
+          "carbs": 10.5,
+          "fat": 13.5,
+          "estimated": true,
+          "source": "Voedingscentrum fried bitterbal 62 kcal, 1.7 g P, 3.5 g C, 4.5 g F per 17 g; https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-calorieen-zitten-erin-/caloriechecker/bitterbal-gefrituurd.aspx",
+          "note": "User ate three from an event platter; assumed ordinary 17 g bitterballen."
+        },
+        {
+          "id": "2026-10-17-event-frikandel-filling-3",
+          "name": "Mini frikandel pieces (frikandelbroodje filling only)",
+          "quantity": "3 mini sausage/filling pieces (~20 g each; ~60 g total)",
+          "kcal": 150,
+          "protein": 8.25,
+          "carbs": 4,
+          "fat": 11,
+          "estimated": true,
+          "source": "Voedingscentrum fried frikandel 181 kcal / 72 g, scaled to assumed 60 g; https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-calorieen-zitten-erin-/caloriechecker/frikandel-gefrituurd.aspx",
+          "note": "User specified the frikandel inside a frikandelbroodje, not the pastry, in three small platter-sized pieces. Pastry excluded."
+        },
+        {
+          "id": "2026-10-17-amsterdam-chocolate-strawberries-3",
+          "name": "Chocolate-covered strawberries (Amsterdam)",
+          "quantity": "3 dipped strawberries",
+          "kcal": 150,
+          "protein": 2,
+          "carbs": 22,
+          "fat": 6.5,
+          "estimated": true,
+          "source": "Estimate for fresh strawberries with chocolate coating; amount of chocolate not weighed",
+          "note": "Assumed ~50 kcal per dipped strawberry. Thick chocolate coatings could raise this significantly."
+        },
+        {
+          "id": "2026-10-17-amsterdam-doner-durum-90pct",
+          "name": "Döner kebab dürüm wrap (Amsterdam)",
+          "quantity": "~90% of one long, fairly thin large tortilla döner wrap",
+          "kcal": 675,
+          "protein": 33,
+          "carbs": 65,
+          "fat": 31.5,
+          "estimated": true,
+          "source": "Estimated ~750 kcal full restaurant dürüm based on Netherlands restaurant references: https://mobile.fatsecret.nl/calorie%C3%ABn-voedingswaarde/search?q=D%C3%B6ner (626 kcal regular) and https://caltype.app/nl/calorieen/doner-kebab (~800 kcal larger dürüm)",
+          "note": "Meat type, sauce, exact tortilla and filling not known. Long but not very thick, ~90% eaten; estimated 675 kcal total consumed (90% × 750 kcal)."
         }
       ],
       "workouts": [],
