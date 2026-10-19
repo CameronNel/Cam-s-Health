@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-18T20:46:21.461Z",
+  "updatedAt": "2026-10-19T19:50:38.858Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3140,6 +3140,64 @@
           "estimated": false,
           "source": "Nutrition label photographed by user on 18 Oct 2026; per 1 bar (60 g)",
           "note": "Per label: 231 kcal (968 kJ), 22 g protein, 18 g carbohydrate including 6.7 g sugar and 8.0 g polyols, 6.7 g fat including 4.2 g saturated fat, 8.1 g fibre, 0.18 g salt. Product brand and flavor not visible."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": ""
+    },
+    "2026-10-19": {
+      "food": [
+        {
+          "id": "2026-10-19-banana-kwark-usual-500g",
+          "name": "Milde magere kwark met banaan",
+          "quantity": "1 full 500 g tub (usual product)",
+          "kcal": 345,
+          "protein": 46.5,
+          "carbs": 35,
+          "fat": 0.5,
+          "estimated": false,
+          "source": "User-reported usual banana kwark; saved user-provided nutrition label 4–9 Oct 2026.",
+          "note": "Same 500 g banana kwark as previous logs; label per 100 g: 69 kcal, 9.3 g protein, 7 g carbs, 0.1 g fat. Full 500 g tub assumed."
+        },
+        {
+          "id": "2026-10-19-chicken-basmati-pot-two-fifths",
+          "name": "One-pot chicken, basmati rice & mixed vegetables",
+          "quantity": "2/5 of the entire chicken/rice/veg/oil batch made 18 Oct 2026",
+          "kcal": 688,
+          "protein": 71.64,
+          "carbs": 68,
+          "fat": 11.56,
+          "estimated": true,
+          "source": "Saved recipe chicken-basmati-mixed-veg-pot-2026-10-18; 40% of 1,720 kcal whole batch.",
+          "note": "Two fifths of the same pot logged yesterday. Entire pot: 700 g raw assumed skinless chicken breast, 200 g dry basmati, 200 g mixed vegetables and two teaspoons Chinese oil. Product/ingredient estimates still apply; no cooked yield supplied.",
+          "recipeId": "chicken-basmati-mixed-veg-pot-2026-10-18"
+        },
+        {
+          "id": "2026-10-19-machine-cappuccinos-two-low-milk",
+          "name": "Office coffee-machine cappuccinos, milk setting 1/3",
+          "quantity": "2 cappuccinos; powdered milk on setting 1 of 3",
+          "kcal": 60,
+          "protein": 2,
+          "carbs": 8,
+          "fat": 2,
+          "estimated": true,
+          "source": "Personalized office coffee-machine estimate saved 13–14 Oct 2026: 30 kcal, 1 g protein, 4 g carbs, 1 g fat per low-milk machine drink.",
+          "note": "Applies prior 30 kcal low-milk machine-latte estimate to cappuccinos on the same powdered-milk setting. Actual cappuccino milk dosage could differ; machine powder amount and nutrition not verified."
+        },
+        {
+          "id": "2026-10-19-protein-bar-repeat-18oct-60g",
+          "name": "Protein bar (brand not visible on label)",
+          "quantity": "1 bar (60 g)",
+          "kcal": 231,
+          "protein": 22,
+          "carbs": 18,
+          "fat": 6.7,
+          "estimated": false,
+          "source": "Same protein bar as 18 Oct 2026; user-provided photo nutrition label dated 18 Oct.",
+          "note": "Repeat of the 60 g bar from yesterday, not the 16 Oct or earlier bars. 231 kcal, 22 g protein, 18 g carbs, 6.7 g fat, 8.1 g fibre. Brand not visible."
         }
       ],
       "workouts": [],
