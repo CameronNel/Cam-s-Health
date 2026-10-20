@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-20T18:39:55.142Z",
+  "updatedAt": "2026-10-20T18:46:28.715Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3344,8 +3344,14 @@
       ],
       "steps": null,
       "waterMl": null,
-      "weightKg": null,
-      "notes": ""
+      "weightKg": 63.3,
+      "notes": "",
+      "body": {
+        "bodyFatPct": 11,
+        "method": "Not specified",
+        "notes": "Approximately 11% body fat as reported on 20 Oct 2026; measurement method not provided. Treat as approximate, not a precise device or lab measurement.",
+        "recordedAt": "2026-10-20T18:46:28.714Z"
+      }
     }
   },
   "recipes": [
