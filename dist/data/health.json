@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-20T17:30:08.524Z",
+  "updatedAt": "2026-10-20T18:39:55.142Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3273,6 +3273,31 @@
           "estimated": true,
           "source": "Personalized office coffee-machine estimate saved 13–14 Oct 2026: 30 kcal, 1 g protein, 4 g carbs, 1 g fat per low-milk machine drink.",
           "note": "Four of the same low-milk office machine cappuccinos estimated previously at 30 kcal / 1 g protein / 4 g carbs / 1 g fat each. Milk dosage and actual machine powder nutrition are not confirmed."
+        },
+        {
+          "id": "2026-10-20-xxl-chocolate-whey-two-scoops",
+          "name": "XXL Nutrition Whey Protein Zero — Chocolate",
+          "quantity": "2 scoops (~60 g powder); no caloric mixer included",
+          "kcal": 226.2,
+          "protein": 43.5,
+          "carbs": 3.18,
+          "fat": 4.62,
+          "estimated": true,
+          "source": "Chocolate XXL Nutrition Whey Protein Zero nutrition panel supplied 14 Oct 2026: per 100 g 377 kcal, 72.5 g protein, 5.3 g carbs, 7.7 g fat, 4.6 g fibre. Product https://xxlnutrition.com/nl/whey-protein-zero",
+          "note": "Two standard 30 g scoops assumed; same chocolate powder previously logged 14–16 October 2026. Nutrition label confirmed per 100 g: 377 kcal, 72.5 g protein, 5.3 g carbs, 7.7 g fat. Only dry powder logged; add milk separately if used."
+        },
+        {
+          "id": "2026-10-20-chicken-basmati-pot-extra-half-serving",
+          "name": "One-pot chicken, basmati rice & mixed vegetables",
+          "quantity": "Extra 1/2 of the serving eaten earlier today (~1/10 of entire batch); separate meal",
+          "kcal": 172,
+          "protein": 17.9,
+          "carbs": 17,
+          "fat": 2.9,
+          "estimated": true,
+          "source": "Reused user's saved 18 Oct 2026 batch and one-fifth serving calculation.",
+          "note": "Additional meal: half of the 20 Oct chicken/rice/vegetable serving (the initial serving matched Sunday's ~1/5 pot). This is ~1/10 of the batch, not half of the entire pot. User explicitly requested this as another meal; original serving unchanged.",
+          "recipeId": "chicken-basmati-mixed-veg-pot-2026-10-18"
         }
       ],
       "workouts": [
