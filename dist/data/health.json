@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-20T17:25:44.646Z",
+  "updatedAt": "2026-10-20T17:30:08.524Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3236,7 +3236,45 @@
       "notes": ""
     },
     "2026-10-20": {
-      "food": [],
+      "food": [
+        {
+          "id": "2026-10-20-chicken-basmati-pot-one-fifth",
+          "name": "One-pot chicken, basmati rice & mixed vegetables",
+          "quantity": "One serving (~1/5 of whole chicken, basmati rice and mixed vegetables pot), matching 18 Oct 2026 portion",
+          "kcal": 344,
+          "protein": 35.8,
+          "carbs": 34,
+          "fat": 5.8,
+          "estimated": true,
+          "source": "Reused user's saved 18 Oct 2026 batch and one-fifth serving calculation.",
+          "note": "Same serving as Sunday 18 Oct. Estimated values from original recipe (700 g raw chicken breast, 200 g dry basmati rice, 200 g mixed vegetables, ~2 tsp oil for whole batch). Exact batch ingredients, oil and cooked yield remain approximate.",
+          "recipeId": "chicken-basmati-mixed-veg-pot-2026-10-18"
+        },
+        {
+          "id": "2026-10-20-melkan-stracciatella-kwark-500g",
+          "name": "Melkan magere kwark met magere yoghurt stracciatellasmaak",
+          "quantity": "1 full 500 g tub (assumed)",
+          "kcal": 215,
+          "protein": 32.5,
+          "carbs": 21.5,
+          "fat": 0,
+          "estimated": true,
+          "source": "User-provided tub nutritional label photo 20 Oct 2026 (per 100g: 43 kcal, 6.5g protein, 4.3g carbs, 0g fat); package size verified at https://www.dekamarkt.nl/producten/zuivel-kaas/yoghurt-kwark-pap/melkan%20magere%20kwark%20stracciatella/112032",
+          "note": "Assumed the entire 500 g tub was eaten; user said 'Kwark in photo' without specifying quantity. Label is directly verified; only amount eaten is assumed. Correct portion if not full tub."
+        },
+        {
+          "id": "2026-10-20-office-cappuccinos-four-low-milk",
+          "name": "Office coffee-machine cappuccinos, milk setting 1/3",
+          "quantity": "4 cappuccinos; milk powder setting 1 of 3",
+          "kcal": 120,
+          "protein": 4,
+          "carbs": 16,
+          "fat": 4,
+          "estimated": true,
+          "source": "Personalized office coffee-machine estimate saved 13–14 Oct 2026: 30 kcal, 1 g protein, 4 g carbs, 1 g fat per low-milk machine drink.",
+          "note": "Four of the same low-milk office machine cappuccinos estimated previously at 30 kcal / 1 g protein / 4 g carbs / 1 g fat each. Milk dosage and actual machine powder nutrition are not confirmed."
+        }
+      ],
       "workouts": [
         {
           "id": "2026-10-20-biceps-forearms-1",
