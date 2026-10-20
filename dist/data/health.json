@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-19T19:50:38.858Z",
+  "updatedAt": "2026-10-20T17:25:44.646Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3200,7 +3200,85 @@
           "note": "Repeat of the 60 g bar from yesterday, not the 16 Oct or earlier bars. 231 kcal, 22 g protein, 18 g carbs, 6.7 g fat, 8.1 g fibre. Brand not visible."
         }
       ],
-      "workouts": [],
+      "workouts": [
+        {
+          "id": "2026-10-19-incline-press-flyes-laterals-1",
+          "sessionId": null,
+          "name": "Chest + Lateral Delts",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User reported this session on 20 Oct 2026 as completed yesterday (19 Oct). Reps, weights and duration not provided. Custom session; no programmed session completion inferred.",
+          "actualExercises": [
+            {
+              "name": "Incline DB Press",
+              "sets": 5,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Incline Flyes",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Lateral Raises",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": ""
+    },
+    "2026-10-20": {
+      "food": [],
+      "workouts": [
+        {
+          "id": "2026-10-20-biceps-forearms-1",
+          "sessionId": null,
+          "name": "Biceps + Forearms",
+          "status": "completed",
+          "durationMin": null,
+          "notes": "User reported this session on 20 Oct 2026. 'Curls' variation and 'forearms front/back' specific movements were not named; labels preserved without assuming exercise type. Four sets of single-arm preacher curls recorded as four total reported sets, not doubled per arm. Reps, weights and duration not provided. Custom session.",
+          "actualExercises": [
+            {
+              "name": "Curls (variation unspecified)",
+              "sets": 5,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Single-arm Preacher Curls",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Forearms Front",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Forearms Back",
+              "sets": 4,
+              "reps": null,
+              "load": null
+            },
+            {
+              "name": "Concentration Curls",
+              "sets": 2,
+              "reps": null,
+              "load": null
+            }
+          ]
+        }
+      ],
       "steps": null,
       "waterMl": null,
       "weightKg": null,
