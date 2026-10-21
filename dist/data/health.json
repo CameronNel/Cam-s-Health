@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-21T18:51:59.512Z",
+  "updatedAt": "2026-10-21T18:57:29.515Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3589,9 +3589,9 @@
       "yieldG": 1000,
       "ingredients": [
         {
-          "name": "Raw minced meat",
+          "name": "Raw beef mince, 92% lean / 8% fat",
           "quantity": "500 g",
-          "note": "Exact type and fat percentage unknown; estimated provisionally using Voedingscentrum lean raw beef mince (per 100g: 182 kcal, 20g protein, 0.3g carbs, 11.1g fat). No oil or fat-draining adjustment assumed."
+          "note": "User confirmed 92/8 on 21 Oct 2026. Estimated per 100 g raw: 160 kcal, 20.6 g protein, 0 g carbs, 8 g fat, interpolated from USDA 90/10 and 93/7 raw beef mince. Actual package label was not provided. Assumes all rendered fat retained in batch."
         },
         {
           "name": "Kidney beans, canned",
@@ -3605,22 +3605,22 @@
         }
       ],
       "total": {
-        "kcal": 1272,
-        "protein": 125.2,
-        "carbs": 49.7,
-        "fat": 58.3,
+        "kcal": 1162,
+        "protein": 128.2,
+        "carbs": 48.2,
+        "fat": 42.8,
         "fibre": 16.8
       },
       "per100g": {
-        "kcal": 127.2,
-        "protein": 12.52,
-        "carbs": 4.97,
-        "fat": 5.83,
+        "kcal": 116.2,
+        "protein": 12.82,
+        "carbs": 4.82,
+        "fat": 4.28,
         "fibre": 1.68
       },
       "estimated": true,
-      "source": "User recipe and photographed kidney-bean/tomato labels, 21 Oct 2026; Voedingscentrum lean raw beef mince reference https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-voedingswaarden-zitten-erin/rundergehakt-mager-onbereid.aspx",
-      "note": "Measured final cooked yield exactly 1,000 g. Estimates assume 500g lean raw beef mince, 250g drained canned kidney beans and 400g tomato; actual meat composition and tomato can net weight need confirmation. No other ingredients or oil reported; no rendered-fat reduction applied. This is a saved recipe only, not food consumed. Correct the recipe once mince fat percentage and tomato can weight are provided."
+      "source": "User-confirmed 92/8 beef mince, 21 Oct 2026; raw USDA ground beef 90/10 and 93/7 reference values interpolated for 92/8 (https://whatyoueat.io/foods/174030-ground-beef-90-lean; https://whatyoueat.io/foods/173110-ground-beef-93-lean); kidney-bean and tomato labels photographed 21 Oct 2026.",
+      "note": "Measured final cooked yield 1,000 g. Estimated 500 g raw 92/8 beef mince (800 kcal, 103 g protein, 40 g fat), 2 × 125 g drained kidney beans (266 kcal, 20 g protein), assumed 400 g canned tomato (96 kcal, 5.2 g protein). Does not include added oil, seasoning or other ingredients. Fat loss from draining not reported or deducted. Photo of mince's own nutrition label and exact tomato can weight would refine values. This is a reusable recipe only and does not add food to today's intake."
     }
   ],
   "provenance": {
