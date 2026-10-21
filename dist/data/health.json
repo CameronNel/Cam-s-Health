@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-21T18:41:36.805Z",
+  "updatedAt": "2026-10-21T18:51:59.512Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3582,6 +3582,45 @@
       "estimated": true,
       "source": "User's description on 18 Oct 2026; saved raw chicken and AH dry basmati nutritional references, estimated mixed veg and oil",
       "note": "Batch assumed uniform; cooked total yield weight not provided. Food log is 1/5 of this batch. Final cooked mass is not needed to log a fraction of the pot; no per-100g value until measured."
+    },
+    {
+      "id": "mince-kidney-beans-tomato-slop-2026-10-21",
+      "name": "Mince slop — beef, kidney beans & tomato (21 Oct 2026)",
+      "yieldG": 1000,
+      "ingredients": [
+        {
+          "name": "Raw minced meat",
+          "quantity": "500 g",
+          "note": "Exact type and fat percentage unknown; estimated provisionally using Voedingscentrum lean raw beef mince (per 100g: 182 kcal, 20g protein, 0.3g carbs, 11.1g fat). No oil or fat-draining adjustment assumed."
+        },
+        {
+          "name": "Kidney beans, canned",
+          "quantity": "2 cans (200 g net each; 125 g drained weight each, 250 g beans total)",
+          "note": "User-photographed label: per 125g drained can 133 kcal, 10g protein, 17.5g carbs, 1.0g fat, 6.8g fibre."
+        },
+        {
+          "name": "Canned tomato",
+          "quantity": "1 can (assumed 400 g)",
+          "note": "User-photographed label per 100g: 24 kcal, 1.3g protein, 3.3g carbs, <0.5g fat, 0.8g fibre. Can net weight unconfirmed, using common 400g can; fat estimated 0.2g/100g."
+        }
+      ],
+      "total": {
+        "kcal": 1272,
+        "protein": 125.2,
+        "carbs": 49.7,
+        "fat": 58.3,
+        "fibre": 16.8
+      },
+      "per100g": {
+        "kcal": 127.2,
+        "protein": 12.52,
+        "carbs": 4.97,
+        "fat": 5.83,
+        "fibre": 1.68
+      },
+      "estimated": true,
+      "source": "User recipe and photographed kidney-bean/tomato labels, 21 Oct 2026; Voedingscentrum lean raw beef mince reference https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/gezonde-voeding-en-voedingsstoffen/hoeveel-voedingswaarden-zitten-erin/rundergehakt-mager-onbereid.aspx",
+      "note": "Measured final cooked yield exactly 1,000 g. Estimates assume 500g lean raw beef mince, 250g drained canned kidney beans and 400g tomato; actual meat composition and tomato can net weight need confirmation. No other ingredients or oil reported; no rendered-fat reduction applied. This is a saved recipe only, not food consumed. Correct the recipe once mince fat percentage and tomato can weight are provided."
     }
   ],
   "provenance": {
