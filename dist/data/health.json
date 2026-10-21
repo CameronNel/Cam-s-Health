@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-20T18:46:28.715Z",
+  "updatedAt": "2026-10-21T18:41:36.805Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3352,6 +3352,88 @@
         "notes": "Approximately 11% body fat as reported on 20 Oct 2026; measurement method not provided. Treat as approximate, not a precise device or lab measurement.",
         "recordedAt": "2026-10-20T18:46:28.714Z"
       }
+    },
+    "2026-10-21": {
+      "food": [
+        {
+          "id": "2026-10-21-chicken-pot-1",
+          "name": "One-pot chicken, basmati rice & mixed vegetables",
+          "quantity": "1 serving (~1/5 of batch)",
+          "kcal": 344,
+          "protein": 35.8,
+          "carbs": 34,
+          "fat": 5.8,
+          "estimated": false,
+          "source": "Saved 18 Oct 2026 recipe",
+          "note": "Same portion as 18 and 20 October."
+        },
+        {
+          "id": "2026-10-21-wings-1",
+          "name": "Lidl bone-in chicken wings",
+          "quantity": "300 g bone-in; estimated 105 g bones, 195 g edible",
+          "kcal": 366.6,
+          "protein": 34.125,
+          "carbs": 3.315,
+          "fat": 23.985,
+          "estimated": true,
+          "source": "16 Oct 2026 Lidl wings nutrition and bone-weight records",
+          "note": "Bone deduction estimated at 35% from prior measured 200 g wings / 70 g bones; edible nutrition scaled from saved 130 g portion."
+        },
+        {
+          "id": "2026-10-21-bar-1",
+          "name": "Protein bar (brand not visible on label)",
+          "quantity": "1 bar (60 g)",
+          "kcal": 231,
+          "protein": 22,
+          "carbs": 18,
+          "fat": 6.7,
+          "estimated": false,
+          "source": "Protein bar label previously logged 18–19 Oct 2026",
+          "note": "Assumes same 60 g bar as most recently logged."
+        },
+        {
+          "id": "2026-10-21-bread-1",
+          "name": "Sourdough bread",
+          "quantity": "30 g",
+          "kcal": 75,
+          "protein": 2.7,
+          "carbs": 14.4,
+          "fat": 0.6,
+          "estimated": true,
+          "source": "Generic sourdough nutrition estimate",
+          "note": "Estimated 250 kcal/100 g."
+        },
+        {
+          "id": "2026-10-21-milk-1",
+          "name": "Halfvolle melk",
+          "quantity": "150 ml",
+          "kcal": 67,
+          "protein": 5.1,
+          "carbs": 7.1,
+          "fat": 2.1,
+          "estimated": true,
+          "source": "Previously logged Dutch halfvolle melk estimate",
+          "note": ""
+        },
+        {
+          "id": "2026-10-21-drink-1",
+          "name": "High-protein vanilla milk drink",
+          "quantity": "330 ml full bottle",
+          "kcal": 214.5,
+          "protein": 34.98,
+          "carbs": 17.49,
+          "fat": 0.66,
+          "estimated": false,
+          "source": "User-provided bottle nutrition label 21 Oct 2026",
+          "note": "Per 100 ml: 65 kcal, 10.6 g protein, 5.3 g carbs, 0.2 g fat."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "",
+      "foodLogComplete": false
     }
   },
   "recipes": [
