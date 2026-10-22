@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-22T19:12:18.231Z",
+  "updatedAt": "2026-10-22T19:57:24.811Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3476,6 +3476,20 @@
           "estimated": true,
           "source": "Photographed Dutch chocolate protein drink label on 22 Oct 2026: 330 ml bottle, per 100 ml 67 kcal, 10.6g protein, 5.3g carbs, 0.3g fat, 0.4g fibre.",
           "note": "Assumes the full labelled 330 ml bottle was consumed. Bottle mentions 35 g protein; label's 100 ml nutrition scaled to 330 ml. Serving panel says half bottle 175 ml, so used the explicitly stated bottle volume of 330 ml. Sugars 17.16 g."
+        },
+        {
+          "id": "2026-10-22-mince-kidney-bean-tomato-250g-extra",
+          "name": "Mince slop — 92/8 beef, kidney beans & tomato (additional serving)",
+          "quantity": "Additional 250 g of yesterday's 1,000 g batch; 500 g total consumed today",
+          "kcal": 290.5,
+          "protein": 32.05,
+          "carbs": 12.05,
+          "fat": 10.7,
+          "fibre": 4.2,
+          "estimated": true,
+          "source": "Saved Cam's Health recipe mince-kidney-beans-tomato-slop-2026-10-21; 500 g raw 92/8 beef mince, 2 cans kidney beans, 1 can tomato; finished cooked yield 1,000 g.",
+          "note": "Second, separate 250 g serving reported later 22 Oct; first 250 g serving remains unchanged. Uses saved recipe's per-100g values x2.5. Beef nutrition and tomato can net weight were previously estimated.",
+          "recipeId": "mince-kidney-beans-tomato-slop-2026-10-21"
         }
       ],
       "workouts": [],
