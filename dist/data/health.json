@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-21T18:57:29.515Z",
+  "updatedAt": "2026-10-22T19:12:18.231Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3426,6 +3426,56 @@
           "estimated": false,
           "source": "User-provided bottle nutrition label 21 Oct 2026",
           "note": "Per 100 ml: 65 kcal, 10.6 g protein, 5.3 g carbs, 0.2 g fat."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "",
+      "foodLogComplete": false
+    },
+    "2026-10-22": {
+      "food": [
+        {
+          "id": "2026-10-22-mince-kidney-bean-tomato-250g",
+          "name": "Mince slop — 92/8 beef, kidney beans & tomato",
+          "quantity": "250 g (1/4 of the 1,000 g batch made 21 Oct 2026)",
+          "kcal": 290.5,
+          "protein": 32.05,
+          "carbs": 12.05,
+          "fat": 10.7,
+          "fibre": 4.2,
+          "estimated": true,
+          "source": "Saved recipe mince-kidney-beans-tomato-slop-2026-10-21 in Cam's Health, created from user ingredient quantities and photographed bean/tomato labels on 21 Oct 2026.",
+          "note": "User explicitly ate 250 g. Recipe: 500 g raw 92/8 beef mince, two 125 g-drained cans kidney beans, one canned tomato; finished yield weighed at 1,000 g. Beef nutrition and tomato can net weight were estimated in recipe, so values remain approximate.",
+          "recipeId": "mince-kidney-beans-tomato-slop-2026-10-21"
+        },
+        {
+          "id": "2026-10-22-westland-salmon-egg-potato-salad-200g",
+          "name": "Westland Aardappelsalade met zalm en ei",
+          "quantity": "1 whole 200 g tub (assumed)",
+          "kcal": 358,
+          "protein": 7,
+          "carbs": 24,
+          "fat": 24,
+          "fibre": 2.2,
+          "estimated": true,
+          "source": "Photographed Westland salmon and egg potato salad label, 22 Oct 2026: per 100g 179 kcal, 3.5g protein, 12g carbs, 12g fat, 1.1g fibre; tub 200g.",
+          "note": "User said 'log salmon salad' without an explicit amount. Assumes all 200 g eaten. Nutrition exact for 200 g according to label; only consumed quantity is assumed. Saturated fat 2.4 g, sugars 7 g, salt 2.06 g for tub."
+        },
+        {
+          "id": "2026-10-22-chocolate-protein-drink-330ml",
+          "name": "Chocolate high-protein milk drink (330 ml, 35 g protein)",
+          "quantity": "1 whole 330 ml bottle (assumed)",
+          "kcal": 221.1,
+          "protein": 34.98,
+          "carbs": 17.49,
+          "fat": 0.99,
+          "fibre": 1.32,
+          "estimated": true,
+          "source": "Photographed Dutch chocolate protein drink label on 22 Oct 2026: 330 ml bottle, per 100 ml 67 kcal, 10.6g protein, 5.3g carbs, 0.3g fat, 0.4g fibre.",
+          "note": "Assumes the full labelled 330 ml bottle was consumed. Bottle mentions 35 g protein; label's 100 ml nutrition scaled to 330 ml. Serving panel says half bottle 175 ml, so used the explicitly stated bottle volume of 330 ml. Sugars 17.16 g."
         }
       ],
       "workouts": [],
