@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-22T19:57:24.811Z",
+  "updatedAt": "2026-10-22T20:03:17.884Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3490,6 +3490,18 @@
           "source": "Saved Cam's Health recipe mince-kidney-beans-tomato-slop-2026-10-21; 500 g raw 92/8 beef mince, 2 cans kidney beans, 1 can tomato; finished cooked yield 1,000 g.",
           "note": "Second, separate 250 g serving reported later 22 Oct; first 250 g serving remains unchanged. Uses saved recipe's per-100g values x2.5. Beef nutrition and tomato can net weight were previously estimated.",
           "recipeId": "mince-kidney-beans-tomato-slop-2026-10-21"
+        },
+        {
+          "id": "2026-10-22-xxl-chocolate-whey-two-scoops",
+          "name": "XXL Nutrition Whey Protein Zero — Chocolate",
+          "quantity": "2 scoops (~60 g powder); no caloric mixer included",
+          "kcal": 226.2,
+          "protein": 43.5,
+          "carbs": 3.18,
+          "fat": 4.62,
+          "estimated": true,
+          "source": "Chocolate XXL Nutrition Whey Protein Zero nutrition panel supplied 14 Oct 2026: per 100 g 377 kcal, 72.5 g protein, 5.3 g carbs, 7.7 g fat, 4.6 g fibre. Product https://xxlnutrition.com/nl/whey-protein-zero",
+          "note": "Two scoops of the user's usual chocolate whey. Assumes 30 g powder per scoop based on previously saved serving size. Same user-provided chocolate label as 14 Oct 2026. No milk or other caloric mixer reported, so only powder logged."
         }
       ],
       "workouts": [],
