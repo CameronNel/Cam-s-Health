@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-22T20:03:17.884Z",
+  "updatedAt": "2026-10-22T20:15:39.820Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3502,6 +3502,19 @@
           "estimated": true,
           "source": "Chocolate XXL Nutrition Whey Protein Zero nutrition panel supplied 14 Oct 2026: per 100 g 377 kcal, 72.5 g protein, 5.3 g carbs, 7.7 g fat, 4.6 g fibre. Product https://xxlnutrition.com/nl/whey-protein-zero",
           "note": "Two scoops of the user's usual chocolate whey. Assumes 30 g powder per scoop based on previously saved serving size. Same user-provided chocolate label as 14 Oct 2026. No milk or other caloric mixer reported, so only powder logged."
+        },
+        {
+          "id": "2026-10-22-maltodextrin-0point8-scoop",
+          "name": "Maltodextrin powder",
+          "quantity": "0.8 scoop (~26.7 g powder; per-label 1.5 scoops ≈ 50 g)",
+          "kcal": 101.33,
+          "protein": 0,
+          "carbs": 25.33,
+          "fat": 0,
+          "fibre": 0,
+          "estimated": true,
+          "source": "User photograph of maltodextrin nutrition and directions label, 22 Oct 2026: per 100 g 380 kcal, 95 g carbohydrates, 0 g fat, 0 g protein, 0 g fibre; 1.5 scoops approximately 50 g.",
+          "note": "Reported 80% of one scoop, not 80% of a 50 g serving. From label 1 scoop ~33.3 g, so 0.8 scoop ~26.7 g; carbs ~25.3 g including ~2.2 g sugars. Scoop weight is approximate. Water, if used, contributes no calories."
         }
       ],
       "workouts": [],
