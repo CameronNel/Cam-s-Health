@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-22T20:15:39.820Z",
+  "updatedAt": "2026-10-23T16:41:55.577Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3426,6 +3426,20 @@
           "estimated": false,
           "source": "User-provided bottle nutrition label 21 Oct 2026",
           "note": "Per 100 ml: 65 kcal, 10.6 g protein, 5.3 g carbs, 0.2 g fat."
+        },
+        {
+          "id": "2026-10-21-mince-kidney-bean-tomato-200g",
+          "name": "Mince slop — 92/8 beef, kidney beans & tomato",
+          "quantity": "200 g of the 1,000 g batch made 21 Oct 2026",
+          "kcal": 232.4,
+          "protein": 25.64,
+          "carbs": 9.64,
+          "fat": 8.56,
+          "fibre": 3.36,
+          "estimated": true,
+          "source": "Saved Cam's Health recipe mince-kidney-beans-tomato-slop-2026-10-21; user description and retrospective balance instruction 23 Oct 2026.",
+          "note": "Backfilled from user's 21 Oct statement of intent 'Imma eat 200g of it', treated as consumed in light of 23 Oct instruction to log the balance after previous days. Retrospective assumption; correct if 200g was not consumed.",
+          "recipeId": "mince-kidney-beans-tomato-slop-2026-10-21"
         }
       ],
       "workouts": [],
@@ -3515,6 +3529,56 @@
           "estimated": true,
           "source": "User photograph of maltodextrin nutrition and directions label, 22 Oct 2026: per 100 g 380 kcal, 95 g carbohydrates, 0 g fat, 0 g protein, 0 g fibre; 1.5 scoops approximately 50 g.",
           "note": "Reported 80% of one scoop, not 80% of a 50 g serving. From label 1 scoop ~33.3 g, so 0.8 scoop ~26.7 g; carbs ~25.3 g including ~2.2 g sugars. Scoop weight is approximate. Water, if used, contributes no calories."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "",
+      "foodLogComplete": false
+    },
+    "2026-10-23": {
+      "food": [
+        {
+          "id": "2026-10-23-de-ice-caramel-latte-230ml",
+          "name": "Douwe Egberts ICE Caramel Latte",
+          "quantity": "1 entire 230 ml cup",
+          "kcal": 135.7,
+          "protein": 7.36,
+          "carbs": 19.32,
+          "fat": 2.99,
+          "fibre": 1.15,
+          "estimated": false,
+          "source": "Photo of product nutrition panel; full 230ml cup volume from Douwe Egberts/Albert Heijn listings, 59 kcal per 100ml (https://www.ah.nl/producten/product/wi401893/douwe-egberts-ice-caramel-latte-ijskoffie).",
+          "note": "Entire 230 ml cup, sugar 16.79 g; nutritional label scaled from 100ml."
+        },
+        {
+          "id": "2026-10-23-white-chocolate-pistachio-45g",
+          "name": "White chocolate pistachio protein chocolate",
+          "quantity": "1 entire 45 g packet/bar (assumed full unit)",
+          "kcal": 183,
+          "protein": 15,
+          "carbs": 15,
+          "fat": 9.1,
+          "fibre": 1.5,
+          "estimated": true,
+          "source": "Photographed nutrition label 23 Oct 2026, values for 45g: 183 kcal, 15g protein, 15g carbs, 9.1g fat, 1.5g fibre.",
+          "note": "Assumes the printed 45g serving equals the entire chocolate consumed, because the package's net weight is not visibly confirmed."
+        },
+        {
+          "id": "2026-10-23-mince-kidney-bean-tomato-300g",
+          "name": "Mince slop — 92/8 beef, kidney beans & tomato",
+          "quantity": "300 g of the 1,000 g batch made 21 Oct 2026",
+          "kcal": 348.6,
+          "protein": 38.46,
+          "carbs": 14.46,
+          "fat": 12.84,
+          "fibre": 5.04,
+          "estimated": true,
+          "source": "Saved Cam's Health recipe mince-kidney-beans-tomato-slop-2026-10-21; user description and retrospective balance instruction 23 Oct 2026.",
+          "note": "Entire remaining batch after 200 g backfilled for 21 Oct and two 250 g portions logged on 22 Oct. Total 200 + 500 + 300 = 1,000 g. Macros based on partly estimated recipe.",
+          "recipeId": "mince-kidney-beans-tomato-slop-2026-10-21"
         }
       ],
       "workouts": [],
