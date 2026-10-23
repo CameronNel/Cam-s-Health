@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-23T16:41:55.577Z",
+  "updatedAt": "2026-10-23T19:27:34.655Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3579,6 +3579,19 @@
           "source": "Saved Cam's Health recipe mince-kidney-beans-tomato-slop-2026-10-21; user description and retrospective balance instruction 23 Oct 2026.",
           "note": "Entire remaining batch after 200 g backfilled for 21 Oct and two 250 g portions logged on 22 Oct. Total 200 + 500 + 300 = 1,000 g. Macros based on partly estimated recipe.",
           "recipeId": "mince-kidney-beans-tomato-slop-2026-10-21"
+        },
+        {
+          "id": "2026-10-23-abby-pumpkin-vegetable-soup-200g",
+          "name": "Abby's homemade pumpkin, apple & vegetable soup",
+          "quantity": "200 g cooked soup",
+          "kcal": 44.4,
+          "protein": 1.29,
+          "carbs": 11.07,
+          "fat": 0.18,
+          "fibre": 1.36,
+          "estimated": true,
+          "source": "Ingredient weights handwritten by Abby, user photo 23 Oct 2026; raw vegetable/fruit estimates from USDA FoodData Central standard reference, including pumpkin raw FDC 168448 (26 kcal/100g).",
+          "note": "Raw ingredients shown: onion 68 g, ginger 17 g, carrot 77 g, apple 140 g, pumpkin 863 g = 1,165 g raw. Whole-ingredient estimate before additions: 369.6 kcal, protein 10.8g, carbs 92.2g, fat 1.5g. Finished cooked soup weight not provided; assumes ~500 ml water added, no cooking-water evaporation and no oil/cream, giving an illustrative 1,665 g finished yield. Actual 200 g portion could be ~63 kcal with no added water, or differ significantly if fats/stock/cream were added. Estimate should be corrected when actual cooked yield or additions are known."
         }
       ],
       "workouts": [],
