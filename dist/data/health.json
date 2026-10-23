@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-23T19:27:34.655Z",
+  "updatedAt": "2026-10-23T19:32:44.424Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3584,14 +3584,14 @@
           "id": "2026-10-23-abby-pumpkin-vegetable-soup-200g",
           "name": "Abby's homemade pumpkin, apple & vegetable soup",
           "quantity": "200 g cooked soup",
-          "kcal": 44.4,
-          "protein": 1.29,
-          "carbs": 11.07,
-          "fat": 0.18,
-          "fibre": 1.36,
+          "kcal": 34.1,
+          "protein": 0.99,
+          "carbs": 8.52,
+          "fat": 0.14,
+          "fibre": 1.05,
           "estimated": true,
-          "source": "Ingredient weights handwritten by Abby, user photo 23 Oct 2026; raw vegetable/fruit estimates from USDA FoodData Central standard reference, including pumpkin raw FDC 168448 (26 kcal/100g).",
-          "note": "Raw ingredients shown: onion 68 g, ginger 17 g, carrot 77 g, apple 140 g, pumpkin 863 g = 1,165 g raw. Whole-ingredient estimate before additions: 369.6 kcal, protein 10.8g, carbs 92.2g, fat 1.5g. Finished cooked soup weight not provided; assumes ~500 ml water added, no cooking-water evaporation and no oil/cream, giving an illustrative 1,665 g finished yield. Actual 200 g portion could be ~63 kcal with no added water, or differ significantly if fats/stock/cream were added. Estimate should be corrected when actual cooked yield or additions are known."
+          "source": "23 Oct 2026 user photograph of raw ingredient weights, user-confirmed 1 litre added water (23 Oct correction), generic raw vegetable/fruit nutrition estimates.",
+          "note": "User corrected water added to exactly 1 litre. Raw ingredients: 68g onion, 17g ginger, 77g carrot, 140g apple, 863g pumpkin (1,165g raw), plus 1,000ml water. Batch estimated 369.6 kcal. Assumed final yield 2165g, with negligible evaporation and no unreported oil, cream or other calorie-containing ingredients. Consumed 200g. If significant evaporation occurred, final cooked weight is required to refine portion. Corrects previous assumption of 500ml water, not an additional serving."
         }
       ],
       "workouts": [],
