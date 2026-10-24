@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-24T07:44:02.375Z",
+  "updatedAt": "2026-10-24T19:37:18.250Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3638,6 +3638,55 @@
           "estimated": true,
           "source": "USDA FoodData Central, 93% lean/7% fat raw beef, FDC 173110, via https://whatyoueat.io/foods/173110-ground-beef-93-lean; scaled to 75 g.",
           "note": "User reports 75 g 93/7 mince. Nutrition assumes raw weight; if weighed cooked, figures for 75 g would differ. No added oil assigned to beef."
+        },
+        {
+          "id": "2026-10-24-de-ice-caramel-latte-230ml",
+          "name": "Douwe Egberts ICE Caramel Latte",
+          "quantity": "Entire 230 ml cup",
+          "kcal": 135.7,
+          "protein": 7.36,
+          "carbs": 19.32,
+          "fat": 2.99,
+          "fibre": 1.15,
+          "estimated": false,
+          "source": "Same photographed product/nutrition as 23 Oct 2026 record, 59 kcal/100 ml; full 230 ml cup",
+          "note": "User asked to log the same caramel iced coffee as yesterday again today."
+        },
+        {
+          "id": "2026-10-24-melkan-kwark-stracciatella-500g",
+          "name": "Melkan magere kwark met magere yoghurt, stracciatellasmaak",
+          "quantity": "One full 500 g tub (assumed)",
+          "kcal": 215,
+          "protein": 32.5,
+          "carbs": 21.5,
+          "fat": 0,
+          "estimated": true,
+          "source": "Photographed Melkan kwark nutrition label, 24 Oct 2026: per 100 g 43 kcal, 6.5 g protein, 4.3 g carbs, 0 g fat",
+          "note": "Assumes 500g tub fully eaten, though total net weight and amount consumed not independently confirmed. Label reads 150g per serving (64 kcal, 9.8g protein)."
+        },
+        {
+          "id": "2026-10-24-korean-chicken-125g",
+          "name": "Korean chicken (frozen, coated)",
+          "quantity": "125 g eaten (half of the 250 g pack)",
+          "kcal": 350,
+          "protein": 15,
+          "carbs": 36.25,
+          "fat": 17.5,
+          "estimated": false,
+          "source": "User-photo Korean chicken nutrition panel, 24 Oct 2026: per 100g 280 kcal, 12g protein, 29g carbohydrate, 14g fat; pack 250g",
+          "note": "User corrected quantity from whole pack to HALF (125 g). Uses frozen product as packaged; assumed no separately added oil or sauces."
+        },
+        {
+          "id": "2026-10-24-three-chicken-wings-edible-estimate",
+          "name": "Chicken wings (3 pieces, bone deducted)",
+          "quantity": "3 wing pieces; estimated 150 g bone-in, 52.5 g bone and 97.5 g edible meat/skin",
+          "kcal": 183.3,
+          "protein": 17.0625,
+          "carbs": 1.6575,
+          "fat": 11.9925,
+          "estimated": true,
+          "source": "Previously logged Lidl bone-in wings 21 Oct 2026 (300g bone-in, 35% bone, 195g edible, 366.6 kcal); scaled to 150g bone-in",
+          "note": "No wings weighed. 3 separate wing pieces assumed to contain ~97.5g edible after 35% bone deduction. Whole unsplit wings or larger pieces would weigh more; revise if weighed."
         }
       ],
       "workouts": [],
