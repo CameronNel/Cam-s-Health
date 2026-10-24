@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-23T19:32:44.424Z",
+  "updatedAt": "2026-10-24T07:44:02.375Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3592,6 +3592,52 @@
           "estimated": true,
           "source": "23 Oct 2026 user photograph of raw ingredient weights, user-confirmed 1 litre added water (23 Oct correction), generic raw vegetable/fruit nutrition estimates.",
           "note": "User corrected water added to exactly 1 litre. Raw ingredients: 68g onion, 17g ginger, 77g carrot, 140g apple, 863g pumpkin (1,165g raw), plus 1,000ml water. Batch estimated 369.6 kcal. Assumed final yield 2165g, with negligible evaporation and no unreported oil, cream or other calorie-containing ingredients. Consumed 200g. If significant evaporation occurred, final cooked weight is required to refine portion. Corrects previous assumption of 500ml water, not an additional serving."
+        },
+        {
+          "id": "2026-10-23-beef-mince-93-7-100g",
+          "name": "Lean ground beef mince (93/7)",
+          "quantity": "100 g (assumed raw weight)",
+          "kcal": 152,
+          "protein": 20.85,
+          "carbs": 0,
+          "fat": 7,
+          "estimated": true,
+          "source": "USDA FoodData Central, 93% lean/7% fat raw beef, FDC 173110, via https://whatyoueat.io/foods/173110-ground-beef-93-lean",
+          "note": "User reports 100 g 93/7 mince. Nutrition assumes 100 g was weighed raw; if weighed cooked, nutrition for 100 g would be higher. No added cooking oil reported."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "",
+      "foodLogComplete": false
+    },
+    "2026-10-24": {
+      "food": [
+        {
+          "id": "2026-10-24-fried-egg-minimal-oil-1",
+          "name": "Fried egg (minimal oil)",
+          "quantity": "1 large egg (~50 g) + ~1 g cooking oil (assumed)",
+          "kcal": 81,
+          "protein": 6.3,
+          "carbs": 0.36,
+          "fat": 5.8,
+          "estimated": true,
+          "source": "USDA FoodData Central whole large egg nutrition via https://www.myfoodanalysis.com/food/whole-egg-raw-171287 (72 kcal, 6.3 g protein, 0.36 g carbs, 4.8 g fat); estimated 1 g oil adds 9 kcal and 1 g fat.",
+          "note": "One large egg assumed, fried with very little oil; estimated 1 g of cooking oil actually consumed. Adjust if egg size or actual oil usage differs."
+        },
+        {
+          "id": "2026-10-24-beef-mince-93-7-75g",
+          "name": "Lean ground beef mince (93/7)",
+          "quantity": "75 g (assumed raw weight)",
+          "kcal": 114,
+          "protein": 15.64,
+          "carbs": 0,
+          "fat": 5.25,
+          "estimated": true,
+          "source": "USDA FoodData Central, 93% lean/7% fat raw beef, FDC 173110, via https://whatyoueat.io/foods/173110-ground-beef-93-lean; scaled to 75 g.",
+          "note": "User reports 75 g 93/7 mince. Nutrition assumes raw weight; if weighed cooked, figures for 75 g would differ. No added oil assigned to beef."
         }
       ],
       "workouts": [],
