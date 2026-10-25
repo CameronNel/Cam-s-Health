@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-24T19:42:12.515Z",
+  "updatedAt": "2026-10-25T11:49:40.417Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3711,6 +3711,28 @@
           "estimated": true,
           "source": "Chocolate XXL Nutrition Whey Protein Zero nutrition panel supplied 14 Oct 2026: per 100 g 377 kcal, 72.5 g protein, 5.3 g carbs, 7.7 g fat, 4.6 g fibre. Product https://xxlnutrition.com/nl/whey-protein-zero",
           "note": "Reused identical XXL chocolate whey nutritional assumptions from 22 Oct 2026: two scoops assumed ~60 g. 250 g added milk logged as separate item so it is not double counted."
+        }
+      ],
+      "workouts": [],
+      "steps": null,
+      "waterMl": null,
+      "weightKg": null,
+      "notes": "",
+      "foodLogComplete": false
+    },
+    "2026-10-25": {
+      "food": [
+        {
+          "id": "2026-10-25-chicken-wings-edible-150g",
+          "name": "Chicken wings (meat and skin, bones removed)",
+          "quantity": "150 g edible portion (bone weight already removed)",
+          "kcal": 282,
+          "protein": 26.25,
+          "carbs": 2.55,
+          "fat": 18.45,
+          "estimated": true,
+          "source": "Same chicken wings as 24 Oct 2026; estimated from previously logged Lidl wings nutrition (21 Oct 2026) and scaled from 24 Oct edible portion (97.5 g).",
+          "note": "User confirms 150 g excludes bones, so no further bone deduction. Nutrition estimated using yesterday's wing entry; no extra sauce or oil separately estimated."
         }
       ],
       "workouts": [],
