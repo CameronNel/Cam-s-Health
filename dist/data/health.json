@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-25T11:51:13.313Z",
+  "updatedAt": "2026-10-25T12:29:16.988Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3747,6 +3747,18 @@
           "estimated": false,
           "source": "User photograph of Jumbo 200 g snack sticks nutritional label, 25 Oct 2026: per 100 g 399 kcal, 11.1 g protein, 77.0 g carbohydrate, 4.0 g fat, 5.5 g fibre, 4.40 g salt.",
           "note": "Logged exactly 40 g of photographed Jumbo snack sticks, 40% of label per-100g values."
+        },
+        {
+          "id": "2026-10-25-campina-vanilla-magre-kwark-500g",
+          "name": "Campina milde magere kwark met vanille",
+          "quantity": "500 g (entire tub assumed)",
+          "kcal": 345,
+          "protein": 45,
+          "carbs": 36.5,
+          "fat": 0.5,
+          "estimated": true,
+          "source": "User photograph, 25 Oct 2026: Campina vanilla low-fat quark 500 g, nutrition per 100 g: 69 kcal, protein 9.0 g, carbs 7.3 g, fat 0.1 g.",
+          "note": "Assumed whole photographed 500 g tub was eaten because quantity was not specified. Label nutrition is exact per 100 g; adjust this entry if less than the full tub was consumed."
         }
       ],
       "workouts": [],
