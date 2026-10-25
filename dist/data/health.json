@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-25T11:49:40.417Z",
+  "updatedAt": "2026-10-25T11:51:13.313Z",
   "profile": {
     "name": "Cam",
     "timezone": "Europe/Amsterdam",
@@ -3733,6 +3733,20 @@
           "estimated": true,
           "source": "Same chicken wings as 24 Oct 2026; estimated from previously logged Lidl wings nutrition (21 Oct 2026) and scaled from 24 Oct edible portion (97.5 g).",
           "note": "User confirms 150 g excludes bones, so no further bone deduction. Nutrition estimated using yesterday's wing entry; no extra sauce or oil separately estimated."
+        },
+        {
+          "id": "2026-10-25-jumbo-salty-sticks-40g",
+          "name": "Jumbo zoute sticks (salted pretzel sticks)",
+          "quantity": "40 g",
+          "kcal": 159.6,
+          "protein": 4.44,
+          "carbs": 30.8,
+          "fat": 1.6,
+          "fibre": 2.2,
+          "salt": 1.76,
+          "estimated": false,
+          "source": "User photograph of Jumbo 200 g snack sticks nutritional label, 25 Oct 2026: per 100 g 399 kcal, 11.1 g protein, 77.0 g carbohydrate, 4.0 g fat, 5.5 g fibre, 4.40 g salt.",
+          "note": "Logged exactly 40 g of photographed Jumbo snack sticks, 40% of label per-100g values."
         }
       ],
       "workouts": [],
